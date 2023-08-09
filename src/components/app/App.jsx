@@ -2,18 +2,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { increment, fetchCurrencies } from "../../slices/currencySlice";
-import { useHttp } from "../../hooks/http.hook";
 import "./App.scss";
 
 function App() {
-  const { value } = useSelector((state) => state.currency);
+  const { value } = useSelector((state) => state.currencies);
   const dispatch = useDispatch();
-  const { request } = useHttp();
 
   useEffect(() => {
-    request("https://api.coincap.io/v2/assets/bitcoin")
-      .then((data) => dispatch(fetchCurrencies(data.data)))
-      .catch((e) => console.log(e));
+    dispatch(fetchCurrencies());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
