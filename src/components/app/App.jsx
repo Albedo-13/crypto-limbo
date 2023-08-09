@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { increment, fetchCurrencies } from "../../slices/currencySlice";
+import { fetchCurrencies } from "../../slices/currencySlice";
 import "./App.scss";
+import { MainPage } from "../pages/MainPage";
+import { SecondPage } from "../pages/SecondPage";
 
 function App() {
-  const { value } = useSelector((state) => state.currencies);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,15 +16,8 @@ function App() {
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p style={{ fontSize: 48, margin: 0 }}>{value}</p>
-        <button onClick={() => dispatch(increment(5))}>INC</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <MainPage />
+      <SecondPage />
     </>
   );
 }
