@@ -3,12 +3,12 @@ import { useHttp } from "../hooks/http.hook";
 
 const initialState = {
   data: [],
-  value: 0,
+  currenciesLoadingStatus: "idle",
 }
 
 export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
   const { request } = useHttp();
-  return await request("https://api.coincap.io/v2/assets");
+  return await request("https://api.coincap.io/v2/assets/");
 });
 
 export const currencySlice = createSlice({
@@ -21,9 +21,17 @@ export const currencySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchCurrencies.pending, (state) => {
+        state.currenciesLoadingStatus = "loading";
+      })
       .addCase(fetchCurrencies.fulfilled, (state, action) => {
         state.data = action.payload.data;
-      });
+        state.currenciesLoadingStatus = "idle";
+      })
+      .addCase(fetchCurrencies.rejected, (state) => {
+        state.currenciesLoadingStatus = "error";
+      })
+      .addDefaultCase(() => {});
   }
 });
 
