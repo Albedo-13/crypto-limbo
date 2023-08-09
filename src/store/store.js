@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../slices/counterSlice";
+import currencySlice from "../slices/currencySlice";
 
 export const store = configureStore({
   // eslint-disable-next-line no-undef
   devTools: process.env.NODE_ENV !== "production",
   reducer: {
-    counter: counterReducer,
+    currency: currencySlice,
   }
 });

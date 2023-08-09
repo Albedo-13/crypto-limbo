@@ -1,26 +1,27 @@
-import reactLogo from "../../assets/react.svg";
-import viteLogo from "../../../public/vite.svg";
-import "./App.scss";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increment } from "../../slices/counterSlice";
+
+import { increment, fetchCurrencies } from "../../slices/currencySlice";
+import { useHttp } from "../../hooks/http.hook";
+import "./App.scss";
 
 function App() {
-  const { value } = useSelector(state => state.counter);
+  const { value } = useSelector((state) => state.currency);
   const dispatch = useDispatch();
+  const { request } = useHttp();
+
+  useEffect(() => {
+    request("https://api.coincap.io/v2/assets/bitcoin")
+      .then((data) => dispatch(fetchCurrencies(data.data)))
+      .catch((e) => console.log(e));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <p style={{fontSize: 48, margin: 0}}>{value}</p>
+        <p style={{ fontSize: 48, margin: 0 }}>{value}</p>
         <button onClick={() => dispatch(increment(5))}>INC</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
