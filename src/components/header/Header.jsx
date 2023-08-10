@@ -1,14 +1,4 @@
-import { useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { fetchImage } from "../../slices/currencySlice";
-
 export const Header = () => {
-  // const dispatch = useDispatch();
-
-  useEffect(() => {
-    // dispatch(fetchImage("btc"));
-  }, []);
-
   return (
     <>
       <h1>Vite + React</h1>
