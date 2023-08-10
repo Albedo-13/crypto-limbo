@@ -6,9 +6,19 @@ const initialState = {
   currenciesLoadingStatus: "idle",
 }
 
+// https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en
+const defaultApiSettings = {
+  url: "https://api.coingecko.com/api/v3",
+  vsCurrency: "usd",
+  order: "market_cap_desc",
+  page: 1,
+  locale: "en",
+};
+
 export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
   const { request } = useHttp();
-  return await request("https://api.coincap.io/v2/assets/");
+  const { url, vsCurrency, order, page, locale } = defaultApiSettings;
+  return await request(`${url}/coins/markets?vs_currency=${vsCurrency}&order=${order}&page=${page}&locale=${locale}`);
 });
 
 export const currencySlice = createSlice({
@@ -25,13 +35,14 @@ export const currencySlice = createSlice({
         state.currenciesLoadingStatus = "loading";
       })
       .addCase(fetchCurrencies.fulfilled, (state, action) => {
-        state.data = action.payload.data;
+        state.data = action.payload;
         state.currenciesLoadingStatus = "idle";
+        console.log(state.data);
       })
       .addCase(fetchCurrencies.rejected, (state) => {
         state.currenciesLoadingStatus = "error";
       })
-      .addDefaultCase(() => {});
+      .addDefaultCase(() => { });
   }
 });
 
