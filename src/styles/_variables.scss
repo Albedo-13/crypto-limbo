@@ -17,3 +17,9 @@ $black: #000000;
 $success: #06b470;
 $error: #f74e2c;
 $extra: #ffba3a;
+
+:export {
+  error: $error;
+  success: $success;
+  extra: $extra;
+}
