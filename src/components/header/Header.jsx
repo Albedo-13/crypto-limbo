@@ -26,7 +26,7 @@ export const Header = () => {
           <div className="header__buttons">
             <Button sx={{
               // color: "#ff0000",
-              // color: colors.error,
+              color: colors.error,
             }}>log in</Button>
             <Button variant="contained">sign up</Button>
           </div>

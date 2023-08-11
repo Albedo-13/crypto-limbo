@@ -1,8 +1,11 @@
 export const convertScssToObject = (string) => {
-  let properties = string.split(/[;:{} ]+/)
+  let properties = ['\n', 'error', '#f74e2c', '\n', 'success', '#06b470', '\n', 'extra', '#ffba3a', '\n'];
+
+  properties = string
+    .replaceAll("\n", "")
+    .split(/[;:{} ]+/)
     .slice(2, -1);
   // ['\n', 'error', '#f74e2c', '\n', 'success', '#06b470', '\n', 'extra', '#ffba3a', '\n']
-  properties = ['\n', 'error', '#f74e2c', '\n', 'success', '#06b470', '\n', 'extra', '#ffba3a', '\n'];
   console.log("properties:", properties);
 
   const parsed = JSON.stringify(properties)
