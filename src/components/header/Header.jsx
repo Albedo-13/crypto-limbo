@@ -1,13 +1,21 @@
+import "./header.scss";
+
 export const Header = () => {
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <header className="header">
+      <div className="container">
+        <div className="header__wrapper">
+          <div className="header__logo">
+            dasd
+          </div>
+          <div className="header__links">
+            dsad
+          </div>
+          <div className="header__buttons">
+            links
+          </div>
+        </div>
       </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    </header>
   );
 };

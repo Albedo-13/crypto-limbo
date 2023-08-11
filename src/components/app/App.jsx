@@ -10,16 +10,16 @@ import { SecondPage } from "../pages/SecondPage";
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
-}
-
-function Root() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCurrencies());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  
+  return <RouterProvider router={router} />;
+}
 
+function Root() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />

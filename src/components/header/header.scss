@@ -1,0 +1,12 @@
+@import "../../styles/_variables.scss";
+
+.header {
+  min-height: 56px;
+  background-color: $bg-card-2;
+  padding: 32px 0;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}

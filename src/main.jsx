@@ -14,7 +14,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </Provider>
 );
 
-// TODO: React Router
 // TODO: MUI
 // TODO: clear unnecessary styles
 // TODO: chart js
