@@ -1,15 +1,10 @@
 export const convertScssToObject = (string) => {
-  let properties = ['\n', 'error', '#f74e2c', '\n', 'success', '#06b470', '\n', 'extra', '#ffba3a', '\n'];
-
-  properties = string
+  let properties = string
     .replaceAll("\n", "")
     .split(/[;:{} ]+/)
-    .slice(2, -1);
-  // ['\n', 'error', '#f74e2c', '\n', 'success', '#06b470', '\n', 'extra', '#ffba3a', '\n']
-  console.log("properties:", properties);
+    .slice(2, -1);  console.log("properties:", properties);
 
   const parsed = JSON.stringify(properties)
-    // .replace("\n", "")
     .replace("[", "{")
     .replace("]", "}")
     .replaceAll(",", ":")
@@ -27,5 +22,3 @@ export const convertScssToObject = (string) => {
 convertScssToObject(" :export {  error: #f74e2c;  success: #06b470;  extra: #ffba3a;}");
 
 // :export {  error: #f74e2c;  success: #06b470;  extra: #ffba3a;}
-
-// feat: add mui & 'scss to js' style adapter to save styles' ssot
