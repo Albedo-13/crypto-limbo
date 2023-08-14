@@ -1,7 +1,9 @@
 $primary-blue: #1b70f1;
 $primary-blue-dark: #1151b6;
 
-$bg-card-2: #1e1f25;
+$bg-page: #131517;
+$bg-card: #1e1f25;
+$black: #000000;
 $bg-blur-1: #5570fe;
 
 $primary-white: #f7faff;
@@ -11,9 +13,6 @@ $grey-5: #bfc4cd;
 $grey-6: #adb3bf;
 $grey-8: #808a9a;
 
-$card-bg: #1e1f25;
-$black: #000000;
-
 $success: #06b470;
 $error: #f74e2c;
 $extra: #ffba3a;
@@ -22,7 +21,9 @@ $extra: #ffba3a;
   primaryBlue: $primary-blue;
   primaryBlueDark: $primary-blue-dark;
 
-  bgCard2: $bg-card-2;
+  bg-page: $bg-page;
+  bgCard: $bg-card;
+  black: $black;
   bgBlur1: $bg-blur-1;
 
   primaryWhite: $primary-white;
@@ -31,9 +32,6 @@ $extra: #ffba3a;
   grey5: $grey-5;
   grey6: $grey-6;
   grey8: $grey-8;
-
-  cardBg: $card-bg;
-  black: $black;
 
   error: $error;
   success: $success;
