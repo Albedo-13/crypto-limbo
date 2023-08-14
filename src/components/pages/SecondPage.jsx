@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-import { MarketTrands } from "../marketTrands/MarketTrands"
+import { MarketTrends } from "../marketTrends/MarketTrends"
 
 export const SecondPage = () => {
   return (
     <>
-      <MarketTrands />
+      <MarketTrends />
       <Link to="/">to first page</Link>
     </>
   );

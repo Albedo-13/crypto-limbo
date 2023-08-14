@@ -9,9 +9,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   &-logo {
+    position: relative;
+    // border: 1px solid red;
     &__link {
       display: block;
     }
