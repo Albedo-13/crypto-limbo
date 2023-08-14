@@ -8,12 +8,28 @@ import App from "./components/app/App.jsx";
 import { store } from "./store/store.js";
 
 import "./styles/index.scss";
+import variables from "./styles/_variables.scss?inline";
+import { convertScssToObject } from './utils/scssConverter';
+
+const colors = convertScssToObject(variables);
 
 const theme = createTheme({
   typography: {
-    // fontSize: 18,
+    fontSize: 16,
     fontFamily: "'Source Sans 3', sans-serif",
     fontWeightRegular: "400",
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: colors.white,
+          width: "140px",
+          height: "56px",
+          textTransform: "none",
+        },
+      },
+    },
   }
 });
 
@@ -27,6 +43,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </Provider>
 );
 
-// TODO: MUI
 // TODO: clear unnecessary styles
 // TODO: chart js
