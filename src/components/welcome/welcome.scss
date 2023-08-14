@@ -1,7 +1,7 @@
 .welcome {
   padding: 160px 0 30px 0;
 
-  // &__wrapper {
-  //   text-align: left;
-  // }
+  &__wrapper {
+    display: flex;
+  }
 }
