@@ -26,6 +26,11 @@ const muiCustomTheme = createTheme({
         },
         contained: {
           backgroundColor: colors.primaryBlue,
+          fontSize: 20,
+        },
+        outlined: {
+          borderColor: colors.white,
+          fontSize: 20,
         }
       },
     },

@@ -1,0 +1,42 @@
+@import "../styles/_variables.scss";
+
+.vertical-separator__small {
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: $grey-6;
+    opacity: 0.4;
+    height: 90%;
+    width: 1px;
+    right: -25%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.horizontal-separator__small-blue {
+  &::before {
+    content: "---";
+  }
+}
+
+.horizontal-separator__dotted {
+  width: 547px; //!
+  height: 4px;
+  background-image: 
+    linear-gradient(
+      90deg, 
+      transparent, 
+      transparent 50%, 
+      $bg-page 50%, 
+      $bg-page 100%
+    ),
+    linear-gradient(
+      90deg, 
+      rgba(154, 195, 33, 0.1) 0%, 
+      rgba(154, 195, 33, 0.8) 48.42%, 
+      rgba(154, 195, 33, 0.1) 100%
+    );
+  background-size: 20px 1px, 100% 1px;
+  border: none;
+}
