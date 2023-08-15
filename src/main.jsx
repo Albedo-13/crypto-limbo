@@ -19,5 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </Provider>
 );
 
+
+// TODO: bg sprays to another scss file?
 // TODO: clear unnecessary styles
 // TODO: chart js

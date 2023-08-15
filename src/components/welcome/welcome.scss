@@ -2,6 +2,7 @@
 
 .welcome {
   padding: 160px 0 30px 0;
+  // background-color: ;
 
   &__wrapper {
     display: flex;
@@ -33,12 +34,26 @@
   }
 
   &__wrapper-right {
+    position: relative;
     max-width: calc(1590px - (1590px - 680px));
+  }
+
+  &__bg-spray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-shadow: 0px 0px 15em 15em $bg-blur-1;
+    opacity: 0.1;
+    z-index: -1;
   }
 
   &__img {
     width: 100%;
     height: auto;
+    position: relative;
+    z-index: 0;
   }
 
   &__subtitle {
