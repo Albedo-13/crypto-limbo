@@ -14,3 +14,5 @@ export const convertScssToObject = (string) => {
 
   return JSON.parse(stringifiedProps);
 }
+
+export const formatDigit = (str) => (str.toString()).replace(/.(?=(?:\d{3})+\b)/g, `$&,`);

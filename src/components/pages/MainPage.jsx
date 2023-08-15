@@ -9,6 +9,8 @@ export const MainPage = () => {
       <Header />
       <Welcome />
       <Link to="/second">to second page</Link>
+      {/* //! remove bottom block on production */}
+      <div style={{minHeight: 250, backgroundColor: "gray"}} />
     </>
   );
 }
