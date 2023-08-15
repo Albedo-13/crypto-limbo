@@ -1,7 +1,7 @@
 @import "../styles/_variables.scss";
 
 :root {
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-weight: 400;
   font-size: 18px;
   background-color: $bg-page;
@@ -11,4 +11,12 @@
 .container {
   max-width: 1590px;
   margin: 0 auto;
+}
+
+.undraggable {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }

@@ -1,7 +1,55 @@
+@import "../../styles/_variables.scss";
+
 .welcome {
   padding: 160px 0 30px 0;
 
   &__wrapper {
     display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__name {
+    position: relative;
+    color: $primary-blue;
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 50px;
+    margin-top: 6px;
+    margin-bottom: 0;
+  }
+
+  &__title {
+    color: $primary-white;
+    font-size: 92px;
+    font-weight: 700;
+    line-height: 1.39;
+    letter-spacing: 0.25px;
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+
+  &__wrapper-left {
+    max-width: calc(1590px - 680px);
+  }
+
+  &__wrapper-right {
+    max-width: calc(1590px - (1590px - 680px));
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__subtitle {
+    color: $grey-6;
+    font-size: 20px;
+    line-height: 32px;
+    margin: 0;
+    margin-top: 17px;
+  }
+
+  &__buttons {
+    margin-top: 80px;
   }
 }
