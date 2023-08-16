@@ -15,4 +15,6 @@ export const convertScssToObject = (string) => {
   return JSON.parse(stringifiedProps);
 }
 
-export const formatDigit = (str) => (str.toString()).replace(/.(?=(?:\d{3})+\b)/g, `$&,`);
+export const formatDigit = (number) => number.toLocaleString("en-US");
+
+export const formatPercentage = (number) => number.toFixed(2);

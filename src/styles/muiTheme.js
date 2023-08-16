@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material";
 
 import variables from "../styles/_variables.scss?inline";
-import { convertScssToObject } from '../utils/scssConverter';
+import { convertScssToObject } from '../utils/utils';
 
 const colors = convertScssToObject(variables);
 

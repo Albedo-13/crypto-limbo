@@ -14,6 +14,20 @@
   }
 }
 
+.vertical-separator__market {
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: $grey-6;
+    opacity: 0.2;
+    height: 50%;
+    width: 1px;
+    right: -20%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 .horizontal-separator__small-blue {
   &::before {
     content: "";

@@ -1,23 +1,45 @@
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
-import NorthEastIcon from "@mui/icons-material/NorthEast";
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-// import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import classNames from "classnames";
 
+import NorthEastIcon from "@mui/icons-material/NorthEast";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+
+import { formatDigit, formatPercentage } from "../../utils/utils";
 import notebook from "../../assets/images/notebook.png";
 import "./welcome.scss";
-import { formatDigit } from "../../utils/scssConverter";
 
 export const Welcome = () => {
   const market = useSelector((state) => state.currencies.data.slice(0, 7));
-  console.log(market);
 
   const renderMarket = (market) => {
-    return market.map(() => {
-      return <div className="welcome-market-item"></div>;
+    return market.map((currency) => {
+      const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
+
+      const TrendingIcon = isPercentageIncreasing ? (
+        <TrendingUpIcon fontSize="15" className="success" />
+      ) : (
+        <TrendingDownIcon fontSize="15" className="error" />
+      );
+
+      const priceChangeStyles = classNames("welcome-market-item__price-change", {
+        success: isPercentageIncreasing,
+        error: !isPercentageIncreasing,
+      });
+
+      return (
+        <div key={currency.id} className="welcome-market-item vertical-separator__market">
+          <div className="welcome-market-item__wrapper">
+            <div className="welcome-market-item__name">{currency.symbol}</div>
+            {TrendingIcon}
+            <div className={priceChangeStyles}>{formatPercentage(currency.price_change_percentage_24h)}</div>
+          </div>
+          <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
+        </div>
+      );
     });
   };
-
 
   const marketItemsList = renderMarket(market);
   return (
@@ -59,27 +81,7 @@ export const Welcome = () => {
             <div className="welcome__bg-spray"></div>
           </div>
         </div>
-        <div className="welcome-market">
-
-          <div className="welcome-market-item">
-            <div className="welcome-market-item__wrapper">
-              <div className="welcome-market-item__name">BTC / INR</div>
-              <TrendingUpIcon fontSize="15" className="welcome-market-item__trend-icon"></TrendingUpIcon>
-              <div className="welcome-market-item__price-change">5.76</div>
-            </div>
-            <div className="welcome-market-item__current-price">{formatDigit(29321.32)}</div>
-          </div>
-
-          <div className="welcome-market-item">
-            <div className="welcome-market-item__wrapper">
-              <div className="welcome-market-item__name">BTC/INR</div>
-              <div className="welcome-market-item__price-change">5.76</div>
-            </div>
-            <div className="welcome-market-item__current-price">29321.32</div>
-          </div>
-
-          {/* {marketItemsList} */}
-        </div>
+        <div className="welcome-market">{marketItemsList}</div>
       </div>
     </section>
   );
