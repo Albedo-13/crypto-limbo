@@ -23,3 +23,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: bg sprays to another scss file?
 // TODO: clear unnecessary styles
 // TODO: chart js
+// TODO: extend currencySlice. Another Slice?
+// TODO: Spinner to api info in Welcome & Market Trends
+// TODO: 

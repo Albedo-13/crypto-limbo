@@ -6,4 +6,19 @@
     font-size: 58px;
     font-weight: 700;
   }
+
+  &__header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__filters {
+    display: inline;
+  }
+
+  &__filter {
+    // display: inline;
+    // background-color: red;
+  }
 }

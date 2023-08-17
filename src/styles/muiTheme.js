@@ -31,7 +31,14 @@ const muiCustomTheme = createTheme({
         outlined: {
           borderColor: colors.white,
           fontSize: 20,
-        }
+        },
+        filter: {
+          width: "auto",
+          fontSize: 20,
+          color: colors.grey6,
+          marginBottom: "6px",
+          marginLeft: "3px",
+        },
       },
     },
   }

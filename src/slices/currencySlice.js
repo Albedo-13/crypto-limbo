@@ -15,6 +15,15 @@ const defaultApiSettings = {
   locale: "en",
 };
 
+// for graph
+// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778
+
+// for defi
+// https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=decentralized-finance-defi&order=market_cap_desc&per_page=6&page=1&sparkline=false&locale=en
+
+// for metaverse
+// https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=metaverse&order=market_cap_desc&per_page=6&page=1&sparkline=false&locale=en
+
 export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
   const { request } = useHttp();
   const { url, vsCurrency, order, page, locale } = defaultApiSettings;
