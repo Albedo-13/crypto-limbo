@@ -11,16 +11,16 @@ import notebook from "../../assets/images/notebook.png";
 import "./welcome.scss";
 
 export const Welcome = () => {
-  const market = useSelector((state) => state.currencies.data.slice(0, 7));
+  const coins = useSelector((state) => state.currencies.data.slice(0, 7));
 
-  const renderMarket = (market) => {
-    return market.map((currency) => {
+  const renderMarket = (coins) => {
+    return coins.map((currency) => {
       const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
 
       const TrendingIcon = isPercentageIncreasing ? (
-        <TrendingUpIcon fontSize="15" className="success" />
+        <TrendingUpIcon sx={{ fontSize: "18px" }} className="success" />
       ) : (
-        <TrendingDownIcon fontSize="15" className="error" />
+        <TrendingDownIcon sx={{ fontSize: "18px" }} className="error" />
       );
 
       const priceChangeStyles = classNames("welcome-market-item__price-change", {
@@ -41,7 +41,7 @@ export const Welcome = () => {
     });
   };
 
-  const marketItemsList = renderMarket(market);
+  const marketItemsList = renderMarket(coins);
   return (
     <section className="welcome">
       <div className="container">

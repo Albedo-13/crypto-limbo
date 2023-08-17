@@ -1,3 +1,5 @@
+@import "../../styles/_variables.scss";
+
 .market-trends {
   padding: 129px 0 0 0;
 
@@ -20,5 +22,72 @@
   &__filter {
     // display: inline;
     // background-color: red;
+  }
+
+  &-items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 122px;
+  }
+
+  &-item {
+    width: 180px;
+    height: 310px;
+    padding: 40px 30px;
+    border-radius: 10px;
+    border: 2px solid $bg-card;
+
+    // background-color: grey; //!
+    text-align: center;
+    // overflow: hidden;
+
+    &__image {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__name {
+      font-size: 20px;
+      margin-top: 25px;
+    }
+
+    &__price-change-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    &__price-change {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 600;
+      color: $success;
+
+      &::after {
+        content: "%";
+      }
+    }
+
+    &__current-price {
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 27px;
+
+      &::before {
+        content: "$ ";
+      }
+    }
+
+    &__graph {
+      margin-top: 23px;
+    }
   }
 }
