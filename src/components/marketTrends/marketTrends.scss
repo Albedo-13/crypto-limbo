@@ -19,11 +19,6 @@
     display: inline;
   }
 
-  &__filter {
-    // display: inline;
-    // background-color: red;
-  }
-
   &-items {
     display: flex;
     justify-content: space-between;
@@ -37,10 +32,16 @@
     padding: 40px 30px;
     border-radius: 10px;
     border: 2px solid $bg-card;
-
-    // background-color: grey; //!
     text-align: center;
+    text-decoration: none;
+    color: $white;
+    transition: 0.35s all;
     // overflow: hidden;
+
+    &:hover {
+      box-shadow: 0px 0px 20px 10px $bg-card;
+      transition: 0.35s all;
+    }
 
     &__image {
       width: 48px;
@@ -68,6 +69,7 @@
     &__price-change {
       display: inline-block;
       font-size: 16px;
+      margin-left: 2px;
       font-weight: 600;
       color: $success;
 
