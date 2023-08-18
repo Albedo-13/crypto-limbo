@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
-// import NorthEastIcon from "@mui/icons-material/NorthEast";
+import NorthEastIcon from "@mui/icons-material/NorthEast";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
@@ -11,7 +11,7 @@ import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
 
-import { data as chartData, options } from "./chart";
+import { createChartData, options } from "./chart";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -30,6 +30,7 @@ import { Line } from "react-chartjs-2";
 // TODO: section header separator & button variant contained
 // TODO: crypto item to different file
 // FIND INFO: MUI Button toggle active class
+// TODO?: filter buttons from redux store?
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -51,10 +52,11 @@ export const MarketTrends = () => {
         error: !isPercentageIncreasing,
       });
 
+      const chartData = createChartData(currency);
       return (
         <Link to="#" key={currency.id} className="market-trends-item">
           <div className="market-trends-item__image">
-            <img src={currency.image} alt={currency.name} />
+            <img className="undraggable" src={currency.image} alt={currency.name} />
           </div>
           <div className="market-trends-item__name">
             {currency.name} / {currency.symbol.toUpperCase()}
@@ -72,7 +74,7 @@ export const MarketTrends = () => {
     });
   };
 
-  console.log("MarketTrends render");
+  // console.log("MarketTrends render");
   const marketItemsList = renderMarket(coins);
   return (
     <section className="market-trends">
@@ -81,7 +83,7 @@ export const MarketTrends = () => {
           <h2 className="market-trends__title">Market Trends</h2>
           <div className="market-trends__filters">
             {/* не нужны className */}
-            <Button variant="filter" className="market-trends__filter">
+            <Button variant="filter">
               All
             </Button>
             <Button variant="filter" className="market-trends__filter">
@@ -101,7 +103,13 @@ export const MarketTrends = () => {
             </Button>
           </div>
         </div>
+        <hr className="horizontal-separator" />
         <div className="market-trends-items">{marketItemsList}</div>
+        <Link to="#" className="market-trends__link">
+          <Button variant="contained" sx={{ width: 240 }} endIcon={<NorthEastIcon size="small" />}>
+            See All Market
+          </Button>
+        </Link>
       </div>
     </section>
   );

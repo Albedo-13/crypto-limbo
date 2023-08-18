@@ -1,7 +1,7 @@
 @import "../../styles/_variables.scss";
 
 .market-trends {
-  padding: 129px 0 0 0;
+  padding: 129px 0 120px 0;
 
   &__title {
     margin: 0;
@@ -23,20 +23,21 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 122px;
+    margin-top: 60px;
   }
 
   &-item {
     width: 180px;
     height: 310px;
     padding: 40px 30px;
+
+    color: $white;
     border-radius: 10px;
     border: 2px solid $bg-card;
+
     text-align: center;
     text-decoration: none;
-    color: $white;
     transition: 0.35s all;
-    // overflow: hidden;
 
     &:hover {
       box-shadow: 0px 0px 20px 10px $bg-card;
@@ -91,5 +92,12 @@
     &__graph {
       margin-top: 23px;
     }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+    text-decoration: none;
   }
 }
