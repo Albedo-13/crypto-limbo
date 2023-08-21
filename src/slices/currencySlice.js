@@ -21,7 +21,7 @@ const defaultApiSettings = {
 export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
   const { request } = useHttp();
   const { url, vsCurrency, order, page, locale } = defaultApiSettings;
-  console.log("fetching API...");
+  console.log("fetching base API...");
   return await request(`${url}/coins/markets?vs_currency=${vsCurrency}&order=${order}&page=${page}&locale=${locale}`);
 });
 

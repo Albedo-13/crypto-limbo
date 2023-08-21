@@ -23,9 +23,10 @@ import { Line } from "react-chartjs-2";
 import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import { setActiveFilter, setFilteredCurrencies } from "../../slices/marketTrendsFiltersSlice";
+import { activeFilterChanged, filteredCurrenciesChanged } from "../../slices/marketTrendsFiltersSlice";
 import { useEffect } from "react";
 
+// TODO: brighter item spray (10%)
 // TODO: change market-trends__link (overwrap)
 // TODO?: filters (and react states from here) to new slice
 // TODO: memoize useselectors
@@ -33,6 +34,8 @@ import { useEffect } from "react";
 // TODO: crypto item to different file
 // TODO?: filter buttons from redux store?
 // TODO?: filters to new component?
+// TODO: transitions (react transition group)
+// TODO: try to extend init request to 250 coins
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -42,9 +45,14 @@ export const MarketTrends = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setFilteredCurrencies(currencies.data.slice(0, 6)));
+    dispatch(filteredCurrenciesChanged(currencies.data.slice(0, 6)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currencies.data]);
+
+  useEffect(() => {
+    dispatch(filteredCurrenciesChanged(currencies.data));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters.activeFilter]);
 
   const renderFilters = (filters) => {
     return filters.filters.map((filter) => {
@@ -55,7 +63,7 @@ export const MarketTrends = () => {
           name={filter}
           variant="filter"
           className={isActive}
-          onClick={() => dispatch(setActiveFilter(filter))}
+          onClick={() => dispatch(activeFilterChanged(filter))}
         >
           {filter}
         </Button>
