@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
@@ -24,21 +23,48 @@ import { Line } from "react-chartjs-2";
 import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
+import { setActiveFilter, setFilteredCurrencies } from "../../slices/marketTrendsFiltersSlice";
+import { useEffect } from "react";
 
-// TODO?: filters (and react states for here) to new slice
+// TODO: change market-trends__link (overwrap)
+// TODO?: filters (and react states from here) to new slice
 // TODO: memoize useselectors
 // TODO: memoize filters change
 // TODO: crypto item to different file
 // TODO?: filter buttons from redux store?
+// TODO?: filters to new component?
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export const MarketTrends = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const filters = ["All", "Top Gainers", "Top Losers", "New Listing", "Defi", "Metaverse"];
-  const coins = useSelector((state) => state.currencies.data.slice(0, 6));
+  const currencies = useSelector((state) => state.currencies);
+  const filters = useSelector((state) => state.marketTrendsFilters);
+  const dispatch = useDispatch();
 
-  const renderMarket = (market) => {
+  useEffect(() => {
+    dispatch(setFilteredCurrencies(currencies.data.slice(0, 6)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currencies.data]);
+
+  const renderFilters = (filters) => {
+    return filters.filters.map((filter) => {
+      const isActive = classNames({ active: filter === filters.activeFilter });
+      return (
+        <Button
+          key={filter}
+          name={filter}
+          variant="filter"
+          className={isActive}
+          onClick={() => dispatch(setActiveFilter(filter))}
+        >
+          {filter}
+        </Button>
+      );
+    });
+  };
+
+  const renderMarket = (currencies) => {
+    const market = currencies.length > 0 ? currencies.slice(0, 6) : [];
     return market.map((currency) => {
       const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
 
@@ -75,25 +101,8 @@ export const MarketTrends = () => {
     });
   };
 
-  const renderFilters = (filters) => {
-    return filters.map((filter) => {
-      const isActive = classNames({active: filter === activeFilter})
-      return (
-        <Button
-          key={filter}
-          name={filter}
-          variant="filter"
-          className={isActive}
-          onClick={() => setActiveFilter(filter)}
-        >
-          {filter}
-        </Button>
-      );
-    });
-  };
-
   const marketFiltersList = renderFilters(filters);
-  const marketItemsList = renderMarket(coins);
+  const marketItemsList = renderMarket(filters.filteredCurrencies);
   return (
     <section className="market-trends">
       <div className="container">
