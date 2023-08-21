@@ -25,4 +25,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: chart js
 // TODO: extend currencySlice. Another Slice?
 // TODO: Spinner to api info in Welcome & Market Trends
-// TODO: 
+// TODO: api error boundaries
+// TODO: react-helmet

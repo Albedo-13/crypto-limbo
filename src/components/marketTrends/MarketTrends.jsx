@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
@@ -24,14 +25,17 @@ import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
 
-// FIND INFO: MUI Button toggle active class (mb Tabs?) https://stackoverflow.com/questions/56972436/material-ui-button-active-style
+// TODO?: filters (and react states for here) to new slice
 // TODO: memoize useselectors
+// TODO: memoize filters change
 // TODO: crypto item to different file
 // TODO?: filter buttons from redux store?
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export const MarketTrends = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const filters = ["All", "Top Gainers", "Top Losers", "New Listing", "Defi", "Metaverse"];
   const coins = useSelector((state) => state.currencies.data.slice(0, 6));
 
   const renderMarket = (market) => {
@@ -71,20 +75,31 @@ export const MarketTrends = () => {
     });
   };
 
+  const renderFilters = (filters) => {
+    return filters.map((filter) => {
+      const isActive = classNames({active: filter === activeFilter})
+      return (
+        <Button
+          key={filter}
+          name={filter}
+          variant="filter"
+          className={isActive}
+          onClick={() => setActiveFilter(filter)}
+        >
+          {filter}
+        </Button>
+      );
+    });
+  };
+
+  const marketFiltersList = renderFilters(filters);
   const marketItemsList = renderMarket(coins);
   return (
     <section className="market-trends">
       <div className="container">
         <div className="market-trends__header-wrapper">
           <h2 className="market-trends__title">Market Trends</h2>
-          <div className="market-trends__filters">
-            <Button variant="filter">All</Button>
-            <Button variant="filter">Top Gainers</Button>
-            <Button variant="filter">Top Losers</Button>
-            <Button variant="filter">New Listing</Button>
-            <Button variant="filter">Defi</Button>
-            <Button variant="filter">Metaverse</Button>
-          </div>
+          <div className="market-trends__filters">{marketFiltersList}</div>
         </div>
         <hr className="horizontal-separator" />
         <div className="market-trends-items">{marketItemsList}</div>

@@ -19,7 +19,6 @@ const muiCustomTheme = createTheme({
           width: "140px",
           height: "56px",
           textTransform: "none",
-          
         },
         text: {
 
@@ -38,6 +37,11 @@ const muiCustomTheme = createTheme({
           color: colors.grey6,
           marginBottom: "6px",
           marginLeft: "3px",
+          '&.active': {
+            borderTop: `2px solid ${colors.primaryBlueDark}`,
+            borderBottom: `2px solid ${colors.primaryBlueDark}`,
+            color: colors.primaryBlue,
+          }
         },
       },
     },
