@@ -30,6 +30,9 @@ const muiCustomTheme = createTheme({
         outlined: {
           borderColor: colors.white,
           fontSize: 20,
+          '&:hover': {
+            borderColor: colors.primaryBlue,
+          }
         },
         filter: {
           width: "auto",
