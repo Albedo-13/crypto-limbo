@@ -4,10 +4,7 @@ import classNames from "classnames";
 
 import { Button } from "@mui/material";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
-import { createChartData, options } from "./chart";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -18,11 +15,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
 
 import "./marketTrends.scss";
 
-import { formatDigit, formatPercentage } from "../../utils/utils";
 import {
   activeFilterChanged,
   filteredCurrenciesChanged,
@@ -30,10 +25,9 @@ import {
   fetchMetaverse,
 } from "../../slices/marketTrendsFiltersSlice";
 import { useEffect } from "react";
+import { MarketTrendsItem } from "../marketTrendsItem/MarketTrendsItem";
 
-// TODO: crypto item to different file
 // TODO?: filter buttons from redux store?
-// TODO?: filters to new component?
 
 // TODO!: memoize useselectors
 // TODO: memoize filters change
@@ -61,9 +55,7 @@ export const MarketTrends = () => {
   const dispatchBasedOnFilter = (filter) => {
     switch (filter) {
       case "Defi":
-        filters.filteredCurrenciesDefi.length > 0 
-          ? dispatch(activeFilterChanged(filter)) 
-          : dispatch(fetchDefi(filter));
+        filters.filteredCurrenciesDefi.length > 0 ? dispatch(activeFilterChanged(filter)) : dispatch(fetchDefi(filter));
         break;
       case "Metaverse":
         filters.filteredCurrenciesMetaverse.length > 0
@@ -97,36 +89,7 @@ export const MarketTrends = () => {
   const renderMarket = (currencies) => {
     const market = currencies.length > 0 ? currencies.slice(0, 6) : [];
     return market.map((currency) => {
-      const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
-      const TrendingIcon = isPercentageIncreasing ? (
-        <TrendingUpIcon sx={{ fontSize: "20px" }} className="success" />
-      ) : (
-        <TrendingDownIcon sx={{ fontSize: "20px" }} className="error" />
-      );
-      const priceChangeStyles = classNames("market-trends-item__price-change", {
-        success: isPercentageIncreasing,
-        error: !isPercentageIncreasing,
-      });
-
-      const chartData = createChartData(currency);
-      return (
-        <Link to="#" key={currency.id} className="market-trends-item">
-          <div className="market-trends-item__image">
-            <img className="undraggable" src={currency.image} alt={currency.name} />
-          </div>
-          <div className="market-trends-item__name">
-            {currency.name} / {currency.symbol.toUpperCase()}
-          </div>
-          <div className="market-trends-item__price-change-wrapper">
-            {TrendingIcon}
-            <div className={priceChangeStyles}>{formatPercentage(currency.price_change_percentage_24h)}</div>
-          </div>
-          <div className="market-trends-item__current-price">{formatDigit(currency.current_price)}</div>
-          <div className="market-trends-item__graph">
-            <Line options={options} data={chartData} />
-          </div>
-        </Link>
-      );
+      return <MarketTrendsItem key={currency.id} currency={currency} />;
     });
   };
 

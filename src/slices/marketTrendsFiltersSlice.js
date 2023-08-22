@@ -26,13 +26,6 @@ export const fetchMetaverse = createAsyncThunk("marketTrendsFilters/fetchMetaver
   );
 });
 
-// for metaverse
-// https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=metaverse&order=market_cap_desc&per_page=6&page=1&sparkline=false&locale=en
-
-// async filters
-// https://stackoverflow.com/questions/74887437/how-to-call-asyncthunk-method-from-reducer-method-in-the-same-slice
-// https://stackoverflow.com/questions/60316251/how-to-use-redux-thunk-with-redux-toolkits-createslice
-
 export const marketTrendsFiltersSlice = createSlice({
   name: "marketTrendsFilters",
   initialState,
