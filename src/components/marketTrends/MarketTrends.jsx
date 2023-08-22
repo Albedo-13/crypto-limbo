@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
@@ -24,7 +25,6 @@ import {
   fetchDefi,
   fetchMetaverse,
 } from "../../slices/marketTrendsFiltersSlice";
-import { useEffect } from "react";
 import { MarketTrendsItem } from "../marketTrendsItem/MarketTrendsItem";
 
 // TODO?: filter buttons from redux store?
@@ -55,7 +55,9 @@ export const MarketTrends = () => {
   const dispatchBasedOnFilter = (filter) => {
     switch (filter) {
       case "Defi":
-        filters.filteredCurrenciesDefi.length > 0 ? dispatch(activeFilterChanged(filter)) : dispatch(fetchDefi(filter));
+        filters.filteredCurrenciesDefi.length > 0 
+          ? dispatch(activeFilterChanged(filter)) 
+          : dispatch(fetchDefi(filter));
         break;
       case "Metaverse":
         filters.filteredCurrenciesMetaverse.length > 0
