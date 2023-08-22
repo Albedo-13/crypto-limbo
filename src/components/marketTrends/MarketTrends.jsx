@@ -55,29 +55,24 @@ export const MarketTrends = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters.activeFilter]);
 
+  const dispatchBasedOnFilter = (filter) => {
+    switch (filter) {
+      case "Defi":
+        filters.filteredCurrenciesDeFi.length > 0
+        ? dispatch(activeFilterChanged(filter))
+        : dispatch(fetchFilters(filter));
+        break;
+      case "Metaverse":
+        break;
+      default:
+        dispatch(activeFilterChanged(filter));
+        break;
+    }
+  }
+
   const renderFilters = (filters) => {
     return filters.filters.map((filter) => {
       const isActive = classNames({ active: filter === filters.activeFilter });
-
-      if (filter === "Defi") {
-        return (
-          <Button
-            key={filter}
-            name={filter}
-            variant="filter"
-            className={isActive}
-            onClick={() => {
-              if (filters.filteredCurrenciesDeFi.length > 0) {
-                dispatch(activeFilterChanged(filter));
-              } else {
-                dispatch(fetchFilters(filter));
-              }
-            }}
-          >
-            {filter}
-          </Button>
-        );
-      }
 
       return (
         <Button
@@ -85,7 +80,7 @@ export const MarketTrends = () => {
           name={filter}
           variant="filter"
           className={isActive}
-          onClick={() => dispatch(activeFilterChanged(filter))}
+          onClick={() => dispatchBasedOnFilter(filter)}
         >
           {filter}
         </Button>

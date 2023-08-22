@@ -68,13 +68,9 @@ export const marketTrendsFiltersSlice = createSlice({
       .addCase(fetchFilters.rejected, () => console.log("fetchFilters error"))
       .addCase(fetchFilters.pending, () => console.log("fetchFilters pending"))
       .addCase(fetchFilters.fulfilled, (state, action) => {
-        // ПРОДОЛЖИТЬ ТУТ. СОХРАНИТЬ В НОВЫЙ ДЕФИ ОБЪЕКТ И ИСПОЛЬЗОВАТЬ
-
         state.filteredCurrenciesDeFi = action.payload;
         state.filteredCurrencies = action.payload;
         state.activeFilter = "Defi";
-
-        console.log("fetchFilters fulfulled:", state, action);
       })
       .addDefaultCase(() => console.log("default case"));
   },
