@@ -23,13 +23,13 @@ import { Line } from "react-chartjs-2";
 import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import { activeFilterChanged, filteredCurrenciesChanged, fetchDefi } from "../../slices/marketTrendsFiltersSlice";
+import { activeFilterChanged, filteredCurrenciesChanged, fetchDefi, fetchMetaverse } from "../../slices/marketTrendsFiltersSlice";
 import { useEffect } from "react";
 
 // TODO: brighter item spray (10%)
 // TODO: change market-trends__link (overwrap)
 // TODO?: filters (and react states from here) to new slice
-// TODO: memoize useselectors
+// TODO!: memoize useselectors
 // TODO: memoize filters change
 // TODO: crypto item to different file
 // TODO?: filter buttons from redux store?
@@ -63,6 +63,9 @@ export const MarketTrends = () => {
         : dispatch(fetchDefi(filter));
         break;
       case "Metaverse":
+        filters.filteredCurrenciesMetaverse.length > 0
+        ? dispatch(activeFilterChanged(filter))
+        : dispatch(fetchMetaverse(filter));
         break;
       default:
         dispatch(activeFilterChanged(filter));
