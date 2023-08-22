@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
 
-import { fetchCurrencies } from "../../slices/currencySlice";
+import { fetchCurrencies } from "../../slices/currenciesSlice";
 import "./App.scss";
 import { MainPage } from "../pages/MainPage";
 import { SecondPage } from "../pages/SecondPage";

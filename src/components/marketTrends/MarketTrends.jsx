@@ -58,7 +58,7 @@ export const MarketTrends = () => {
   const dispatchBasedOnFilter = (filter) => {
     switch (filter) {
       case "Defi":
-        filters.filteredCurrenciesDeFi.length > 0
+        filters.filteredCurrenciesDefi.length > 0
         ? dispatch(activeFilterChanged(filter))
         : dispatch(fetchFilters(filter));
         break;
@@ -92,13 +92,11 @@ export const MarketTrends = () => {
     const market = currencies.length > 0 ? currencies.slice(0, 6) : [];
     return market.map((currency) => {
       const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
-
       const TrendingIcon = isPercentageIncreasing ? (
         <TrendingUpIcon sx={{ fontSize: "20px" }} className="success" />
       ) : (
         <TrendingDownIcon sx={{ fontSize: "20px" }} className="error" />
       );
-
       const priceChangeStyles = classNames("market-trends-item__price-change", {
         success: isPercentageIncreasing,
         error: !isPercentageIncreasing,

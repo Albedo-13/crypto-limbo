@@ -1,36 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { useHttp } from "../hooks/http.hook";
+import defaultApiSettings from "../store/apiSettings";
 
 const initialState = {
   data: [],
   currenciesLoadingStatus: "idle",
-}
-
-// https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en
-const defaultApiSettings = {
-  url: "https://api.coingecko.com/api/v3",
-  vsCurrency: "usd",
-  order: "market_cap_desc",
-  page: 1,
-  locale: "en",
 };
-
-// for graph
-// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778
 
 export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
   const { request } = useHttp();
   const { url, vsCurrency, order, page, locale } = defaultApiSettings;
-  console.log("fetching base API...");
   return await request(`${url}/coins/markets?vs_currency=${vsCurrency}&order=${order}&page=${page}&locale=${locale}`);
 });
 
-export const currencySlice = createSlice({
+export const currenciesSlice = createSlice({
   name: "currencies",
   initialState,
-  reducers: {
-
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCurrencies.pending, (state) => {
@@ -44,9 +29,8 @@ export const currencySlice = createSlice({
       .addCase(fetchCurrencies.rejected, (state) => {
         state.currenciesLoadingStatus = "error";
       })
-      .addDefaultCase(() => { });
-  }
+      .addDefaultCase(() => {});
+  },
 });
 
-export default currencySlice.reducer;
-// export const { increment } = currencySlice.actions;
+export default currenciesSlice.reducer;

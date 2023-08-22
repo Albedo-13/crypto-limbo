@@ -27,3 +27,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: Spinner to api info in Welcome & Market Trends
 // TODO: api error boundaries
 // TODO: react-helmet
+
+// for graph
+// https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778
