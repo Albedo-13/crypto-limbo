@@ -23,7 +23,7 @@ import { Line } from "react-chartjs-2";
 import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import { activeFilterChanged, filteredCurrenciesChanged, fetchFilters } from "../../slices/marketTrendsFiltersSlice";
+import { activeFilterChanged, filteredCurrenciesChanged, fetchDefi } from "../../slices/marketTrendsFiltersSlice";
 import { useEffect } from "react";
 
 // TODO: brighter item spray (10%)
@@ -60,7 +60,7 @@ export const MarketTrends = () => {
       case "Defi":
         filters.filteredCurrenciesDefi.length > 0
         ? dispatch(activeFilterChanged(filter))
-        : dispatch(fetchFilters(filter));
+        : dispatch(fetchDefi(filter));
         break;
       case "Metaverse":
         break;

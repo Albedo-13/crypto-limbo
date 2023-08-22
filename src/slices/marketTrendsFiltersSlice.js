@@ -10,7 +10,7 @@ const initialState = {
   filteredCurrenciesMetaverse: [],
 };
 
-export const fetchFilters = createAsyncThunk("marketTrendsFilters/fetchDeFi", async () => {
+export const fetchDefi = createAsyncThunk("marketTrendsFilters/fetchDeFi", async () => {
   const { request } = useHttp();
   const { url, vsCurrency, order, page, locale } = defaultApiSettings;
   return await request(
@@ -57,9 +57,9 @@ export const marketTrendsFiltersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFilters.rejected, () => console.log("fetchFilters error"))
-      .addCase(fetchFilters.pending, () => console.log("fetchFilters pending"))
-      .addCase(fetchFilters.fulfilled, (state, action) => {
+      .addCase(fetchDefi.rejected, () => console.log("fetchDefi error"))
+      .addCase(fetchDefi.pending, () => console.log("fetchDefi pending"))
+      .addCase(fetchDefi.fulfilled, (state, action) => {
         state.filteredCurrenciesDefi = action.payload;
         state.filteredCurrencies = action.payload;
         state.activeFilter = "Defi";
