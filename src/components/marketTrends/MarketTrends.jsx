@@ -23,7 +23,7 @@ import { Line } from "react-chartjs-2";
 import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import { activeFilterChanged, filteredCurrenciesChanged } from "../../slices/marketTrendsFiltersSlice";
+import { activeFilterChanged, filteredCurrenciesChanged, fetchFilters } from "../../slices/marketTrendsFiltersSlice";
 import { useEffect } from "react";
 
 // TODO: brighter item spray (10%)
@@ -36,6 +36,7 @@ import { useEffect } from "react";
 // TODO?: filters to new component?
 // TODO: transitions (react transition group)
 // TODO: try to extend init request to 250 coins
+// TODO: error handling (429, 404)
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -57,6 +58,27 @@ export const MarketTrends = () => {
   const renderFilters = (filters) => {
     return filters.filters.map((filter) => {
       const isActive = classNames({ active: filter === filters.activeFilter });
+
+      if (filter === "Defi") {
+        return (
+          <Button
+            key={filter}
+            name={filter}
+            variant="filter"
+            className={isActive}
+            onClick={() => {
+              if (filters.filteredCurrenciesDeFi.length > 0) {
+                dispatch(activeFilterChanged(filter));
+              } else {
+                dispatch(fetchFilters(filter));
+              }
+            }}
+          >
+            {filter}
+          </Button>
+        );
+      }
+
       return (
         <Button
           key={filter}
