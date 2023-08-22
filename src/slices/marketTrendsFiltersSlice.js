@@ -12,7 +12,9 @@ const initialState = {
 export const fetchFilters = createAsyncThunk("marketTrendsFilters/fetchDeFi", async () => {
   console.log("createAsyncThunk");
   const { request } = useHttp();
-  return await request(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=decentralized-finance-defi&order=market_cap_desc&per_page=6&page=1&sparkline=false&locale=en`);
+  return await request(
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=decentralized-finance-defi&order=market_cap_desc&per_page=6&page=1&sparkline=false&locale=en`
+  );
 });
 
 // for defi
@@ -40,17 +42,21 @@ export const marketTrendsFiltersSlice = createSlice({
     filteredCurrenciesChanged: (state, action) => {
       switch (state.activeFilter) {
         case "All":
-          console.log("all filtering...");
           state.filteredCurrencies = action.payload.slice(0, 6);
           break;
         case "Top Gainers":
-          console.log("top gainers filtering...");
-          state.filteredCurrencies = action.payload.slice(6, 12);
+          state.filteredCurrencies = [...action.payload]
+            .sort((a, b) => (a.price_change_percentage_24h > b.price_change_percentage_24h ? -1 : 1))
+            .slice(0, 6);
+          break;
+        case "Top Losers":
+          state.filteredCurrencies = [...action.payload]
+            .sort((a, b) => (a.price_change_percentage_24h > b.price_change_percentage_24h ? 1 : -1))
+            .slice(0, 6);
           break;
         case "Defi":
           console.log("defi filtering...", action.payload);
           state.filteredCurrencies = state.filteredCurrenciesDeFi;
-          // state.filteredCurrencies = action.payload.slice(0, 5);
           break;
         default:
           break;
@@ -71,7 +77,7 @@ export const marketTrendsFiltersSlice = createSlice({
         console.log("fetchFilters fulfulled:", state, action);
       })
       .addDefaultCase(() => console.log("default case"));
-  }
+  },
 });
 
 export default marketTrendsFiltersSlice.reducer;
