@@ -25,7 +25,7 @@ import {
   fetchDefi,
   fetchMetaverse,
 } from "../../slices/marketTrendsFiltersSlice";
-import { MarketTrendsItem } from "../marketTrendsItem/MarketTrendsItem";
+import { MarketTrendsItem } from "./MarketTrendsItem";
 
 // TODO?: filter buttons from redux store?
 

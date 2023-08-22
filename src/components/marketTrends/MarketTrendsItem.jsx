@@ -6,7 +6,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 import { formatPercentage, formatDigit } from "../../utils/utils";
-import { createChartData, options } from "../marketTrends/chart";
+import { createChartData, options } from "./chart";
 
 export const MarketTrendsItem = ({ currency }) => {
   const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;

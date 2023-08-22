@@ -7,7 +7,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import notebook from "../../assets/images/notebook.png";
+import notebook from "../../assets/images/notebook.webp";
 import "./welcome.scss";
 
 export const Welcome = () => {
