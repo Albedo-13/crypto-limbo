@@ -23,17 +23,20 @@ import { Line } from "react-chartjs-2";
 import "./marketTrends.scss";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import { activeFilterChanged, filteredCurrenciesChanged, fetchDefi, fetchMetaverse } from "../../slices/marketTrendsFiltersSlice";
+import {
+  activeFilterChanged,
+  filteredCurrenciesChanged,
+  fetchDefi,
+  fetchMetaverse,
+} from "../../slices/marketTrendsFiltersSlice";
 import { useEffect } from "react";
 
-// TODO: brighter item spray (10%)
-// TODO: change market-trends__link (overwrap)
-// TODO?: filters (and react states from here) to new slice
-// TODO!: memoize useselectors
-// TODO: memoize filters change
 // TODO: crypto item to different file
 // TODO?: filter buttons from redux store?
 // TODO?: filters to new component?
+
+// TODO!: memoize useselectors
+// TODO: memoize filters change
 // TODO: transitions (react transition group)
 // TODO: try to extend init request to 250 coins
 // TODO: error handling (429, 404)
@@ -58,20 +61,20 @@ export const MarketTrends = () => {
   const dispatchBasedOnFilter = (filter) => {
     switch (filter) {
       case "Defi":
-        filters.filteredCurrenciesDefi.length > 0
-        ? dispatch(activeFilterChanged(filter))
-        : dispatch(fetchDefi(filter));
+        filters.filteredCurrenciesDefi.length > 0 
+          ? dispatch(activeFilterChanged(filter)) 
+          : dispatch(fetchDefi(filter));
         break;
       case "Metaverse":
         filters.filteredCurrenciesMetaverse.length > 0
-        ? dispatch(activeFilterChanged(filter))
-        : dispatch(fetchMetaverse(filter));
+          ? dispatch(activeFilterChanged(filter))
+          : dispatch(fetchMetaverse(filter));
         break;
       default:
         dispatch(activeFilterChanged(filter));
         break;
     }
-  }
+  };
 
   const renderFilters = (filters) => {
     return filters.filters.map((filter) => {
@@ -138,11 +141,13 @@ export const MarketTrends = () => {
         </div>
         <hr className="horizontal-separator" />
         <div className="market-trends-items">{marketItemsList}</div>
-        <Link to="#" className="market-trends__link">
-          <Button variant="contained" sx={{ width: 240 }} endIcon={<NorthEastIcon size="small" />}>
-            See All Market
-          </Button>
-        </Link>
+        <div className="market-trends__link">
+          <Link to="#">
+            <Button variant="contained" sx={{ width: 240 }} endIcon={<NorthEastIcon size="small" />}>
+              See All Market
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
