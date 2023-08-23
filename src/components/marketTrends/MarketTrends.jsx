@@ -28,12 +28,13 @@ import {
 import { MarketTrendsItem } from "./MarketTrendsItem";
 
 // TODO?: filter buttons from redux store?
+// TODO: try to extend init request to 250 coins
+// TODO: error handling (429, 404)
 
+// TODO: try to fix double filter renders (maybe whole section double renders)
 // TODO!: memoize useselectors
 // TODO: memoize filters change
 // TODO: transitions (react transition group)
-// TODO: try to extend init request to 250 coins
-// TODO: error handling (429, 404)
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -50,14 +51,12 @@ export const MarketTrends = () => {
   useEffect(() => {
     dispatch(filteredCurrenciesChanged(currencies.data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters.activeFilter]);
+  }, [filters.activeFilter, filters.isFetchButtonsDisable]);
 
   const dispatchBasedOnFilter = (filter) => {
     switch (filter) {
       case "Defi":
-        filters.filteredCurrenciesDefi.length > 0 
-          ? dispatch(activeFilterChanged(filter)) 
-          : dispatch(fetchDefi(filter));
+        filters.filteredCurrenciesDefi.length > 0 ? dispatch(activeFilterChanged(filter)) : dispatch(fetchDefi(filter));
         break;
       case "Metaverse":
         filters.filteredCurrenciesMetaverse.length > 0
@@ -71,18 +70,39 @@ export const MarketTrends = () => {
   };
 
   const renderFilters = (filters) => {
-    return filters.filters.map((filter) => {
-      const isActive = classNames({ active: filter === filters.activeFilter });
+    console.log("renderFilters");
 
+    // if (filters.isFetchButtonsError) {
+    //   return filters.filters.map((filter) => {
+    //     const isActive = classNames({ active: filter === filters.activeFilter });
+    //     return (
+    //       <Button
+    //         key={filter}
+    //         name={filter}
+    //         variant="filter"
+    //         className={isActive}
+    //         onClick={() => dispatchBasedOnFilter(filter)}
+    //         disabled
+    //       >
+    //         {filter}
+    //       </Button>
+    //     );
+    //   });
+    // }
+
+    return filters.filters.map((filter) => {
+      const isActive = classNames({ active: filter.name === filters.activeFilter });
+      const isDisabled = (filter.isRequireFetch && filters.isFetchButtonsError);
       return (
         <Button
-          key={filter}
-          name={filter}
+          key={filter.name}
+          name={filter.name}
           variant="filter"
           className={isActive}
-          onClick={() => dispatchBasedOnFilter(filter)}
+          onClick={() => dispatchBasedOnFilter(filter.name)}
+          disabled={isDisabled}
         >
-          {filter}
+          {filter.name}
         </Button>
       );
     });

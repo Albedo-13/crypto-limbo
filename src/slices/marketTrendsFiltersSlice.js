@@ -3,18 +3,26 @@ import { useHttp } from "../hooks/http.hook";
 import defaultApiSettings from "../store/apiSettings";
 
 const initialState = {
-  filters: ["All", "Top Gainers", "Top Losers", "Highest Price", "Defi", "Metaverse"],
+  filters: [
+    { name: "All", isRequireFetch: false },
+    { name: "Top Gainers", isRequireFetch: false },
+    { name: "Top Losers", isRequireFetch: false },
+    { name: "Highest Price", isRequireFetch: false },
+    { name: "Defi", isRequireFetch: true },
+    { name: "Metaverse", isRequireFetch: true },
+  ],
   activeFilter: "All",
   filteredCurrencies: [],
   filteredCurrenciesDefi: [],
   filteredCurrenciesMetaverse: [],
+  isFetchButtonsError: false,
 };
 
 export const fetchDefi = createAsyncThunk("marketTrendsFilters/fetchDeFi", async () => {
   const { request } = useHttp();
   const { url, vsCurrency, order, page, locale } = defaultApiSettings;
   return await request(
-    `${url}/coins/markets?vs_currency=${vsCurrency}&category=decentralized-finance-defi&order=${order}&per_page=6&page=${page}&locale=${locale}`
+    `${url}/1/coins/markets?vs_currency=${vsCurrency}&category=decentralized-finance-defi&order=${order}&per_page=6&page=${page}&locale=${locale}`
   );
 });
 
@@ -66,20 +74,20 @@ export const marketTrendsFiltersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDefi.rejected, () => console.log("fetchDefi error"))
-      .addCase(fetchDefi.pending, () => console.log("fetchDefi pending"))
+      .addCase(fetchDefi.pending, () => { })
       .addCase(fetchDefi.fulfilled, (state, action) => {
         state.filteredCurrenciesDefi = action.payload;
         state.filteredCurrencies = action.payload;
         state.activeFilter = "Defi";
       })
-      .addCase(fetchMetaverse.rejected, () => console.log("fetchMetaverse error"))
-      .addCase(fetchMetaverse.pending, () => console.log("fetchMetaverse pending"))
+      .addCase(fetchDefi.rejected, (state) => { state.isFetchButtonsError = true })
+      .addCase(fetchMetaverse.pending, () => { })
       .addCase(fetchMetaverse.fulfilled, (state, action) => {
         state.filteredCurrenciesMetaverse = action.payload;
         state.filteredCurrencies = action.payload;
         state.activeFilter = "Metaverse";
       })
+      .addCase(fetchMetaverse.rejected, (state) => { state.isFetchButtonsError = true })
       .addDefaultCase(() => { });
   },
 });

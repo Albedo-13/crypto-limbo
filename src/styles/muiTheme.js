@@ -44,6 +44,14 @@ const muiCustomTheme = createTheme({
             borderTop: `2px solid ${colors.primaryBlueDark}`,
             borderBottom: `2px solid ${colors.primaryBlueDark}`,
             color: colors.primaryBlue,
+          },
+          '&.Mui-disabled': {
+            // color: colors.grey8,
+            color: colors.error,
+          },
+          '&.disabled': {
+            // color: colors.grey8,
+            color: colors.warning,
           }
         },
       },
