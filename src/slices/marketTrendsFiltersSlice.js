@@ -16,6 +16,7 @@ const initialState = {
   filteredCurrenciesDefi: [],
   filteredCurrenciesMetaverse: [],
   isFetchingError: false,
+  loadingStatus: "idle",
 };
 
 export const fetchDefi = createAsyncThunk("marketTrendsFilters/fetchDeFi", async () => {
@@ -74,20 +75,28 @@ export const marketTrendsFiltersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDefi.pending, () => { })
+      .addCase(fetchDefi.pending, (state) => { state.loadingStatus = "loading" })
       .addCase(fetchDefi.fulfilled, (state, action) => {
         state.filteredCurrenciesDefi = action.payload;
         state.filteredCurrencies = action.payload;
         state.activeFilter = "Defi";
+        state.loadingStatus = "idle";
       })
-      .addCase(fetchDefi.rejected, (state) => { state.isFetchingError = true })
-      .addCase(fetchMetaverse.pending, () => { })
+      .addCase(fetchDefi.rejected, (state) => {
+        state.isFetchingError = true;
+        state.loadingStatus = "error";
+      })
+      .addCase(fetchMetaverse.pending, (state) => { state.loadingStatus = "loading" })
       .addCase(fetchMetaverse.fulfilled, (state, action) => {
         state.filteredCurrenciesMetaverse = action.payload;
         state.filteredCurrencies = action.payload;
         state.activeFilter = "Metaverse";
+        state.loadingStatus = "idle";
       })
-      .addCase(fetchMetaverse.rejected, (state) => { state.isFetchingError = true })
+      .addCase(fetchMetaverse.rejected, (state) => {
+        state.isFetchingError = true;
+        state.loadingStatus = "error";
+      })
       .addDefaultCase(() => { });
   },
 });

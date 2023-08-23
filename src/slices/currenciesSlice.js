@@ -4,7 +4,7 @@ import defaultApiSettings from "../store/apiSettings";
 
 const initialState = {
   data: [],
-  currenciesLoadingStatus: "idle",
+  loadingStatus: "idle",
 };
 
 export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
@@ -19,15 +19,15 @@ export const currenciesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCurrencies.pending, (state) => {
-        state.currenciesLoadingStatus = "loading";
+        state.loadingStatus = "loading";
       })
       .addCase(fetchCurrencies.fulfilled, (state, action) => {
         state.data = action.payload;
-        state.currenciesLoadingStatus = "idle";
+        state.loadingStatus = "idle";
         console.log(state.data);
       })
       .addCase(fetchCurrencies.rejected, (state) => {
-        state.currenciesLoadingStatus = "error";
+        state.loadingStatus = "error";
       })
       .addDefaultCase(() => {});
   },

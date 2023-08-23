@@ -90,18 +90,19 @@ export const MarketTrends = () => {
   };
 
   const renderMarket = (currencies) => {
-    if (currencies.length === 0) {
-      return <Spinner />;
-    }
-
-    const market = currencies.length > 0 ? currencies.slice(0, 6) : [];
+    const market = currencies.filteredCurrencies.length > 0 ? currencies.filteredCurrencies.slice(0, 6) : [];
     return market.map((currency) => {
       return <MarketTrendsItem key={currency.id} currency={currency} />;
     });
   };
 
   const marketFiltersList = renderFilters(filters);
-  const marketItemsList = renderMarket(filters.filteredCurrencies);
+  const marketItemsList =
+    currencies.loadingStatus === "loading" || filters.loadingStatus === "loading" ? (
+      <Spinner size={280} />
+    ) : (
+      renderMarket(filters)
+    );
   return (
     <section className="market-trends">
       <div className="container">

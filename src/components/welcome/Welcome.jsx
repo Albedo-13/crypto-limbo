@@ -12,12 +12,9 @@ import notebook from "../../assets/images/notebook.webp";
 import "./welcome.scss";
 
 export const Welcome = () => {
-  const currencies = useSelector((state) => state.currencies.data.slice(0, 7));
+  const currencies = useSelector((state) => state.currencies);
 
   const renderMarket = (currencies) => {
-    if (currencies.length === 0) {
-      return <Spinner />;
-    }
     return currencies.map((currency) => {
       const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
 
@@ -45,7 +42,8 @@ export const Welcome = () => {
     });
   };
 
-  const marketItemsList = renderMarket(currencies);
+  const marketItemsList =
+    currencies.loadingStatus === "loading" ? <Spinner /> : renderMarket(currencies.data.slice(0, 7));
   return (
     <section className="welcome">
       <div className="container">
