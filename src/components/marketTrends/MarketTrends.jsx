@@ -29,7 +29,6 @@ import { MarketTrendsItem } from "./MarketTrendsItem";
 
 // TODO?: filter buttons from redux store?
 // TODO: try to extend init request to 250 coins
-// TODO: error handling (429, 404)
 
 // TODO: try to fix double filter renders (maybe whole section double renders)
 // TODO!: memoize useselectors
