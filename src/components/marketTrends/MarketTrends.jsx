@@ -26,10 +26,12 @@ import {
   fetchMetaverse,
 } from "../../slices/marketTrendsFiltersSlice";
 import { MarketTrendsItem } from "./MarketTrendsItem";
+import Spinner from "../spinner/Spinner";
 
-// TODO?: filter buttons from redux store?
 // TODO: try to extend init request to 250 coins
 
+// TODO: loaders
+// TODO: handle main coins list error
 // TODO: try to fix double filter renders (maybe whole section double renders)
 // TODO!: memoize useselectors
 // TODO: memoize filters change
@@ -71,7 +73,7 @@ export const MarketTrends = () => {
   const renderFilters = (filters) => {
     return filters.filters.map((filter) => {
       const isActive = classNames({ active: filter.name === filters.activeFilter });
-      const isDisabled = (filter.isRequireFetch && filters.isFetchButtonsError);
+      const isDisabled = filter.isRequireFetch && filters.isFetchingError;
       return (
         <Button
           key={filter.name}
@@ -88,6 +90,10 @@ export const MarketTrends = () => {
   };
 
   const renderMarket = (currencies) => {
+    if (currencies.length === 0) {
+      return <Spinner />;
+    }
+
     const market = currencies.length > 0 ? currencies.slice(0, 6) : [];
     return market.map((currency) => {
       return <MarketTrendsItem key={currency.id} currency={currency} />;

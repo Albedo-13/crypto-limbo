@@ -7,14 +7,18 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
+import Spinner from "../spinner/Spinner";
 import notebook from "../../assets/images/notebook.webp";
 import "./welcome.scss";
 
 export const Welcome = () => {
-  const coins = useSelector((state) => state.currencies.data.slice(0, 7));
+  const currencies = useSelector((state) => state.currencies.data.slice(0, 7));
 
-  const renderMarket = (coins) => {
-    return coins.map((currency) => {
+  const renderMarket = (currencies) => {
+    if (currencies.length === 0) {
+      return <Spinner />;
+    }
+    return currencies.map((currency) => {
       const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
 
       const TrendingIcon = isPercentageIncreasing ? (
@@ -41,7 +45,7 @@ export const Welcome = () => {
     });
   };
 
-  const marketItemsList = renderMarket(coins);
+  const marketItemsList = renderMarket(currencies);
   return (
     <section className="welcome">
       <div className="container">
