@@ -80,7 +80,7 @@ export const Welcome = () => {
           </div>
           <div className="welcome__wrapper-right">
             <img className="welcome__img undraggable" src={notebook} alt="notebook with statistics" />
-            <div className="welcome__bg-spray"></div>
+            <div className="welcome__bg-spray" />
           </div>
         </div>
         <div className="welcome-market">{marketItemsList}</div>

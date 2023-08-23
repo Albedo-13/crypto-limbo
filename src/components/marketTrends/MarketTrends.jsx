@@ -28,7 +28,7 @@ import {
 import { MarketTrendsItem } from "./MarketTrendsItem";
 import Spinner from "../spinner/Spinner";
 
-// TODO: try to extend init request to 250 coins
+// TODO: cumulative layout shift (CLS) bg spray
 
 // TODO: loaders
 // TODO: handle main coins list error
