@@ -70,26 +70,6 @@ export const MarketTrends = () => {
   };
 
   const renderFilters = (filters) => {
-    console.log("renderFilters");
-
-    // if (filters.isFetchButtonsError) {
-    //   return filters.filters.map((filter) => {
-    //     const isActive = classNames({ active: filter === filters.activeFilter });
-    //     return (
-    //       <Button
-    //         key={filter}
-    //         name={filter}
-    //         variant="filter"
-    //         className={isActive}
-    //         onClick={() => dispatchBasedOnFilter(filter)}
-    //         disabled
-    //       >
-    //         {filter}
-    //       </Button>
-    //     );
-    //   });
-    // }
-
     return filters.filters.map((filter) => {
       const isActive = classNames({ active: filter.name === filters.activeFilter });
       const isDisabled = (filter.isRequireFetch && filters.isFetchButtonsError);
