@@ -20,9 +20,6 @@ const muiCustomTheme = createTheme({
           height: "56px",
           textTransform: "none",
         },
-        text: {
-
-        },
         contained: {
           backgroundColor: colors.primaryBlue,
           fontSize: 20,
@@ -46,12 +43,12 @@ const muiCustomTheme = createTheme({
             color: colors.primaryBlue,
           },
           '&.Mui-disabled': {
-            // color: colors.grey8,
-            color: colors.error,
-          },
-          '&.disabled': {
-            // color: colors.grey8,
-            color: colors.warning,
+            color: colors.grey8,
+            opacity: 0.4,
+            '&.active': {
+              borderTop: `2px solid ${colors.grey8}`,
+              borderBottom: `2px solid ${colors.grey8}`,
+            },
           }
         },
       },
