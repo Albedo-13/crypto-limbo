@@ -22,7 +22,7 @@ export const fetchDefi = createAsyncThunk("marketTrendsFilters/fetchDeFi", async
   const { request } = useHttp();
   const { url, vsCurrency, order, page, locale } = defaultApiSettings;
   return await request(
-    `${url}/1/coins/markets?vs_currency=${vsCurrency}&category=decentralized-finance-defi&order=${order}&per_page=6&page=${page}&locale=${locale}`
+    `${url}/coins/markets?vs_currency=${vsCurrency}&category=decentralized-finance-defi&order=${order}&per_page=6&page=${page}&locale=${locale}`
   );
 });
 
