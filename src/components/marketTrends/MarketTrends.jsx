@@ -6,17 +6,6 @@ import classNames from "classnames";
 import { Button } from "@mui/material";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
 import "./marketTrends.scss";
 
 import {
@@ -27,10 +16,6 @@ import {
 } from "../../slices/marketTrendsFiltersSlice";
 import { MarketTrendsItem } from "./MarketTrendsItem";
 import Spinner from "../spinner/Spinner";
-
-// TODO: try to fix double filter renders (maybe whole section double renders)
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export const MarketTrends = () => {
   const currencies = useSelector((state) => state.currencies);

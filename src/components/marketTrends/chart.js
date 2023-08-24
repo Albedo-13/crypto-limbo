@@ -1,5 +1,15 @@
 import variables from "../../styles/_variables.scss?inline";
 import { convertScssToObject } from "../../utils/utils";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
 export const options = {
   responsive: true,
@@ -29,3 +39,5 @@ export const createChartData = (currencyData) => {
     ],
   };
 }
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
