@@ -28,14 +28,7 @@ import {
 import { MarketTrendsItem } from "./MarketTrendsItem";
 import Spinner from "../spinner/Spinner";
 
-// TODO: cumulative layout shift (CLS) bg spray
-
-// TODO: loaders
-// TODO: handle main coins list error
 // TODO: try to fix double filter renders (maybe whole section double renders)
-// TODO!: memoize useselectors
-// TODO: memoize filters change
-// TODO: transitions (react transition group)
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -45,14 +38,9 @@ export const MarketTrends = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(filteredCurrenciesChanged(currencies.data.slice(0, 6)));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currencies.data]);
-
-  useEffect(() => {
     dispatch(filteredCurrenciesChanged(currencies.data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters.activeFilter, filters.isFetchButtonsDisable]);
+  }, [currencies.data, filters.activeFilter]);
 
   const dispatchBasedOnFilter = (filter) => {
     switch (filter) {
