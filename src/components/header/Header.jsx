@@ -2,7 +2,6 @@ import Button from '@mui/material/Button';
 
 import logo from "../../assets/logo.webp";
 import "./header.scss";
-import "../../styles/_separators.scss";
 
 export const Header = () => {
   return (
