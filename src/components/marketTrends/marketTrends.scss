@@ -20,8 +20,9 @@
 
   &-items {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
+    row-gap: 25px;
     margin-top: 60px;
     min-height: 394px;
   }

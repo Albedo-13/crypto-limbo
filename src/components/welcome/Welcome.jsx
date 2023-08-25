@@ -31,13 +31,14 @@ export const Welcome = () => {
       });
 
       return (
-        <div key={currency.id} className="welcome-market-item vertical-separator__market">
+        <div key={currency.id} className="welcome-market-item">
           <div className="welcome-market-item__wrapper">
             <div className="welcome-market-item__name">{currency.symbol}</div>
             {TrendingIcon}
             <div className={priceChangeStyles}>{formatPercentage(currency.price_change_percentage_24h)}</div>
           </div>
           <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
+          <div className="vertical-separator__market" />
         </div>
       );
     });

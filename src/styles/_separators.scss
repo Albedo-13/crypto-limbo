@@ -15,17 +15,15 @@
 }
 
 .vertical-separator__market {
-  &::after {
-    content: "";
-    position: absolute;
-    background-color: $grey-6;
-    opacity: 0.2;
-    height: 50%;
-    width: 1px;
-    right: -20%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  position: absolute;
+  background-color: $grey-6;
+  opacity: 0.2;
+  height: 50%;
+  width: 1px;
+
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .horizontal-separator {
@@ -34,11 +32,11 @@
   margin: 0 auto;
   margin-top: 60px;
   border: none;
-  
+
   background-image: linear-gradient(
-    90deg, 
-    rgba(255, 255, 255, 0.04) 0%, 
-    rgba(255, 255, 255, 0.20) 48.42%, 
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.2) 48.42%,
     rgba(255, 255, 255, 0.04) 100%
   );
 }
@@ -65,18 +63,6 @@
 
   background-size: 12px 1px, 100% 1px;
   border: none;
-  background-image: 
-    linear-gradient(
-      90deg, 
-      transparent, 
-      transparent 65%, 
-      $bg-page 50%, 
-      $bg-page 100%
-    ),
-    linear-gradient(
-      90deg, 
-      rgba(154, 195, 33, 0.1) 0%, 
-      rgba(135, 170, 28, 0.8) 48.42%, 
-      rgba(154, 195, 33, 0.1) 100%
-    );
+  background-image: linear-gradient(90deg, transparent, transparent 65%, $bg-page 50%, $bg-page 100%),
+    linear-gradient(90deg, rgba(154, 195, 33, 0.1) 0%, rgba(135, 170, 28, 0.8) 48.42%, rgba(154, 195, 33, 0.1) 100%);
 }
