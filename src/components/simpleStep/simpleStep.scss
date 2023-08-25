@@ -1,8 +1,9 @@
 @import "../../styles/_variables.scss";
 
-.start-trading {
+.simple-step {
   padding: 120px 0;
   position: relative;
+  overflow: hidden;
 
   &__title {
     text-align: center;
@@ -21,12 +22,10 @@
 
   &-items {
     display: flex;
-    // flex-wrap: wrap; //!
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
     margin-top: 59px;
-
-    //!
-    gap: 40px;
-    flex: 1 0 0;
   }
 
   &-item {
@@ -34,6 +33,7 @@
     padding: 60px 30px;
     border-radius: 10px;
     text-align: center;
+    max-width: 315px;
 
     &__icon {
       display: flex;

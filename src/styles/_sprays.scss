@@ -9,12 +9,13 @@
   opacity: 0.1;
 }
 
-.bg-section-spray {
+.bg-section-spray-big {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
+  width: 60%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  box-shadow: 0px 0px 15em 15em $bg-blur-1;
-  // opacity: 0.1;
+  box-shadow: 0px 0px 15em 27em $bg-card-3;
+  opacity: 0.7;
 }

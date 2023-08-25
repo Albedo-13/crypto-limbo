@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </Provider>
 );
 
+// TODO: sprays change width & height %'s on adapt screen sizes
 // TODO: replace lorem ipsum
 // TODO: react-helmet
 // TODO: ChartJS.register in MarketTrends (dublicate? to top or other file?)
