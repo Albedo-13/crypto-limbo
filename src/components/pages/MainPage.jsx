@@ -5,6 +5,7 @@ import { Welcome } from "../welcome/Welcome";
 import { MarketTrends } from "../marketTrends/MarketTrends";
 import { SimpleStep } from "../simpleStep/SimpleStep";
 import { WhyChooseUs } from "../whyChooseUs/WhyChooseUs";
+import { Testimonials } from "../testimonials/Testimonials";
 
 export const MainPage = () => {
   return (
@@ -14,6 +15,7 @@ export const MainPage = () => {
       <MarketTrends />
       <SimpleStep />
       <WhyChooseUs />
+      <Testimonials />
       <Link to="/second">to second page</Link>
       {/* //! remove bottom block on production */}
       <div style={{minHeight: 250, backgroundColor: "gray"}} />
