@@ -21,8 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </Provider>
 );
 
-
-// TODO: bg sprays to another scss file?
+// TODO: replace lorem ipsum
 // TODO: react-helmet
 // TODO: ChartJS.register in MarketTrends (dublicate? to top or other file?)
 // TODO: transitions (react transition group)

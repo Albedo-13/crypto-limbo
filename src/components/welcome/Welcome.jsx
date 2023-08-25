@@ -10,6 +10,7 @@ import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
 import notebook from "../../assets/images/notebook.webp";
 import "./welcome.scss";
+import "../../styles/_sprays.scss";
 
 export const Welcome = () => {
   const currencies = useSelector((state) => state.currencies);
@@ -80,7 +81,7 @@ export const Welcome = () => {
           </div>
           <div className="welcome__wrapper-right">
             <img className="welcome__img undraggable" src={notebook} alt="notebook with statistics" />
-            <div className="welcome__bg-spray" />
+            <div className="bg-img-spray" />
           </div>
         </div>
         <div className="welcome-market">{marketItemsList}</div>

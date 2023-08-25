@@ -51,6 +51,7 @@ export const StartTrading = () => {
   const items = renderItems(itemsSettings);
   return (
     <section className="start-trading">
+      <div className="bg-section-spray" />
       <div className="container">
         <div className="w66pr">
           <h2 className="start-trading__title">Start Trading In Simple Process</h2>

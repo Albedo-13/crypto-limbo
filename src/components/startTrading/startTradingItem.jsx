@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 
+// TODO: EXPLORE FLEX https://developer.mozilla.org/en-US/docs/Web/CSS/flex
 // TODO: BG COLOR AND SPRAY
 
 export const StartTradingItem = ({ item }) => {
