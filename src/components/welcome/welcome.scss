@@ -6,6 +6,15 @@
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
+
+    &-left {
+      width: calc(1590px - 680px);
+    }
+
+    &-right {
+      position: relative;
+      width: calc(1590px - (1590px - 680px));
+    }
   }
 
   &__name {
@@ -26,15 +35,6 @@
     letter-spacing: 0.25px;
     margin-top: 12px;
     margin-bottom: 0;
-  }
-
-  &__wrapper-left {
-    width: calc(1590px - 680px);
-  }
-
-  &__wrapper-right {
-    position: relative;
-    width: calc(1590px - (1590px - 680px));
   }
 
   &__img {

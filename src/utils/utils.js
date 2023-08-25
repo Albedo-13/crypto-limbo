@@ -18,3 +18,5 @@ export const convertScssToObject = (string) => {
 export const formatDigit = (number) => number.toLocaleString("en-US");
 
 export const formatPercentage = (number) => number.toFixed(2);
+
+export const addZeroToNumber = (number) => number < 10 ? `0${number}`: `${number}`;
