@@ -1,0 +1,23 @@
+@import "../../styles/_variables.scss";
+
+.why-choose-us {
+  padding: 142px 0;
+
+  &__title {
+    font-size: 58px;
+    font-style: normal;
+    text-align: center;
+  }
+
+  &__subtitle {
+    color: $grey-6;
+    text-align: center;
+    margin-top: 36px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+}
