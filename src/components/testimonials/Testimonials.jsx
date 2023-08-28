@@ -1,17 +1,11 @@
-import "./testimonials.scss";
 import { register } from "swiper/element/bundle";
 import { useEffect, useRef } from "react";
 
-// TODO: slider to new function
-// TODO: commas.png to webp
-// TODO: active bullet width different size
-
-import commas from "../../assets/icons/commas.png";
-
-// Import Swiper styles
 import variables from "../../styles/_variables.scss?inline";
 import { convertScssToObject } from "../../utils/utils";
-import "swiper/css";
+
+import commas from "../../assets/icons/commas.webp";
+import "./testimonials.scss";
 
 const itemsSettings = [
   {
@@ -51,6 +45,8 @@ const itemsSettings = [
   },
 ];
 
+// TODO: add mouse wheel carousel scrolling
+
 register();
 export const Testimonials = () => {
   const swiperRef = useRef(null);
@@ -67,21 +63,18 @@ export const Testimonials = () => {
       spaceBetween: 30,
       injectStyles: [
         `
+        .swiper {
+          padding-bottom: 67px;
+        }
         .swiper-pagination-bullet {
           width: 30px;
           height: 4px;
           border-radius: 0;
           background-color: ${colors.white};
         }
-        .swiper {
-          padding-bottom: 70px;
-        }
         .swiper-pagination-bullet-active {
           width: 40px;
         }
-        // .swiper-pagination-bullets {
-        //   color: red;
-        // }
         `,
       ],
     };
@@ -90,8 +83,36 @@ export const Testimonials = () => {
     swiperContainer.initialize();
   }, []);
 
+  const renderCarouselItems = (items) => {
+    return items.map((item) => {
+      return (
+        <swiper-slide key={item.id}>
+          <div className="testimonials-item">
+            <div className="testimonials-item__wrapper">
+              <div className="testimonials-item__wrapper-left">
+                <div className="testimonials-item__thumbnail">
+                  <img src="https://thispersondoesnotexist.com/" loading="lazy" alt="person avatar" />
+                </div>
+                <div>
+                  <div className="testimonials-item__name">{item.name}</div>
+                  <div className="testimonials-item__country">{item.country}</div>
+                </div>
+              </div>
+              <div className="testimonials-item__wrapper-right">
+                <img src={commas} alt="quote symbol" />
+              </div>
+            </div>
+            <div className="testimonials-item__review">{item.review}</div>
+          </div>
+        </swiper-slide>
+      );
+    });
+  };
+
+  const carouselItems = renderCarouselItems(itemsSettings);
   return (
     <section className="testimonials">
+      <div className="bg-section-spray-big" />
       <div className="container">
         <div className="testimonials__wrapper">
           <h2 className="testimonials__title">What Traders Saying About Us!</h2>
@@ -103,75 +124,7 @@ export const Testimonials = () => {
         <hr className="horizontal-separator" />
 
         <swiper-container ref={swiperRef} init="false">
-          <swiper-slide>
-            <div className="testimonials-item">
-              <div className="testimonials-item__wrapper">
-                <div className="testimonials-item__wrapper-left">
-                  <div className="testimonials-item__thumbnail">
-                    <img src="https://thispersondoesnotexist.com/" loading="lazy" alt="person avatar" />
-                  </div>
-                  <div>
-                    <div className="testimonials-item__name">John Doe</div>
-                    <div className="testimonials-item__country">USA, America</div>
-                  </div>
-                </div>
-                <div className="testimonials-item__wrapper-right">
-                  <img src={commas} alt="" />
-                </div>
-              </div>
-              <div className="testimonials-item__review">
-                Lorem, ipsum dolor sit amet consectetur adipisicin
-              </div>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div className="testimonials-item">
-              <div className="testimonials-item__wrapper">
-                <div className="testimonials-item__wrapper-left">
-                  <div className="testimonials-item__thumbnail">
-                    <img src="https://thispersondoesnotexist.com/" loading="lazy" alt="person avatar" />
-                  </div>
-                  <div>
-                    <div className="testimonials-item__name">John Doe</div>
-                    <div className="testimonials-item__country">USA, America</div>
-                  </div>
-                </div>
-                <div className="testimonials-item__wrapper-right">
-                  <img src={commas} alt="" />
-                </div>
-              </div>
-              <div className="testimonials-item__review">
-                Lorem, ipsum dolor sit amet consectetur adipisicin
-              </div>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div className="testimonials-item">
-              <div className="testimonials-item__wrapper">
-                <div className="testimonials-item__wrapper-left">
-                  <div className="testimonials-item__thumbnail">
-                    <img src="https://thispersondoesnotexist.com/" alt="person avatar" />
-                  </div>
-                  <div>
-                    <div className="testimonials-item__name">John Doe</div>
-                    <div className="testimonials-item__country">USA, America</div>
-                  </div>
-                </div>
-                <div className="testimonials-item__wrapper-right">
-                  <img src={commas} alt="" />
-                </div>
-              </div>
-              <div className="testimonials-item__review">
-                Lorem, ipsum dolor sit amet consectetur adipisicin
-              </div>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <img src="https://d2ph5fj80uercy.cloudfront.net/05/cat947.jpg" alt="" />
-          </swiper-slide>
-          <swiper-slide>
-            <img src="https://d2ph5fj80uercy.cloudfront.net/04/cat2986.jpg" alt="" />
-          </swiper-slide>
+          {carouselItems}
         </swiper-container>
       </div>
     </section>
