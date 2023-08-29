@@ -53,6 +53,25 @@ const muiCustomTheme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          color: `${colors.white}`,
+          backgroundColor: "transparent",
+          border: `1px solid ${colors.white}80`,
+          minHeight: "45px",
+          borderRadius: "4px",
+        },
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          color: `${colors.grey6}`,
+          fontSize: "18px",
+        },
+      },
+    },
   }
 });
 
