@@ -3,7 +3,6 @@ import { useState } from "react";
 import "./frequentlyAskedQuestions.scss";
 import { AccordionFaq } from "./AccordionFaq";
 
-// TODO: gradient borders
 // TODO?: min section height to avoid jumping?
 
 const accordionItemsSettings = {

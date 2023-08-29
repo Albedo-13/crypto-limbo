@@ -2,7 +2,8 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AddIcon from "@mui/icons-material/Add";
 
 import { convertScssToObject } from "../../utils/utils";
 import variables from "../../styles/_variables.scss?inline";
@@ -12,7 +13,7 @@ export const AccordionFaq = ({ item, handleChange, expanded }) => {
 
   return (
     <Accordion expanded={expanded === `accordion${item.id}`} onChange={handleChange(`accordion${item.id}`)}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: `${colors.white}` }} />}>
+      <AccordionSummary expandIcon={<AddIcon sx={{ fontSize: "28px", color: `${colors.white}` }} />}>
         <Typography>{item.summary}</Typography>
       </AccordionSummary>
       <AccordionDetails>
