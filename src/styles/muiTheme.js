@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material";
 
 import variables from "../styles/_variables.scss?inline";
-import { convertScssToObject } from '../utils/utils';
+import { convertScssToObject } from "../utils/utils";
 
 const colors = convertScssToObject(variables);
 
@@ -27,9 +27,9 @@ const muiCustomTheme = createTheme({
         outlined: {
           borderColor: colors.white,
           fontSize: 20,
-          '&:hover': {
+          "&:hover": {
             borderColor: colors.primaryBlue,
-          }
+          },
         },
         filter: {
           width: "auto",
@@ -37,30 +37,31 @@ const muiCustomTheme = createTheme({
           color: colors.grey6,
           marginBottom: "6px",
           marginLeft: "3px",
-          '&.active': {
+          "&.active": {
             borderTop: `2px solid ${colors.primaryBlueDark}`,
             borderBottom: `2px solid ${colors.primaryBlueDark}`,
             color: colors.primaryBlue,
           },
-          '&.Mui-disabled': {
+          "&.Mui-disabled": {
             color: colors.grey8,
             opacity: 0.4,
-            '&.active': {
+            "&.active": {
               borderTop: `2px solid ${colors.grey8}`,
               borderBottom: `2px solid ${colors.grey8}`,
             },
-          }
+          },
         },
       },
     },
     MuiAccordion: {
       styleOverrides: {
         root: {
+          position: "relative",
+          minHeight: "45px",
           color: `${colors.white}`,
           backgroundColor: "transparent",
-          border: `1px solid ${colors.white}80`,
-          minHeight: "45px",
           borderRadius: "4px",
+          border: `1px solid ${colors.white}1a`,
         },
       },
     },
@@ -72,7 +73,7 @@ const muiCustomTheme = createTheme({
         },
       },
     },
-  }
+  },
 });
 
 export default muiCustomTheme;
