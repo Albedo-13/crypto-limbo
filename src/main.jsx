@@ -26,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: react-helmet
 // TODO: ChartJS.register in MarketTrends (dublicate? to top or other file?)
 // TODO: transitions (react transition group)
+// TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
 
 // for graph
 // https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778
