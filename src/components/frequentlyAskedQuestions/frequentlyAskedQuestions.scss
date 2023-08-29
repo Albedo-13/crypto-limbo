@@ -1,6 +1,8 @@
 @import "../../styles/_variables.scss";
 
 .faq {
+  position: relative;
+  overflow: hidden;
   padding: 140px 0;
 
   &__title {
@@ -22,8 +24,7 @@
     flex-wrap: wrap;
     gap: 30px;
 
-    &-left,
-    &-right {
+    &-column {
       display: flex;
       flex-direction: column;
       row-gap: 30px;

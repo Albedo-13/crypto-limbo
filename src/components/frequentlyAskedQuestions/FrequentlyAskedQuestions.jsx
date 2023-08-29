@@ -80,8 +80,8 @@ export const FrequentlyAskedQuestions = () => {
     const renderRightColumn = renderColumn(items.right);
     return (
       <div className="faq-accordions">
-        <div className="faq-accordions-left">{renderLeftColumn}</div>
-        <div className="faq-accordions-right">{renderRightColumn}</div>
+        <div className="faq-accordions-column">{renderLeftColumn}</div>
+        <div className="faq-accordions-column">{renderRightColumn}</div>
       </div>
     );
   };
@@ -89,6 +89,7 @@ export const FrequentlyAskedQuestions = () => {
   const accordions = renderAccordionItems(accordionItemsSettings);
   return (
     <section className="faq">
+      <div className="bg-section-spray-small" />
       <div className="container">
         <h2 className="faq__title">Frequently Asked Questions</h2>
         <p className="faq__subtitle">
