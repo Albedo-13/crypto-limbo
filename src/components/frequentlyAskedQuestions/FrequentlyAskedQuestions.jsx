@@ -3,7 +3,6 @@ import { useState } from "react";
 import "./frequentlyAskedQuestions.scss";
 import { AccordionFaq } from "./AccordionFaq";
 
-// TODO: change style names (acc left and right => acc-column)
 // TODO: gradient borders
 // TODO?: min section height to avoid jumping?
 
