@@ -7,6 +7,7 @@ import { SimpleStep } from "../simpleStep/SimpleStep";
 import { WhyChooseUs } from "../whyChooseUs/WhyChooseUs";
 import { Testimonials } from "../testimonials/Testimonials";
 import { FrequentlyAskedQuestions } from "../FrequentlyAskedQuestions/FrequentlyAskedQuestions";
+import { DownloadApp } from "../downloadApp/DownloadApp";
 
 export const MainPage = () => {
   return (
@@ -18,6 +19,7 @@ export const MainPage = () => {
         <SimpleStep />
         <WhyChooseUs />
         <Testimonials />
+        <DownloadApp />
         <FrequentlyAskedQuestions />
       </main>
       <Link to="/second">to second page</Link>

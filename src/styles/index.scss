@@ -16,6 +16,13 @@
   position: relative;
 }
 
+.container_overflow-hidden {
+  max-width: 1590px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+} //!
+
 .undraggable {
   user-select: none;
   -moz-user-select: none;

@@ -1,0 +1,51 @@
+@import "../../styles/_variables.scss";
+
+.download-app {
+  position: relative;
+  padding: 120px 0;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+
+    &-left {
+      width: 52%;
+      margin-top: 100px;
+    }
+
+    &-right {
+      width: 48%;
+      position: relative;
+    }
+  }
+
+  &__title {
+    font-size: 58px;
+    line-height: 73px;
+  }
+
+  &__subtitle {
+    color: $grey-6;
+    line-height: 28px;
+    margin-top: 30px;
+  }
+
+  &__buttons {
+    margin-top: 80px;
+  }
+
+  &__img {
+    min-height: 552px;
+    width: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__bg-img-spray {
+    left: 25%;
+    box-shadow: 0px 0px 12em 9em #5570fe;
+  }
+}
