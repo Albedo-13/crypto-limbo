@@ -60,4 +60,28 @@
       }
     }
   }
+
+  &-links {
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+    margin-top: 56px;
+    padding-bottom: 6px;
+
+    &__block {
+      width: calc(100% / 6);
+    }
+
+    &__link {
+      display: block;
+      color: $grey-6;
+      text-decoration: none;
+      margin-top: 24px;
+      font-size: 16px;
+
+      &:first-of-type {
+        margin-top: 29px;
+      }
+    }
+  }
 }
