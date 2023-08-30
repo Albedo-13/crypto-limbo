@@ -57,7 +57,7 @@ const muiCustomTheme = createTheme({
       styleOverrides: {
         root: {
           position: "relative",
-          minHeight: "45px",
+          minHeight: "78px",
           color: `${colors.white}`,
           backgroundColor: "transparent",
           borderRadius: "4px",
@@ -65,11 +65,17 @@ const muiCustomTheme = createTheme({
         },
       },
     },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          minHeight: "78px",
+        },
+      },
+    },
     MuiAccordionDetails: {
       styleOverrides: {
         root: {
           color: `${colors.grey6}`,
-          fontSize: "18px",
         },
       },
     },

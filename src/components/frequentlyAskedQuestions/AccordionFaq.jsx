@@ -12,10 +12,23 @@ export const AccordionFaq = ({ item, handleChange, expanded }) => {
 
   return (
     <Accordion expanded={expanded === `accordion${item.id}`} onChange={handleChange(`accordion${item.id}`)}>
-      <AccordionSummary expandIcon={<AddIcon sx={{ fontSize: "28px", color: `${colors.white}` }} />}>
+      <AccordionSummary
+        sx={{
+          "& .MuiTypography-root": {
+            fontSize: "24px",
+          },
+        }}
+        expandIcon={<AddIcon sx={{ fontSize: "28px", color: `${colors.white}` }} />}
+      >
         <Typography>{item.summary}</Typography>
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails
+        sx={{
+          "& .MuiTypography-root": {
+            fontSize: "18px",
+          },
+        }}
+      >
         <Typography>{item.details}</Typography>
       </AccordionDetails>
     </Accordion>
