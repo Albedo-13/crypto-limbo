@@ -82,7 +82,7 @@ export const Welcome = () => {
           </div>
           <div className="welcome__wrapper-right">
             <img className="welcome__img undraggable" src={notebook} alt="notebook with statistics" />
-            <div className="bg-img-spray" />
+            <div className="bg-img-spray_round" />
           </div>
         </div>
         <div className="welcome-market">{marketItemsList}</div>

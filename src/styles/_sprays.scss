@@ -1,11 +1,20 @@
 @import "./_variables.scss";
 
-.bg-img-spray {
+.bg-img-spray_round {
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: -1;
   box-shadow: 0px 0px 15em 15em $bg-blur-1;
+  opacity: 0.1;
+}
+
+.bg-img-spray_wide {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  z-index: -1;
+  box-shadow: 0px 0px 12em 9em $bg-blur-1;
   opacity: 0.1;
 }
 
