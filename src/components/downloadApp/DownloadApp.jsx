@@ -3,9 +3,9 @@ import { Button } from "@mui/material";
 import "./downloadApp.scss";
 
 import downloadAppImg from "../../assets/images/downloadApp.webp";
-import appStoreIcon from "../../assets/icons/app-store.svg";
-import playMarketIcon from "../../assets/icons/play-market.svg";
-import qrCodeIcon from "../../assets/icons/qr-code.svg";
+import appStoreIcon from "../../assets/icons/mobile-stores/app-store.svg";
+import playMarketIcon from "../../assets/icons/mobile-stores/play-market.svg";
+import qrCodeIcon from "../../assets/icons/mobile-stores/qr-code.svg";
 
 export const DownloadApp = () => {
   return (

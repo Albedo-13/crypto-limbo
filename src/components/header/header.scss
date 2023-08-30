@@ -14,11 +14,14 @@
 
   &-logo {
     position: relative;
+    
     &__link {
       display: block;
+      height: 46px;
     }
     &__img {
-      max-height: 46px;
+      height: 100%;
+      width: auto;
     }
   }
 

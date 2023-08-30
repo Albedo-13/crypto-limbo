@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 import logo from "../../assets/logo.webp";
 import "./header.scss";
@@ -9,14 +10,14 @@ export const Header = () => {
       <div className="container">
         <div className="header__wrapper">
           <div className="header-logo vertical-separator__small">
-            <a className="header-logo__link" href="#">
+            <Link to="#" className="header-logo__link">
               <img className="header-logo__img undraggable" src={logo} alt="crypto limbo logo" />
-            </a>
+            </Link>
           </div>
           <div className="header__links">
-            <a className="header__link" href="#">Market</a>
-            <a className="header__link" href="#">Ipsum</a>
-            <a className="header__link" href="#">Lorem</a>
+            <Link to="#" className="header__link">Market</Link>
+            <Link to="#" className="header__link">Ipsum</Link>
+            <Link to="#" className="header__link">Lorem</Link>
           </div>
           <div className="header__buttons">
             <Button>Log In</Button>
