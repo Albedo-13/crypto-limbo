@@ -38,48 +38,48 @@ export const Footer = () => {
             </Link>
           </div>
         </div>
-        <hr className="horizontal-separator" />
+        <hr className="horizontal-separator mt-51px" />
         <div className="footer-links">
           <div className="footer-links__block">
             <div className="footer-links__label">Crypto Brains</div>
-            <Link to="#" className="footer-links__link">About us</Link>
-            <Link to="#" className="footer-links__link">Our Team</Link>
-            <Link to="#" className="footer-links__link">Road Map</Link>
-            <Link to="#" className="footer-links__link">Risk Disclosure</Link>
+            <div className="footer-links__link"><Link to="#">About us</Link></div>
+            <div className="footer-links__link"><Link to="#">Our Team</Link></div>
+            <div className="footer-links__link"><Link to="#">Road Map</Link></div>
+            <div className="footer-links__link"><Link to="#">Risk Disclosure</Link></div>
           </div>
           <div className="footer-links__block">
             <div className="footer-links__label">Knowledge</div>
-            <HashLink to="/#FrequentlyAskedQuestions" className="footer-links__link">F.A.Q.</HashLink>
-            <Link to="#" className="footer-links__link">Articals</Link>
-            <Link to="#" className="footer-links__link">Video Tutorial</Link>
-            <Link to="#" className="footer-links__link">Beginner's Guide</Link>
+            <div className="footer-links__link"><HashLink to="/#FrequentlyAskedQuestions" className="footer-links__link">F.A.Q.</HashLink></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Articals</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Video Tutorial</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Beginner's Guide</Link></div>
           </div>
           <div className="footer-links__block">
             <div className="footer-links__label">Services</div>
-            <Link to="#" className="footer-links__link">API Service</Link>
-            <Link to="#" className="footer-links__link">Token Listing</Link>
-            <Link to="#" className="footer-links__link">API Document</Link>
-            <Link to="#" className="footer-links__link">Ticket Services</Link>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">API Service</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Token Listing</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">API Document</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Ticket Services</Link></div>
           </div>
           <div className="footer-links__block">
             <div className="footer-links__label">Exchange</div>
-            <Link to="#" className="footer-links__link">P2P</Link>
-            <Link to="#" className="footer-links__link">Referral</Link>
-            <Link to="#" className="footer-links__link">Markets</Link>
-            <Link to="#" className="footer-links__link">Affiliate Program</Link>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">P2P</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Referral</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Markets</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Affiliate Program</Link></div>
           </div>
           <div className="footer-links__block">
             <div className="footer-links__label">Support Service</div>
-            <Link to="#" className="footer-links__link">Career</Link>
-            <Link to="#" className="footer-links__link">Community</Link>
-            <Link to="#" className="footer-links__link">Customer Chat</Link>
-            <Link to="#" className="footer-links__link">Technical Support</Link>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Career</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Community</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Customer Chat</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Technical Support</Link></div>
           </div>
           <div className="footer-links__block">
             <div className="footer-links__label">Press</div>
-            <Link to="#" className="footer-links__link">Blog</Link>
-            <Link to="#" className="footer-links__link">News</Link>
-            <Link to="#" className="footer-links__link">Events</Link>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Blog</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">News</Link></div>
+            <div className="footer-links__link"><Link to="#" className="footer-links__link">Events</Link></div>
           </div>
         </div>
         <hr className="horizontal-separator" />
