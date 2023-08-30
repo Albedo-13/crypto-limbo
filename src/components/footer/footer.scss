@@ -75,9 +75,13 @@
     &__link {
       display: block;
       color: $grey-6;
-      text-decoration: none;
       margin-top: 24px;
       font-size: 16px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
 
       &:first-of-type {
         margin-top: 29px;
