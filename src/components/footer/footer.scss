@@ -1,7 +1,7 @@
 @import "../../styles/_variables.scss";
 
 .footer {
-  padding: 120px 0 40px;
+  padding: 120px 0 48px;
   position: relative;
   overflow: hidden;
 
@@ -73,7 +73,9 @@
     }
 
     &__link {
+      color: $grey-6;
       margin-top: 21px;
+
       a {
         color: $grey-6;
         font-size: 16px;
@@ -89,8 +91,23 @@
       }
     }
   }
-}
 
-.mt-51px {
-  margin-top: 51px;
+  &-other {
+    margin-top: 70px;
+    font-size: 16px;
+
+    &__text {
+      display: inline;
+    }
+
+    &__dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      opacity: 0.4;
+      border-radius: 100%;
+      background-color: $white;
+      margin: 0 20px;
+    }
+  }
 }
