@@ -3,8 +3,6 @@ import { useState } from "react";
 import "./frequentlyAskedQuestions.scss";
 import { AccordionFaq } from "./AccordionFaq";
 
-// TODO?: min section height to avoid jumping?
-
 const accordionItemsSettings = {
   left: [
     {
@@ -23,7 +21,7 @@ const accordionItemsSettings = {
       id: 3,
       summary: "How to complete your KYC Verification ?",
       details:
-        "You can complete you KYC on Paytm app in less than 1 min, Just verify your Aadhaar number with OTP from UIDAI and enter few profile details, that’s it! If you don’t have Aadhaar you can request for visit by our agent or visit any of our KYC centres. (1) Tap KYC icon. (2) Enter your Aadhaar Details and validate OTP. (3) Verify information.",
+        "You can complete you KYC on Paytm app in less than 1 min, Just verify your Aadhaar number with OTP from UIDAI and enter few profile details, that’s it! If you don’t have Aadhaar you can request for visit by our agent or visit any of our KYC centres. Tap KYC icon > Enter your Aadhaar Details and validate OTP > Verify information",
     },
     {
       id: 4,
