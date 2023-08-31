@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import logo from "../../assets/logo.webp";
@@ -96,7 +96,7 @@ export const Footer = () => {
               <Link to="#">Referral</Link>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Markets</Link>
+              <NavLink to="/trade">Market</NavLink>
             </div>
             <div className="footer-links__link">
               <Link to="#">Affiliate Program</Link>

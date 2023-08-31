@@ -38,6 +38,15 @@
     padding: 8px 18px;
     margin: 0 15px;
 
+    &_active {
+      color: $primary-blue-dark;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 8px 18px;
+      margin: 0 15px;
+      pointer-events: none;
+    }
+
     &:hover {
       text-decoration: underline;
     }

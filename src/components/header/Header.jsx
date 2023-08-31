@@ -1,5 +1,5 @@
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import Button from "@mui/material/Button";
+import { Link, NavLink } from "react-router-dom";
 
 import logo from "../../assets/logo.webp";
 import "./header.scss";
@@ -15,9 +15,18 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__links">
-            <Link to="/trade" className="header__link">Market</Link>
-            <Link to="#" className="header__link">Road Map</Link>
-            <Link to="#" className="header__link">Referral</Link>
+            <NavLink
+              to="/trade"
+              className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}
+            >
+              Market
+            </NavLink>
+            <Link to="#" className="header__link">
+              Road Map
+            </Link>
+            <Link to="#" className="header__link">
+              Referral
+            </Link>
           </div>
           <div className="header__buttons">
             <Button>Log In</Button>
