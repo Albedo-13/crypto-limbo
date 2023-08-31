@@ -17,7 +17,7 @@ export const Footer = () => {
         <div className="footer__wrapper">
           <div className="footer-logo">
             <Link to="/" className="header-logo__link">
-              <img className="footer-logo__img" src={logo} alt="footer logo" />
+              <img className="footer-logo__img undraggable" src={logo} alt="footer logo" />
             </Link>
           </div>
           <div className="footer-socials">

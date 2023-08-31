@@ -15,9 +15,9 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__links">
-            <Link to="#" className="header__link">Market</Link>
-            <Link to="#" className="header__link">Ipsum</Link>
-            <Link to="#" className="header__link">Lorem</Link>
+            <Link to="/trade" className="header__link">Market</Link>
+            <Link to="#" className="header__link">Road Map</Link>
+            <Link to="#" className="header__link">Referral</Link>
           </div>
           <div className="header__buttons">
             <Button>Log In</Button>

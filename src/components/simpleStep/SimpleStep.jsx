@@ -12,32 +12,36 @@ const itemsSettings = [
     color: "#f8931a",
     icon: <PersonOutlineIcon />,
     title: "Create Account",
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    text: "It's a simple, fast and secure way to create an account and start trading. You don't need any technical skills, just fill the fields with valid data. Thats it!",
     buttonText: "Sign Up Now",
+    link: "#",
   },
   {
     id: 2,
     color: "#bd47fc",
     icon: <AccountBalanceOutlinedIcon />,
     title: "Verify Bank Account",
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    text: "It's quick and safe - perfect for when you just want to make sure your money is where you think it is. Just enter your bank details and Crypto Limbo will do the rest.",
     buttonText: "Verify Now",
+    link: "#",
   },
   {
     id: 3,
     color: "#27c28a",
     icon: <AccountBalanceWalletOutlinedIcon />,
     title: "Add Fund in Wallet",
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    text: "Add funds to your cryptocurrency wallet. It is simple, safe, and works with almost all wallets. You can use it anywhere in the world, without needing to verified ID",
     buttonText: "Add Now",
+    link: "#",
   },
   {
     id: 4,
     color: "#f72357",
     icon: <AutoGraphOutlinedIcon />,
     title: "Start Trading",
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    text: "Finally, you can start tracking and trading any cryptocurrencies on the way to your lambo. Buy cheaper, sell more expensive. Everything is in your hands!",
     buttonText: "Start Now",
+    link: "/trade",
   },
 ];
 
@@ -50,14 +54,13 @@ export const SimpleStep = () => {
 
   const items = renderItems(itemsSettings);
   return (
-    <section className="simple-step">
+    <section className="simple-step" id="simpleStep">
       <div className="bg-section-spray-big" />
       <div className="container">
-        <div className="w66pr">
+        <div className="w65pr">
           <h2 className="simple-step__title">Start Trading In Simple Process</h2>
           <p className="simple-step__subtitle">
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-            galley of type and scrambled it to make a type specimen book.
+          Go through a couple of simple steps: Sign up, Verifying, Adding wallet. It takes just a few minutes and then you can start trading with Crypto Limbo - one of the largest cryptocurrency exchanges in the world
           </p>
         </div>
         <hr className="horizontal-separator" />

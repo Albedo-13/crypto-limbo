@@ -86,7 +86,7 @@ export const MarketTrends = () => {
         <hr className="horizontal-separator" />
         <div className="market-trends-items">{marketItemsList}</div>
         <div className="market-trends__link">
-          <Link to="#">
+          <Link to="/trade">
             <Button variant="contained" sx={{ width: 240 }} endIcon={<NorthEastIcon size="small" />}>
               See All Market
             </Button>

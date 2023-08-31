@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import classNames from "classnames";
 
 import NorthEastIcon from "@mui/icons-material/NorthEast";
@@ -55,29 +57,32 @@ export const Welcome = () => {
             <h2 className="welcome__title">Buy & Sell Crypto Easy With Crypto Limbo</h2>
             <hr className="horizontal-separator__dotted" />
             <p className="welcome__subtitle">
-              It is a long established fact that a reader will be distracted by the readable content of a page when{" "}
-              <br />
-              looking at its layout.
+              Go through a couple of simple steps and start earning today with Crypto Limbo - one of the largest
+              cryptocurrency exchanges in the world
             </p>
             <div className="welcome__buttons">
-              <Button
-                sx={{
-                  width: 200,
-                  marginRight: "30px",
-                }}
-                variant="contained"
-                endIcon={<NorthEastIcon size="small" />}
-              >
-                Start Now
-              </Button>
-              <Button
-                sx={{
-                  width: 200,
-                }}
-                variant="outlined"
-              >
-                Beginner's Guide
-              </Button>
+              <Link to="/trade">
+                <Button
+                  sx={{
+                    width: 200,
+                    marginRight: "30px",
+                  }}
+                  variant="contained"
+                  endIcon={<NorthEastIcon size="small" />}
+                >
+                  Start Now
+                </Button>
+              </Link>
+              <HashLink to="/#simpleStep">
+                <Button
+                  sx={{
+                    width: 200,
+                  }}
+                  variant="outlined"
+                >
+                  Beginner's Guide
+                </Button>
+              </HashLink>
             </div>
           </div>
           <div className="welcome__wrapper-right">

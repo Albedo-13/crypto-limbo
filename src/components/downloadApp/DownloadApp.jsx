@@ -15,8 +15,9 @@ export const DownloadApp = () => {
           <div className="download-app__wrapper-left">
             <h2 className="download-app__title">Never Miss Trading, Download Our Application</h2>
             <p className="download-app__subtitle">
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-              a galley of type and scrambled it to make a type specimen book.
+              Are you want to make smart investment choices? Our mobile app provides analysis to help you navigate the
+              ever-changing crypto market. Stay ahead of the game, download our application for real-time updates, and
+              never miss a trading opportunity again. Don't wait, try now and start maximizing your profits!
             </p>
             <div className="download-app__buttons">
               <Button
@@ -46,7 +47,7 @@ export const DownloadApp = () => {
                   width: 80,
                   span: {
                     margin: "0 auto",
-                  }
+                  },
                 }}
                 variant="outlined"
                 startIcon={<img src={qrCodeIcon} alt="" />}

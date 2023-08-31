@@ -13,35 +13,35 @@ const itemsSettings = [
     name: "John Doe",
     country: "USA, California",
     review:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "Crypto Limbo is my favorite crypto trading site! The interface is clean, intuitive, and easy to navigate. The charting and trading tools are also great, making it easier to spot optimal entry and exit points.",
   },
   {
     id: 2,
     name: "Adrian Montes",
     country: "Russia, Moscow",
     review:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "The fees are very competitive as well, so it's a great place to make trades without draining your wallet. Overall, Crypto Limbo is a great platform for both beginners and experienced traders. Highly recommended!",
   },
   {
     id: 3,
     name: "Dillon Whitehead",
     country: "Poland, Krakow",
     review:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "Overall, I'm very happy with Crypto Limbo. It's a great way to trade cryptocurrency, and I highly recommend it to anyone looking for a reliable and efficient trading platform.",
   },
   {
     id: 4,
     name: "Mark Farley",
     country: "Serbia, Nis",
     review:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "I have to say that the experience has been extraordinary. First off, the platform is really easy to use and user friendly. It provides a wealth of technical indicators, chart types, and analytical tools and help me make decisions.",
   },
   {
     id: 5,
     name: "Siobhan Garrett",
     country: "Turkey, Stambul",
     review:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "I'm really impressed. The site is incredibly user-friendly and navigating around is simple and intuitive. The charting features are really impressive and make it easy to analyze the markets.",
   },
 ];
 
@@ -117,8 +117,7 @@ export const Testimonials = () => {
         <div className="testimonials__wrapper">
           <h2 className="testimonials__title">What Traders Saying About Us!</h2>
           <p className="testimonials__text">
-            Lorem Ipsum has been the industry's standard dummy text since the 1500s, when an unknown printer took a
-            galley of type and scrambled type specimen book.
+            Non-fictional positive reviews from real people (or from a chatbot, I don't know) about us. Yes, you can trust us with your finances, cryptocurrencies and credit cards without any doubt.
           </p>
         </div>
         <hr className="horizontal-separator" />

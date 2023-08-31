@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </Provider>
 );
 
+// TODO: Link to NavLink in Header and Footer to color and disable active pages
 // TODO: sprays change width & height %'s on adapt screen sizes
 // TODO: replace lorem ipsum & fishtext with meaningful content
 // TODO: react-helmet

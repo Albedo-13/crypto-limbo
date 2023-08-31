@@ -1,4 +1,6 @@
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 
 export const SimpleStepItem = ({ item }) => {
@@ -10,6 +12,7 @@ export const SimpleStepItem = ({ item }) => {
       </div>
       <div className="simple-step-item__title">{title}</div>
       <div className="simple-step-item__text">{text}</div>
+      <Link to={item.link}>
       <Button
         sx={{
           marginTop: "36px",
@@ -19,6 +22,7 @@ export const SimpleStepItem = ({ item }) => {
       >
         {buttonText}
       </Button>
+      </Link>
     </div>
   );
 };
