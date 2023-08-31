@@ -8,7 +8,7 @@ import { FrequentlyAskedQuestions } from "../FrequentlyAskedQuestions/Frequently
 import { DownloadApp } from "../downloadApp/DownloadApp";
 import { Footer } from "../footer/Footer";
 
-export const MainPage = () => {
+export const LandingPage = () => {
   return (
     <>
       <Header />

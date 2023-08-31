@@ -4,7 +4,7 @@ import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router
 
 import { fetchCurrencies } from "../../slices/currenciesSlice";
 import "./App.scss";
-import { MainPage } from "../pages/MainPage";
+import { LandingPage } from "../pages/LandingPage";
 import { SecondPage } from "../pages/SecondPage";
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
@@ -22,7 +22,7 @@ export default function App() {
 function Root() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/second" element={<SecondPage />} />
     </Routes>
   );
