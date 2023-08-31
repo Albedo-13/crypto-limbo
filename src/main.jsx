@@ -28,7 +28,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: ChartJS.register in MarketTrends (dublicate? to top or other file?)
 // TODO: transitions (react transition group)
 // TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
-// TODO: All MUI selectors to new file (muiTheme.scss?)
 // TODO: update footer & header links (all links i mean)
 // TODO: a11y
 // TODO: mobile adaptation
