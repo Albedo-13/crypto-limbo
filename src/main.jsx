@@ -29,6 +29,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
 // TODO: All MUI selectors to new file (muiTheme.scss?)
 // TODO: update footer & header links (all links i mean)
+// TODO: a11y
+// TODO: mobile adaptation
 
 // for graph
 // https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778
