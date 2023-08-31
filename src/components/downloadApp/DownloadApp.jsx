@@ -43,6 +43,7 @@ export const DownloadApp = () => {
                 Play Store
               </Button>
               <Button
+                aria-label="qr scan"
                 sx={{
                   width: 80,
                   span: {
