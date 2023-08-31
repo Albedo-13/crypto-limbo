@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 
 import { Header } from "../header/Header";
-import { MarketTrends } from "../marketTrends/MarketTrends";
-import { Footer } from "../footer/Footer";
+// import { Footer } from "../footer/Footer";
+
+import { Login } from "../login/Login";
 
 export const TradePage = () => {
   return (
     <>
       <Header />
-      <MarketTrends />
-      <Footer />
-      <Link to="/">to landing page</Link>
+      <Login />
+      {/* <Footer /> */}
       {/* //! remove bottom block on production */}
       <div style={{ minHeight: 250, backgroundColor: "gray" }} />
+      <Link to="/">to landing page</Link>
     </>
   );
 };

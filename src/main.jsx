@@ -21,11 +21,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </Provider>
 );
 
-//! Log in / Sign up / forgot password
-// TODO?: HOC? (same component layout)
-// TODO?: modules or new pages with header?
-
-
 //! Landing Page (and general)
 // TODO: Link to NavLink in Header and Footer to color and disable active pages
 // TODO: sprays change width & height %'s on adapt screen sizes

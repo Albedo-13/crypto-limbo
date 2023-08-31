@@ -1,0 +1,83 @@
+@import "../../styles/_variables.scss";
+
+.login {
+  padding: 40px 0;
+
+  &__wrapper {
+    width: 35%;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  &-form {
+    &__label {
+      display: block;
+      text-align: left;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 600;
+      color: $grey-4;
+      padding-bottom: 8px;
+
+      &:nth-of-type(1) {
+        margin-top: 60px;
+      }
+
+      &:nth-of-type(2) {
+        margin-top: 30px;
+      }
+    }
+
+    &__input {
+      display: block;
+      width: calc(100% - 29px);
+      background-color: transparent;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 4px;
+
+      &::placeholder {
+        color: $grey-6;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__password-recover {
+    color: $grey-2;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-sign-up {
+    margin-top: 40px;
+
+    &__text {
+      color: $grey-6;
+      font-size: 16px;
+      display: inline;
+      margin-right: 4px;
+    }
+
+    &__link {
+      color: $grey-2;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
