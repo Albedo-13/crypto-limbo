@@ -9,7 +9,7 @@ import "./login.scss";
 
 import guyWithNotebook from "../../assets/images/CurlyManWithLaptop.webp";
 
-// TODO: Hide / show password button (refs?)
+// TODO: focus none on <a> button wrappers
 // TODO: focus input styles
 
 // TODO?: HOC? (same component layout)
@@ -20,8 +20,6 @@ export const Login = () => {
   const passwordRef = useRef(null);
 
   const togglePasswordVisibility = () => {
-    console.log(passwordRef.current);
-
     passwordRef.current.type = isVisible ? "password" : "text";
     setIsVisible(() => !isVisible);
   };
