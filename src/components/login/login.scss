@@ -62,6 +62,21 @@
         font-size: 16px;
       }
     }
+
+    &__wrapper-password {
+      position: relative;
+    }
+
+    &__toggle-password {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 20px 0 10px;
+      height: 100%;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
   }
 
   &__password-recover {

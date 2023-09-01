@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@mui/material";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import VisibilityOn from "@mui/icons-material/VisibilityOutlined";
 
 import "./login.scss";
 
@@ -14,10 +16,17 @@ import guyWithNotebook from "../../assets/images/CurlyManWithLaptop.webp";
 // TODO?: modules or new pages with header? https://mui.com/material-ui/react-modal/
 
 export const Login = () => {
-  const viewPasswordRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const passwordRef = useRef(null);
 
-  const togglePasswordVisibility = () => {};
+  const togglePasswordVisibility = () => {
+    console.log(passwordRef.current);
 
+    passwordRef.current.type = isVisible ? "password" : "text";
+    setIsVisible(() => !isVisible);
+  };
+
+  const passwordIcon = isVisible ? <VisibilityOn fontSize="small" /> : <VisibilityOff fontSize="small" />;
   return (
     <div className="login">
       <div className="container">
@@ -46,15 +55,23 @@ export const Login = () => {
               <label className="login-form__label" htmlFor="login-password">
                 Password
               </label>
-              <input
-                className="login-form__input"
-                name="password"
-                type="password"
-                id="login-password"
-                autoComplete="current-password"
-                placeholder="Type Here"
-                required
-              />
+
+              <div className="login-form__wrapper-password">
+                <input
+                  className="login-form__input"
+                  name="password"
+                  type="password"
+                  id="login-password"
+                  autoComplete="current-password"
+                  placeholder="Type Here"
+                  required
+                  ref={passwordRef}
+                />
+                <button className="login-form__toggle-password" type="button" onClick={togglePasswordVisibility}>
+                  {passwordIcon}
+                </button>
+              </div>
+
               <Button
                 sx={{
                   width: "100%",
