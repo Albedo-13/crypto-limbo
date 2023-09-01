@@ -1,11 +1,28 @@
 @import "../../styles/_variables.scss";
 
 .login {
-  padding: 40px 0;
+  padding: 40px 0 20px 0;
 
   &__wrapper {
-    width: 35%;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 30px;
+
+    &-left {
+      width: 35%;
+      min-width: 350px;
+      text-align: center;
+    }
+
+    &-right {
+      max-width: 65%;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
   }
 
   &__title {
@@ -79,5 +96,11 @@
         text-decoration: underline;
       }
     }
+  }
+
+  &__copyright {
+    color: $grey-8;
+    font-size: 16px;
+    margin-top: 50px;
   }
 }
