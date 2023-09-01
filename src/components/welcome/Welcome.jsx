@@ -61,28 +61,28 @@ export const Welcome = () => {
               cryptocurrency exchanges in the world
             </p>
             <div className="welcome__buttons">
-              <Link to="/trade" tabindex="-1">
-                <Button
-                  sx={{
-                    width: 200,
-                    marginRight: "30px",
-                  }}
-                  variant="contained"
-                  endIcon={<NorthEastIcon size="small" />}
-                >
-                  Start Now
-                </Button>
-              </Link>
-              <HashLink to="/#simpleStep" tabindex="-1">
-                <Button
-                  sx={{
-                    width: 200,
-                  }}
-                  variant="outlined"
-                >
-                  Beginner's Guide
-                </Button>
-              </HashLink>
+              <Button
+                sx={{
+                  width: 200,
+                  marginRight: "30px",
+                }}
+                variant="contained"
+                endIcon={<NorthEastIcon size="small" />}
+                component={Link}
+                to="/trade"
+              >
+                Start Now
+              </Button>
+              <Button
+                sx={{
+                  width: 200,
+                }}
+                variant="outlined"
+                component={HashLink}
+                to="/#simpleStep"
+              >
+                Beginner's Guide
+              </Button>
             </div>
           </div>
           <div className="welcome__wrapper-right">

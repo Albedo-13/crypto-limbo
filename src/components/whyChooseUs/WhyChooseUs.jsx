@@ -45,16 +45,16 @@ export const WhyChooseUs = () => {
               <p className="why-choose-us-item__title">{item.title}</p>
               <p className="why-choose-us-item__text">{item.text}</p>
             </div>
-            <Link to="/trade" tabindex="-1">
-              <Button
-                sx={{
-                  marginLeft: "40px",
-                }}
-                endIcon={<NorthEastIcon />}
-              >
-                Start Now
-              </Button>
-            </Link>
+            <Button
+              sx={{
+                marginLeft: "40px",
+              }}
+              endIcon={<NorthEastIcon />}
+              component={Link}
+              to="/trade"
+            >
+              Start Now
+            </Button>
           </div>
           <hr className={lineStyle} />
         </div>
