@@ -102,7 +102,7 @@ export const Testimonials = () => {
                 <img src={commas} alt="quote symbol" />
               </div>
             </div>
-            <div className="testimonials-item__review">{item.review}</div>
+            <p className="testimonials-item__review">{item.review}</p>
           </div>
         </swiper-slide>
       );

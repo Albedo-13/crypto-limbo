@@ -132,7 +132,7 @@ export const Footer = () => {
         </div>
         <hr className="horizontal-separator" />
         <div className="footer-other">
-          <p className="footer-other__text">©Copyright 2022 All Rights Are Reserved.</p>
+          <div className="footer-other__text">©Copyright 2022 All Rights Are Reserved.</div>
           <div className="footer-other__dot" />
           <div className="footer-other__text">Privacy Policy</div>
           <div className="footer-other__dot" />

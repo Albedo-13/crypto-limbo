@@ -42,8 +42,8 @@ export const WhyChooseUs = () => {
           <div className="why-choose-us-item">
             <div className="why-choose-us-item__number">{addZeroToNumber(item.id)}</div>
             <div className="why-choose-us-item__wrapper">
-              <div className="why-choose-us-item__title">{item.title}</div>
-              <div className="why-choose-us-item__text">{item.text}</div>
+              <p className="why-choose-us-item__title">{item.title}</p>
+              <p className="why-choose-us-item__text">{item.text}</p>
             </div>
             <Link to="/trade">
               <Button

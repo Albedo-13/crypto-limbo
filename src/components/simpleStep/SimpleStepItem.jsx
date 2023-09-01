@@ -10,8 +10,8 @@ export const SimpleStepItem = ({ item }) => {
       <div className="simple-step-item__icon" style={{ backgroundColor: color }}>
         {icon}
       </div>
-      <div className="simple-step-item__title">{title}</div>
-      <div className="simple-step-item__text">{text}</div>
+      <p className="simple-step-item__title">{title}</p>
+      <p className="simple-step-item__text">{text}</p>
       <Link to={item.link}>
       <Button
         sx={{
