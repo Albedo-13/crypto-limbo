@@ -61,7 +61,7 @@ export const Welcome = () => {
               cryptocurrency exchanges in the world
             </p>
             <div className="welcome__buttons">
-              <Link to="/trade">
+              <Link to="/trade" tabindex="-1">
                 <Button
                   sx={{
                     width: 200,
@@ -73,7 +73,7 @@ export const Welcome = () => {
                   Start Now
                 </Button>
               </Link>
-              <HashLink to="/#simpleStep">
+              <HashLink to="/#simpleStep" tabindex="-1">
                 <Button
                   sx={{
                     width: 200,

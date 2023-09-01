@@ -45,7 +45,7 @@ export const WhyChooseUs = () => {
               <p className="why-choose-us-item__title">{item.title}</p>
               <p className="why-choose-us-item__text">{item.text}</p>
             </div>
-            <Link to="/trade">
+            <Link to="/trade" tabindex="-1">
               <Button
                 sx={{
                   marginLeft: "40px",

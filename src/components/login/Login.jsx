@@ -9,9 +9,6 @@ import "./login.scss";
 
 import guyWithNotebook from "../../assets/images/CurlyManWithLaptop.webp";
 
-// TODO: focus none on <a> button wrappers
-// TODO: focus input styles
-
 // TODO?: HOC? (same component layout)
 // TODO?: modules or new pages with header? https://mui.com/material-ui/react-modal/
 

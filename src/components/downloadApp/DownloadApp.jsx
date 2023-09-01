@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import "./downloadApp.scss";
 
@@ -20,39 +21,47 @@ export const DownloadApp = () => {
               never miss a trading opportunity again. Don't wait, try now and start maximizing your profits!
             </p>
             <div className="download-app__buttons">
-              <Button
-                sx={{
-                  width: 180,
-                  marginRight: "30px",
-                  fontSize: "18px",
-                }}
-                variant="outlined"
-                startIcon={<img src={appStoreIcon} alt="" />}
-              >
-                App Store
-              </Button>
-              <Button
-                sx={{
-                  width: 180,
-                  marginRight: "30px",
-                  fontSize: "18px",
-                }}
-                variant="outlined"
-                startIcon={<img src={playMarketIcon} alt="" />}
-              >
-                Play Store
-              </Button>
-              <Button
-                aria-label="qr scan"
-                sx={{
-                  width: 80,
-                  span: {
-                    margin: "0 auto",
-                  },
-                }}
-                variant="outlined"
-                startIcon={<img src={qrCodeIcon} alt="" />}
-              ></Button>
+              <Link to="https://www.apple.com/" tabindex="-1">
+                <Button
+                  sx={{
+                    width: 180,
+                    marginRight: "30px",
+                    fontSize: "18px",
+                  }}
+                  variant="outlined"
+                  startIcon={<img src={appStoreIcon} alt="" />}
+                >
+                  App Store
+                </Button>
+              </Link>
+
+              <Link to="https://play.google.com/" tabindex="-1">
+                <Button
+                  sx={{
+                    width: 180,
+                    marginRight: "30px",
+                    fontSize: "18px",
+                  }}
+                  variant="outlined"
+                  startIcon={<img src={playMarketIcon} alt="" />}
+                >
+                  Play Store
+                </Button>
+              </Link>
+
+              <Link to="https://play.google.com/store/apps/details/Free_QR_Scanner_Bar_Code_Scanner_QR_Code_Reader?id=app.qrcode&hl=en_GB" tabindex="-1">
+                <Button
+                  aria-label="qr scan"
+                  sx={{
+                    width: 80,
+                    span: {
+                      margin: "0 auto",
+                    },
+                  }}
+                  variant="outlined"
+                  startIcon={<img src={qrCodeIcon} alt="" />}
+                ></Button>
+              </Link>
             </div>
           </div>
           <div className="download-app__wrapper-right">

@@ -12,16 +12,16 @@ export const SimpleStepItem = ({ item }) => {
       </div>
       <p className="simple-step-item__title">{title}</p>
       <p className="simple-step-item__text">{text}</p>
-      <Link to={item.link}>
-      <Button
-        sx={{
-          marginTop: "36px",
-          fontSize: "16px",
-        }}
-        endIcon={<NorthEastIcon />}
-      >
-        {buttonText}
-      </Button>
+      <Link to={item.link} tabindex="-1">
+        <Button
+          sx={{
+            marginTop: "36px",
+            fontSize: "16px",
+          }}
+          endIcon={<NorthEastIcon />}
+        >
+          {buttonText}
+        </Button>
       </Link>
     </div>
   );
