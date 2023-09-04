@@ -29,8 +29,8 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__buttons">
-            <Button>Log In</Button>
-            <Button variant="contained">Sign Up</Button>
+            <Button component={Link} to="/login">Log In</Button>
+            <Button variant="contained" component={Link} to="/signup">Sign Up</Button>
           </div>
         </div>
       </div>

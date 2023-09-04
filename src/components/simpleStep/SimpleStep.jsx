@@ -14,7 +14,7 @@ const itemsSettings = [
     title: "Create Account",
     text: "It's a simple, fast and secure way to create an account and start trading. You don't need any technical skills, just fill the fields with valid data. Thats it!",
     buttonText: "Sign Up Now",
-    link: "#",
+    link: "/signup",
   },
   {
     id: 2,

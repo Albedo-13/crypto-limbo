@@ -5,9 +5,7 @@ import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router
 import "./App.scss";
 
 import { fetchCurrencies } from "../../slices/currenciesSlice";
-import { LandingPage } from "../pages/LandingPage";
-import { TradePage } from "../pages/TradePage";
-import { EntryPage } from "../pages/EntryPage";
+import { LandingPage, TradePage, EntryPage } from "../pages";
 import { SignUp } from "../entry/SignUp";
 import { Login } from "../entry/Login";
 import { ScrollToTop } from "../../utils/ScrollToTop";
