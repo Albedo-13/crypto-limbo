@@ -1,7 +1,6 @@
 @import "../../styles/_variables.scss";
 
 .entry {
-
   &__wrapper {
     display: flex;
     justify-content: space-between;
@@ -27,9 +26,21 @@
   &__title {
     font-size: 36px;
     font-weight: 600;
+    margin-bottom: 60px;
   }
 
   &-form {
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 30px;
+
+      &-left,
+      &-right {
+        width: calc(100% - 15px);
+      }
+    }
+
     &__label {
       display: block;
       text-align: left;
@@ -38,13 +49,10 @@
       font-weight: 600;
       color: $grey-4;
       padding-bottom: 8px;
+      margin-top: 30px;
 
-      &:nth-of-type(1) {
-        margin-top: 60px;
-      }
-
-      &:nth-of-type(2) {
-        margin-top: 30px;
+      &:first-child {
+        margin: 0;
       }
     }
 
@@ -76,6 +84,77 @@
       border: none;
       cursor: pointer;
     }
+
+    // https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+    // TODO: check mui checkbox (maybe easier way)
+    &__checkbox {
+      display: inline;
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        .entry-form__checkbox-mark {
+          background-color: #ccc;
+        }
+      }
+
+      &-input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      &-mark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 14px;
+        height: 14px;
+        background-color: transparent;
+        border: 1px solid $grey-8;
+        border-radius: 2px;
+
+        &:after {
+          content: "";
+          position: absolute;
+          display: block;
+          left: 20%;
+          // top: 50%;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    &__terms {
+      text-align-last: left;
+      margin-top: 30px;
+
+      &-label {
+        margin-left: 10px;
+        color: $grey-6;
+        font-size: 14px;
+      }
+
+      &-link {
+        text-decoration: none;
+        color: $grey-2;
+        margin-left: 3px;
+        font-size: 14px;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
 
   &__password-recover {
@@ -90,7 +169,8 @@
     }
   }
 
-  &-sign-up {
+  &-goto-login,
+  &-goto-signup {
     margin-top: 40px;
 
     &__text {

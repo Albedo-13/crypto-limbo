@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
-
 import { Button } from "@mui/material";
-import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
-import VisibilityOn from "@mui/icons-material/VisibilityOutlined";
 
 export const SignUp = (props) => {
-  const { isVisible, passwordRef, togglePasswordVisibility } = props;
-  const passwordIcon = isVisible ? <VisibilityOn fontSize="small" /> : <VisibilityOff fontSize="small" />;
+  const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
 
   return (
     <>
@@ -18,28 +14,70 @@ export const SignUp = (props) => {
         }}
         className="entry-form"
       >
-        <label className="entry-form__label" htmlFor="entry-username">
-          Email or Phone
+        <div className="entry-form__wrapper">
+          <div className="entry-form__wrapper-left">
+            <label className="entry-form__label" htmlFor="signup-given-name">
+              First Name
+            </label>
+            <input
+              className="entry-form__input"
+              name="name"
+              type="text"
+              id="signup-given-name"
+              autoComplete="given-name"
+              placeholder="Type Here"
+              required
+            />
+          </div>
+          <div className="entry-form__wrapper-right">
+            <label className="entry-form__label" htmlFor="signup-family-name">
+              Last Name
+            </label>
+            <input
+              className="entry-form__input"
+              name="fname"
+              type="text"
+              id="signup-family-name"
+              autoComplete="family-name"
+              autofill="family-name"
+              placeholder="Type Here"
+              required
+            />
+          </div>
+        </div>
+        <label className="entry-form__label" htmlFor="signup-phone">
+          Phone
         </label>
         <input
           className="entry-form__input"
-          name="username"
+          name="phone"
           type="text"
-          id="entry-username"
-          autoComplete="username"
+          id="signup-phone"
+          autoComplete="tel"
           placeholder="Type Here"
           required
         />
-        <label className="entry-form__label" htmlFor="entry-password">
+        <label className="entry-form__label" htmlFor="signup-email">
+          Email
+        </label>
+        <input
+          className="entry-form__input"
+          name="email"
+          type="text"
+          id="signup-email"
+          autoComplete="email"
+          placeholder="Type Here"
+          required
+        />
+        <label className="entry-form__label" htmlFor="signup-password">
           Password
         </label>
-
         <div className="entry-form__wrapper-password">
           <input
             className="entry-form__input"
             name="password"
             type="password"
-            id="entry-password"
+            id="signup-password"
             autoComplete="current-password"
             placeholder="Type Here"
             required
@@ -49,7 +87,18 @@ export const SignUp = (props) => {
             {passwordIcon}
           </button>
         </div>
-
+        <div className="entry-form__terms">
+          <div className="entry-form__checkbox">
+            <input className="entry-form__checkbox-input" type="checkbox" id="signup-terms" />
+            <span className="entry-form__checkbox-mark"></span>
+          </div>
+          <label className="entry-form__terms-label" htmlFor="signup-terms">
+            I agree to this Website
+          </label>
+          <Link className="entry-form__terms-link" to="#">
+            Terms & Conditions.
+          </Link>
+        </div>
         <Button
           sx={{
             width: "100%",
@@ -64,13 +113,12 @@ export const SignUp = (props) => {
       <Link className="entry__password-recover" to="#">
         Forgot Password?
       </Link>
-      <div className="entry-sign-up">
-        <p className="entry-sign-up__text">Don't Have an Account?</p>
-        <Link to="#" className="entry-sign-up__link">
-          Sign Up Here
+      <div className="entry-goto-login">
+        <p className="entry-goto-login__text">Have an Account?</p>
+        <Link to="#" className="entry-goto-login__link">
+          Login Here
         </Link>
       </div>
     </>
   );
 };
-
