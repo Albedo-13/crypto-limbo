@@ -7,6 +7,9 @@ import "./App.scss";
 import { fetchCurrencies } from "../../slices/currenciesSlice";
 import { LandingPage } from "../pages/LandingPage";
 import { TradePage } from "../pages/TradePage";
+import { EntryPage } from "../pages/EntryPage";
+import { SignUp } from "../entry/SignUp";
+import { Login } from "../entry/Login";
 import { ScrollToTop } from "../../utils/ScrollToTop";
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
@@ -28,6 +31,8 @@ function Root() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/trade" element={<TradePage />} />
+        <Route path="/login" element={<EntryPage component={Login} />} />
+        <Route path="/signup" element={<EntryPage component={SignUp} />} />
       </Routes>
     </>
   );

@@ -1,7 +1,6 @@
 @import "../../styles/_variables.scss";
 
 .login {
-  padding: 40px 0 20px 0;
 
   &__wrapper {
     display: flex;
@@ -116,6 +115,5 @@
   &__copyright {
     color: $grey-8;
     font-size: 16px;
-    margin-top: 50px;
   }
 }
