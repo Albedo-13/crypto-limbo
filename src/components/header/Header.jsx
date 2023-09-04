@@ -1,7 +1,6 @@
 import Button from "@mui/material/Button";
 import { Link, NavLink } from "react-router-dom";
 
-// import logo from "../../assets/logo.webp";
 import "./header.scss";
 
 export const Header = () => {
