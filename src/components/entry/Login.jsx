@@ -5,7 +5,7 @@ export const Login = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
 
   return (
-    <div className="entry__wrapper-left">
+    <>
       <h2 className="entry__title">Login</h2>
       <form
         onSubmit={(e) => {
@@ -66,6 +66,6 @@ export const Login = (props) => {
           Sign Up Here
         </Link>
       </div>
-    </div>
+    </>
   );
 };

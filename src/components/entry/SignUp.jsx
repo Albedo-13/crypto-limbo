@@ -5,11 +5,11 @@ import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOn from "@mui/icons-material/VisibilityOutlined";
 
 export const SignUp = (props) => {
-  console.log(props);
   const { isVisible, passwordRef, togglePasswordVisibility } = props;
   const passwordIcon = isVisible ? <VisibilityOn fontSize="small" /> : <VisibilityOff fontSize="small" />;
+
   return (
-    <div className="entry__wrapper-left">
+    <>
       <h2 className="entry__title">Sign Up</h2>
       <form
         onSubmit={(e) => {
@@ -70,7 +70,7 @@ export const SignUp = (props) => {
           Sign Up Here
         </Link>
       </div>
-    </div>
+    </>
   );
 };
 
