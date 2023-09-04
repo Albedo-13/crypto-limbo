@@ -1,6 +1,6 @@
 import { withEntry } from "./withEntry";
 
-import "./login.scss";
+import "./entry.scss";
 
 import guyWithNotebook from "../../assets/images/CurlyManWithLaptop.webp";
 
@@ -14,15 +14,15 @@ export const Entry = ({ component }) => {
   const FormEntry = withEntry(component);
 
   return (
-    <div className="login">
+    <div className="entry">
       <div className="container">
-        <div className="login__wrapper">
+        <div className="entry__wrapper">
           <FormEntry />
-          <div className="login__wrapper-right">
-            <img className="login__image undraggable" src={guyWithNotebook} alt="guy with notebook" />
+          <div className="entry__wrapper-right">
+            <img className="entry__image undraggable" src={guyWithNotebook} alt="guy with notebook" />
           </div>
         </div>
-        <div className="login__copyright">©Copyright 2022 All Rights Are Reserved.</div>
+        <div className="entry__copyright">©Copyright 2022 All Rights Are Reserved.</div>
       </div>
     </div>
   );
