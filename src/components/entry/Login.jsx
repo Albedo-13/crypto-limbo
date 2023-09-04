@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
-
 import { Button } from "@mui/material";
-import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
-import VisibilityOn from "@mui/icons-material/VisibilityOutlined";
 
 export const Login = (props) => {
-  const { isVisible, passwordRef, togglePasswordVisibility } = props;
-  const passwordIcon = isVisible ? <VisibilityOn fontSize="small" /> : <VisibilityOff fontSize="small" />;
+  const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
 
   return (
     <div className="login__wrapper-left">
