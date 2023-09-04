@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import variables from "../../styles/_variables.scss?inline";
 import { convertScssToObject } from "../../utils/utils";
 
-import commas from "../../assets/icons/commas.webp";
 import "./testimonials.scss";
 
 const itemsSettings = [
@@ -99,7 +98,7 @@ export const Testimonials = () => {
                 </div>
               </div>
               <div className="testimonials-item__wrapper-right">
-                <img src={commas} alt="quote symbol" />
+                <img src="/assets/icons/commas.webp" alt="quote symbol" />
               </div>
             </div>
             <p className="testimonials-item__review">{item.review}</p>

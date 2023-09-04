@@ -2,12 +2,8 @@ import { withEntry } from "./withEntry";
 
 import "./entry.scss";
 
-import guyWithNotebook from "../../assets/images/CurlyManWithLaptop.webp";
-
-// TODO?: HOC? (same component layout)
 // TODO?: modules or new pages with header? https://mui.com/material-ui/react-modal/
 // TODO: split diff entries to files (entry folder => entry, withEntry?, login, signup etc)
-// TODO?: rename 'login' css styles to 'entry'?
 // TODO: routing between forms
 
 export const Entry = ({ component }) => {
@@ -19,7 +15,7 @@ export const Entry = ({ component }) => {
         <div className="entry__wrapper">
           <FormEntry />
           <div className="entry__wrapper-right">
-            <img className="entry__image undraggable" src={guyWithNotebook} alt="guy with notebook" />
+            <img className="entry__image undraggable" src="/assets/images/CurlyManWithLaptop.webp" alt="guy with notebook" />
           </div>
         </div>
         <div className="entry__copyright">©Copyright 2022 All Rights Are Reserved.</div>

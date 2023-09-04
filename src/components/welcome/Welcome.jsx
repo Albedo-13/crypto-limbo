@@ -10,7 +10,6 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
-import notebook from "../../assets/images/notebook.webp";
 import "./welcome.scss";
 import "../../styles/_sprays.scss";
 
@@ -86,7 +85,7 @@ export const Welcome = () => {
             </div>
           </div>
           <div className="welcome__wrapper-right">
-            <img className="welcome__img undraggable" src={notebook} alt="notebook with statistics" />
+            <img className="welcome__img undraggable" src="/assets/images/notebook.webp" alt="notebook with statistics" />
             <div className="bg-img-spray_round" />
           </div>
         </div>

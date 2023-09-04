@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 
 import "./downloadApp.scss";
 
-import downloadAppImg from "../../assets/images/downloadApp.webp";
-import appStoreIcon from "../../assets/icons/mobile-stores/app-store.svg";
-import playMarketIcon from "../../assets/icons/mobile-stores/play-market.svg";
-import qrCodeIcon from "../../assets/icons/mobile-stores/qr-code.svg";
-
 export const DownloadApp = () => {
   return (
     <section className="download-app">
@@ -28,7 +23,7 @@ export const DownloadApp = () => {
                   fontSize: "18px",
                 }}
                 variant="outlined"
-                startIcon={<img src={appStoreIcon} alt="" />}
+                startIcon={<img src="/assets/icons/mobile-stores/app-store.svg" alt="app store" />}
                 component={Link}
                 to="https://www.apple.com/"
               >
@@ -41,7 +36,7 @@ export const DownloadApp = () => {
                   fontSize: "18px",
                 }}
                 variant="outlined"
-                startIcon={<img src={playMarketIcon} alt="" />}
+                startIcon={<img src="/assets/icons/mobile-stores/play-market.svg" alt="play market" />}
                 component={Link}
                 to="https://play.google.com/"
               >
@@ -56,14 +51,14 @@ export const DownloadApp = () => {
                   },
                 }}
                 variant="outlined"
-                startIcon={<img src={qrCodeIcon} alt="" />}
+                startIcon={<img src="/assets/icons/mobile-stores/qr-code.svg" alt="qr code" />}
                 component={Link}
                 to="https://play.google.com/store/apps/details/Free_QR_Scanner_Bar_Code_Scanner_QR_Code_Reader?id=app.qrcode&hl=en_GB"
               ></Button>
             </div>
           </div>
           <div className="download-app__wrapper-right">
-            <img className="download-app__img undraggable" src={downloadAppImg} alt="notebook and phone versions" />
+            <img className="download-app__img undraggable" src="/assets/images/downloadApp.webp" alt="notebook and phone versions" />
             <div className="bg-img-spray_wide" />
           </div>
         </div>
