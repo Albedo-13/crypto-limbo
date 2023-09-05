@@ -2,8 +2,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "@mui/material";
 
-// TODO: replace invisible email field with valid data (https://www.chromium.org/developers/design-documents/form-styles-that-chromium-understands/#email-first-sign-in-flow)
+// TODO: replace inputs with MUI components!
+// TODO: react hook form (fields and forms validation)
 // TODO: same passwords check before submit (react hook form)
+// TODO: replace invisible email field with valid data (https://www.chromium.org/developers/design-documents/form-styles-that-chromium-understands/#email-first-sign-in-flow)
+// TODO: block ability to go to new password creation using address link
+// (redirect on 1st if trying to go to 2nd. save email in Redux store?)
 
 export const NewPassword = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
