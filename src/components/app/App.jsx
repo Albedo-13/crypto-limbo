@@ -4,12 +4,13 @@ import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router
 
 import "./App.scss";
 
+import { ScrollToTop } from "../../utils/ScrollToTop";
 import { fetchCurrencies } from "../../slices/currenciesSlice";
 import { LandingPage, TradePage, EntryPage } from "../pages";
 import { SignUp } from "../entry/SignUp";
 import { Login } from "../entry/Login";
-import { ScrollToTop } from "../../utils/ScrollToTop";
 import { ForgotPassword } from "../entry/ForgotPassword";
+import { NewPassword } from "../entry/NewPassword";
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
 
@@ -33,6 +34,7 @@ function Root() {
         <Route path="/login" element={<EntryPage component={Login} />} />
         <Route path="/signup" element={<EntryPage component={SignUp} />} />
         <Route path="/forgot-password" element={<EntryPage component={ForgotPassword} />} />
+        <Route path="/new-password" element={<EntryPage component={NewPassword} />} />
       </Routes>
     </>
   );

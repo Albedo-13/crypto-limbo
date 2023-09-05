@@ -82,7 +82,7 @@ export const SignUp = (props) => {
             name="password"
             type="password"
             id="signup-password"
-            autoComplete="current-password"
+            autoComplete="new-password"
             placeholder="Type Here"
             required
             ref={passwordRef}
