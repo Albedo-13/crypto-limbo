@@ -75,7 +75,12 @@ export const WhyChooseUs = () => {
         <div className="why-choose-us__wrapper">
           <div className="why-choose-us__wrapper-left">{items}</div>
           <div className="why-choose-us__wrapper-right">
-            <img className="why-choose-us__img undraggable" loading="lazy" src="/assets/images/GraphIncome.webp" alt="graph money income" />
+            <img
+              className="why-choose-us__img undraggable"
+              loading="lazy"
+              src="/assets/images/GraphIncome.webp"
+              alt="graph money income"
+            />
           </div>
         </div>
       </div>

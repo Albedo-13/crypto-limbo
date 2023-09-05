@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { ThemeProvider } from "@emotion/react";
 
 import App from "./components/app/App.jsx";
 import { store } from "./store/store.js";
 
-import muiCustomTheme from "./styles/muiTheme.js";
 import "./styles/index.scss";
 
 console.log("Hello, visitor! Please consider, that site is using free version of crypto API. It means that sometimes you can receive errors (like 429 - too many requests) even without reaching requests limit. Please, be patient and refresh page after a few minutes");
@@ -14,9 +12,7 @@ console.log("Hello, visitor! Please consider, that site is using free version of
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
-      <ThemeProvider theme={muiCustomTheme}>
-        <App />
-      </ThemeProvider>
+    <App />
     {/* </React.StrictMode> */}
   </Provider>
 );
@@ -34,7 +30,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: mobile adaptation
 // TODO: explore a11y, adapt for screen readers
 // TODO: focus none on <a> button wrappers
-// TODO: к хуям переделать ВСЕ стили MUI
 
 // for graph
 // https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778

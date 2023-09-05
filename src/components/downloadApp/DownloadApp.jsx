@@ -58,7 +58,11 @@ export const DownloadApp = () => {
             </div>
           </div>
           <div className="download-app__wrapper-right">
-            <img className="download-app__img undraggable" src="/assets/images/downloadApp.webp" alt="notebook and phone versions" />
+            <img
+              className="download-app__img undraggable"
+              src="/assets/images/downloadApp.webp"
+              alt="notebook and phone versions"
+            />
             <div className="bg-img-spray_wide" />
           </div>
         </div>

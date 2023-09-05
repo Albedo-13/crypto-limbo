@@ -1,21 +1,131 @@
 @import "../styles/_variables.scss";
 
-.Mui-expanded {
-  margin: 0 !important;
+// TYPOGRAPHY
+.MuiTypography-root.MuiTypography-body1 {
+  font-family: "Source Sans 3", sans-serif;
+}
 
-  .MuiAccordionSummary-expandIconWrapper {
-    transform: rotate(45deg) !important;
+// BUTTON
+.MuiButtonBase-root.MuiButton-root {
+  font-family: "Source Sans 3", sans-serif;
+  color: $white;
+  height: 56px;
+  font-size: 18px;
+  text-transform: none;
+
+  &.MuiButton-containedPrimary {
+    background-color: $primary-blue;
+    font-size: 20px;
+    &:hover {
+      background-color: $primary-blue-dark;
+    }
+  }
+
+  &.MuiButton-outlined {
+    border-color: $white;
+    font-size: 20px;
+    &:hover {
+      color: $grey-4;
+      border-color: $grey-8;
+    }
+  }
+
+  &.MuiButton-filter {
+    width: auto;
+    font-size: 20px;
+    color: $grey-6;
+    margin-bottom: 6px;
+    margin-left: 3px;
+
+    &.active {
+      border-top: 2px solid $primary-blue-dark;
+      border-bottom: 2px solid $primary-blue-dark;
+      color: $primary-blue;
+    }
+
+    &.Mui-disabled {
+      color: $grey-8;
+      opacity: 0.4;
+      &.active {
+        border-top: 2px solid $grey-8;
+        border-bottom: 2px solid $grey-8;
+      }
+    }
+  }
+
+  &.button-header-login {
+    width: 140px;
+    padding: 13px 26px;
+    margin-right: 10px;
+  }
+  &.button-header-signup {
+    width: 140px;
+    padding: 13px 26px;
   }
 }
 
-.MuiCheckbox-terms-root .MuiSvgIcon-root {
+// ACCORDION
+.MuiPaper-root.MuiAccordion-root {
+  position: relative;
+  min-height: 78px;
+  color: $white;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid rgba($white, 0.1);
+
+  &.Mui-expanded {
+    margin: 0;
+
+    .MuiAccordionSummary-expandIconWrapper {
+      transform: rotate(45deg);
+    }
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 28px;
+    color: $white;
+  }
+}
+
+.MuiButtonBase-root.MuiAccordionSummary-root {
+  height: 78px;
+  .MuiTypography-root {
+    font-size: 24px;
+  }
+}
+
+.MuiAccordionDetails-root {
+  color: $grey-6;
+}
+
+// CHECKBOX
+.MuiCheckbox-terms .MuiSvgIcon-root {
   width: 18px;
   height: 18px;
   color: $grey-8;
 }
 
-.MuiCheckbox-terms-root.Mui-checked .MuiSvgIcon-root {
+.MuiCheckbox-terms.Mui-checked .MuiSvgIcon-root {
   color: $primary-blue;
 }
 
-// TODO!: remove important rules (classname https://stackoverflow.com/questions/60909116/change-the-size-of-a-checkbox-with-material-ui)
+.MuiFormControlLabel-root {
+  color: $grey-6;
+
+  .MuiTypography-root {
+    font-size: 14px;
+  }
+}
+
+.MuiFormControlLabel-root.MuiFormControlLabel-labelPlacementEnd {
+  margin-right: 0;
+
+  &.MuiStack-root {
+    color: $grey-6;
+    font-size: 16px;
+  }
+}
+
+.MuiFormControlLabel-asterisk {
+  display: none;
+}

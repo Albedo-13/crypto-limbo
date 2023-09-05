@@ -85,7 +85,11 @@ export const Welcome = () => {
             </div>
           </div>
           <div className="welcome__wrapper-right">
-            <img className="welcome__img undraggable" src="/assets/images/notebook.webp" alt="notebook with statistics" />
+            <img
+              className="welcome__img undraggable"
+              src="/assets/images/notebook.webp"
+              alt="notebook with statistics"
+            />
             <div className="bg-img-spray_round" />
           </div>
         </div>

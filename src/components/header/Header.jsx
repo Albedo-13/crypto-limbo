@@ -14,10 +14,7 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__links">
-            <NavLink
-              to="/trade"
-              className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}
-            >
+            <NavLink to="/trade" className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}>
               Market
             </NavLink>
             <Link to="#" className="header__link">
@@ -28,8 +25,12 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__buttons">
-            <Button component={Link} to="/login">Log In</Button>
-            <Button variant="contained" component={Link} to="/signup">Sign Up</Button>
+            <Button classes={{ root: "button-header-login" }} component={Link} to="/login">
+              Log In
+            </Button>
+            <Button classes={{ root: "button-header-signup" }} variant="contained" component={Link} to="/signup">
+              Sign Up
+            </Button>
           </div>
         </div>
       </div>

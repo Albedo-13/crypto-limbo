@@ -93,7 +93,7 @@ export const SignUp = (props) => {
         <p className="entry-form__password-hint">Password must be min 8 characters</p>
         <div className="entry-form__terms">
           <FormControlLabel
-            control={<Checkbox required classes={{ root: "MuiCheckbox-terms-root" }} />}
+            control={<Checkbox required classes={{ root: "MuiCheckbox-terms" }} />}
             label="I agree to this Website"
           />
           <Link className="entry-form__terms-link" to="#">
