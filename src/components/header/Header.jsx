@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <div className="header__wrapper">
+        <nav className="header__wrapper">
           <div className="header-logo vertical-separator__small">
             <Link to="/" className="header-logo__link">
               <img className="header-logo__img undraggable" src="/assets/logo.webp" alt="crypto limbo logo" />
@@ -32,7 +32,7 @@ export const Header = () => {
               Sign Up
             </Button>
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );

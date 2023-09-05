@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import "./downloadApp.scss";
-
+// _blank!!!!!!!!!!!!!!
 export const DownloadApp = () => {
   return (
     <section className="download-app">
@@ -26,6 +26,7 @@ export const DownloadApp = () => {
                 startIcon={<img src="/assets/icons/mobile-stores/app-store.svg" alt="app store" />}
                 component={Link}
                 to="https://www.apple.com/"
+                target="_blank"
               >
                 App Store
               </Button>
@@ -39,6 +40,7 @@ export const DownloadApp = () => {
                 startIcon={<img src="/assets/icons/mobile-stores/play-market.svg" alt="play market" />}
                 component={Link}
                 to="https://play.google.com/"
+                target="_blank"
               >
                 Play Store
               </Button>
@@ -54,6 +56,7 @@ export const DownloadApp = () => {
                 startIcon={<img src="/assets/icons/mobile-stores/qr-code.svg" alt="qr code" />}
                 component={Link}
                 to="https://play.google.com/store/apps/details/Free_QR_Scanner_Bar_Code_Scanner_QR_Code_Reader?id=app.qrcode&hl=en_GB"
+                target="_blank"
               ></Button>
             </div>
           </div>
