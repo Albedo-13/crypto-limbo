@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -6,17 +6,18 @@ import Checkbox from "@mui/material/Checkbox";
 
 export const SignUp = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/");
+    console.log("SignUp submitting");
+  };
 
   return (
     <>
       <h2 className="entry__title">Sign Up</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log("SignUp submitting");
-        }}
-        className="entry-form"
-      >
+      <form onSubmit={handleSubmit} className="entry-form">
         <div className="entry-form__wrapper">
           <div className="entry-form__wrapper-left">
             <label className="entry-form__label" htmlFor="signup-given-name">

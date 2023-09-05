@@ -1,19 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 export const Login = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/");
+    console.log("Login submitting");
+  };
 
   return (
     <>
       <h2 className="entry__title">Login</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log("Login submitting");
-        }}
-        className="entry-form"
-      >
+      <form onSubmit={handleSubmit} className="entry-form">
         <label className="entry-form__label" htmlFor="login-username">
           Email or Phone
         </label>

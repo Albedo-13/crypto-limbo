@@ -1,23 +1,26 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "@mui/material";
 
 export const ForgotPassword = () => {
   const oneTimeCodeRef = useRef(null);
+  const navigate = useNavigate();
 
   const sendCode = () => {
     oneTimeCodeRef.current.value = "RA9AILVE";
-  }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/new-password");
+    console.log("ForgotPassword submitting");
+  };
 
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log("ForgotPassword submitting");
-        }}
-        className="entry-form"
-      >
+      <form onSubmit={handleSubmit} className="entry-form">
         <label className="entry-form__label" htmlFor="forgot-pwd-username">
           Email or Phone
         </label>
