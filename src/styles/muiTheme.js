@@ -79,6 +79,20 @@ const muiCustomTheme = createTheme({
         },
       },
     },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          marginRight: 0,
+        },
+        label: {
+          color: `${colors.grey6}`,
+          fontSize: "14px",
+        },
+        asterisk: {
+          display: "none",
+        }
+      }
+    },
   },
 });
 

@@ -1,3 +1,5 @@
+@import "../styles/_variables.scss";
+
 .Mui-expanded {
   margin: 0 !important;
 
@@ -5,3 +7,15 @@
     transform: rotate(45deg) !important;
   }
 }
+
+.MuiCheckbox-root .MuiSvgIcon-root {
+  width: 18px;
+  height: 18px;
+  color: $grey-8;
+}
+
+.MuiCheckbox-root.Mui-checked .MuiSvgIcon-root {
+  color: $primary-blue;
+}
+
+// TODO!: remove important rules (classname https://stackoverflow.com/questions/60909116/change-the-size-of-a-checkbox-with-material-ui)

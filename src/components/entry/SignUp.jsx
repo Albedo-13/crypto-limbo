@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+
 export const SignUp = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
 
@@ -88,13 +91,10 @@ export const SignUp = (props) => {
           </button>
         </div>
         <div className="entry-form__terms">
-          <div className="entry-form__checkbox">
-            <input className="entry-form__checkbox-input" type="checkbox" id="signup-terms" />
-            <span className="entry-form__checkbox-mark"></span>
-          </div>
-          <label className="entry-form__terms-label" htmlFor="signup-terms">
-            I agree to this Website
-          </label>
+          <FormControlLabel
+            control={<Checkbox required classes={{ root: "MuiCheckbox-root" }} />}
+            label="I agree to this Website"
+          />
           <Link className="entry-form__terms-link" to="#">
             Terms & Conditions.
           </Link>

@@ -87,66 +87,17 @@
 
     // https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
     // TODO: check mui checkbox (maybe easier way)
-    &__checkbox {
-      display: inline;
-      position: relative;
-      cursor: pointer;
-
-      &:hover {
-        .entry-form__checkbox-mark {
-          background-color: #ccc;
-        }
-      }
-
-      &-input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-      }
-
-      &-mark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 14px;
-        height: 14px;
-        background-color: transparent;
-        border: 1px solid $grey-8;
-        border-radius: 2px;
-
-        &:after {
-          content: "";
-          position: absolute;
-          display: block;
-          left: 20%;
-          // top: 50%;
-          width: 5px;
-          height: 10px;
-          border: solid white;
-          border-width: 0 3px 3px 0;
-          -webkit-transform: rotate(45deg);
-          -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
-        }
-      }
-    }
+    // TODO: mui text fields (https://mui.com/material-ui/react-text-field/)
 
     &__terms {
       text-align-last: left;
       margin-top: 30px;
 
-      &-label {
-        margin-left: 10px;
-        color: $grey-6;
-        font-size: 14px;
-      }
-
       &-link {
         text-decoration: none;
         color: $grey-2;
         margin-left: 3px;
+        padding: 12px 12px 12px 0;
         font-size: 14px;
         font-weight: 600;
 
