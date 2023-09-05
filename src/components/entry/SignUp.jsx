@@ -13,7 +13,7 @@ export const SignUp = (props) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log("submitting");
+          console.log("SignUp submitting");
         }}
         className="entry-form"
       >
@@ -86,7 +86,7 @@ export const SignUp = (props) => {
             required
             ref={passwordRef}
           />
-          <button className="entry-form__toggle-password" type="button" onClick={togglePasswordVisibility}>
+          <button className="entry-form__end-adornment" type="button" onClick={togglePasswordVisibility}>
             {passwordIcon}
           </button>
         </div>
@@ -111,12 +111,12 @@ export const SignUp = (props) => {
           Sign Up
         </Button>
       </form>
-      <Link className="entry__password-recover" to="#">
+      <Link className="entry__password-recover" to="/forgot-password">
         Forgot Password?
       </Link>
       <div className="entry-goto-login">
         <p className="entry-goto-login__text">Have an Account?</p>
-        <Link to="#" className="entry-goto-login__link">
+        <Link to="/login" className="entry-goto-login__link">
           Login Here
         </Link>
       </div>

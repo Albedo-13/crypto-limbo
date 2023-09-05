@@ -9,6 +9,7 @@ import { LandingPage, TradePage, EntryPage } from "../pages";
 import { SignUp } from "../entry/SignUp";
 import { Login } from "../entry/Login";
 import { ScrollToTop } from "../../utils/ScrollToTop";
+import { ForgotPassword } from "../entry/ForgotPassword";
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
 
@@ -31,6 +32,7 @@ function Root() {
         <Route path="/trade" element={<TradePage />} />
         <Route path="/login" element={<EntryPage component={Login} />} />
         <Route path="/signup" element={<EntryPage component={SignUp} />} />
+        <Route path="/forgot-password" element={<EntryPage component={ForgotPassword} />} />
       </Routes>
     </>
   );
