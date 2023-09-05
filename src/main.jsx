@@ -19,17 +19,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 //! Landing Page (and general)
 // TODO: Link to NavLink in Header and Footer to color and disable active pages
-// TODO: sprays change width & height %'s on adapt screen sizes
-// TODO: replace lorem ipsum & fishtext with meaningful content
+// V TODO: replace lorem ipsum & fishtext with meaningful content
 // TODO: react-helmet (try to preload images only on landing page)
-// TODO: ChartJS.register in MarketTrends (dublicate? to top or other file?)
+// TODO: ChartJS.register (where to init?)
 // TODO: transitions (react transition group)
 // TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
 // TODO: update footer & header links (all links i mean)
-// TODO: a11y
 // TODO: mobile adaptation
+// TODO: sprays change width & height %'s on adapt screen sizes
 // TODO: explore a11y, adapt for screen readers
-// TODO: focus none on <a> button wrappers
+// TODO: block ability to go to new password creation using address link
+// (redirect on 1st if trying to go to 2nd. save email in Redux store?)
 
 // for graph
 // https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778
