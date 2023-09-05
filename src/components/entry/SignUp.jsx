@@ -90,9 +90,10 @@ export const SignUp = (props) => {
             {passwordIcon}
           </button>
         </div>
+        <p className="entry-form__password-hint">Password must be min 8 characters</p>
         <div className="entry-form__terms">
           <FormControlLabel
-            control={<Checkbox required classes={{ root: "MuiCheckbox-root" }} />}
+            control={<Checkbox required classes={{ root: "MuiCheckbox-terms-root" }} />}
             label="I agree to this Website"
           />
           <Link className="entry-form__terms-link" to="#">
@@ -102,7 +103,7 @@ export const SignUp = (props) => {
         <Button
           sx={{
             width: "100%",
-            marginTop: "40px",
+            marginTop: "28px",
           }}
           variant="contained"
           type="submit"
