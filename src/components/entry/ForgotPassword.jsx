@@ -14,7 +14,7 @@ export const ForgotPassword = () => {
     oneTimeCodeRef.current.value = "RA9AILVE";
   };
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     navigate("/new-password");
     console.log("ForgotPassword submitting");
@@ -23,7 +23,7 @@ export const ForgotPassword = () => {
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>
-      <form onSubmit={handleSubmit} className="entry-form">
+      <form onSubmit={onSubmit} className="entry-form">
         <InputLabel classes={{ root: "label-text" }} htmlFor="forgot-pwd-username">
           Email or Phone
         </InputLabel>

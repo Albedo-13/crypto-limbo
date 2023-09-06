@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useForm } from "react-hook-form";
 
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,8 +9,9 @@ import IconButton from "@mui/material/IconButton";
 export const Login = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
+  const { register, handleSubmit } = useForm();
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     navigate("/");
     console.log("Login submitting");
@@ -18,19 +20,18 @@ export const Login = (props) => {
   return (
     <>
       <h2 className="entry__title">Login</h2>
-      <form onSubmit={handleSubmit} className="entry-form">
+      <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <InputLabel classes={{ root: "label-text" }} htmlFor="login-username">
           Email or Phone
         </InputLabel>
         <TextField
           variant="outlined"
           classes={{ root: "input-text" }}
-          name="username"
+          {...register("username", { required: true })}
           type="text"
           id="login-username"
           autoComplete="username"
           placeholder="Type Here"
-          required
         />
         <InputLabel classes={{ root: "label-text" }} htmlFor="login-password">
           Password

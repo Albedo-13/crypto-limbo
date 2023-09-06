@@ -5,7 +5,6 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
-// TODO: replace inputs with MUI components!
 // TODO: react hook form (fields and forms validation)
 // TODO: same passwords check before submit (react hook form)
 // TODO: replace invisible email field with valid data (https://www.chromium.org/developers/design-documents/form-styles-that-chromium-understands/#email-first-sign-in-flow)
@@ -16,7 +15,7 @@ export const NewPassword = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     navigate("/");
     console.log("NewPassword submitting");
@@ -25,7 +24,7 @@ export const NewPassword = (props) => {
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>
-      <form onSubmit={handleSubmit} className="entry-form">
+      <form onSubmit={onSubmit} className="entry-form">
         <input className="hidden" name="username" type="text" defaultValue="user@example.com" />
         <InputLabel classes={{ root: "label-text" }} htmlFor="create-new-pwd">
           New Password

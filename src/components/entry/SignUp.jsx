@@ -11,7 +11,7 @@ export const SignUp = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     navigate("/");
     console.log("SignUp submitting");
@@ -20,7 +20,7 @@ export const SignUp = (props) => {
   return (
     <>
       <h2 className="entry__title">Sign Up</h2>
-      <form onSubmit={handleSubmit} className="entry-form">
+      <form onSubmit={onSubmit} className="entry-form">
         <div className="entry-form__wrapper">
           <div className="entry-form__wrapper-left">
             <InputLabel classes={{ root: "label-text label-text_m0" }} htmlFor="signup-given-name">
