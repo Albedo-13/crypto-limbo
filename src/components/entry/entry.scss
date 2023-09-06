@@ -26,7 +26,7 @@
   &__title {
     font-size: 36px;
     font-weight: 600;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 
   &-form {
@@ -41,53 +41,8 @@
       }
     }
 
-    &__label {
-      display: block;
-      text-align: left;
-      width: 100%;
-      font-size: 16px;
-      font-weight: 600;
-      color: $grey-4;
-      padding-bottom: 8px;
-      margin-top: 30px;
-
-      &:first-child {
-        margin: 0;
-      }
-    }
-
-    &__input {
-      display: block;
-      width: calc(100% - 29px);
-      background-color: transparent;
-      padding: 14px;
-      border: 1px solid rgba($white, 0.16);
-      border-radius: 4px;
-
-      &::placeholder {
-        color: $grey-6;
-        font-size: 16px;
-      }
-    }
-
     &__wrapper-password {
       position: relative;
-    }
-
-    &__end-adornment {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 0 20px 0 10px;
-      height: 100%;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-    }
-
-    &__code {
-      color: $primary-blue;
-      font-size: 16px;
     }
 
     &__password-hint {
@@ -98,6 +53,8 @@
     }
 
     &__terms {
+      display: flex;
+      align-items: center;
       text-align-last: left;
       margin-top: 18px;
 
@@ -105,7 +62,6 @@
         text-decoration: none;
         color: $grey-2;
         margin-left: 3px;
-        padding: 12px 12px 12px 0;
         font-size: 14px;
         font-weight: 600;
         line-height: 250%;
@@ -129,8 +85,7 @@
     }
   }
 
-  &-goto-login,
-  &-goto-signup {
+  &-change-entry {
     margin-top: 40px;
 
     &__text {
@@ -190,19 +145,30 @@
     color: $grey-4;
     font-weight: 600;
     padding-bottom: 5px;
-    margin-top: 30px;
+    margin-top: 25px;
+  }
+
+  &_m0 {
+    &.MuiFormLabel-root.MuiInputLabel-root {
+      margin-top: 0;
+    }
   }
 }
 
-.toggle-visibility {
-  transition: 0.15s all;
-
+.adornment-toggle-visibility {
   &:focus-visible {
     outline: 1px solid $white;
   }
 
   .MuiSvgIcon-root {
-    font-size: 28px;
+    font-size: 26px;
     color: $white;
+  }
+}
+
+.adornment-send-code {
+  &.MuiIconButton-root {
+    color: $primary-blue;
+    font-size: 16px;
   }
 }

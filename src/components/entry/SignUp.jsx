@@ -3,6 +3,9 @@ import { Button } from "@mui/material";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import IconButton from "@mui/material/IconButton";
 
 export const SignUp = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
@@ -20,11 +23,12 @@ export const SignUp = (props) => {
       <form onSubmit={handleSubmit} className="entry-form">
         <div className="entry-form__wrapper">
           <div className="entry-form__wrapper-left">
-            <label className="entry-form__label" htmlFor="signup-given-name">
+            <InputLabel classes={{ root: "label-text label-text_m0" }} htmlFor="signup-given-name">
               First Name
-            </label>
-            <input
-              className="entry-form__input"
+            </InputLabel>
+            <TextField
+              variant="outlined"
+              classes={{ root: "input-text" }}
               name="name"
               type="text"
               id="signup-given-name"
@@ -34,26 +38,27 @@ export const SignUp = (props) => {
             />
           </div>
           <div className="entry-form__wrapper-right">
-            <label className="entry-form__label" htmlFor="signup-family-name">
+            <InputLabel classes={{ root: "label-text label-text_m0" }} htmlFor="signup-family-name">
               Last Name
-            </label>
-            <input
-              className="entry-form__input"
+            </InputLabel>
+            <TextField
+              variant="outlined"
+              classes={{ root: "input-text" }}
               name="fname"
               type="text"
               id="signup-family-name"
               autoComplete="family-name"
-              autofill="family-name"
               placeholder="Type Here"
               required
             />
           </div>
         </div>
-        <label className="entry-form__label" htmlFor="signup-phone">
+        <InputLabel classes={{ root: "label-text" }} htmlFor="signup-phone">
           Phone
-        </label>
-        <input
-          className="entry-form__input"
+        </InputLabel>
+        <TextField
+          variant="outlined"
+          classes={{ root: "input-text" }}
           name="phone"
           type="text"
           id="signup-phone"
@@ -61,11 +66,12 @@ export const SignUp = (props) => {
           placeholder="Type Here"
           required
         />
-        <label className="entry-form__label" htmlFor="signup-email">
+        <InputLabel classes={{ root: "label-text" }} htmlFor="signup-email">
           Email
-        </label>
-        <input
-          className="entry-form__input"
+        </InputLabel>
+        <TextField
+          variant="outlined"
+          classes={{ root: "input-text" }}
           name="email"
           type="text"
           id="signup-email"
@@ -73,24 +79,30 @@ export const SignUp = (props) => {
           placeholder="Type Here"
           required
         />
-        <label className="entry-form__label" htmlFor="signup-password">
+        <InputLabel classes={{ root: "label-text" }} htmlFor="signup-password">
           Password
-        </label>
+        </InputLabel>
         <div className="entry-form__wrapper-password">
-          <input
-            className="entry-form__input"
+          <TextField
+            variant="outlined"
+            classes={{ root: "input-text" }}
             name="password"
             type="password"
             id="signup-password"
             autoComplete="new-password"
             placeholder="Type Here"
             required
-            ref={passwordRef}
+            inputRef={passwordRef}
+            InputProps={{
+              endAdornment: (
+                <IconButton classes={{ root: "adornment-toggle-visibility" }} onClick={togglePasswordVisibility}>
+                  {passwordIcon}
+                </IconButton>
+              ),
+            }}
           />
-          <button className="entry-form__end-adornment" type="button" onClick={togglePasswordVisibility}>
-            {passwordIcon}
-          </button>
         </div>
+
         <p className="entry-form__password-hint">Password must be min 8 characters</p>
         <div className="entry-form__terms">
           <FormControlLabel
@@ -115,9 +127,9 @@ export const SignUp = (props) => {
       <Link className="entry__password-recover" to="/forgot-password">
         Forgot Password?
       </Link>
-      <div className="entry-goto-login">
-        <p className="entry-goto-login__text">Have an Account?</p>
-        <Link to="/login" className="entry-goto-login__link">
+      <div className="entry-change-entry">
+        <p className="entry-change-entry__text">Have an Account?</p>
+        <Link to="/login" className="entry-change-entry__link">
           Login Here
         </Link>
       </div>

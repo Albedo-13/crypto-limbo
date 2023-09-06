@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import IconButton from "@mui/material/IconButton";
 
 // TODO: replace inputs with MUI components!
 // TODO: react hook form (fields and forms validation)
@@ -23,42 +26,44 @@ export const NewPassword = (props) => {
     <>
       <h2 className="entry__title">Forgot Password</h2>
       <form onSubmit={handleSubmit} className="entry-form">
-        <input
-          className="hidden"
-          name="username"
-          type="text"
-          defaultValue="user@example.com"
-        />
-        <label className="entry-form__label" htmlFor="new-pwd-create-pwd">
+        <input className="hidden" name="username" type="text" defaultValue="user@example.com" />
+        <InputLabel classes={{ root: "label-text" }} htmlFor="create-new-pwd">
           New Password
-        </label>
+        </InputLabel>
         <div className="entry-form__wrapper-password">
-          <input
-            className="entry-form__input"
+          <TextField
+            variant="outlined"
+            classes={{ root: "input-text" }}
             name="new-password"
             type="password"
-            id="new-pwd-create-pwd"
+            id="create-new-pwd"
             autoComplete="new-password"
             placeholder="XXXXXXXX"
             required
-            ref={passwordRef}
+            inputRef={passwordRef}
+            InputProps={{
+              endAdornment: (
+                <IconButton classes={{ root: "adornment-toggle-visibility" }} onClick={togglePasswordVisibility}>
+                  {passwordIcon}
+                </IconButton>
+              ),
+            }}
           />
-          <button className="entry-form__end-adornment" type="button" onClick={togglePasswordVisibility}>
-            {passwordIcon}
-          </button>
         </div>
-        <label className="entry-form__label" htmlFor="new-pwd-confirm-pwd">
+        <InputLabel classes={{ root: "label-text" }} htmlFor="confirm-new-pwd">
           Confirm New Password
-        </label>
-        <input
-          className="entry-form__input"
+        </InputLabel>
+        <TextField
+          variant="outlined"
+          classes={{ root: "input-text" }}
           name="confirm-password"
           type="password"
-          id="new-pwd-confirm-pwd"
+          id="confirm-new-pwd"
           autoComplete="new-password"
           placeholder="XXXXXXXX"
           required
         />
+
         <Button
           sx={{
             width: "100%",

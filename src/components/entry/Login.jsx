@@ -32,7 +32,6 @@ export const Login = (props) => {
           placeholder="Type Here"
           required
         />
-
         <InputLabel classes={{ root: "label-text" }} htmlFor="login-password">
           Password
         </InputLabel>
@@ -49,7 +48,7 @@ export const Login = (props) => {
             inputRef={passwordRef}
             InputProps={{
               endAdornment: (
-                <IconButton classes={{ root: "toggle-visibility" }} onClick={togglePasswordVisibility}>
+                <IconButton classes={{ root: "adornment-toggle-visibility" }} onClick={togglePasswordVisibility}>
                   {passwordIcon}
                 </IconButton>
               ),
@@ -71,9 +70,9 @@ export const Login = (props) => {
       <Link className="entry__password-recover" to="/forgot-password">
         Forgot Password?
       </Link>
-      <div className="entry-goto-signup">
-        <p className="entry-goto-signup__text">Don't Have an Account?</p>
-        <Link to="/signup" className="entry-goto-signup__link">
+      <div className="entry-change-entry">
+        <p className="entry-change-entry__text">Don't Have an Account?</p>
+        <Link to="/signup" className="entry-change-entry__link">
           Sign Up Here
         </Link>
       </div>

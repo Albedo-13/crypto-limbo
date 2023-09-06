@@ -105,6 +105,10 @@
   color: $grey-8;
 }
 
+.MuiCheckbox-root.MuiCheckbox-terms {
+  padding: 7px 9px 9px;
+}
+
 .MuiCheckbox-terms.Mui-checked .MuiSvgIcon-root {
   color: $primary-blue;
 }
