@@ -61,7 +61,7 @@
       width: calc(100% - 29px);
       background-color: transparent;
       padding: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba($white, 0.16);
       border-radius: 4px;
 
       &::placeholder {
@@ -155,5 +155,54 @@
   &__copyright {
     color: $grey-8;
     font-size: 16px;
+  }
+}
+
+.input-text {
+  &.MuiFormControl-root.MuiTextField-root {
+    border: 1px solid rgba($white, 0.16);
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .MuiInputBase-input.MuiOutlinedInput-input {
+    color: $white;
+    font-size: 16px;
+
+    &::placeholder {
+      color: $grey-6;
+      opacity: 1;
+      font-size: 16px;
+    }
+  }
+
+  .MuiInputBase-root.MuiOutlinedInput-root {
+    &.Mui-focused fieldset {
+      border: 1px solid $white;
+    }
+  }
+}
+
+.label-text {
+  &.MuiFormLabel-root.MuiInputLabel-root {
+    text-align-last: left;
+    font-size: 16px;
+    color: $grey-4;
+    font-weight: 600;
+    padding-bottom: 5px;
+    margin-top: 30px;
+  }
+}
+
+.toggle-visibility {
+  transition: 0.15s all;
+
+  &:focus-visible {
+    outline: 1px solid $white;
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 28px;
+    color: $white;
   }
 }

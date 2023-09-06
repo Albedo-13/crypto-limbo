@@ -12,6 +12,7 @@ export const withEntry = (BaseComponent) => {
     const passwordIcon = isVisible ? <VisibilityOn fontSize="small" /> : <VisibilityOff fontSize="small" />;
 
     const togglePasswordVisibility = () => {
+      console.log(passwordRef.current)
       passwordRef.current.type = isVisible ? "password" : "text";
       setIsVisible(() => !isVisible);
     };

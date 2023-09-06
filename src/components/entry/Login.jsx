@@ -1,6 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import IconButton from "@mui/material/IconButton";
+
 export const Login = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
@@ -15,11 +19,12 @@ export const Login = (props) => {
     <>
       <h2 className="entry__title">Login</h2>
       <form onSubmit={handleSubmit} className="entry-form">
-        <label className="entry-form__label" htmlFor="login-username">
+        <InputLabel classes={{ root: "label-text" }} htmlFor="login-username">
           Email or Phone
-        </label>
-        <input
-          className="entry-form__input"
+        </InputLabel>
+        <TextField
+          variant="outlined"
+          classes={{ root: "input-text" }}
           name="username"
           type="text"
           id="login-username"
@@ -27,24 +32,29 @@ export const Login = (props) => {
           placeholder="Type Here"
           required
         />
-        <label className="entry-form__label" htmlFor="login-password">
-          Password
-        </label>
 
+        <InputLabel classes={{ root: "label-text" }} htmlFor="login-password">
+          Password
+        </InputLabel>
         <div className="entry-form__wrapper-password">
-          <input
-            className="entry-form__input"
+          <TextField
+            variant="outlined"
+            classes={{ root: "input-text" }}
             name="password"
             type="password"
             id="login-password"
             autoComplete="current-password"
             placeholder="Type Here"
             required
-            ref={passwordRef}
+            inputRef={passwordRef}
+            InputProps={{
+              endAdornment: (
+                <IconButton classes={{ root: "toggle-visibility" }} onClick={togglePasswordVisibility}>
+                  {passwordIcon}
+                </IconButton>
+              ),
+            }}
           />
-          <button className="entry-form__end-adornment" type="button" onClick={togglePasswordVisibility}>
-            {passwordIcon}
-          </button>
         </div>
 
         <Button
