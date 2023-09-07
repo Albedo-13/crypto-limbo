@@ -11,6 +11,7 @@
       width: 35%;
       min-width: 350px;
       text-align: center;
+      position: relative;
     }
 
     &-right {
@@ -37,6 +38,7 @@
 
       &-left,
       &-right {
+        position: relative;
         width: calc(100% - 15px);
       }
     }
@@ -69,6 +71,17 @@
         &:hover {
           text-decoration: underline;
         }
+      }
+    }
+
+    &__helper {
+      color: $error;
+      position: absolute;
+      right: 0;
+      margin-top: 3px;
+
+      &::first-letter {
+        text-transform: capitalize;
       }
     }
   }
@@ -134,6 +147,20 @@
   .MuiInputBase-root.MuiOutlinedInput-root {
     &.Mui-focused fieldset {
       border: 1px solid $white;
+    }
+
+    &.Mui-focused.Mui-error {
+      outline: 1px solid $error;
+
+      fieldset {
+        border-color: $error;
+      }
+    }
+
+    &.Mui-error {
+      fieldset {
+        border-color: $error;
+      }
     }
   }
 }
