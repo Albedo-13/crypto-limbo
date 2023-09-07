@@ -107,6 +107,10 @@
 
 .MuiCheckbox-root.MuiCheckbox-terms {
   padding: 7px 9px 9px;
+
+  &.Mui-focusVisible {
+    outline: 1px solid $white;
+  }
 }
 
 .MuiCheckbox-terms.Mui-checked .MuiSvgIcon-root {

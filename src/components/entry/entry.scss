@@ -49,16 +49,13 @@
 
     &__password-hint {
       color: $grey-8;
-      font-size: 16px;
-      text-align: right;
-      margin-top: 10px;
     }
 
     &__terms {
       display: flex;
       align-items: center;
       text-align-last: left;
-      margin-top: 18px;
+      margin-top: 55px;
 
       &-link {
         text-decoration: none;
@@ -78,7 +75,7 @@
       color: $error;
       position: absolute;
       right: 0;
-      margin-top: 3px;
+      margin-top: 5px;
 
       &::first-letter {
         text-transform: capitalize;

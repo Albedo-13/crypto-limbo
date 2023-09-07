@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -7,20 +9,28 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
+import { signupSchema } from "./validationSchemas";
+
 export const SignUp = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(signupSchema) });
+
+  const onSubmit = (data) => {
     navigate("/");
-    console.log("SignUp submitting");
+    console.log("SignUp submitting", data);
   };
 
+  console.log(errors);
   return (
     <>
       <h2 className="entry__title">Sign Up</h2>
-      <form onSubmit={onSubmit} className="entry-form">
+      <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <div className="entry-form__wrapper">
           <div className="entry-form__wrapper-left">
             <InputLabel classes={{ root: "label-text label-text_m0" }} htmlFor="signup-given-name">
@@ -29,13 +39,14 @@ export const SignUp = (props) => {
             <TextField
               variant="outlined"
               classes={{ root: "input-text" }}
-              name="name"
+              {...register("name")}
               type="text"
               id="signup-given-name"
               autoComplete="given-name"
               placeholder="Type Here"
-              required
+              error={!!errors.name?.message}
             />
+            <div className="entry-form__helper">{errors.name?.message}</div>
           </div>
           <div className="entry-form__wrapper-right">
             <InputLabel classes={{ root: "label-text label-text_m0" }} htmlFor="signup-family-name">
@@ -44,13 +55,14 @@ export const SignUp = (props) => {
             <TextField
               variant="outlined"
               classes={{ root: "input-text" }}
-              name="fname"
+              {...register("fname")}
               type="text"
               id="signup-family-name"
               autoComplete="family-name"
               placeholder="Type Here"
-              required
+              error={!!errors.fname?.message}
             />
+            <div className="entry-form__helper">{errors.fname?.message}</div>
           </div>
         </div>
         <InputLabel classes={{ root: "label-text" }} htmlFor="signup-phone">
@@ -59,13 +71,14 @@ export const SignUp = (props) => {
         <TextField
           variant="outlined"
           classes={{ root: "input-text" }}
-          name="phone"
+          {...register("phone")}
           type="text"
           id="signup-phone"
           autoComplete="tel"
           placeholder="Type Here"
-          required
+          error={!!errors.phone?.message}
         />
+        <div className="entry-form__helper">{errors.phone?.message}</div>
         <InputLabel classes={{ root: "label-text" }} htmlFor="signup-email">
           Email
         </InputLabel>
@@ -73,12 +86,14 @@ export const SignUp = (props) => {
           variant="outlined"
           classes={{ root: "input-text" }}
           name="email"
+          {...register("email")}
           type="text"
           id="signup-email"
           autoComplete="email"
           placeholder="Type Here"
-          required
+          error={!!errors.email?.message}
         />
+        <div className="entry-form__helper">{errors.email?.message}</div>
         <InputLabel classes={{ root: "label-text" }} htmlFor="signup-password">
           Password
         </InputLabel>
@@ -87,11 +102,12 @@ export const SignUp = (props) => {
             variant="outlined"
             classes={{ root: "input-text" }}
             name="password"
+            {...register("password")}
             type="password"
             id="signup-password"
             autoComplete="new-password"
             placeholder="Type Here"
-            required
+            error={!!errors.password?.message}
             inputRef={passwordRef}
             InputProps={{
               endAdornment: (
@@ -102,8 +118,11 @@ export const SignUp = (props) => {
             }}
           />
         </div>
-
-        <p className="entry-form__password-hint">Password must be min 8 characters</p>
+        <div className="entry-form__helper">
+          {errors.password?.message ?? (
+            <div className="entry-form__password-hint">Password must be at least 8 characters</div>
+          )}
+        </div>
         <div className="entry-form__terms">
           <FormControlLabel
             control={<Checkbox required classes={{ root: "MuiCheckbox-terms" }} />}

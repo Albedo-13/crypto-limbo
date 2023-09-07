@@ -11,6 +11,10 @@ import IconButton from "@mui/material/IconButton";
 // TODO: block ability to go to new password creation using address link
 // (redirect on 1st if trying to go to 2nd. save email in Redux store?)
 
+//! https://mui.com/material-ui/react-text-field/#validation
+//! https://github.com/jquense/yup/issues/743
+//! https://react-hook-form.com/get-started
+
 export const NewPassword = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();

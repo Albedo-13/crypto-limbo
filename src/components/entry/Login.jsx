@@ -7,11 +7,7 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
-import { validationSchema } from "./validationSchema";
-
-//! https://mui.com/material-ui/react-text-field/#validation
-//! https://github.com/jquense/yup/issues/743
-//! https://react-hook-form.com/get-started
+import { loginSchema } from "./validationSchemas";
 
 export const Login = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
@@ -21,7 +17,7 @@ export const Login = (props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(validationSchema) });
+  } = useForm({ resolver: yupResolver(loginSchema) });
 
   const onSubmit = (data) => {
     navigate("/");
@@ -39,7 +35,7 @@ export const Login = (props) => {
         <TextField
           variant="outlined"
           classes={{ root: "input-text" }}
-          {...register("username", { required: true })}
+          {...register("username")}
           type="text"
           id="login-username"
           autoComplete="username"
