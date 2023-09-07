@@ -2,11 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
+
+import { validationSchema } from "./validationSchema";
 
 //! https://mui.com/material-ui/react-text-field/#validation
 //! https://github.com/jquense/yup/issues/743
@@ -16,17 +17,11 @@ export const Login = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
 
-  const schema = yup
-    .object({ 
-      username: yup.string().email().required(),
-      // age: yup.number().positive().integer().required(),
-    })
-    .required();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = (data) => {
     navigate("/");
@@ -59,12 +54,12 @@ export const Login = (props) => {
           <TextField
             variant="outlined"
             classes={{ root: "input-text" }}
-            name="password"
+            {...register("password", { required: true })}
             type="password"
             id="login-password"
             autoComplete="current-password"
             placeholder="Type Here"
-            required
+            error={!!errors.password?.message}
             inputRef={passwordRef}
             InputProps={{
               endAdornment: (
@@ -74,6 +69,7 @@ export const Login = (props) => {
               ),
             }}
           />
+          <div className="entry-form__helper">{errors.password?.message}</div>
         </div>
 
         <Button
