@@ -1,21 +1,33 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
+import { forgotPasswordSchema } from "./validationSchemas";
+
 export const ForgotPassword = () => {
   const oneTimeCodeRef = useRef(null);
   const navigate = useNavigate();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(forgotPasswordSchema) });
+
   const sendCode = () => {
-    oneTimeCodeRef.current.value = "RA9AILVE";
+    if (!errors.username?.message) {
+      console.log(errors.username?.message);
+      oneTimeCodeRef.current.value = "RA9AILVE";
+    }
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
     navigate("/new-password");
     console.log("ForgotPassword submitting");
   };
@@ -23,7 +35,7 @@ export const ForgotPassword = () => {
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>
-      <form onSubmit={onSubmit} className="entry-form">
+      <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <InputLabel classes={{ root: "label-text" }} htmlFor="forgot-pwd-username">
           Email or Phone
         </InputLabel>
@@ -31,12 +43,12 @@ export const ForgotPassword = () => {
           <TextField
             variant="outlined"
             classes={{ root: "input-text" }}
-            name="username"
+            {...register("username")}
             type="text"
             id="forgot-pwd-username"
             autoComplete="username"
             placeholder="Type Here"
-            required
+            error={!!errors.username?.message}
             InputProps={{
               endAdornment: (
                 <IconButton classes={{ root: "adornment-send-code" }} onClick={sendCode}>
@@ -46,6 +58,8 @@ export const ForgotPassword = () => {
             }}
           />
         </div>
+        <div className="entry-form__helper">{errors.username?.message}</div>
+
         <InputLabel classes={{ root: "label-text" }} htmlFor="forgot-pwd-code">
           Verification Code
         </InputLabel>
@@ -53,13 +67,15 @@ export const ForgotPassword = () => {
           variant="outlined"
           classes={{ root: "input-text" }}
           name="one-time-code"
+          {...register("oneTimeCode")}
           type="text"
           id="forgot-pwd-code"
           autoComplete="one-time-code"
           placeholder="Type Here"
-          required
+          error={!!errors.oneTimeCode?.message}
           inputRef={oneTimeCodeRef}
         />
+        <div className="entry-form__helper">{errors.oneTimeCode?.message}</div>
 
         <Button
           sx={{

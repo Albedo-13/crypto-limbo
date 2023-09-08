@@ -42,6 +42,21 @@ export const signupSchema = yup
   })
   .required();
 
+export const forgotPasswordSchema = yup
+  .object({
+    username: yup
+      .string()
+      .required("Field is required")
+      .test('emailOrPhoneValidation', 'Email / Phone is invalid', (value) => {
+        return validateEmail(value) || validatePhone(value);
+      }),
+      oneTimeCode: yup
+      .string()
+      .min(6, "Must be at least 6 characters")
+      .max(9, "Must be max 9 characters"),
+  })
+  .required();
+
 const validateEmail = (email) => {
   return yup.string().email().isValidSync(email);
 };
