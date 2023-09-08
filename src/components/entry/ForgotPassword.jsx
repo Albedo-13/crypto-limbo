@@ -21,6 +21,7 @@ export const ForgotPassword = () => {
   } = useForm({ resolver: yupResolver(forgotPasswordSchema) });
 
   const sendCode = () => {
+    // TODO: add emailorphone field check for valid data
     if (!errors.username?.message) {
       console.log(errors.username?.message);
       oneTimeCodeRef.current.value = "RA9AILVE";
