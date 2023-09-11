@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Helmet } from "react-helmet";
 
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -30,6 +31,10 @@ export const NewPassword = (props) => {
 
   return (
     <>
+      <Helmet>
+        <title>Create new password | Crypto Limbo</title>
+      </Helmet>
+
       <h2 className="entry__title">Forgot Password</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <input className="hidden" name="username" autoComplete="username" type="text" defaultValue="user@example.com" />

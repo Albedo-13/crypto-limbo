@@ -9,6 +9,8 @@ import IconButton from "@mui/material/IconButton";
 
 import { loginSchema } from "./validationSchemas";
 
+import { Helmet } from "react-helmet";
+
 export const Login = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
@@ -26,6 +28,10 @@ export const Login = (props) => {
 
   return (
     <>
+      <Helmet>
+        <title>Log In | Crypto Limbo</title>
+      </Helmet>
+
       <h2 className="entry__title">Login</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <InputLabel classes={{ root: "label-text" }} htmlFor="login-username">

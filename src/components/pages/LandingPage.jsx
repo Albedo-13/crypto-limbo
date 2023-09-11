@@ -1,3 +1,5 @@
+import { Helmet } from "react-helmet";
+
 import { Header } from "../header/Header";
 import { Welcome } from "../welcome/Welcome";
 import { MarketTrends } from "../marketTrends/MarketTrends";
@@ -11,6 +13,11 @@ import { Footer } from "../footer/Footer";
 export const LandingPage = () => {
   return (
     <>
+      <Helmet>
+        <title>Crypto Limbo</title>
+        <link rel="preload" as="image" href="/assets/images/notebook.webp" />
+      </Helmet>
+
       <Header />
       <main>
         <Welcome />

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Helmet } from "react-helmet";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -37,6 +38,10 @@ export const ForgotPassword = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Password recovery | Crypto Limbo</title>
+      </Helmet>
+
       <h2 className="entry__title">Forgot Password</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <InputLabel classes={{ root: "label-text" }} htmlFor="forgot-pwd-username">

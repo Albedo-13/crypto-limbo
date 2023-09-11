@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Helmet } from "react-helmet";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -28,6 +29,10 @@ export const SignUp = (props) => {
 
   return (
     <>
+      <Helmet>
+        <title>Sign Up | Crypto Limbo</title>
+      </Helmet>
+
       <h2 className="entry__title">Sign Up</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <div className="entry-form__wrapper">
