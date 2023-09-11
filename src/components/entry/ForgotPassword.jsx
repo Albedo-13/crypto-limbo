@@ -35,7 +35,6 @@ export const ForgotPassword = () => {
     console.log("ForgotPassword submitting", data);
   };
 
-  console.log(errors);
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>

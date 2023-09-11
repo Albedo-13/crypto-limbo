@@ -26,7 +26,6 @@ export const SignUp = (props) => {
     console.log("SignUp submitting", data);
   };
 
-  console.log(errors);
   return (
     <>
       <h2 className="entry__title">Sign Up</h2>

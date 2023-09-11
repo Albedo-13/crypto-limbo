@@ -12,7 +12,7 @@ export const loginSchema = yup
       .string()
       .required("Field is required")
       .min(8)
-      .max(25),
+      .max(32),
   })
   .required();
 
@@ -38,7 +38,13 @@ export const signupSchema = yup
       .string()
       .required("Field is required")
       .min(8)
-      .max(25),
+      .max(25)
+      .test("isContainLettersValidation", "Requires both lower & upper case letter", (value) => {
+        return validatePasswordLetters(value);
+      })
+      .test("isContainDigitValidation", "Requires at least 1 digit", (value) => {
+        return validatePasswordDigits(value);
+      }),
   })
   .required();
 
@@ -63,12 +69,18 @@ export const newPasswordSchema = yup
       .string()
       .required("Field is required")
       .min(8, "Password must be at least 8 characters")
-      .max(32, "Must be max 32 characters"),
+      .max(32, "Must be max 32 characters")
+      .test("isContainLettersValidation", "Requires both lower & upper case letter", (value) => {
+        return validatePasswordLetters(value);
+      })
+      .test("isContainDigitValidation", "Requires at least 1 digit", (value) => {
+        return validatePasswordDigits(value);
+      }),
 
     confirmPassword: yup
       .string()
       .required("Field is required")
-      .test("confirmPasswordValidation", "Passwords don't match", (value, context) => {
+      .test("isPasswordsEqualValidation", "Passwords don't match", (value, context) => {
         return value === context.parent.newPassword;
       }),
   })
@@ -84,3 +96,18 @@ const validatePhone = (phone) => {
     .matches(/^[+]?[(]?\d{3}\)?[-\s.]?\d{3}[-\s.]?\d{4,6}$/)
     .isValidSync(phone);
 };
+
+const validatePasswordLetters = (password) => {
+  return yup
+    .string()
+    .matches(/[A-Z]+/)
+    .matches(/[a-z]+/)
+    .isValidSync(password);
+}
+
+const validatePasswordDigits = (password) => {
+  return yup
+    .string()
+    .matches(/[0-9]+/)
+    .isValidSync(password);
+}

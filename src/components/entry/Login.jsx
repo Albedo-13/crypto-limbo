@@ -24,7 +24,6 @@ export const Login = (props) => {
     console.log("Login submitting", data);
   };
 
-  console.log(errors);
   return (
     <>
       <h2 className="entry__title">Login</h2>

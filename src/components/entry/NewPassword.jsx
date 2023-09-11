@@ -9,18 +9,9 @@ import IconButton from "@mui/material/IconButton";
 
 import { newPasswordSchema } from "./validationSchemas";
 
-// TODO: password validation (letter, digit, Uppercase letter, min 8 chars)
-// TODO: react hook form (fields and forms validation)
-// TODO: same passwords check before submit (react hook form)
-// TODO: clear console.logs
-
 // TODO: replace invisible email field with valid data (https://www.chromium.org/developers/design-documents/form-styles-that-chromium-understands/#email-first-sign-in-flow)
 // TODO: block ability to go to new password creation using address field
 // (redirect on 1st if trying to go to 2nd. save email in Redux store?)
-
-//! https://mui.com/material-ui/react-text-field/#validation
-//! https://github.com/jquense/yup/issues/743
-//! https://react-hook-form.com/get-started
 
 export const NewPassword = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
@@ -37,7 +28,6 @@ export const NewPassword = (props) => {
     console.log("NewPassword submitting", data);
   };
 
-  console.log(errors);
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>
