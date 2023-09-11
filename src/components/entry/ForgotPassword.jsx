@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
@@ -17,22 +17,25 @@ export const ForgotPassword = () => {
   const {
     register,
     handleSubmit,
+    trigger,
     formState: { errors },
   } = useForm({ resolver: yupResolver(forgotPasswordSchema) });
 
-  const sendCode = () => {
-    // TODO: add emailorphone field check for valid data
-    if (!errors.username?.message) {
-      console.log(errors.username?.message);
+  const sendCode = async () => {
+    const isUserValid = await trigger("username", { shouldFocus: true });
+
+    if (isUserValid) {
       oneTimeCodeRef.current.value = "RA9AILVE";
+      oneTimeCodeRef.current.focus();
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
     navigate("/new-password");
-    console.log("ForgotPassword submitting");
+    console.log("ForgotPassword submitting", data);
   };
 
+  console.log(errors);
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>
