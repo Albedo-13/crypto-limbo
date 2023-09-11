@@ -1,14 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
+import { newPasswordSchema } from "./validationSchemas";
+
+// TODO: password validation (letter, digit, Uppercase letter, min 8 chars)
 // TODO: react hook form (fields and forms validation)
 // TODO: same passwords check before submit (react hook form)
+// TODO: clear console.logs
+
 // TODO: replace invisible email field with valid data (https://www.chromium.org/developers/design-documents/form-styles-that-chromium-understands/#email-first-sign-in-flow)
-// TODO: block ability to go to new password creation using address link
+// TODO: block ability to go to new password creation using address field
 // (redirect on 1st if trying to go to 2nd. save email in Redux store?)
 
 //! https://mui.com/material-ui/react-text-field/#validation
@@ -19,17 +26,23 @@ export const NewPassword = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(newPasswordSchema) });
+
+  const onSubmit = (data) => {
     navigate("/");
-    console.log("NewPassword submitting");
+    console.log("NewPassword submitting", data);
   };
 
+  console.log(errors);
   return (
     <>
       <h2 className="entry__title">Forgot Password</h2>
-      <form onSubmit={onSubmit} className="entry-form">
-        <input className="hidden" name="username" type="text" defaultValue="user@example.com" />
+      <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
+        <input className="hidden" name="username" autoComplete="username" type="text" defaultValue="user@example.com" />
         <InputLabel classes={{ root: "label-text" }} htmlFor="create-new-pwd">
           New Password
         </InputLabel>
@@ -37,12 +50,12 @@ export const NewPassword = (props) => {
           <TextField
             variant="outlined"
             classes={{ root: "input-text" }}
-            name="new-password"
+            {...register("newPassword")}
             type="password"
             id="create-new-pwd"
             autoComplete="new-password"
             placeholder="XXXXXXXX"
-            required
+            error={!!errors.newPassword?.message}
             inputRef={passwordRef}
             InputProps={{
               endAdornment: (
@@ -53,19 +66,26 @@ export const NewPassword = (props) => {
             }}
           />
         </div>
+        <div className="entry-form__helper">
+          {errors.newPassword?.message ?? (
+            <div className="entry-form__password-hint">Password must be at least 8 characters</div>
+          )}
+        </div>
+
         <InputLabel classes={{ root: "label-text" }} htmlFor="confirm-new-pwd">
           Confirm New Password
         </InputLabel>
         <TextField
           variant="outlined"
           classes={{ root: "input-text" }}
-          name="confirm-password"
+          {...register("confirmPassword")}
           type="password"
           id="confirm-new-pwd"
           autoComplete="new-password"
           placeholder="XXXXXXXX"
-          required
+          error={!!errors.confirmPassword?.message}
         />
+        <div className="entry-form__helper">{errors.confirmPassword?.message}</div>
 
         <Button
           sx={{

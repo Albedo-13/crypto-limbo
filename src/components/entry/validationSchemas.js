@@ -5,7 +5,7 @@ export const loginSchema = yup
     username: yup
       .string()
       .required("Field is required")
-      .test('emailOrPhoneValidation', 'Email / Phone is invalid', (value) => {
+      .test("emailOrPhoneValidation", "Email / Phone is invalid", (value) => {
         return validateEmail(value) || validatePhone(value);
       }),
     password: yup
@@ -25,7 +25,7 @@ export const signupSchema = yup
     fname: yup
       .string()
       .min(2, "Must be at least 2 characters")
-      .max(25, "Must be max 25 characters"),
+      .max(32, "Must be max 32 characters"),
     phone: yup
       .string()
       .required("Phone is required")
@@ -47,13 +47,30 @@ export const forgotPasswordSchema = yup
     username: yup
       .string()
       .required("Field is required")
-      .test('emailOrPhoneValidation', 'Email / Phone is invalid', (value) => {
+      .test("emailOrPhoneValidation", "Email / Phone is invalid", (value) => {
         return validateEmail(value) || validatePhone(value);
       }),
-      oneTimeCode: yup
+    oneTimeCode: yup
       .string()
       .min(6, "Must be at least 6 characters")
       .max(9, "Must be max 9 characters"),
+  })
+  .required();
+
+export const newPasswordSchema = yup
+  .object({
+    newPassword: yup
+      .string()
+      .required("Field is required")
+      .min(8, "Password must be at least 8 characters")
+      .max(32, "Must be max 32 characters"),
+
+    confirmPassword: yup
+      .string()
+      .required("Field is required")
+      .test("confirmPasswordValidation", "Passwords don't match", (value, context) => {
+        return value === context.parent.newPassword;
+      }),
   })
   .required();
 
@@ -62,5 +79,8 @@ const validateEmail = (email) => {
 };
 
 const validatePhone = (phone) => {
-  return yup.string().matches(/^[+]?[(]?\d{3}\)?[-\s.]?\d{3}[-\s.]?\d{4,6}$/).isValidSync(phone);
+  return yup
+    .string()
+    .matches(/^[+]?[(]?\d{3}\)?[-\s.]?\d{3}[-\s.]?\d{4,6}$/)
+    .isValidSync(phone);
 };
