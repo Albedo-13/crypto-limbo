@@ -16,7 +16,19 @@ import { visuallyHidden } from "@mui/utils";
 import "./marketTable.scss";
 
 // TODO: sorting algo to utils
-// TODO: save bookmarks (redux? firebase?)
+// TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
+
+// TODO на завтра:
+// 1: посадить на реальные данные из стора (пока что обрезанные до 10 элементов)
+// 2: подгрузка элементов по кнопке (эдж кейс на 100 элементов - убрать кнопку)
+// 2.5: bg spray))
+// 3: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
+// 4: поисковая строка, проверить правильность поиска (arr.filter), проверить синергию с
+// другим функционалом таблицы (фильтрами и тд).
+// 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
+// 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
+// сбилдить и посмотреть нагрузку
+
 function createData(name, price, change, volume, high, marketCap, action) {
   return { name, price, change, volume, high, marketCap, action };
 }
