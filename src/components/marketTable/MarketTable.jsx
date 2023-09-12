@@ -16,9 +16,9 @@ import { visuallyHidden } from "@mui/utils";
 import "./marketTable.scss";
 
 // TODO: sorting algo to utils
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+// TODO: save bookmarks (redux? firebase?)
+function createData(name, price, change, volume, high, marketCap, action) {
+  return { name, price, change, volume, high, marketCap, action };
 }
 
 const headCells = [
@@ -26,40 +26,54 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Dessert (100g serving)",
+    label: "Coin Name",
   },
   {
-    id: "calories",
+    id: "price",
     numeric: true,
     disablePadding: false,
-    label: "Calories",
+    label: "Price",
   },
   {
-    id: "fat",
+    id: "change",
     numeric: true,
     disablePadding: false,
-    label: "Fat (g)",
+    label: "24h Change",
   },
   {
-    id: "carbs",
+    id: "volume",
     numeric: true,
     disablePadding: false,
-    label: "Carbs (g)",
+    label: "24h Volume",
   },
   {
-    id: "protein",
+    id: "high",
     numeric: true,
     disablePadding: false,
-    label: "Protein (g)",
+    label: "24h High",
+  },
+  {
+    id: "marketCap",
+    numeric: true,
+    disablePadding: false,
+    label: "Market Cap",
+  },
+  {
+    id: "action",
+    numeric: true,
+    disablePadding: false,
+    label: "Action",
   },
 ];
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
+  createData("bitcoin", 27000, 5.76, 221412414, 4124124, 363636363, "Trade"),
+  createData("etherium", 5000, -0.26, 32112414, 3214122, 321312322, "Trade"),
+  createData("test", 1000, 1, 111111, 111111, 111111, "Trade"),
+  createData("test1", 3000, 1, 111111, 111111, 111111, "Trade"),
+  createData("test2", 2000, 1, 111111, 111111, 111111, "Trade"),
+  createData("test3", 500, 1, 111111, 111111, 111111, "Trade"),
+  createData("test4", 1500, 1, 111111, 111111, 111111, "Trade"),
 ];
 
 function EnhancedTableHead(props) {
@@ -134,7 +148,7 @@ export const MarketTable = () => {
         {/* //! classes should be base start point */}
         {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead
               // numSelected={selected.length}
               order={order}
@@ -148,10 +162,12 @@ export const MarketTable = () => {
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein}</TableCell>
+                  <TableCell align="right">{row.price}</TableCell>
+                  <TableCell align="right">{row.change}</TableCell>
+                  <TableCell align="right">{row.volume}</TableCell>
+                  <TableCell align="right">{row.high}</TableCell>
+                  <TableCell align="right">{row.marketCap}</TableCell>
+                  <TableCell align="right">{row.action}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
