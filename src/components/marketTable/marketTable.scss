@@ -1,0 +1,51 @@
+@import "../../styles/_variables.scss";
+
+.market-table {
+  &__ {
+  }
+}
+
+.MuiPaper-root.MuiTableContainer-root {
+  background-color: transparent;
+
+  .MuiTableHead-root {
+    .MuiTableCell-root {
+      color: $grey-8;
+
+      .MuiButtonBase-root.MuiTableSortLabel-root {
+        &:hover {
+          color: green;
+
+          .MuiSvgIcon-root {
+            color: green;
+
+          }
+        }
+
+        &.Mui-active {
+          color: red;
+
+          &:hover {
+            color: green;
+  
+            .MuiSvgIcon-root {
+              color: green;
+  
+            }
+          }
+        }
+
+        .MuiSvgIcon-root {
+          color: red;
+        }
+      }
+    }
+  }
+
+  .MuiTableRow-root {
+  }
+
+  .MuiTableCell-root {
+    color: white;
+  }
+}
