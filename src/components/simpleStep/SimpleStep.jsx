@@ -41,7 +41,7 @@ const itemsSettings = [
     title: "Start Trading",
     text: "Finally, you can start tracking and trading any cryptocurrencies on the way to your lambo. Buy cheaper, sell more expensive. Everything is in your hands!",
     buttonText: "Start Now",
-    link: "/trade",
+    link: "/market",
   },
 ];
 

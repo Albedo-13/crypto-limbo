@@ -2,34 +2,21 @@ import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import classNames from "classnames";
 
 import NorthEastIcon from "@mui/icons-material/NorthEast";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
+import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
+
 import "./welcome.scss";
-import "../../styles/_sprays.scss";
 
 export const Welcome = () => {
   const currencies = useSelector((state) => state.currencies);
 
   const renderMarket = (currencies) => {
     return currencies.map((currency) => {
-      const isPercentageIncreasing = currency.price_change_percentage_24h >= 0;
-
-      const TrendingIcon = isPercentageIncreasing ? (
-        <TrendingUpIcon sx={{ fontSize: "18px" }} className="success" />
-      ) : (
-        <TrendingDownIcon sx={{ fontSize: "18px" }} className="error" />
-      );
-
-      const priceChangeStyles = classNames("welcome-market-item__price-change", {
-        success: isPercentageIncreasing,
-        error: !isPercentageIncreasing,
-      });
+      const { priceChangeStyles, TrendingIcon } = trendingPriceChange(currency, "welcome-market-item__price-change");
 
       return (
         <div key={currency.id} className="welcome-market-item">
@@ -68,7 +55,7 @@ export const Welcome = () => {
                 variant="contained"
                 endIcon={<NorthEastIcon size="small" />}
                 component={Link}
-                to="/trade"
+                to="/market"
               >
                 Start Now
               </Button>

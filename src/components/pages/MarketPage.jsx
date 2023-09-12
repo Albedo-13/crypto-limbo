@@ -3,18 +3,18 @@ import { Helmet } from "react-helmet";
 
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
-import { MarketTrends } from "../marketTrends/MarketTrends";
+import { FeaturedCoins } from "../marketTrends/FeaturedCoins";
 
-export const TradePage = () => {
+export const MarketPage = () => {
   return (
     <>
       <Helmet>
-        <title>Trade | Crypto Limbo</title>
+        <title>Market | Crypto Limbo</title>
       </Helmet>
 
       <Header />
       <main>
-        <MarketTrends />
+        <FeaturedCoins />
       </main>
       <Footer />
       {/* //! remove bottom block on production */}

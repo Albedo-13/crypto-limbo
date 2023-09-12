@@ -6,7 +6,7 @@ import "./App.scss";
 
 import { ScrollToTop } from "../../utils/ScrollToTop";
 import { fetchCurrencies } from "../../slices/currenciesSlice";
-import { LandingPage, TradePage, EntryPage } from "../pages";
+import { LandingPage, MarketPage, EntryPage } from "../pages";
 import { SignUp } from "../entry/SignUp";
 import { Login } from "../entry/Login";
 import { ForgotPassword } from "../entry/ForgotPassword";
@@ -30,7 +30,7 @@ function Root() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/trade" element={<TradePage />} />
+        <Route path="/market" element={<MarketPage />} />
         <Route path="/login" element={<EntryPage component={Login} />} />
         <Route path="/signup" element={<EntryPage component={SignUp} />} />
         <Route path="/forgot-password" element={<EntryPage component={ForgotPassword} />} />

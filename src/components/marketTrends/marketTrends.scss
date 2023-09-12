@@ -100,3 +100,16 @@
     text-align: center;
   }
 }
+
+.featured-coins {
+  &__title {
+    color: $white;
+    font-size: 46px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__header-wrapper {
+    text-align: center;
+  }
+}

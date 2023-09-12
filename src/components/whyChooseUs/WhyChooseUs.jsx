@@ -50,7 +50,7 @@ export const WhyChooseUs = () => {
               }}
               endIcon={<NorthEastIcon />}
               component={Link}
-              to="/trade"
+              to="/market"
             >
               Start Now
             </Button>

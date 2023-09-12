@@ -14,8 +14,9 @@ import {
   fetchDefi,
   fetchMetaverse,
 } from "../../slices/marketTrendsFiltersSlice";
-import { MarketTrendsItem } from "./MarketTrendsItem";
+
 import Spinner from "../spinner/Spinner";
+import { MarketTrendsItem } from "./MarketTrendsItem";
 
 export const MarketTrends = () => {
   const currencies = useSelector((state) => state.currencies);
@@ -62,7 +63,7 @@ export const MarketTrends = () => {
     });
   };
 
-  const renderMarket = (currencies) => {
+  const renderMarketCards = (currencies) => {
     const market = currencies.filteredCurrencies.length > 0 ? currencies.filteredCurrencies.slice(0, 6) : [];
     return market.map((currency) => {
       return <MarketTrendsItem key={currency.id} currency={currency} />;
@@ -74,8 +75,9 @@ export const MarketTrends = () => {
     currencies.loadingStatus === "loading" || filters.loadingStatus === "loading" ? (
       <Spinner size={280} />
     ) : (
-      renderMarket(filters)
+      renderMarketCards(filters)
     );
+
   return (
     <section className="market-trends">
       <div className="container">
@@ -91,7 +93,7 @@ export const MarketTrends = () => {
             sx={{ width: 240 }}
             endIcon={<NorthEastIcon size="small" />}
             component={Link}
-            to="/trade"
+            to="/market"
           >
             See All Market
           </Button>

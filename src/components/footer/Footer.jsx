@@ -90,7 +90,7 @@ export const Footer = () => {
               <Link to="#">Referral</Link>
             </div>
             <div className="footer-links__link">
-              <NavLink to="/trade">Market</NavLink>
+              <NavLink to="/market">Market</NavLink>
             </div>
             <div className="footer-links__link">
               <Link to="#">Affiliate Program</Link>

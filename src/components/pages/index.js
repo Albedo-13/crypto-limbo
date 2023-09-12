@@ -1,9 +1,9 @@
 import { LandingPage } from "../pages/LandingPage";
-import { TradePage } from "../pages/TradePage";
+import { MarketPage } from "../pages/MarketPage";
 import { EntryPage } from "../pages/EntryPage";
 
 export {
   LandingPage,
-  TradePage,
+  MarketPage,
   EntryPage
 };
