@@ -15,6 +15,8 @@ import { visuallyHidden } from "@mui/utils";
 
 import "./marketTable.scss";
 
+// TODO: sorting algo to utils
+
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
@@ -24,7 +26,7 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Dessert (100g serving)",
+    label: "Dessert (100g serving)",
   },
   {
     id: "calories",
@@ -36,19 +38,19 @@ const headCells = [
     id: "fat",
     numeric: true,
     disablePadding: false,
-    label: "Fat (g)",
+    label: "Fat (g)",
   },
   {
     id: "carbs",
     numeric: true,
     disablePadding: false,
-    label: "Carbs (g)",
+    label: "Carbs (g)",
   },
   {
     id: "protein",
     numeric: true,
     disablePadding: false,
-    label: "Protein (g)",
+    label: "Protein (g)",
   },
 ];
 
@@ -61,10 +63,7 @@ const rows = [
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-  const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
-  };
+  const { order, orderBy, onRequestSort } = props;
 
   return (
     <TableHead>
@@ -79,7 +78,7 @@ function EnhancedTableHead(props) {
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
+              onClick={() => onRequestSort(headCell.id)}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
@@ -97,29 +96,38 @@ function EnhancedTableHead(props) {
 
 export const MarketTable = () => {
   const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = useState("name");
-  const [selected, setSelected] = useState([]);
-  const [dense, setDense] = useState(false);
-  
+  const [orderBy, setOrderBy] = useState("calories");
+
+  console.log(order, orderBy);
+  // const [selected, setSelected] = useState([]);
+  // const [dense, setDense] = useState(false);
+
   //! remove
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  // const [page, setPage] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelected = rows.map((n) => n.name);
-      setSelected(newSelected);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
+  const handleRequestSort = (headerId) => {
+    const isAsc = orderBy === headerId && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
+    setOrderBy(headerId);
   };
 
+  const comparator = (a, b, orderBy, modifier) => {
+    if (a[orderBy] <= b[orderBy]) {
+      return -1 * modifier;
+    }
+    if (a[orderBy] > b[orderBy]) {
+      return 1 * modifier;
+    }
+    return 0;
+  };
+
+  const sortRows = () => {
+    const modifier = order === "desc" ? -1 : 1;
+    return rows.sort((a, b) => comparator(a, b, orderBy, modifier));
+  };
+
+  const sortedRows = sortRows();
   return (
     <section className="market-table">
       <div className="container">
@@ -128,15 +136,14 @@ export const MarketTable = () => {
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <EnhancedTableHead
-              numSelected={selected.length}
+              // numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
             <TableBody>
-              {rows.map((row) => (
+              {sortedRows.map((row) => (
                 <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell component="th" scope="row">
                     {row.name}
