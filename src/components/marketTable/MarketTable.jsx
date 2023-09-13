@@ -128,7 +128,7 @@ export const MarketTableRow = ({ row }) => {
   const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
 
   return (
-    <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+    <TableRow>
       <TableCell component="th" scope="row">
         {row.name}
       </TableCell>
@@ -151,8 +151,8 @@ export const MarketTable = () => {
   //! TODO: memoize useselector
   const data = useSelector((state) => state.currencies.data);
 
-  const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = useState("calories");
+  const [order, setOrder] = useState("desc");
+  const [orderBy, setOrderBy] = useState("market_cap");
 
   const [displayedRowsNumber, setDisplayedRowsNumber] = useState(16);
   const incDisplayedRowsBy = 16;

@@ -13,7 +13,7 @@
       margin-right: 3px;
     }
   }
-  
+
   &__dollar-prefix {
     &::before {
       content: "$ ";
@@ -31,40 +31,51 @@
   background-color: transparent;
 
   .MuiTableHead-root {
+    .MuiTableRow-root th,
+    .MuiTableRow-root td {
+      padding-top: 0px;
+      padding-bottom: 5px;
+    }
+
     .MuiTableCell-root {
       color: $grey-8;
 
       .MuiButtonBase-root.MuiTableSortLabel-root {
         &:hover {
-          color: green;
+          color: $primary-blue-dark;
 
           .MuiSvgIcon-root {
-            color: green;
-
+            color: $primary-blue-dark;
           }
         }
 
         &.Mui-active {
-          color: red;
+          color: $primary-blue;
 
           &:hover {
-            color: green;
-  
+            color: $primary-blue-dark;
+
             .MuiSvgIcon-root {
-              color: green;
-  
+              color: $primary-blue-dark;
             }
           }
         }
 
         .MuiSvgIcon-root {
-          color: red;
+          color: $primary-blue;;
         }
       }
     }
   }
 
-  .MuiTableRow-root {
+  // "&:last-child td, &:last-child th": { border: 0 }
+  .MuiTableRow-root th,
+  .MuiTableRow-root td {
+    // border: 0;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 
   .MuiTableCell-root {
