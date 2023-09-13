@@ -32,6 +32,7 @@ import "./marketTable.scss";
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку, убрать console logs
+// 7: transition group
 
 const headCells = [
   {
@@ -148,13 +149,13 @@ export const MarketTableRow = ({ row }) => {
 
 export const MarketTable = () => {
   //! TODO: memoize useselector
-  const data = useSelector((state) => state.currencies.data.slice(0, 23));
+  const data = useSelector((state) => state.currencies.data);
 
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
 
-  const [displayedRowsNumber, setDisplayedRowsNumber] = useState(10);
-  const incDisplayedRowsBy = 5;
+  const [displayedRowsNumber, setDisplayedRowsNumber] = useState(16);
+  const incDisplayedRowsBy = 16;
 
   console.log(order, orderBy);
 
@@ -174,7 +175,7 @@ export const MarketTable = () => {
   const handleLoadMore = () => {
     console.log("load more");
     setDisplayedRowsNumber(() => displayedRowsNumber + incDisplayedRowsBy);
-  }
+  };
 
   const comparator = (a, b, orderBy, modifier) => {
     if (a[orderBy] <= b[orderBy]) {
@@ -193,6 +194,23 @@ export const MarketTable = () => {
 
   const rows = transformData(data.slice(0, displayedRowsNumber));
   const sortedRows = sortRows(rows);
+
+  const loadMoreBtn =
+    displayedRowsNumber >= data.length ? (
+      ""
+    ) : (
+      <Button
+        sx={{
+          width: 240,
+          display: "block",
+          margin: "60px auto 0",
+        }}
+        variant="contained"
+        onClick={handleLoadMore}
+      >
+        Load More
+      </Button>
+    );
 
   console.log("rerender", displayedRowsNumber);
   return (
@@ -216,17 +234,7 @@ export const MarketTable = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Button
-          sx={{
-            width: 240,
-            display: "block",
-            margin: "60px auto 0",
-          }}
-          variant="contained"
-          onClick={handleLoadMore}
-        >
-          Load More
-        </Button>
+        {loadMoreBtn}
       </div>
     </section>
   );
