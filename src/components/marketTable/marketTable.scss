@@ -1,7 +1,27 @@
 @import "../../styles/_variables.scss";
 
 .market-table {
-  &__ {
+  &__change {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    .MuiSvgIcon-root {
+      font-size: 20px;
+      margin-right: 3px;
+    }
+  }
+  
+  &__dollar-prefix {
+    &::before {
+      content: "$ ";
+    }
+  }
+
+  &__percent-postfix {
+    &::after {
+      content: " %";
+    }
   }
 }
 
@@ -46,6 +66,11 @@
   }
 
   .MuiTableCell-root {
-    color: white;
+    color: $white;
+    text-align: right;
+
+    &:first-child {
+      text-align: left;
+    }
   }
 }

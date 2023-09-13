@@ -15,7 +15,7 @@ import Box from "@mui/material/Box";
 import { visuallyHidden } from "@mui/utils";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
-import { formatDigit } from "../../utils/utils";
+import { formatDigit, formatPercentage } from "../../utils/utils";
 import "./marketTable.scss";
 
 // TODO: sorting algo to utils
@@ -30,7 +30,7 @@ import "./marketTable.scss";
 // другим функционалом таблицы (фильтрами и тд).
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
-// сбилдить и посмотреть нагрузку
+// сбилдить и посмотреть нагрузку, убрать console logs
 
 const headCells = [
   {
@@ -46,7 +46,7 @@ const headCells = [
     label: "Price",
   },
   {
-    id: "market_cap_change_percentage_24h",
+    id: "price_change_percentage_24h",
     numeric: true,
     disablePadding: false,
     label: "24h Change",
@@ -78,15 +78,17 @@ const headCells = [
 ];
 
 const transformData = (data) => {
-  return data.map(({ id, name, current_price, market_cap_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
-    id,
-    name,
-    current_price,
-    market_cap_change_percentage_24h,
-    total_volume,
-    high_24h,
-    market_cap,
-  }));
+  return data.map(
+    ({ id, name, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
+      id,
+      name,
+      current_price,
+      price_change_percentage_24h,
+      total_volume,
+      high_24h,
+      market_cap,
+    })
+  );
 };
 
 const EnhancedTableHead = (props) => {
@@ -123,24 +125,28 @@ const EnhancedTableHead = (props) => {
 };
 
 export const MarketTableRow = ({ row }) => {
-  // const {} = trendingPriceChange(row, "market-trends-item__price-change");
+  const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
 
+  console.log(row.price_change_percentage_24h);
   return (
     <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-    <TableCell component="th" scope="row">
-      {row.name}
-    </TableCell>
-    <TableCell align="right">$ {formatDigit(row.current_price)}</TableCell>
-    <TableCell align="right">
-      {row.market_cap_change_percentage_24h}
-    </TableCell>
-    <TableCell align="right">$ {formatDigit(row.total_volume)}</TableCell>
-    <TableCell align="right">$ {formatDigit(row.high_24h)}</TableCell>
-    <TableCell align="right">$ {formatDigit(row.market_cap)}</TableCell>
-    <TableCell align="right">Trade</TableCell>
-  </TableRow>
+      <TableCell component="th" scope="row">
+        {row.name}
+      </TableCell>
+      <TableCell className="market-table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
+      <TableCell>
+        <div className={`${priceChangeStyles} market-table__percent-postfix`}>
+          {TrendingIcon}
+          {formatPercentage(row.price_change_percentage_24h)}
+        </div>
+      </TableCell>
+      <TableCell className="market-table__dollar-prefix">{formatDigit(row.total_volume)}</TableCell>
+      <TableCell className="market-table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
+      <TableCell className="market-table__dollar-prefix">{formatDigit(row.market_cap)}</TableCell>
+      <TableCell>Trade</TableCell>
+    </TableRow>
   );
-}
+};
 
 export const MarketTable = () => {
   //! TODO: memoize useselector
@@ -150,7 +156,6 @@ export const MarketTable = () => {
   const [orderBy, setOrderBy] = useState("calories");
 
   console.log(order, orderBy);
-
 
   // const [selected, setSelected] = useState([]);
   // const [dense, setDense] = useState(false);
