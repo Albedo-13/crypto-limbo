@@ -23,12 +23,10 @@ import "./marketTable.scss";
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// 1: преобразовать табличные данные (padding bot 20px, no border)
-// 2: подгрузка элементов по кнопке (эдж кейс на 100 элементов - убрать кнопку)
-// 2.5: bg spray))
-// 3: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
-// 4: поисковая строка, проверить правильность поиска (arr.filter), проверить синергию с
+// 2: bg spray
+// 3: поисковая строка, проверить правильность поиска (arr.filter), проверить синергию с
 // другим функционалом таблицы (фильтрами и тд).
+// 4: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку, убрать console logs
@@ -162,10 +160,6 @@ export const MarketTable = () => {
   // const [selected, setSelected] = useState([]);
   // const [dense, setDense] = useState(false);
 
-  //! remove
-  // const [page, setPage] = useState(0);
-  // const [rowsPerPage, setRowsPerPage] = useState(5);
-
   const handleRequestSort = (headerId) => {
     const isAsc = orderBy === headerId && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -211,11 +205,9 @@ export const MarketTable = () => {
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead
-              // numSelected={selected.length}
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              // rowCount={rows.length}
             />
             <TableBody>
               {sortedRows.map((row) => (
