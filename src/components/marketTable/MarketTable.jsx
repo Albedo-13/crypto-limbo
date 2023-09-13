@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -13,13 +14,15 @@ import Box from "@mui/material/Box";
 
 import { visuallyHidden } from "@mui/utils";
 
+import { trendingPriceChange } from "../../utils/TrendingPriceChange";
+import { formatDigit } from "../../utils/utils";
 import "./marketTable.scss";
 
 // TODO: sorting algo to utils
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// 1: посадить на реальные данные из стора (пока что обрезанные до 10 элементов)
+// 1: преобразовать табличные данные ($, ,, стрелочки и разукрасить)
 // 2: подгрузка элементов по кнопке (эдж кейс на 100 элементов - убрать кнопку)
 // 2.5: bg spray))
 // 3: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
@@ -29,10 +32,6 @@ import "./marketTable.scss";
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку
 
-function createData(name, price, change, volume, high, marketCap, action) {
-  return { name, price, change, volume, high, marketCap, action };
-}
-
 const headCells = [
   {
     id: "name",
@@ -41,31 +40,31 @@ const headCells = [
     label: "Coin Name",
   },
   {
-    id: "price",
+    id: "current_price",
     numeric: true,
     disablePadding: false,
     label: "Price",
   },
   {
-    id: "change",
+    id: "market_cap_change_percentage_24h",
     numeric: true,
     disablePadding: false,
     label: "24h Change",
   },
   {
-    id: "volume",
+    id: "total_volume",
     numeric: true,
     disablePadding: false,
     label: "24h Volume",
   },
   {
-    id: "high",
+    id: "high_24h",
     numeric: true,
     disablePadding: false,
     label: "24h High",
   },
   {
-    id: "marketCap",
+    id: "market_cap",
     numeric: true,
     disablePadding: false,
     label: "Market Cap",
@@ -78,18 +77,21 @@ const headCells = [
   },
 ];
 
-const rows = [
-  createData("bitcoin", 27000, 5.76, 221412414, 4124124, 363636363, "Trade"),
-  createData("etherium", 5000, -0.26, 32112414, 3214122, 321312322, "Trade"),
-  createData("test", 1000, 1, 111111, 111111, 111111, "Trade"),
-  createData("test1", 3000, 1, 111111, 111111, 111111, "Trade"),
-  createData("test2", 2000, 1, 111111, 111111, 111111, "Trade"),
-  createData("test3", 500, 1, 111111, 111111, 111111, "Trade"),
-  createData("test4", 1500, 1, 111111, 111111, 111111, "Trade"),
-];
+const transformData = (data) => {
+  return data.map(({ id, name, current_price, market_cap_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
+    id,
+    name,
+    current_price,
+    market_cap_change_percentage_24h,
+    total_volume,
+    high_24h,
+    market_cap,
+  }));
+};
 
-function EnhancedTableHead(props) {
+const EnhancedTableHead = (props) => {
   const { order, orderBy, onRequestSort } = props;
+  // TODO: почистить пропсы и код
 
   return (
     <TableHead>
@@ -118,13 +120,38 @@ function EnhancedTableHead(props) {
       </TableRow>
     </TableHead>
   );
+};
+
+export const MarketTableRow = ({ row }) => {
+  // const {} = trendingPriceChange(row, "market-trends-item__price-change");
+
+  return (
+    <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+    <TableCell component="th" scope="row">
+      {row.name}
+    </TableCell>
+    <TableCell align="right">$ {formatDigit(row.current_price)}</TableCell>
+    <TableCell align="right">
+      {row.market_cap_change_percentage_24h}
+    </TableCell>
+    <TableCell align="right">$ {formatDigit(row.total_volume)}</TableCell>
+    <TableCell align="right">$ {formatDigit(row.high_24h)}</TableCell>
+    <TableCell align="right">$ {formatDigit(row.market_cap)}</TableCell>
+    <TableCell align="right">Trade</TableCell>
+  </TableRow>
+  );
 }
 
 export const MarketTable = () => {
+  //! TODO: memoize useselector
+  const data = useSelector((state) => state.currencies.data.slice(0, 10));
+
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
 
   console.log(order, orderBy);
+
+
   // const [selected, setSelected] = useState([]);
   // const [dense, setDense] = useState(false);
 
@@ -148,12 +175,15 @@ export const MarketTable = () => {
     return 0;
   };
 
-  const sortRows = () => {
+  const sortRows = (rows) => {
     const modifier = order === "desc" ? -1 : 1;
     return rows.sort((a, b) => comparator(a, b, orderBy, modifier));
   };
 
-  const sortedRows = sortRows();
+  const rows = transformData(data);
+  const sortedRows = sortRows(rows);
+
+  console.log("rerender", data);
   return (
     <section className="market-table">
       <div className="container">
@@ -166,21 +196,11 @@ export const MarketTable = () => {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              // rowCount={rows.length}
             />
             <TableBody>
               {sortedRows.map((row) => (
-                <TableRow key={row.name} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.price}</TableCell>
-                  <TableCell align="right">{row.change}</TableCell>
-                  <TableCell align="right">{row.volume}</TableCell>
-                  <TableCell align="right">{row.high}</TableCell>
-                  <TableCell align="right">{row.marketCap}</TableCell>
-                  <TableCell align="right">{row.action}</TableCell>
-                </TableRow>
+                <MarketTableRow key={row.id} row={row} />
               ))}
             </TableBody>
           </Table>
