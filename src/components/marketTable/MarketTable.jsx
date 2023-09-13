@@ -16,7 +16,7 @@ import Box from "@mui/material/Box";
 import { visuallyHidden } from "@mui/utils";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
-import { formatDigit, formatPercentage } from "../../utils/utils";
+import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
 import "./marketTable.scss";
 
 // TODO: sorting algo to utils
@@ -124,7 +124,7 @@ const EnhancedTableHead = (props) => {
   );
 };
 
-export const MarketTableRow = ({ row }) => {
+const MarketTableRow = ({ row }) => {
   const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
 
   return (
@@ -175,16 +175,6 @@ export const MarketTable = () => {
   const handleLoadMore = () => {
     console.log("load more");
     setDisplayedRowsNumber(() => displayedRowsNumber + incDisplayedRowsBy);
-  };
-
-  const comparator = (a, b, orderBy, modifier) => {
-    if (a[orderBy] <= b[orderBy]) {
-      return -1 * modifier;
-    }
-    if (a[orderBy] > b[orderBy]) {
-      return 1 * modifier;
-    }
-    return 0;
   };
 
   const sortRows = (rows) => {
