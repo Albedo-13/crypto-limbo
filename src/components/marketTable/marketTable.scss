@@ -1,6 +1,8 @@
 @import "../../styles/_variables.scss";
 
 .market-table {
+  padding-bottom: 120px;
+
   &__change {
     display: flex;
     justify-content: right;
@@ -66,8 +68,9 @@
   }
 
   .MuiTableCell-root {
-    color: $white;
+    color: $white-2;
     text-align: right;
+    font-size: 18px;
 
     &:first-child {
       text-align: left;

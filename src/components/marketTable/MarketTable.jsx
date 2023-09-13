@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -22,7 +23,7 @@ import "./marketTable.scss";
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// 1: преобразовать табличные данные ($, ,, стрелочки и разукрасить)
+// 1: преобразовать табличные данные (padding bot 20px, no border)
 // 2: подгрузка элементов по кнопке (эдж кейс на 100 элементов - убрать кнопку)
 // 2.5: bg spray))
 // 3: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
@@ -78,17 +79,15 @@ const headCells = [
 ];
 
 const transformData = (data) => {
-  return data.map(
-    ({ id, name, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
-      id,
-      name,
-      current_price,
-      price_change_percentage_24h,
-      total_volume,
-      high_24h,
-      market_cap,
-    })
-  );
+  return data.map(({ id, name, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
+    id,
+    name,
+    current_price,
+    price_change_percentage_24h,
+    total_volume,
+    high_24h,
+    market_cap,
+  }));
 };
 
 const EnhancedTableHead = (props) => {
@@ -127,7 +126,6 @@ const EnhancedTableHead = (props) => {
 export const MarketTableRow = ({ row }) => {
   const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
 
-  console.log(row.price_change_percentage_24h);
   return (
     <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
       <TableCell component="th" scope="row">
@@ -150,10 +148,13 @@ export const MarketTableRow = ({ row }) => {
 
 export const MarketTable = () => {
   //! TODO: memoize useselector
-  const data = useSelector((state) => state.currencies.data.slice(0, 10));
+  const data = useSelector((state) => state.currencies.data.slice(0, 23));
 
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
+
+  const [displayedRowsNumber, setDisplayedRowsNumber] = useState(10);
+  const incDisplayedRowsBy = 5;
 
   console.log(order, orderBy);
 
@@ -170,6 +171,11 @@ export const MarketTable = () => {
     setOrderBy(headerId);
   };
 
+  const handleLoadMore = () => {
+    console.log("load more");
+    setDisplayedRowsNumber(() => displayedRowsNumber + incDisplayedRowsBy);
+  }
+
   const comparator = (a, b, orderBy, modifier) => {
     if (a[orderBy] <= b[orderBy]) {
       return -1 * modifier;
@@ -185,10 +191,10 @@ export const MarketTable = () => {
     return rows.sort((a, b) => comparator(a, b, orderBy, modifier));
   };
 
-  const rows = transformData(data);
+  const rows = transformData(data.slice(0, displayedRowsNumber));
   const sortedRows = sortRows(rows);
 
-  console.log("rerender", data);
+  console.log("rerender", displayedRowsNumber);
   return (
     <section className="market-table">
       <div className="container">
@@ -210,6 +216,17 @@ export const MarketTable = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <Button
+          sx={{
+            width: 240,
+            display: "block",
+            margin: "60px auto 0",
+          }}
+          variant="contained"
+          onClick={handleLoadMore}
+        >
+          Load More
+        </Button>
       </div>
     </section>
   );
