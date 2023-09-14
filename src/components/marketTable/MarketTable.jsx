@@ -13,8 +13,6 @@ import Checkbox from "@mui/material/Checkbox";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Box from "@mui/material/Box";
 
-import { visuallyHidden } from "@mui/utils";
-
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
 import "./marketTable.scss";
@@ -23,9 +21,9 @@ import "./marketTable.scss";
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// 2: bg spray
-// 3: поисковая строка, проверить правильность поиска (arr.filter), проверить синергию с
+// 2: поисковая строка, проверить правильность поиска (arr.filter), проверить синергию с
 // другим функционалом таблицы (фильтрами и тд).
+// 3: bg spray
 // 4: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
@@ -35,63 +33,65 @@ import "./marketTable.scss";
 const headCells = [
   {
     id: "name",
-    numeric: false,
+    alignRight: false,
     disablePadding: true,
     label: "Coin Name",
   },
   {
     id: "current_price",
-    numeric: true,
+    alignRight: true,
     disablePadding: false,
     label: "Price",
   },
   {
     id: "price_change_percentage_24h",
-    numeric: true,
+    alignRight: true,
     disablePadding: false,
     label: "24h Change",
   },
   {
     id: "total_volume",
-    numeric: true,
+    alignRight: true,
     disablePadding: false,
     label: "24h Volume",
   },
   {
     id: "high_24h",
-    numeric: true,
+    alignRight: true,
     disablePadding: false,
     label: "24h High",
   },
   {
     id: "market_cap",
-    numeric: true,
+    alignRight: true,
     disablePadding: false,
     label: "Market Cap",
   },
   {
     id: "action",
-    numeric: true,
+    alignRight: true,
     disablePadding: false,
     label: "Action",
   },
 ];
 
 const transformData = (data) => {
-  return data.map(({ id, name, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
-    id,
-    name,
-    current_price,
-    price_change_percentage_24h,
-    total_volume,
-    high_24h,
-    market_cap,
-  }));
+  return data.map(
+    ({ id, name, symbol, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
+      id,
+      name,
+      symbol,
+      current_price,
+      price_change_percentage_24h,
+      total_volume,
+      high_24h,
+      market_cap,
+    })
+  );
 };
 
 const EnhancedTableHead = (props) => {
   const { order, orderBy, onRequestSort } = props;
-  // TODO: почистить пропсы и код
 
   return (
     <TableHead>
@@ -99,7 +99,7 @@ const EnhancedTableHead = (props) => {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            align={headCell.alignRight ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -109,11 +109,6 @@ const EnhancedTableHead = (props) => {
               onClick={() => onRequestSort(headCell.id)}
             >
               {headCell.label}
-              {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </Box>
-              ) : null}
             </TableSortLabel>
           </TableCell>
         ))}
@@ -128,7 +123,7 @@ const MarketTableRow = ({ row }) => {
   return (
     <TableRow>
       <TableCell component="th" scope="row">
-        {row.name}
+        {row.name} / {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
       <TableCell>
@@ -204,11 +199,7 @@ export const MarketTable = () => {
         {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
-            <EnhancedTableHead
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-            />
+            <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
             <TableBody>
               {sortedRows.map((row) => (
                 <MarketTableRow key={row.id} row={row} />
