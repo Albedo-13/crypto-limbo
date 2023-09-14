@@ -229,7 +229,7 @@ export const MarketTable = () => {
         }}
         variant="contained"
         onClick={handleLoadMore}
-        disabled={search}
+        disabled={!!search}
       >
         Load More
       </Button>
