@@ -46,6 +46,20 @@
     }
   }
 
+  .MuiButtonBase-root.MuiCheckbox-root {
+    color: $grey-6;
+    padding-top: 8px;
+
+    &.Mui-checked {
+      color: $primary-blue-dark;
+    }
+
+    .MuiSvgIcon-root {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
   .MuiInputBase-root {
     width: 335px;
     background-color: transparent;

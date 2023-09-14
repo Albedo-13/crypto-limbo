@@ -14,8 +14,11 @@ import Paper from "@mui/material/Paper";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Toolbar from "@mui/material/Toolbar";
 import TextField from "@mui/material/TextField";
+import Checkbox from '@mui/material/Checkbox';
 
 import SearchIcon from "@mui/icons-material/Search";
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
@@ -98,14 +101,10 @@ const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
       {selectedCurrency.symbol}
     </Button>
   ));
+
   return (
     <Toolbar>
-      <div className="market-table-bookmarks">
-        {renderSelectedList}
-        {/* <Button variant="text" component={Link} href="#">A</Button>
-        <Button variant="text" component={Link} href="#">A</Button>
-        <Button variant="text" component={Link} href="#">A</Button> */}
-      </div>
+      <div className="market-table-bookmarks">{renderSelectedList}</div>
       <TextField
         className="market-table__search"
         placeholder="Search Here"
@@ -145,12 +144,13 @@ const EnhancedTableHead = ({ order, orderBy, onOrder }) => {
   );
 };
 
-const MarketTableRow = ({ row }) => {
+const MarketTableRow = ({ row, onCheck }) => {
   const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
 
   return (
     <TableRow>
       <TableCell component="th" scope="row">
+        <Checkbox onChange={onCheck} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} />
         {row.name} / {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
@@ -204,6 +204,10 @@ export const MarketTable = () => {
     setDisplayedRowsNumber(() => displayedRowsNumber + incDisplayedRowsBy);
   };
 
+  const handleCheck = (e, row) => {
+    console.log("marketTableRow checkbox clicked", row.name, e.target.checked);
+  }
+
   const sortByColumn = (rows) => {
     const modifier = order === "desc" ? -1 : 1;
     return rows.sort((a, b) => comparator(a, b, orderBy, modifier));
@@ -246,7 +250,7 @@ export const MarketTable = () => {
             <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
               {sortedRows.map((row) => (
-                <MarketTableRow key={row.id} row={row} />
+                <MarketTableRow key={row.id} row={row} onCheck={(e) => handleCheck(e, row)} />
               ))}
             </TableBody>
           </Table>
