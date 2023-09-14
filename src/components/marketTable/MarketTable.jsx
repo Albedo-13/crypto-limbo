@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDebouncedCallback } from "use-debounce";
+import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
@@ -10,7 +11,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Checkbox from "@mui/material/Checkbox";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Toolbar from "@mui/material/Toolbar";
 import TextField from "@mui/material/TextField";
@@ -20,12 +20,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
 import "./marketTable.scss";
-import { Search } from "@mui/icons-material";
 
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
 // 3: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
+// https://mui.com/material-ui/react-checkbox/
 // 4: bg spray
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
@@ -92,10 +92,20 @@ const transformData = (data) => {
   );
 };
 
-const EnhancedTableToolbar = ({ onSearch }) => {
+const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
+  const renderSelectedList = selectedList.map((selectedCurrency) => (
+    <Button key={selectedCurrency.id} variant="text" component={Link} href="#">
+      {selectedCurrency.symbol}
+    </Button>
+  ));
   return (
     <Toolbar>
-      <div>watchlist</div>
+      <div className="market-table-bookmarks">
+        {renderSelectedList}
+        {/* <Button variant="text" component={Link} href="#">A</Button>
+        <Button variant="text" component={Link} href="#">A</Button>
+        <Button variant="text" component={Link} href="#">A</Button> */}
+      </div>
       <TextField
         className="market-table__search"
         placeholder="Search Here"
@@ -171,7 +181,11 @@ export const MarketTable = () => {
   const [displayedRowsNumber, setDisplayedRowsNumber] = useState(16);
   const incDisplayedRowsBy = 16;
 
-  const [selected, setSelected] = useState(["One", "Two", "Three"]);
+  const [selected, setSelected] = useState([
+    { id: "bitcoin", symbol: "BTC" },
+    { id: "ethereum", symbol: "ETH" },
+    { id: "bnb", symbol: "BNB" },
+  ]);
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
@@ -226,7 +240,7 @@ export const MarketTable = () => {
     <section className="market-table">
       <div className="container">
         {/* //! classes should be base start point */}
-        <EnhancedTableToolbar numSelected={selected} onSearch={handleSearchDebounced} />
+        <EnhancedTableToolbar selectedList={selected} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />

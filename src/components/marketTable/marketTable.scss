@@ -14,6 +14,26 @@
     }
   }
 
+  &-bookmarks {
+    display: flex;
+    align-items: center;
+    color: $grey-6;
+    font-size: 20px;
+
+    &::before {
+      content: "Watchlist";
+    }
+
+    .MuiButtonBase-root.MuiButton-root {
+      color: $grey-6;
+      font-size: 20px;
+
+      &:first-of-type {
+        margin-left: 15px;
+      }
+    }
+  }
+
   &__dollar-prefix {
     &::before {
       content: "$ ";
