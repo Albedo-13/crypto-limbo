@@ -110,9 +110,7 @@ const EnhancedTableToolbar = ({ onSearch }) => {
   );
 };
 
-const EnhancedTableHead = (props) => {
-  const { order, orderBy, onRequestSort } = props;
-
+const EnhancedTableHead = ({ order, orderBy, onOrder }) => {
   return (
     <TableHead>
       <TableRow>
@@ -126,7 +124,7 @@ const EnhancedTableHead = (props) => {
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
-              onClick={() => onRequestSort(headCell.id)}
+              onClick={() => onOrder(headCell.id)}
             >
               {headCell.label}
             </TableSortLabel>
@@ -162,7 +160,10 @@ const MarketTableRow = ({ row }) => {
 
 export const MarketTable = () => {
   //! TODO: memoize useselector
-  const data = useSelector((state) => state.currencies.data);
+  const data = useSelector((state) => {
+    console.log("useSelector data");
+    return state.currencies.data;
+  });
 
   const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState("market_cap");
@@ -170,9 +171,7 @@ export const MarketTable = () => {
   const [displayedRowsNumber, setDisplayedRowsNumber] = useState(16);
   const incDisplayedRowsBy = 16;
 
-  console.log(order, orderBy);
-
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(["One", "Two", "Three"]);
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
@@ -180,15 +179,14 @@ export const MarketTable = () => {
   };
   const handleSearchDebounced = useDebouncedCallback(handleSearch, 350);
 
-  const handleRequestSort = (headerId) => {
+  const handleOrderBy = (headerId) => {
     const isAsc = orderBy === headerId && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(headerId);
   };
-  const handleRequestSortDebounced = useDebouncedCallback(handleRequestSort, 250);
+  const handleOrderDebounced = useDebouncedCallback(handleOrderBy, 250);
 
   const handleLoadMore = () => {
-    console.log("load more");
     setDisplayedRowsNumber(() => displayedRowsNumber + incDisplayedRowsBy);
   };
 
@@ -217,6 +215,7 @@ export const MarketTable = () => {
         }}
         variant="contained"
         onClick={handleLoadMore}
+        disabled={search}
       >
         Load More
       </Button>
@@ -230,7 +229,7 @@ export const MarketTable = () => {
         <EnhancedTableToolbar numSelected={selected} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
-            <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSortDebounced} />
+            <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
               {sortedRows.map((row) => (
                 <MarketTableRow key={row.id} row={row} />

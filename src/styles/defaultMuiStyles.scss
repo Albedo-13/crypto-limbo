@@ -16,8 +16,15 @@
   &.MuiButton-containedPrimary {
     background-color: $primary-blue;
     font-size: 20px;
+
     &:hover {
       background-color: $primary-blue-dark;
+    }
+
+    &.Mui-disabled {
+      color: $white;
+      background-color: $primary-blue;
+      opacity: .35;
     }
   }
 
