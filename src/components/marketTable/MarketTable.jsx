@@ -96,9 +96,7 @@ const transformData = (data) => {
   );
 };
 
-const EnhancedTableToolbar = (props) => {
-  const { numSelected } = props;
-
+const EnhancedTableToolbar = ({ onSearch }) => {
   return (
     <Toolbar>
       <div>
@@ -108,6 +106,8 @@ const EnhancedTableToolbar = (props) => {
         className="market-table__search"
         placeholder="Search Here"
         variant="outlined"
+        name="search"
+        onChange={onSearch}
         InputProps={{
           startAdornment: (
             <SearchIcon />
@@ -181,8 +181,11 @@ export const MarketTable = () => {
   console.log(order, orderBy);
 
   const [selected, setSelected] = useState([]);
+  const [search, setSearch] = useState("");
 
-  // const [dense, setDense] = useState(false);
+  const handleSearch = (e) => {
+    setSearch(() => e.target.value);
+  }
 
   const handleRequestSort = (headerId) => {
     const isAsc = orderBy === headerId && order === "asc";
@@ -195,13 +198,17 @@ export const MarketTable = () => {
     setDisplayedRowsNumber(() => displayedRowsNumber + incDisplayedRowsBy);
   };
 
-  const sortRows = (rows) => {
+  const sortByColumn = (rows) => {
     const modifier = order === "desc" ? -1 : 1;
     return rows.sort((a, b) => comparator(a, b, orderBy, modifier));
   };
 
+  const sortBySearchbar = (rows) => {
+    return rows.filter((row) => row.name.toLowerCase().includes(search.toLowerCase()));
+  }
+
   const rows = transformData(data.slice(0, displayedRowsNumber));
-  const sortedRows = sortRows(rows);
+  const sortedRows = sortBySearchbar(sortByColumn(rows));
 
   const loadMoreBtn =
     displayedRowsNumber >= data.length ? (
@@ -220,12 +227,12 @@ export const MarketTable = () => {
       </Button>
     );
 
-  console.log("rerender", displayedRowsNumber);
+  console.log("rerender", search);
   return (
     <section className="market-table">
       <div className="container">
         {/* //! classes should be base start point */}
-        <EnhancedTableToolbar numSelected={selected} />
+        <EnhancedTableToolbar numSelected={selected} onSearch={handleSearch} />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
