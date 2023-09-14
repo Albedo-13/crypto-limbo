@@ -11,11 +11,17 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import TableSortLabel from "@mui/material/TableSortLabel";
-import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import TextField from "@mui/material/TextField";
+
+import SearchIcon from '@mui/icons-material/Search';
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
 import "./marketTable.scss";
+import { Search } from "@mui/icons-material";
 
 // TODO: sorting algo to utils
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
@@ -90,6 +96,28 @@ const transformData = (data) => {
   );
 };
 
+const EnhancedTableToolbar = (props) => {
+  const { numSelected } = props;
+
+  return (
+    <Toolbar>
+      <div>
+        watchlist
+      </div>
+      <TextField
+        className="market-table__search"
+        placeholder="Search Here"
+        variant="outlined"
+        InputProps={{
+          startAdornment: (
+            <SearchIcon />
+          ),
+        }}
+      />
+    </Toolbar>
+  );
+};
+
 const EnhancedTableHead = (props) => {
   const { order, orderBy, onRequestSort } = props;
 
@@ -152,7 +180,8 @@ export const MarketTable = () => {
 
   console.log(order, orderBy);
 
-  // const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState([]);
+
   // const [dense, setDense] = useState(false);
 
   const handleRequestSort = (headerId) => {
@@ -196,7 +225,7 @@ export const MarketTable = () => {
     <section className="market-table">
       <div className="container">
         {/* //! classes should be base start point */}
-        {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
+        <EnhancedTableToolbar numSelected={selected} />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
