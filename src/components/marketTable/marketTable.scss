@@ -62,12 +62,11 @@
       }
 
       .MuiTableCell-root {
-        color: $grey-8;
-
         .MuiButtonBase-root.MuiTableSortLabel-root {
           border-top: 2px solid transparent;
           border-bottom: 2px solid transparent;
           padding: 5px 0;
+          color: $grey-8;
 
           &:hover {
             color: $primary-blue-dark;

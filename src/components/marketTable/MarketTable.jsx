@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useDebouncedCallback } from "use-debounce";
 
 import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
@@ -12,25 +13,20 @@ import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
 import TextField from "@mui/material/TextField";
 
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
 import "./marketTable.scss";
 import { Search } from "@mui/icons-material";
 
-// TODO: sorting algo to utils
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// 2: поисковая строка, проверить правильность поиска (arr.filter), проверить синергию с
-// другим функционалом таблицы (фильтрами и тд).
-// 3: bg spray
-// 4: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
+// 3: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
+// 4: bg spray
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку, убрать console logs
@@ -99,9 +95,7 @@ const transformData = (data) => {
 const EnhancedTableToolbar = ({ onSearch }) => {
   return (
     <Toolbar>
-      <div>
-        watchlist
-      </div>
+      <div>watchlist</div>
       <TextField
         className="market-table__search"
         placeholder="Search Here"
@@ -109,9 +103,7 @@ const EnhancedTableToolbar = ({ onSearch }) => {
         name="search"
         onChange={onSearch}
         InputProps={{
-          startAdornment: (
-            <SearchIcon />
-          ),
+          startAdornment: <SearchIcon />,
         }}
       />
     </Toolbar>
@@ -184,14 +176,16 @@ export const MarketTable = () => {
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
-    setSearch(() => e.target.value);
-  }
+    setSearch(e.target.value);
+  };
+  const handleSearchDebounced = useDebouncedCallback(handleSearch, 350);
 
   const handleRequestSort = (headerId) => {
     const isAsc = orderBy === headerId && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(headerId);
   };
+  const handleRequestSortDebounced = useDebouncedCallback(handleRequestSort, 250);
 
   const handleLoadMore = () => {
     console.log("load more");
@@ -204,8 +198,9 @@ export const MarketTable = () => {
   };
 
   const sortBySearchbar = (rows) => {
-    return rows.filter((row) => row.name.toLowerCase().includes(search.toLowerCase()));
-  }
+    const searchTransform = search.toLowerCase();
+    return rows.filter((row) => row.id.includes(searchTransform));
+  };
 
   const rows = transformData(data.slice(0, displayedRowsNumber));
   const sortedRows = sortBySearchbar(sortByColumn(rows));
@@ -232,10 +227,10 @@ export const MarketTable = () => {
     <section className="market-table">
       <div className="container">
         {/* //! classes should be base start point */}
-        <EnhancedTableToolbar numSelected={selected} onSearch={handleSearch} />
+        <EnhancedTableToolbar numSelected={selected} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
-            <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+            <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSortDebounced} />
             <TableBody>
               {sortedRows.map((row) => (
                 <MarketTableRow key={row.id} row={row} />
