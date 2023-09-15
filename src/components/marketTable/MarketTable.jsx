@@ -27,11 +27,10 @@ import "./marketTable.scss";
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
+// все, сил нет, рефакторинг закончу уже на следующей неделе
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку, убрать console logs
-// 7?: transition group?
-// spinner on empty data
 
 const headCells = [
   {
@@ -150,7 +149,13 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
   return (
     <TableRow>
       <TableCell component="th" scope="row">
-        <Checkbox onChange={onCheck} checked={isChecked} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} />
+        <Checkbox
+          aria-label="watchlist bookmark"
+          onChange={onCheck}
+          checked={isChecked}
+          icon={<BookmarkBorderIcon />}
+          checkedIcon={<BookmarkIcon />}
+        />
         {row.name} / {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
