@@ -27,13 +27,11 @@ import "./marketTable.scss";
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// 3: букмарки и watchlist, временно сохранять в стейте массивом (сами бм - ссылки)
-// https://mui.com/material-ui/react-checkbox/
 // 4: bg spray
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку, убрать console logs
-// 7: transition group
+// 7?: transition group?
 
 const headCells = [
   {
@@ -96,11 +94,15 @@ const transformData = (data) => {
 };
 
 const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
+  console.log("EnhancedTableToolbar: ", selectedList);
+
   const renderSelectedList = selectedList.map((selectedCurrency) => (
     <Button key={selectedCurrency.id} variant="text" component={Link} href="#">
       {selectedCurrency.symbol}
     </Button>
   ));
+
+  console.log("renderSelectedList:", renderSelectedList);
 
   return (
     <Toolbar>
@@ -181,11 +183,7 @@ export const MarketTable = () => {
   const [displayedRowsNumber, setDisplayedRowsNumber] = useState(16);
   const incDisplayedRowsBy = 16;
 
-  const [selected, setSelected] = useState([
-    { id: "bitcoin", symbol: "BTC" },
-    { id: "ethereum", symbol: "ETH" },
-    { id: "bnb", symbol: "BNB" },
-  ]);
+  const [selected, setSelected] = useState([]);
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
@@ -205,7 +203,22 @@ export const MarketTable = () => {
   };
 
   const handleCheck = (e, row) => {
-    console.log("marketTableRow checkbox clicked", row.name, e.target.checked);
+    console.log("handleCheck: ", row.symbol, e.target.checked);
+
+    if (e.target.checked) {
+      const newSelectedCurrency = {
+        id: row.id,
+        symbol: row.symbol.toUpperCase(),
+      };
+
+      setSelected([
+        ...selected,
+        newSelectedCurrency
+      ]);
+    } else {
+      const filterSelected = selected.filter((currency) => currency.id !== row.id);
+      setSelected(filterSelected);
+    }
   }
 
   const sortByColumn = (rows) => {
@@ -239,7 +252,7 @@ export const MarketTable = () => {
       </Button>
     );
 
-  console.log("rerender", search);
+  console.log("rerender", selected);
   return (
     <section className="market-table">
       <div className="container">

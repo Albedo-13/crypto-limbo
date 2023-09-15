@@ -17,6 +17,8 @@
   &-bookmarks {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    max-width: 70%;
     color: $grey-6;
     font-size: 20px;
 
