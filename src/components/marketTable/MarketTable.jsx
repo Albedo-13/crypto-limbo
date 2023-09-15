@@ -146,13 +146,13 @@ const EnhancedTableHead = ({ order, orderBy, onOrder }) => {
   );
 };
 
-const MarketTableRow = ({ row, onCheck }) => {
+const MarketTableRow = ({ row, onCheck, isChecked }) => {
   const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
 
   return (
     <TableRow>
       <TableCell component="th" scope="row">
-        <Checkbox onChange={onCheck} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} />
+        <Checkbox onChange={onCheck} checked={isChecked} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} />
         {row.name} / {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
@@ -231,6 +231,10 @@ export const MarketTable = () => {
     return rows.filter((row) => row.id.includes(searchTransform));
   };
 
+  const isBookmarkChecked = (id) => {
+    return selected.some((currency) => currency.id === id);
+  }
+
   const rows = transformData(data.slice(0, displayedRowsNumber));
   const sortedRows = sortBySearchbar(sortByColumn(rows));
 
@@ -263,7 +267,7 @@ export const MarketTable = () => {
             <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
               {sortedRows.map((row) => (
-                <MarketTableRow key={row.id} row={row} onCheck={(e) => handleCheck(e, row)} />
+                <MarketTableRow key={row.id} row={row} isChecked={isBookmarkChecked(row.id)} onCheck={(e) => handleCheck(e, row)} />
               ))}
             </TableBody>
           </Table>
