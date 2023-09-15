@@ -27,11 +27,11 @@ import "./marketTable.scss";
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// 4: bg spray
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку, убрать console logs
 // 7?: transition group?
+// spinner on empty data
 
 const headCells = [
   {
@@ -102,6 +102,8 @@ const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
 
   return (
     <Toolbar>
+      <div className="bg-section-spray-small spray_dark"></div>
+
       <div className="market-table-bookmarks">{renderSelectedList}</div>
       <TextField
         className="market-table__search"
@@ -167,11 +169,7 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
 };
 
 export const MarketTable = () => {
-  //! TODO: memoize useselector (на других страницах тоже search: useSelector)
-  const data = useSelector((state) => {
-    console.log("useSelector data");
-    return state.currencies.data;
-  });
+  const data = useSelector((state) => state.currencies.data);
 
   const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState("market_cap");
@@ -253,7 +251,6 @@ export const MarketTable = () => {
   return (
     <section className="market-table">
       <div className="container">
-        {/* //! classes should be base start point */}
         <EnhancedTableToolbar selectedList={selected} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">

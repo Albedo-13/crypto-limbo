@@ -95,8 +95,11 @@
   .MuiPaper-root.MuiTableContainer-root {
     background-color: transparent;
     margin-top: 60px;
+    overflow: visible;
 
     .MuiTableHead-root {
+      position: relative; //!
+
       .MuiTableRow-root th,
       .MuiTableRow-root td {
         padding-top: 0px;
