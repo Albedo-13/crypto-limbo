@@ -14,11 +14,11 @@ import Paper from "@mui/material/Paper";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Toolbar from "@mui/material/Toolbar";
 import TextField from "@mui/material/TextField";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 
 import SearchIcon from "@mui/icons-material/Search";
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
@@ -94,15 +94,11 @@ const transformData = (data) => {
 };
 
 const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
-  console.log("EnhancedTableToolbar: ", selectedList);
-
   const renderSelectedList = selectedList.map((selectedCurrency) => (
     <Button key={selectedCurrency.id} variant="text" component={Link} href="#">
       {selectedCurrency.symbol}
     </Button>
   ));
-
-  console.log("renderSelectedList:", renderSelectedList);
 
   return (
     <Toolbar>
@@ -211,15 +207,12 @@ export const MarketTable = () => {
         symbol: row.symbol.toUpperCase(),
       };
 
-      setSelected([
-        ...selected,
-        newSelectedCurrency
-      ]);
+      setSelected([...selected, newSelectedCurrency]);
     } else {
       const filterSelected = selected.filter((currency) => currency.id !== row.id);
       setSelected(filterSelected);
     }
-  }
+  };
 
   const sortByColumn = (rows) => {
     const modifier = order === "desc" ? -1 : 1;
@@ -233,7 +226,7 @@ export const MarketTable = () => {
 
   const isBookmarkChecked = (id) => {
     return selected.some((currency) => currency.id === id);
-  }
+  };
 
   const rows = transformData(data.slice(0, displayedRowsNumber));
   const sortedRows = sortBySearchbar(sortByColumn(rows));
@@ -256,7 +249,7 @@ export const MarketTable = () => {
       </Button>
     );
 
-  console.log("rerender", selected);
+  console.log("rerender");
   return (
     <section className="market-table">
       <div className="container">
@@ -267,7 +260,12 @@ export const MarketTable = () => {
             <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
               {sortedRows.map((row) => (
-                <MarketTableRow key={row.id} row={row} isChecked={isBookmarkChecked(row.id)} onCheck={(e) => handleCheck(e, row)} />
+                <MarketTableRow
+                  key={row.id}
+                  row={row}
+                  isChecked={isBookmarkChecked(row.id)}
+                  onCheck={(e) => handleCheck(e, row)}
+                />
               ))}
             </TableBody>
           </Table>
