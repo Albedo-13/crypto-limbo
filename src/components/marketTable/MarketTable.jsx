@@ -169,7 +169,7 @@ const MarketTableRow = ({ row, onCheck }) => {
 };
 
 export const MarketTable = () => {
-  //! TODO: memoize useselector
+  //! TODO: memoize useselector (на других страницах тоже search: useSelector)
   const data = useSelector((state) => {
     console.log("useSelector data");
     return state.currencies.data;

@@ -75,6 +75,12 @@
         opacity: 1;
       }
     }
+
+    &.MuiOutlinedInput-root.Mui-focused {
+      .MuiOutlinedInput-notchedOutline {
+        border-color: $white;
+      }
+    }
   }
 
   .MuiToolbar-root {
