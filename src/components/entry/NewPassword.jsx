@@ -54,7 +54,11 @@ export const NewPassword = (props) => {
             inputRef={passwordRef}
             InputProps={{
               endAdornment: (
-                <IconButton classes={{ root: "adornment-toggle-visibility" }} onClick={togglePasswordVisibility}>
+                <IconButton
+                  classes={{ root: "adornment-toggle-visibility" }}
+                  onClick={togglePasswordVisibility}
+                  aria-label="toggle password visibility"
+                >
                   {passwordIcon}
                 </IconButton>
               ),

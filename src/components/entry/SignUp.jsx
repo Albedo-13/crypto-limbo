@@ -115,7 +115,11 @@ export const SignUp = (props) => {
             inputRef={passwordRef}
             InputProps={{
               endAdornment: (
-                <IconButton classes={{ root: "adornment-toggle-visibility" }} onClick={togglePasswordVisibility}>
+                <IconButton
+                  classes={{ root: "adornment-toggle-visibility" }}
+                  onClick={togglePasswordVisibility}
+                  aria-label="toggle password visibility"
+                >
                   {passwordIcon}
                 </IconButton>
               ),
@@ -128,10 +132,7 @@ export const SignUp = (props) => {
           )}
         </div>
         <div className="entry-form__terms mui-checkbox-terms">
-          <FormControlLabel
-            control={<Checkbox required />}
-            label="I agree to this Website"
-          />
+          <FormControlLabel control={<Checkbox required />} label="I agree to this Website" />
           <Link className="entry-form__terms-link" to="#">
             Terms & Conditions.
           </Link>
