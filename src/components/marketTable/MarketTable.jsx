@@ -1,75 +1,26 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDebouncedCallback } from "use-debounce";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import TableSortLabel from "@mui/material/TableSortLabel";
-import Toolbar from "@mui/material/Toolbar";
-import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 
-import SearchIcon from "@mui/icons-material/Search";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
+import { EnhancedTableToolbar, EnhancedTableHead } from "./TableEnhancers";
 import "./marketTable.scss";
 
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
-
-const headCells = [
-  {
-    id: "name",
-    alignRight: false,
-    disablePadding: true,
-    label: "Coin Name",
-  },
-  {
-    id: "current_price",
-    alignRight: true,
-    disablePadding: false,
-    label: "Price",
-  },
-  {
-    id: "price_change_percentage_24h",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h Change",
-  },
-  {
-    id: "total_volume",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h Volume",
-  },
-  {
-    id: "high_24h",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h High",
-  },
-  {
-    id: "market_cap",
-    alignRight: true,
-    disablePadding: false,
-    label: "Market Cap",
-  },
-  {
-    id: "action",
-    alignRight: true,
-    disablePadding: false,
-    label: "Action",
-  },
-];
 
 const transformData = (data) => {
   return data.map(
@@ -86,58 +37,6 @@ const transformData = (data) => {
   );
 };
 
-const EnhancedTableToolbar = ({ selectedList, searchParam, onSearch }) => {
-  const renderSelectedList = selectedList.map((selectedCurrency) => (
-    <Button key={selectedCurrency.id} variant="text" component={Link} href="#">
-      {selectedCurrency.symbol}
-    </Button>
-  ));
-
-  return (
-    <Toolbar className="mui-toolbar-market">
-      <div className="bg-section-spray-small spray_dark"></div>
-
-      <div className="market-table-watchlist">{renderSelectedList}</div>
-      <TextField
-        className="mui-searchbar"
-        placeholder="Search Here"
-        variant="outlined"
-        name="search"
-        defaultValue={searchParam}
-        onChange={onSearch}
-        InputProps={{
-          startAdornment: <SearchIcon />,
-        }}
-      />
-    </Toolbar>
-  );
-};
-
-const EnhancedTableHead = ({ order, orderBy, onOrder }) => {
-  return (
-    <TableHead>
-      <TableRow>
-        {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.alignRight ? "right" : "left"}
-            padding={headCell.disablePadding ? "none" : "normal"}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
-              onClick={() => onOrder(headCell.id)}
-            >
-              {headCell.label}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  );
-};
-
 const MarketTableRow = ({ row, onCheck, isChecked }) => {
   const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
 
@@ -146,11 +45,11 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
       <TableCell component="th" scope="row">
         <Checkbox
           className="mui-checkbox-bookmark"
-          aria-label="watchlist bookmark"
           onChange={onCheck}
           checked={isChecked}
           icon={<BookmarkBorderIcon />}
           checkedIcon={<BookmarkIcon />}
+          inputProps={{ "aria-label": "watchlist bookmark" }}
         />
         {row.name} / {row.symbol.toUpperCase()}
       </TableCell>
