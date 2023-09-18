@@ -11,7 +11,7 @@ export const MarketTrendsItem = ({ currency }) => {
   const chartData = createChartData(currency);
 
   return (
-    <Link to="#" className="market-trends-item">
+    <Link to={`/market/${currency.id}`} className="market-trends-item">
       <div className="market-trends-item__image">
         <img className="undraggable" src={currency.image} alt={currency.name} />
       </div>

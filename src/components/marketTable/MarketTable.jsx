@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDebouncedCallback } from "use-debounce";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
@@ -63,7 +63,9 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.total_volume)}</TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.market_cap)}</TableCell>
-      <TableCell>Trade</TableCell>
+      <TableCell>
+        <Link className="market-table__currency-link" to={`/market/${row.id}`}>Trade</Link>
+      </TableCell>
     </TableRow>
   );
 };
