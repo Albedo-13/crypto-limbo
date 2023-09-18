@@ -14,7 +14,7 @@
     }
   }
 
-  &-bookmarks {
+  &-watchlist {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -48,121 +48,37 @@
     }
   }
 
-  .MuiButtonBase-root.MuiCheckbox-root {
-    color: $grey-6;
-    padding-top: 8px;
+  .mui-searchbar {
+    .MuiInputBase-root {
+      width: 335px;
+      background-color: transparent;
+      border: 1px solid rgba($grey-4, 0.2);
+      border-radius: 4px;
+      color: $white;
 
-    &.Mui-checked {
-      color: $primary-blue-dark;
-    }
+      .MuiInputBase-input {
+        padding-left: 10px;
 
-    .MuiSvgIcon-root {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .MuiInputBase-root {
-    width: 335px;
-    background-color: transparent;
-    border: 1px solid rgba($grey-4, 0.2);
-    border-radius: 4px;
-    color: $white;
-
-    .MuiInputBase-input {
-      padding-left: 10px;
-
-      &::placeholder {
-        color: $grey-4;
-        opacity: 1;
-      }
-    }
-
-    &.MuiOutlinedInput-root.Mui-focused {
-      .MuiOutlinedInput-notchedOutline {
-        border-color: $white;
-      }
-    }
-  }
-
-  .MuiToolbar-root {
-    background-color: $bg-card;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-  }
-
-  .MuiPaper-root.MuiTableContainer-root {
-    background-color: transparent;
-    margin-top: 60px;
-    overflow: visible;
-
-    .MuiTableHead-root {
-      position: relative; //!
-
-      .MuiTableRow-root th,
-      .MuiTableRow-root td {
-        padding-top: 0px;
-        padding-bottom: 0px;
+        &::placeholder {
+          color: $grey-4;
+          opacity: 1;
+        }
       }
 
-      .MuiTableCell-root {
-        .MuiButtonBase-root.MuiTableSortLabel-root {
-          border-top: 2px solid transparent;
-          border-bottom: 2px solid transparent;
-          padding: 5px 0;
-          color: $grey-8;
-
-          &:hover {
-            color: $primary-blue-dark;
-
-            .MuiSvgIcon-root {
-              color: $primary-blue-dark;
-            }
-          }
-
-          &:focus-visible {
-            color: $primary-blue-dark;
-            border-top: 2px solid $primary-blue-dark;
-            border-bottom: 2px solid $primary-blue-dark;
-            border-radius: 4px;
-          }
-
-          &.Mui-active {
-            color: $primary-blue;
-
-            &:hover {
-              color: $primary-blue-dark;
-
-              .MuiSvgIcon-root {
-                color: $primary-blue-dark;
-              }
-            }
-          }
-
-          .MuiSvgIcon-root {
-            color: $primary-blue;
-          }
+      &.MuiOutlinedInput-root.Mui-focused {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: $white;
         }
       }
     }
+  }
 
-    .MuiTableRow-root th,
-    .MuiTableRow-root td {
-      border-top: 1px solid transparent;
-      border-bottom: 1px solid transparent;
-      padding-top: 25px;
-      padding-bottom: 25px;
-    }
-
-    .MuiTableCell-root {
-      color: $white-2;
-      text-align: right;
-      font-size: 18px;
-
-      &:first-child {
-        text-align: left;
-      }
+  .mui-toolbar-market {
+    &.MuiToolbar-root {
+      background-color: $bg-card;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
     }
   }
 }

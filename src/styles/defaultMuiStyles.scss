@@ -24,7 +24,7 @@
     &.Mui-disabled {
       color: $white;
       background-color: $primary-blue;
-      opacity: .35;
+      opacity: 0.35;
     }
   }
 
@@ -106,41 +106,134 @@
 }
 
 // CHECKBOX
-.MuiCheckbox-terms .MuiSvgIcon-root {
-  width: 18px;
-  height: 18px;
-  color: $grey-8;
-}
-
-.MuiCheckbox-root.MuiCheckbox-terms {
-  padding: 7px 9px 9px;
-
-  &.Mui-focusVisible {
-    outline: 1px solid $white;
+.mui-checkbox-terms {
+  .MuiSvgIcon-root {
+    width: 18px;
+    height: 18px;
+    color: $grey-8;
   }
-}
 
-.MuiCheckbox-terms.Mui-checked .MuiSvgIcon-root {
-  color: $primary-blue;
-}
+  .MuiCheckbox-root {
+    padding: 7px 9px 9px;
 
-.MuiFormControlLabel-root {
-  color: $grey-6;
-
-  .MuiTypography-root {
-    font-size: 14px;
+    &.Mui-focusVisible {
+      outline: 1px solid $white;
+    }
   }
-}
 
-.MuiFormControlLabel-root.MuiFormControlLabel-labelPlacementEnd {
-  margin-right: 0;
+  .Mui-checked .MuiSvgIcon-root {
+    color: $primary-blue;
+  }
 
-  &.MuiStack-root {
+  .MuiFormControlLabel-root {
     color: $grey-6;
-    font-size: 16px;
+
+    .MuiTypography-root {
+      font-size: 14px;
+    }
+  }
+
+  .MuiFormControlLabel-root.MuiFormControlLabel-labelPlacementEnd {
+    margin-right: 0;
+
+    &.MuiStack-root {
+      color: $grey-6;
+      font-size: 16px;
+    }
+  }
+
+  .MuiFormControlLabel-asterisk {
+    display: none;
   }
 }
 
-.MuiFormControlLabel-asterisk {
-  display: none;
+.mui-checkbox-bookmark {
+  &.MuiButtonBase-root.MuiCheckbox-root {
+    color: $grey-6;
+    padding-top: 8px;
+
+    &.Mui-checked {
+      color: $primary-blue-dark;
+    }
+
+    .MuiSvgIcon-root {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// TABLE
+.mui-table {
+  &.MuiPaper-root.MuiTableContainer-root {
+    background-color: transparent;
+    margin-top: 60px;
+    overflow: visible;
+
+    .MuiTableHead-root {
+      .MuiTableRow-root th,
+      .MuiTableRow-root td {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+
+      .MuiTableCell-root {
+        .MuiButtonBase-root.MuiTableSortLabel-root {
+          border-top: 2px solid transparent;
+          border-bottom: 2px solid transparent;
+          padding: 5px 0;
+          color: $grey-8;
+
+          &:hover {
+            color: $primary-blue-dark;
+
+            .MuiSvgIcon-root {
+              color: $primary-blue-dark;
+            }
+          }
+
+          &:focus-visible {
+            color: $primary-blue-dark;
+            border-top: 2px solid $primary-blue-dark;
+            border-bottom: 2px solid $primary-blue-dark;
+            border-radius: 4px;
+          }
+
+          &.Mui-active {
+            color: $primary-blue;
+
+            &:hover {
+              color: $primary-blue-dark;
+
+              .MuiSvgIcon-root {
+                color: $primary-blue-dark;
+              }
+            }
+          }
+
+          .MuiSvgIcon-root {
+            color: $primary-blue;
+          }
+        }
+      }
+    }
+
+    .MuiTableRow-root th,
+    .MuiTableRow-root td {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+
+    .MuiTableCell-root {
+      color: $white-2;
+      text-align: right;
+      font-size: 18px;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+  }
 }

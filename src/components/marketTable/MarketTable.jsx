@@ -27,10 +27,10 @@ import "./marketTable.scss";
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
 // TODO на завтра:
-// все, сил нет, рефакторинг закончу уже на следующей неделе
 // 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
 // 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
 // сбилдить и посмотреть нагрузку, убрать console logs
+// ?q=searchString, закинуть стейт в поисковую строку. Видео на ютубе было у того приятного парня
 
 const headCells = [
   {
@@ -100,12 +100,12 @@ const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
   ));
 
   return (
-    <Toolbar>
+    <Toolbar className="mui-toolbar-market">
       <div className="bg-section-spray-small spray_dark"></div>
 
-      <div className="market-table-bookmarks">{renderSelectedList}</div>
+      <div className="market-table-watchlist">{renderSelectedList}</div>
       <TextField
-        className="market-table__search"
+        className="mui-searchbar"
         placeholder="Search Here"
         variant="outlined"
         name="search"
@@ -150,6 +150,7 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
     <TableRow>
       <TableCell component="th" scope="row">
         <Checkbox
+          className="mui-checkbox-bookmark"
           aria-label="watchlist bookmark"
           onChange={onCheck}
           checked={isChecked}
@@ -257,7 +258,7 @@ export const MarketTable = () => {
     <section className="market-table">
       <div className="container">
         <EnhancedTableToolbar selectedList={selected} onSearch={handleSearchDebounced} />
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className="mui-table">
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
