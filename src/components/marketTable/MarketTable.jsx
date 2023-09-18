@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDebouncedCallback } from "use-debounce";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
@@ -25,12 +25,6 @@ import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
 import "./marketTable.scss";
 
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
-
-// TODO на завтра:
-// 5: Стили таблицы, вынести их в defaultMuiStyles? доделать другие TODOs.
-// 6?: оптимизация, рефакторинг, memo, callback, проверить частоту ререндеров,
-// сбилдить и посмотреть нагрузку, убрать console logs
-// ?q=searchString, закинуть стейт в поисковую строку. Видео на ютубе было у того приятного парня
 
 const headCells = [
   {
@@ -92,7 +86,7 @@ const transformData = (data) => {
   );
 };
 
-const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
+const EnhancedTableToolbar = ({ selectedList, searchParam, onSearch }) => {
   const renderSelectedList = selectedList.map((selectedCurrency) => (
     <Button key={selectedCurrency.id} variant="text" component={Link} href="#">
       {selectedCurrency.symbol}
@@ -109,6 +103,7 @@ const EnhancedTableToolbar = ({ selectedList, onSearch }) => {
         placeholder="Search Here"
         variant="outlined"
         name="search"
+        defaultValue={searchParam}
         onChange={onSearch}
         InputProps={{
           startAdornment: <SearchIcon />,
@@ -184,10 +179,19 @@ export const MarketTable = () => {
   const incDisplayedRowsBy = 16;
 
   const [selected, setSelected] = useState([]);
-  const [search, setSearch] = useState("");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("q") ?? "";
 
   const handleSearch = (e) => {
-    setSearch(e.target.value);
+    setSearchParams((params) => {
+      params.set("q", e.target.value);
+      return params;
+    });
+    if (!searchParams.get("q")) {
+      searchParams.delete("q");
+      setSearchParams(searchParams);
+    }
   };
   const handleSearchDebounced = useDebouncedCallback(handleSearch, 350);
 
@@ -203,8 +207,6 @@ export const MarketTable = () => {
   };
 
   const handleCheck = (e, row) => {
-    console.log("handleCheck: ", row.symbol, e.target.checked);
-
     if (e.target.checked) {
       const newSelectedCurrency = {
         id: row.id,
@@ -224,6 +226,10 @@ export const MarketTable = () => {
   };
 
   const sortBySearchbar = (rows) => {
+    if (!search) {
+      searchParams.delete("q");
+    }
+
     const searchTransform = search.toLowerCase();
     return rows.filter((row) => row.id.includes(searchTransform));
   };
@@ -253,11 +259,10 @@ export const MarketTable = () => {
       </Button>
     );
 
-  console.log("rerender");
   return (
     <section className="market-table">
       <div className="container">
-        <EnhancedTableToolbar selectedList={selected} onSearch={handleSearchDebounced} />
+        <EnhancedTableToolbar selectedList={selected} searchParam={search} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper} className="mui-table">
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
