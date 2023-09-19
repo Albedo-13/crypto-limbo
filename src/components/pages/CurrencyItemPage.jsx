@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Header } from "../header/Header";
@@ -11,14 +11,16 @@ import { useHttp } from "../../hooks/http.hook";
 export const CurrencyItemPage = () => {
   const { id } = useParams();
   const { request } = useHttp();
+  const [coin, setCoin] = useState();
 
-  const onFetch = async () => {
-    const temp = await request(`https://api.coingecko.com/api/v3/coins/${id}`);
-    console.log(temp);
+  const handleRequest = async () => {
+    await request(`https://api.coingecko.com/api/v3/coins/${id}`)
+      .then((coin) => setCoin(coin));
+    console.log("fetched");
   };
 
   useEffect(() => {
-    onFetch();
+    handleRequest();
   }, []);
 
   console.log(id);
@@ -26,7 +28,7 @@ export const CurrencyItemPage = () => {
     <>
       <Header />
       <main>
-        <CurrencyItem />
+        <CurrencyItem coin={coin} />
       </main>
     </>
   );

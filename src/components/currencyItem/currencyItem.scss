@@ -1,11 +1,29 @@
 .currency-item {
-  &-grid {
+  padding: 24px 0 30px 0;
+  &-wrapper {
     display: grid;
     grid-template-columns: 5fr 1fr;
     gap: 24px;
+
+    &__main {
+      background-color: gray;
+      display: grid;
+      gap: 24px;
+    }
+
+    &__header {
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      gap: 24px;
+    }
   }
 
-  .test {
-    background-color: gray;
+  &-order {
+    background-color: gray; //-
+  }
+
+  &-graph,
+  &-trade {
+    background-color: darkgreen; //-
   }
 }

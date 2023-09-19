@@ -24,7 +24,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 //! Landing Page (and general)
 // TODO: Link to NavLink in Header and Footer to color and disable active pages
-// V TODO: replace lorem ipsum & fishtext with meaningful content
+// TODO: error boundaries. replace unloaded block with image / errored skeleton
+// TODO?: skeleton on loading?
 // TODO: react-helmet (try to preload images only on landing page)
 // TODO: ChartJS.register (where to init?)
 // TODO: transitions (react transition group)
