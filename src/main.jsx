@@ -34,6 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: mobile adaptation
 // TODO: sprays change width & height %'s on adapt screen sizes
 // TODO: explore a11y, adapt for screen readers
+// TODO: check custom hooks, write some for project
 
 // for graph
 // https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1691167778&to=1692267778

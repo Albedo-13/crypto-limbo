@@ -9,6 +9,9 @@ import Spinner from "../spinner/Spinner";
 import "./currencyItem.scss";
 
 // WTF IS isBookmarkChecked(row.id) in MarketTable.jsx???
+// нужно чекнуть че это для того, чтобы понять, какой тип данных используется
+// для сохранения букмарков и далее использовать его для мок данных выпадающего списка
+// пометить мок данные как временные, для замены на данные из бд
 
 export const CurrencyItem = ({ coin }) => {
   console.log("currencyItem render");

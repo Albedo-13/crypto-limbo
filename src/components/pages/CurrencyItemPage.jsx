@@ -8,8 +8,6 @@ import { useHttp } from "../../hooks/http.hook";
 
 // TODO: droplist with all tracked currencies. Bookmark ads/removes coin from db
 
-//!! TODO!!: change table & faq backgrounds
-
 export const CurrencyItemPage = () => {
   const { id } = useParams();
   const { request } = useHttp();
@@ -19,11 +17,6 @@ export const CurrencyItemPage = () => {
     handleRequest();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  // useEffect(() => {
-  //   // handleRequest();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   const handleRequest = async () => {
     await request(`https://api.coingecko.com/api/v3/coins/${id}`)
