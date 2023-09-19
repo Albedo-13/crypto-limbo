@@ -112,6 +112,7 @@ export const MarketTable = () => {
       const newSelectedCurrency = {
         id: row.id,
         symbol: row.symbol.toUpperCase(),
+        name: row.name,
       };
 
       setSelected([...selected, newSelectedCurrency]);

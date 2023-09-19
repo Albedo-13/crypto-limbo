@@ -1,3 +1,5 @@
+@import "../../styles/_variables.scss";
+
 .currency-item {
   padding: 24px 0 30px 0;
   &-wrapper {
@@ -6,7 +8,7 @@
     gap: 24px;
 
     &__main {
-      background-color: gray;
+      background-color: gray; //-
       display: grid;
       gap: 24px;
     }
@@ -25,5 +27,33 @@
   &-graph,
   &-trade {
     background-color: darkgreen; //-
+  }
+}
+
+.mui-bookmarks-select {
+  &.MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input {
+    display: flex;
+    align-items: center;
+
+    .MuiSvgIcon-root {
+      color: $primary-blue-dark;
+      padding-right: 5px;
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+.mui-menu-item {
+  &.MuiButtonBase-root.MuiMenuItem-root {
+    display: flex;
+    align-items: center;
+
+    .MuiSvgIcon-root {
+      color: $primary-blue-dark;
+      padding-right: 5px;
+      height: 20px;
+      width: 20px;
+    }
   }
 }
