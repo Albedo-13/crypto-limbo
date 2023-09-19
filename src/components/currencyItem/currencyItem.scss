@@ -1,0 +1,11 @@
+.currency-item {
+  &-grid {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 24px;
+  }
+
+  .test {
+    background-color: gray;
+  }
+}
