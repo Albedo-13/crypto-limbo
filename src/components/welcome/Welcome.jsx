@@ -10,6 +10,7 @@ import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
 
 import "./welcome.scss";
+import notebook from "../../assets/images/notebook.webp";
 
 export const Welcome = () => {
   const currencies = useSelector((state) => state.currencies);
@@ -74,7 +75,7 @@ export const Welcome = () => {
           <div className="welcome__wrapper-right">
             <img
               className="welcome__img undraggable"
-              src="/assets/images/notebook.webp"
+              src={notebook}
               alt="notebook with statistics"
             />
             <div className="bg-img-spray_round" />
