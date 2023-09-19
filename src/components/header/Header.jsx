@@ -14,7 +14,7 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__links">
-            <NavLink to="/market" className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}>
+            <NavLink to="/market" end className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}>
               Market
             </NavLink>
             <Link to="#" className="header__link">

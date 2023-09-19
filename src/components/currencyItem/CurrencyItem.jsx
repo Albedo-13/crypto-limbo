@@ -1,7 +1,17 @@
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+import Spinner from "../spinner/Spinner";
+
 import "./currencyItem.scss";
 
+// WTF IS isBookmarkChecked(row.id) in MarketTable.jsx???
+
 export const CurrencyItem = ({ coin }) => {
-  // const { name } = props.coin;
+  console.log("currencyItem render");
 
   return (
     <section className="currency-item">
@@ -9,7 +19,7 @@ export const CurrencyItem = ({ coin }) => {
         <div className="currency-item-wrapper">
           <div className="currency-item-wrapper__main">
             <div className="currency-item-wrapper__header">
-              <div style={{ backgroundColor: "red" }}>{coin?.name}</div>
+              <CurrencyItemSelect coin={coin} />
               <div style={{ backgroundColor: "red" }}>stats</div>
             </div>
             <div className="currency-item-graph">graph</div>
@@ -22,4 +32,33 @@ export const CurrencyItem = ({ coin }) => {
       </div>
     </section>
   );
+};
+
+const CurrencyItemSelect = ({ coin }) => {
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const currencyId = e.target.value;
+    navigate(`/market/${currencyId}`);
+  };
+
+  const renderDropdown = (coin) => {
+    return (
+      <div>
+        {coin.name}
+        {/* <FormControl sx={{ p: 1, minWidth: "80%" }}> */}
+        {/* not allow to uncheck bookmark (disabed and checked by default) */}
+          <Select defaultValue={coin.id ?? ""} onChange={handleChange} inputProps={{ "aria-label": "Without label" }}>
+            <MenuItem value={coin.id ?? ""}>{`${coin.name}`}</MenuItem>
+            <MenuItem value={`bitcoin`}>Bitcoin</MenuItem>
+            <MenuItem value={`ethereum`}>Ethereum</MenuItem>
+            <MenuItem value={`binancecoin`}>BNB</MenuItem>
+            <MenuItem value={`tron`}>TRON</MenuItem>
+          </Select>
+        {/* </FormControl> */}
+      </div>
+    );
+  };
+
+  return coin ? renderDropdown(coin) : <Spinner />;
 };

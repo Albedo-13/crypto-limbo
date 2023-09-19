@@ -36,6 +36,7 @@ function Root() {
         <Route path="/signup" element={<EntryPage component={SignUp} />} />
         <Route path="/forgot-password" element={<EntryPage component={ForgotPassword} />} />
         <Route path="/new-password" element={<EntryPage component={NewPassword} />} />
+        <Route path="*" element={<LandingPage />} />
       </Routes>
     </>
   );
