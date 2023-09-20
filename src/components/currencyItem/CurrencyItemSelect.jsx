@@ -51,7 +51,11 @@ export const CurrencyItemSelect = ({ coin }) => {
 
   const renderMenuItems = () => {
     const currentCurrency = isBookmarkChecked(coin.id) ? null : (
-      <MenuItem classes={{ root: "mui-option-bookmarks mui-option-bookmarks_not-bmarked" }} key={coin.id} value={coin.id}>
+      <MenuItem
+        classes={{ root: "mui-option-bookmarks mui-option-bookmarks_not-bmarked" }}
+        key={coin.id}
+        value={coin.id}
+      >
         <BookmarkBorderIcon />
         {coin.name}
       </MenuItem>
@@ -69,21 +73,18 @@ export const CurrencyItemSelect = ({ coin }) => {
 
   const renderSelect = (coin) => {
     return (
-      <div>
-        <p>{coin.name}</p>
-        <Select
-          classes={
-            isBookmarkChecked(coin.id)
-              ? { select: "mui-select-bookmarks" }
-              : { select: "mui-select-bookmarks mui-select-bookmarks_not-bmarked" }
-          }
-          value={coin.id}
-          onChange={handleChange}
-          inputProps={{ "aria-label": "Without label" }}
-        >
-          {renderMenuItems()}
-        </Select>
-      </div>
+      <Select
+        classes={
+          isBookmarkChecked(coin.id)
+            ? { select: "mui-select-bookmarks" }
+            : { select: "mui-select-bookmarks mui-select-bookmarks_not-bmarked" }
+        }
+        value={coin.id}
+        onChange={handleChange}
+        inputProps={{ "aria-label": "Without label" }}
+      >
+        {renderMenuItems()}
+      </Select>
     );
   };
 

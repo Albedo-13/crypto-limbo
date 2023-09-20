@@ -34,6 +34,7 @@
   &.MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input {
     display: flex;
     align-items: center;
+    background-color: $bg-card;
 
     .MuiSvgIcon-root {
       color: $primary-blue-dark;
