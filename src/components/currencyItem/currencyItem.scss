@@ -21,6 +21,7 @@
   }
 
   &-summary {
+    padding: 10px 20px;
     background-color: #6a6a57;
 
     &__wrapper {
@@ -28,7 +29,14 @@
       justify-content: space-between;
     }
 
+    &__label {
+      color: $grey-8;
+      font-size: 14px;
+      // margin-bottom: 5px;
+    }
+
     &__cost {
+      margin-top: 5px;
       &::before {
         content: "$ ";
       }
@@ -50,6 +58,7 @@
     display: flex;
     align-items: center;
     background-color: $bg-card;
+    font-size: 20px;
 
     .MuiSvgIcon-root {
       color: $primary-blue-dark;
@@ -72,6 +81,7 @@
   &.MuiButtonBase-root.MuiMenuItem-root {
     display: flex;
     align-items: center;
+    font-size: 20px;
 
     .MuiSvgIcon-root {
       color: $primary-blue-dark;

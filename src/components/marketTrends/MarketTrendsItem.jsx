@@ -7,7 +7,7 @@ import { createChartData, options } from "./chart";
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 
 export const MarketTrendsItem = ({ currency }) => {
-  const { TrendingIcon, priceChangeStyles } = trendingPriceChange(currency, "market-trends-item__price-change");
+  const { TrendingIcon, priceChangeStyles } = trendingPriceChange(currency.price_change_percentage_24h, "market-trends-item__price-change");
   const chartData = createChartData(currency);
 
   return (

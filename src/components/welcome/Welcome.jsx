@@ -17,7 +17,7 @@ export const Welcome = () => {
 
   const renderMarket = (currencies) => {
     return currencies.map((currency) => {
-      const { priceChangeStyles, TrendingIcon } = trendingPriceChange(currency, "welcome-market-item__price-change");
+      const { priceChangeStyles, TrendingIcon } = trendingPriceChange(currency.price_change_percentage_24h, "welcome-market-item__price-change");
 
       return (
         <div key={currency.id} className="welcome-market-item">

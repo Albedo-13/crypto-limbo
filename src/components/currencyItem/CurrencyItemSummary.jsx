@@ -1,17 +1,16 @@
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
-import { formatDigit } from "../../utils/utils";
+import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
 
-export const CurrencyItemSummary = ({ coin }) => {
-  // const { priceChangeStyles, TrendingIcon } = trendingPriceChange();
-  
-  const renderSummary = (coin) => {
+// TODO: rework priceChangeStyles styles (facade)
 
+export const CurrencyItemSummary = ({ coin }) => {
+  const { priceChangeStyles, TrendingIcon } = trendingPriceChange(coin, "");
+
+  const renderSummary = (coin) => {
     const calculate24hVolume = (coin) => {
-      return coin.tickers.reduce((accum, value) => {
-        return accum + value.converted_volume.usd;
-      }, 0);
-    }
+      return coin.tickers.reduce((accum, value) => accum + value.converted_volume.usd, 0);
+    };
 
     const volume24h = calculate24hVolume(coin);
     return (
@@ -23,7 +22,11 @@ export const CurrencyItemSummary = ({ coin }) => {
           </div>
           <div className="currency-item-summary__block">
             <div className="currency-item-summary__label">24h Change</div>
-            <div className="currency-item-summary__"></div>
+            <div className={`${priceChangeStyles} currency-item-summary__`}>
+              {formatDigit(coin.market_data.price_change_24h_in_currency.usd)}
+              {" / "}
+              {formatPercentage(coin.market_data.price_change_percentage_24h)}
+            </div>
           </div>
           <div className="currency-item-summary__block">
             <div className="currency-item-summary__label">24h Low</div>

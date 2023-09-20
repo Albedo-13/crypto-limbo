@@ -38,7 +38,7 @@ const transformData = (data) => {
 };
 
 const MarketTableRow = ({ row, onCheck, isChecked }) => {
-  const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row, "market-table__change");
+  const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row.price_change_percentage_24h, "market-table__change");
 
   return (
     <TableRow>
