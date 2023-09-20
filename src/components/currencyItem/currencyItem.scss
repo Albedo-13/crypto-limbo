@@ -20,6 +20,21 @@
     }
   }
 
+  &-summary {
+    background-color: #6a6a57;
+
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__cost {
+      &::before {
+        content: "$ ";
+      }
+    }
+  }
+
   &-order {
     background-color: gray; //-
   }
