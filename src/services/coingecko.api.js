@@ -1,5 +1,5 @@
 import { useHttp } from "../hooks/http.hook";
-import defaultCoingeckoApiSettings from "../store/apiSettings";
+import { defaultCoingeckoApiSettings } from "./apiSettings";
 
 const useCoingeckoService = () => {
   const { request } = useHttp();
@@ -16,10 +16,7 @@ const useCoingeckoService = () => {
   };
 
   const getCurrencyById = async (id) => {
-    return await request(`https://api.coingecko.com/api/v3/coins/${id}`)
-      // .then((coin) => setCoin(coin))
-      // .catch(() => setCoin({})); // TODO: handle error
-    // console.log("fetched");
+    return await request(`${url}/coins/${id}`)
   };
 
   return {
