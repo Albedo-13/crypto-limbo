@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useHttp } from "../hooks/http.hook";
-import defaultApiSettings from "../store/apiSettings";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import useCoingeckoService from "../services/coingecko.api";
 
 const initialState = {
   filters: [
@@ -19,20 +18,14 @@ const initialState = {
   loadingStatus: "idle",
 };
 
-export const fetchDefi = createAsyncThunk("marketTrendsFilters/fetchDeFi", async () => {
-  const { request } = useHttp();
-  const { url, vsCurrency, order, locale } = defaultApiSettings;
-  return await request(
-    `${url}/coins/markets?vs_currency=${vsCurrency}&category=decentralized-finance-defi&order=${order}&locale=${locale}`
-  );
+export const fetchDefi = createAsyncThunk("marketTrendsFilters/fetchDeFi", () => {
+  const { getCurrenciesByCategory } = useCoingeckoService();
+  return getCurrenciesByCategory("decentralized-finance-defi");
 });
 
-export const fetchMetaverse = createAsyncThunk("marketTrendsFilters/fetchMetaverse", async () => {
-  const { request } = useHttp();
-  const { url, vsCurrency, order, locale } = defaultApiSettings;
-  return await request(
-    `${url}/coins/markets?vs_currency=${vsCurrency}&category=metaverse&order=${order}&locale=${locale}`
-  );
+export const fetchMetaverse = createAsyncThunk("marketTrendsFilters/fetchMetaverse", () => {
+  const { getCurrenciesByCategory } = useCoingeckoService();
+  return getCurrenciesByCategory("metaverse");
 });
 
 export const marketTrendsFiltersSlice = createSlice({

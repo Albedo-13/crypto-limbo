@@ -93,5 +93,3 @@ const CurrencyItemSelect = ({ coin }) => {
 
   return coin ? renderSelect(coin) : <Spinner />;
 };
-
-// TODO: Service API Calls

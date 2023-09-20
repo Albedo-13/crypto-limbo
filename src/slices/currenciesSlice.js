@@ -1,16 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useHttp } from "../hooks/http.hook";
-import defaultApiSettings from "../store/apiSettings";
+import useCoingeckoService from "../services/coingecko.api";
 
 const initialState = {
   data: [],
   loadingStatus: "idle",
 };
 
-export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
-  const { request } = useHttp();
-  const { url, vsCurrency, order, page, locale } = defaultApiSettings;
-  return await request(`${url}/coins/markets?vs_currency=${vsCurrency}&order=${order}&page=${page}&locale=${locale}`);
+export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", () => {
+  const { getCurrencies } = useCoingeckoService();
+  return getCurrencies();
 });
 
 export const currenciesSlice = createSlice({
