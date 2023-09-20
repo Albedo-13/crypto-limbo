@@ -30,7 +30,7 @@
   }
 }
 
-.mui-bookmarks-select {
+.mui-select-bookmarks {
   &.MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input {
     display: flex;
     align-items: center;
@@ -42,9 +42,17 @@
       width: 20px;
     }
   }
+
+  &_not-bmarked {
+    &.MuiSelect-select.MuiInputBase-input.MuiOutlinedInput-input {
+      .MuiSvgIcon-root {
+        color: $grey-6;
+      }
+    }
+  }
 }
 
-.mui-menu-item {
+.mui-option-bookmarks {
   &.MuiButtonBase-root.MuiMenuItem-root {
     display: flex;
     align-items: center;
@@ -54,6 +62,14 @@
       padding-right: 5px;
       height: 20px;
       width: 20px;
+    }
+  }
+
+  &_not-bmarked {
+    &.MuiButtonBase-root.MuiMenuItem-root {
+      .MuiSvgIcon-root {
+        color: $grey-6;
+      }
     }
   }
 }
