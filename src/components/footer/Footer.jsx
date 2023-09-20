@@ -2,6 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import "./footer.scss";
+import logo from "../../assets/logo.webp";
+import discord from "../../assets/icons/socials/discord.svg";
+import telegram from "../../assets/icons/socials/telegram.svg";
+import instagram from "../../assets/icons/socials/instagram.svg";
+import linkedin from "../../assets/icons/socials/linkedin.svg";
+import youtube from "../../assets/icons/socials/youtube.svg";
 
 export const Footer = () => {
   return (
@@ -11,24 +17,24 @@ export const Footer = () => {
         <div className="footer__wrapper">
           <div className="footer-logo">
             <Link to="/" className="header-logo__link">
-              <img className="footer-logo__img undraggable" src="/assets/logo.webp" alt="footer logo" />
+              <img className="footer-logo__img undraggable" src={logo} alt="footer logo" />
             </Link>
           </div>
           <div className="footer-socials">
             <Link target="_blank" to="https://discord.com/" className="footer-social__link">
-              <img src="/assets/icons/socials/discord.svg" alt="discord link" />
+              <img src={discord} alt="discord link" />
             </Link>
             <Link target="_blank" to="https://telegram.org/" className="footer-social__link">
-              <img src="/assets/icons/socials/telegram.svg" alt="telegram link" />
+              <img src={telegram} alt="telegram link" />
             </Link>
             <Link target="_blank" to="https://www.instagram.com/" className="footer-social__link">
-              <img src="/assets/icons/socials/instagram.svg" alt="instagram link" />
+              <img src={instagram} alt="instagram link" />
             </Link>
             <Link target="_blank" to="https://www.linkedin.com/" className="footer-social__link">
-              <img src="/assets/icons/socials/linkedin.svg" alt="linkedin link" />
+              <img src={linkedin} alt="linkedin link" />
             </Link>
             <Link target="_blank" to="https://www.youtube.com/" className="footer-social__link">
-              <img src="/assets/icons/socials/youtube.svg" alt="youtube link" />
+              <img src={youtube} alt="youtube link" />
             </Link>
           </div>
         </div>

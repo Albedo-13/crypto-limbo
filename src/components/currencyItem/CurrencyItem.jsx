@@ -1,17 +1,42 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 import Spinner from "../spinner/Spinner";
 
 import "./currencyItem.scss";
 
-// WTF IS isBookmarkChecked(row.id) in MarketTable.jsx???
-// нужно чекнуть че это для того, чтобы понять, какой тип данных используется
-// для сохранения букмарков и далее использовать его для мок данных выпадающего списка
-// пометить мок данные как временные, для замены на данные из бд
+// TODO: replace hardcode data with server bookmarks (firebase)
+const _BOOKMARKS = [
+  {
+    id: "bitcoin",
+    symbol: "BTC",
+    name: "Bitcoin",
+  },
+  {
+    id: "ethereum",
+    symbol: "ETH",
+    name: "Ethereum",
+  },
+  {
+    id: "tether",
+    symbol: "USDT",
+    name: "Tether",
+  },
+  {
+    id: "binancecoin",
+    symbol: "BNB",
+    name: "BNB",
+  },
+  {
+    id: "ripple",
+    symbol: "XRP",
+    name: "XRP",
+  },
+];
 
 export const CurrencyItem = ({ coin }) => {
   console.log("currencyItem render");
@@ -45,23 +70,28 @@ const CurrencyItemSelect = ({ coin }) => {
     navigate(`/market/${currencyId}`);
   };
 
-  const renderDropdown = (coin) => {
+  const renderSelect = (coin) => {
     return (
       <div>
-        {coin.name}
-        {/* <FormControl sx={{ p: 1, minWidth: "80%" }}> */}
-        {/* not allow to uncheck bookmark (disabed and checked by default) */}
-          <Select defaultValue={coin.id ?? ""} onChange={handleChange} inputProps={{ "aria-label": "Without label" }}>
-            <MenuItem value={coin.id ?? ""}>{`${coin.name}`}</MenuItem>
-            <MenuItem value={`bitcoin`}>Bitcoin</MenuItem>
-            <MenuItem value={`ethereum`}>Ethereum</MenuItem>
-            <MenuItem value={`binancecoin`}>BNB</MenuItem>
-            <MenuItem value={`tron`}>TRON</MenuItem>
-          </Select>
-        {/* </FormControl> */}
+        <p>{coin.name}</p>
+        <Select
+          classes={{ select: "mui-bookmarks-select" }}
+          value={coin.id ?? ""}
+          onChange={handleChange}
+          inputProps={{ "aria-label": "Without label" }}
+        >
+          {_BOOKMARKS.map((bmark) => (
+            <MenuItem classes={{ root: "mui-menu-item" }} key={bmark.id} value={bmark.id ?? ""}>
+              <BookmarkIcon />
+              {`${bmark.name}`}
+            </MenuItem>
+          ))}
+        </Select>
       </div>
     );
   };
 
-  return coin ? renderDropdown(coin) : <Spinner />;
+  return coin ? renderSelect(coin) : <Spinner />;
 };
+
+// TODO: Service API Calls

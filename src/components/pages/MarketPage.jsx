@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import { Header } from "../header/Header";
@@ -21,7 +20,6 @@ export const MarketPage = () => {
       <Footer />
       {/* //! remove bottom block on production */}
       <div style={{ minHeight: 250, backgroundColor: "gray" }} />
-      <Link to="/">to landing page</Link>
     </>
   );
 };

@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import { Link, NavLink } from "react-router-dom";
 
 import "./header.scss";
+import logo from "../../assets/logo.webp";
 
 export const Header = () => {
   return (
@@ -10,7 +11,7 @@ export const Header = () => {
         <nav className="header__wrapper">
           <div className="header-logo vertical-separator__small">
             <Link to="/" className="header-logo__link">
-              <img className="header-logo__img undraggable" src="/assets/logo.webp" alt="crypto limbo logo" />
+              <img className="header-logo__img undraggable" src={logo} alt="crypto limbo logo" />
             </Link>
           </div>
           <div className="header__links">

@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 
-import "./whyChooseUs.scss";
-
 import { addZeroToNumber } from "../../utils/utils";
+
+import "./whyChooseUs.scss";
+import graphIncome from "../../assets/images/GraphIncome.webp";
 
 const itemsSettings = [
   {
@@ -75,12 +76,7 @@ export const WhyChooseUs = () => {
         <div className="why-choose-us__wrapper">
           <div className="why-choose-us__wrapper-left">{items}</div>
           <div className="why-choose-us__wrapper-right">
-            <img
-              className="why-choose-us__img undraggable"
-              loading="lazy"
-              src="/assets/images/GraphIncome.webp"
-              alt="graph money income"
-            />
+            <img className="why-choose-us__img undraggable" loading="lazy" src={graphIncome} alt="graph money income" />
           </div>
         </div>
       </div>
