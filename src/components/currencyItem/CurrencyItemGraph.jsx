@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useCoingeckoService from "../../services/coingecko.api";
 
-// TODO!: reorganize chart inits to one file
-// TODO!: reorganize chart data flow
-// TODO: understand what bar chart shows (https://www.chartjs.org/docs/latest/charts/bar.html)
 // TODO: convert unix timestamp to valid time (https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript)
+// TODO: understand what bar chart shows (its volume) (https://www.chartjs.org/docs/latest/charts/bar.html)
 // TODO: custom index interaction window (https://www.chartjs.org/docs/latest/samples/tooltip/content.html)
 // TODO: remove dots from graph
 // TODO: graph color (compare first and last value 24h ago?);
@@ -24,7 +22,8 @@ export const CurrencyItemGraph = () => {
   const chartData = createChartData(prices);
 
   useEffect(() => {
-    getMarketDataById(id, 1).then((data) => setPrices(data.prices));
+    getMarketDataById(id, 1)
+      .then((data) => setPrices(data.prices));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 

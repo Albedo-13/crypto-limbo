@@ -29,7 +29,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: error boundaries. replace unloaded block with image / errored skeleton
 // TODO?: skeleton on loading?
 // TODO: react-helmet (try to preload images only on landing page)
-// TODO: ChartJS.register (where to init?)
 // TODO: transitions (react transition group)
 // TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
 // TODO: update footer & header links (all links i mean)

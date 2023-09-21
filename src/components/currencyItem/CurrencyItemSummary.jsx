@@ -2,7 +2,7 @@ import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
 
-// TODO: rework priceChangeStyles styles (facade)
+// TODO!: rework priceChangeStyles styles (facade)
 
 export const CurrencyItemSummary = ({ coin }) => {
   const { priceChangeStyles, TrendingIcon } = trendingPriceChange(coin?.market_data.price_change_percentage_24h, "");
