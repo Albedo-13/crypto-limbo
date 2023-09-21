@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -23,8 +24,8 @@ export const Welcome = () => {
       );
 
       return (
-        <>
-          <div key={currency.id} className="welcome-market-item">
+        <React.Fragment key={currency.id}>
+          <div className="welcome-market-item">
             <div className="welcome-market-item__wrapper">
               <div className="welcome-market-item__name">{currency.symbol}</div>
               {TrendingIcon}
@@ -33,7 +34,7 @@ export const Welcome = () => {
             <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
           </div>
           <div className="v-line_grey" />
-        </>
+        </React.Fragment>
       );
     });
   };
