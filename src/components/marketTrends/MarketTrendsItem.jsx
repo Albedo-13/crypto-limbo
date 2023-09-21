@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 
+import { sparklineChartConfig } from "../../services/chartsSettings";
 import { formatPercentage, formatDigit } from "../../utils/utils";
-import { sparklineChartConfig } from "./chart";
-
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 
 export const MarketTrendsItem = ({ currency }) => {
