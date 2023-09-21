@@ -38,7 +38,7 @@ export const Footer = () => {
             </Link>
           </div>
         </div>
-        <hr className="horizontal-separator mt-51px" style={{ marginTop: "51px" }} />
+        <hr className="h-line mt-51px" style={{ marginTop: "51px" }} />
         <div className="footer-links">
           <div className="footer-links__block">
             <div className="footer-links__label">Crypto Brains</div>
@@ -130,7 +130,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
         <div className="footer-other">
           <div className="footer-other__text">©Copyright 2022 All Rights Are Reserved.</div>
           <div className="footer-other__dot" />

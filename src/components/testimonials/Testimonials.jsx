@@ -120,7 +120,7 @@ export const Testimonials = () => {
             Non-fictional positive reviews from real people (or from a chatbot, I don't know) about us. Yes, you can trust us with your finances, cryptocurrencies and credit cards without any doubt.
           </p>
         </div>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
 
         <swiper-container ref={swiperRef} init="false">
           {carouselItems}

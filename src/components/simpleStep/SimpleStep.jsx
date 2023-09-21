@@ -63,7 +63,7 @@ export const SimpleStep = () => {
           Go through a couple of simple steps: Sign up, Verifying, Adding wallet. It takes just a few minutes and then you can start trading with Crypto Limbo - one of the largest cryptocurrency exchanges in the world
           </p>
         </div>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
         <div className="simple-step-items">{items}</div>
       </div>
     </section>

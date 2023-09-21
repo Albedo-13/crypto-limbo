@@ -36,7 +36,7 @@ export const WhyChooseUs = () => {
   const renderItems = (items) => {
     return items.map((item, i) => {
       const isLastItem = i + 1 < items.length;
-      const lineStyle = classNames({ "horizontal-separator__halfed": isLastItem, hidden: !isLastItem });
+      const lineStyle = classNames({ "h-line_halfed": isLastItem, hidden: !isLastItem });
       return (
         <div key={item.id}>
           <div className="why-choose-us-item">
@@ -72,7 +72,7 @@ export const WhyChooseUs = () => {
           The speed and simplicity of the interface, regular 24/7 support, adapted to mobile devices. All this makes
           Crypto Limbo stand out among its analogues!
         </p>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
         <div className="why-choose-us__wrapper">
           <div className="why-choose-us__wrapper-left">{items}</div>
           <div className="why-choose-us__wrapper-right">

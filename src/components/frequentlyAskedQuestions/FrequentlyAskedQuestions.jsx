@@ -91,7 +91,7 @@ export const FrequentlyAskedQuestions = () => {
         <p className="faq__subtitle">
           Do you have any questions? Or maybe you are facing problems? Don't worry, you're not the first!{" "}
         </p>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
         {accordions}
       </div>
     </section>

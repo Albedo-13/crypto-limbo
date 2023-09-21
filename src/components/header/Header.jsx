@@ -9,7 +9,7 @@ export const Header = () => {
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
-          <div className="header-logo vertical-separator__small">
+          <div className="header-logo v-line_small">
             <Link to="/" className="header-logo__link">
               <img className="header-logo__img undraggable" src={logo} alt="crypto limbo logo" />
             </Link>

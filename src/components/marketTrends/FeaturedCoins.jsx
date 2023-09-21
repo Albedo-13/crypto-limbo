@@ -24,7 +24,7 @@ export const FeaturedCoins = () => {
           <h2 className="featured-coins__title">Featured Coins</h2>
         </div>
         <div className="market-trends-items">{marketItemsList}</div>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
       </div>
     </section>
   );
