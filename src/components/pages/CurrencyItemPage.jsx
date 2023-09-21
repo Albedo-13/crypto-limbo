@@ -16,7 +16,7 @@ export const CurrencyItemPage = () => {
     getCurrencyById(id)
       .then((coin) => setCoin(coin))
       .catch(() => navigate("/market")); // TODO: handle error
-    console.log("fetched");
+    console.log("fetched", coin);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 

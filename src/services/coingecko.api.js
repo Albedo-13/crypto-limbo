@@ -16,13 +16,19 @@ const useCoingeckoService = () => {
   };
 
   const getCurrencyById = async (id) => {
-    return await request(`${url}/coins/${id}`)
+    return await request(`${url}/coins/${id}`);
   };
+
+  // https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1
+  const getMarketDataById = async (id, days) => {
+    return await request(`${url}/coins/${id}/market_chart?vs_currency=${vsCurrency}&days=${days}`)
+  }
 
   return {
     getCurrencies,
     getCurrenciesByCategory,
     getCurrencyById,
+    getMarketDataById,
   }
 }
 
