@@ -25,10 +25,10 @@
     }
   }
 
-  &__links {
+  &__list {
+    list-style-type: none;
     display: flex;
     justify-content: center;
-    width: 50%;
   }
 
   &__link {

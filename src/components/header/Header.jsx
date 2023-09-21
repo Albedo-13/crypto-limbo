@@ -8,23 +8,35 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <nav className="header__wrapper">
+        <div className="header__wrapper">
           <div className="header-logo vertical-separator__small">
             <Link to="/" className="header-logo__link">
               <img className="header-logo__img undraggable" src={logo} alt="crypto limbo logo" />
             </Link>
           </div>
-          <div className="header__links">
-            <NavLink to="/market" end className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}>
-              Market
-            </NavLink>
-            <Link to="#" className="header__link">
-              Road Map
-            </Link>
-            <Link to="#" className="header__link">
-              Referral
-            </Link>
-          </div>
+          <nav className="header__links">
+            <ul className="header__list">
+              <li>
+                <NavLink
+                  to="/market"
+                  end
+                  className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}
+                >
+                  Market
+                </NavLink>
+              </li>
+              <li>
+                <Link to="#" className="header__link">
+                  Road Map
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="header__link">
+                  Referral
+                </Link>
+              </li>
+            </ul>
+          </nav>
           <div className="header__buttons">
             <Button classes={{ root: "button-header-login" }} component={Link} to="/login">
               Log In
@@ -33,7 +45,7 @@ export const Header = () => {
               Sign Up
             </Button>
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );
