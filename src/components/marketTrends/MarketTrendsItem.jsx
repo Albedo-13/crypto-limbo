@@ -24,7 +24,7 @@ export const MarketTrendsItem = ({ currency }) => {
       </div>
       <div className="market-trends-item__current-price">{formatDigit(currency.current_price)}</div>
       <div className="market-trends-item__graph">
-        <Line options={options} data={chartData} />
+        <Line data={chartData} options={options} />
       </div>
     </Link>
   );

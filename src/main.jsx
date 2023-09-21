@@ -10,7 +10,9 @@ import "./styles/index.scss";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./styles/muiTheme.js";
 
-console.log("Hello, visitor! Please consider, that site is using free version of crypto API. It means that sometimes you can receive errors (like 429 - too many requests) even without reaching requests limit. Please, be patient and refresh page after a few minutes");
+console.log(
+  "Hello, visitor! Please consider, that site is using free version of crypto API. It means that sometimes you can receive errors (like 429 - too many requests) even without reaching requests limit. Please, be patient and refresh page after a few minutes"
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ThemeProvider theme={theme}>
