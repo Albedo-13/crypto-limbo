@@ -2,12 +2,17 @@ import { Link } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 
 import { formatPercentage, formatDigit } from "../../utils/utils";
-import { createChartData, options } from "./chart";
+import { sparklineChartConfig } from "./chart";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 
 export const MarketTrendsItem = ({ currency }) => {
-  const { TrendingIcon, priceChangeStyles } = trendingPriceChange(currency.price_change_percentage_24h, "market-trends-item__price-change");
+  const { TrendingIcon, priceChangeStyles } = trendingPriceChange(
+    currency.price_change_percentage_24h,
+    "market-trends-item__price-change"
+  );
+  
+  const { createChartData, options } = sparklineChartConfig;
   const chartData = createChartData(currency);
 
   return (

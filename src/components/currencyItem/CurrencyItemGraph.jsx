@@ -1,5 +1,5 @@
 import { Line } from "react-chartjs-2";
-import { createChartData, options } from "./chart";
+import { detailedChartConfig } from "./chart";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useCoingeckoService from "../../services/coingecko.api";
@@ -18,12 +18,13 @@ import useCoingeckoService from "../../services/coingecko.api";
 export const CurrencyItemGraph = () => {
   const { id } = useParams();
   const [prices, setPrices] = useState([]);
-  const chartData = createChartData(prices);
   const { getMarketDataById } = useCoingeckoService();
+  
+  const { createChartData, options } = detailedChartConfig;
+  const chartData = createChartData(prices);
 
   useEffect(() => {
-    getMarketDataById(id, 1)
-      .then((data) => setPrices(data.prices));
+    getMarketDataById(id, 1).then((data) => setPrices(data.prices));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
