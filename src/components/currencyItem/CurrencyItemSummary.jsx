@@ -20,7 +20,7 @@ export const CurrencyItemSummary = ({ coin }) => {
             <div className="currency-item-summary__label">Current Price</div>
             <div className="currency-item-summary__cost">{formatDigit(coin.market_data.current_price.usd)}</div>
           </div>
-          <div className="test"></div>
+          <div className="vertical-separator__grey"></div>
           <div className="currency-item-summary__block">
             <div className="currency-item-summary__label">24h Change</div>
             <div className={`${priceChangeStyles} currency-item-summary__change`}>
@@ -33,17 +33,17 @@ export const CurrencyItemSummary = ({ coin }) => {
               </div>
             </div>
           </div>
-          <div className="test"></div>
+          <div className="vertical-separator__grey"></div>
           <div className="currency-item-summary__block">
             <div className="currency-item-summary__label">24h Low</div>
             <div className="currency-item-summary__cost">{formatDigit(coin.market_data.low_24h.usd)}</div>
           </div>
-          <div className="test"></div>
+          <div className="vertical-separator__grey"></div>
           <div className="currency-item-summary__block">
             <div className="currency-item-summary__label">24h High</div>
             <div className="currency-item-summary__cost">{formatDigit(coin.market_data.high_24h.usd)}</div>
           </div>
-          <div className="test"></div>
+          <div className="vertical-separator__grey"></div>
           <div className="currency-item-summary__block">
             <div className="currency-item-summary__label">24h Volume (USD)</div>
             <div className="currency-item-summary__cost">{formatDigit(volume24h)}</div>

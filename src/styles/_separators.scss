@@ -14,16 +14,25 @@
   }
 }
 
-.vertical-separator__market {
-  position: absolute;
+// .test {
+//   // change name, refactor with vertical separators
+//   position: relative;
+//   display: inline;
+//   width: 1px;
+//   height: 32px;
+//   background: $white;
+//   opacity: 0.2;
+// }
+
+.vertical-separator__grey {
+  position: relative;
   background-color: $grey-6;
   opacity: 0.2;
-  height: 50%;
+  height: 40px;
   width: 1px;
 
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
 }
 
 .horizontal-separator {
@@ -49,7 +58,7 @@
   margin-bottom: 40px;
   border: none;
 
-  background: linear-gradient(90deg, #FFF 0%, rgba(255, 255, 255, 0.02) 100%);
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.02) 100%);
   opacity: 0.2;
 }
 

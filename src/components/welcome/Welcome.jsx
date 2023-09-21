@@ -17,18 +17,23 @@ export const Welcome = () => {
 
   const renderMarket = (currencies) => {
     return currencies.map((currency) => {
-      const { priceChangeStyles, TrendingIcon } = trendingPriceChange(currency.price_change_percentage_24h, "welcome-market-item__price-change");
+      const { priceChangeStyles, TrendingIcon } = trendingPriceChange(
+        currency.price_change_percentage_24h,
+        "welcome-market-item__price-change"
+      );
 
       return (
-        <div key={currency.id} className="welcome-market-item">
-          <div className="welcome-market-item__wrapper">
-            <div className="welcome-market-item__name">{currency.symbol}</div>
-            {TrendingIcon}
-            <div className={priceChangeStyles}>{formatPercentage(currency.price_change_percentage_24h)}</div>
+        <>
+          <div key={currency.id} className="welcome-market-item">
+            <div className="welcome-market-item__wrapper">
+              <div className="welcome-market-item__name">{currency.symbol}</div>
+              {TrendingIcon}
+              <div className={priceChangeStyles}>{formatPercentage(currency.price_change_percentage_24h)}</div>
+            </div>
+            <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
           </div>
-          <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
-          <div className="vertical-separator__market" />
-        </div>
+          <div className="vertical-separator__grey" />
+        </>
       );
     });
   };
@@ -73,11 +78,7 @@ export const Welcome = () => {
             </div>
           </div>
           <div className="welcome__wrapper-right">
-            <img
-              className="welcome__img undraggable"
-              src={notebook}
-              alt="notebook with statistics"
-            />
+            <img className="welcome__img undraggable" src={notebook} alt="notebook with statistics" />
             <div className="bg-img-spray_round" />
           </div>
         </div>
