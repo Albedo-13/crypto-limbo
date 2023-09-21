@@ -79,6 +79,13 @@ export const CurrencyItemSelect = ({ coin }) => {
             ? { select: "mui-select-bookmarks" }
             : { select: "mui-select-bookmarks mui-select-bookmarks_not-bmarked" }
         }
+        sx={{
+          boxShadow: "none",
+          ".MuiOutlinedInput-notchedOutline": { border: 0 },
+          "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            border: "1px solid white",
+          },
+        }}
         value={coin.id}
         onChange={handleChange}
         inputProps={{ "aria-label": "Without label" }}
