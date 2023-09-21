@@ -23,7 +23,7 @@ export const CurrencyItemPage = () => {
   return (
     <>
       <Helmet>
-        <title>{coin.name}: price & chart | Crypto Limbo</title>
+        <title>{coin ? `${coin.name}: price & chart | Crypto Limbo` : `Crypto Limbo`}</title>
       </Helmet>
 
       <Header />
