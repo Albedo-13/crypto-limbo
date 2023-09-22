@@ -22,9 +22,6 @@ import { EnhancedTableToolbar, EnhancedTableHead } from "./TableEnhancers";
 
 import "./marketTable.scss";
 
-
-// TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
-
 const transformData = (data) => {
   return data.map(
     ({ id, name, symbol, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({

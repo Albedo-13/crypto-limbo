@@ -6,7 +6,6 @@ import { CurrencyItemGraph } from "./CurrencyItemGraph";
 
 import "./currencyItem.scss";
 
-// TODO: bookmarks to redux store
 // TODO: 404 route to landing
 // TODO?: Spinner? skeleton?
 // TODO: on bookmark change drop fallback while fetching
