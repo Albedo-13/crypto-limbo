@@ -7,37 +7,10 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
 import Spinner from "../spinner/Spinner";
-
-// TODO: replace hardcode data with server bookmarks (firebase)
-const _BOOKMARKS = [
-  {
-    id: "bitcoin",
-    symbol: "BTC",
-    name: "Bitcoin",
-  },
-  {
-    id: "ethereum",
-    symbol: "ETH",
-    name: "Ethereum",
-  },
-  {
-    id: "tether",
-    symbol: "USDT",
-    name: "Tether",
-  },
-  {
-    id: "binancecoin",
-    symbol: "BNB",
-    name: "BNB",
-  },
-  {
-    id: "ripple",
-    symbol: "XRP",
-    name: "XRP",
-  },
-];
+import { useSelector } from "react-redux";
 
 export const CurrencyItemSelect = ({ coin }) => {
+  const bookmarks = useSelector((state) => state.bookmarks.data);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -46,7 +19,7 @@ export const CurrencyItemSelect = ({ coin }) => {
   };
 
   const isBookmarkChecked = (id) => {
-    return _BOOKMARKS.some((bmark) => bmark.id === id);
+    return bookmarks.some((bmark) => bmark.id === id);
   };
 
   const renderMenuItems = () => {
@@ -61,7 +34,7 @@ export const CurrencyItemSelect = ({ coin }) => {
       </MenuItem>
     );
 
-    return _BOOKMARKS
+    return bookmarks
       .map((bmark) => (
         <MenuItem classes={{ root: "mui-option-bookmarks" }} key={bmark.id} value={bmark.id}>
           <BookmarkIcon />
