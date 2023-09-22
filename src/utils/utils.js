@@ -30,3 +30,18 @@ export const comparator = (a, b, orderBy, modifier) => {
   }
   return 0;
 };
+
+export const unixTimestampToDate = (timestamp = 1695367775) => {
+  // TODO: adapt to toolbar (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options)
+  
+  // 1 day from current time = 5 minute interval data
+  // 2 - 90 days from current time = hourly data
+  // above 90 days from current time = daily data (00:00 UTC)
+
+  const dayOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+
+  return new Date(timestamp).toLocaleString("en-US", dayOptions);
+}

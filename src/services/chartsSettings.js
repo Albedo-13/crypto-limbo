@@ -1,5 +1,6 @@
 import variables from "../styles/_variables.scss?inline";
 import { convertScssToObject } from "../utils/utils";
+import { unixTimestampToDate } from "../utils/utils";
 
 import {
   Chart as ChartJS,
@@ -35,7 +36,7 @@ export const detailedChartConfig = {
     },
   },
   createChartData: (prices) => {
-    const labels = prices.map((price) => price[0]);
+    const labels = prices.map((price) => unixTimestampToDate(price[0]));
 
     return {
       labels,
