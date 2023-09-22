@@ -1,5 +1,5 @@
 import variables from "../styles/_variables.scss?inline";
-import { convertScssToObject,unixTimestampToDate } from "../utils/utils";
+import { convertScssToObject, unixTimestampToDate, formatDigit } from "../utils/utils";
 
 import {
   Chart as ChartJS,
@@ -22,7 +22,7 @@ export const detailedChartConfig = {
     responsive: true,
     interaction: {
       intersect: false,
-      mode: 'index',
+      mode: "index",
     },
     plugins: {
       legend: {
@@ -32,10 +32,17 @@ export const detailedChartConfig = {
         display: true,
         text: "Chart.js Line Chart",
       },
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            return `${context.dataset.label}: ${formatDigit(context.dataset.data[context.dataIndex])} $`;
+          },
+        },
+      },
     },
   },
   createChartData: (currency, prices) => {
-    const labels = prices.map((price) => unixTimestampToDate(price[0]));
+    const labels = prices.map((price) => unixTimestampToDate(price[0], "time"));
     const isPriceRaising24h = currency?.market_data.price_change_24h >= 0;
 
     return {
@@ -43,18 +50,14 @@ export const detailedChartConfig = {
       datasets: [
         {
           type: "line",
-          label: "Dataset 1",
+          label: `${currency?.name}`,
           data: prices.map((price) => price[1]),
-          borderColor: isPriceRaising24h ? `${colors.success}80` : `${colors.error}80`,
-          backgroundColor: isPriceRaising24h ? `${colors.success}b3` : `${colors.error}b3`,
+          borderColor: isPriceRaising24h ? `${colors.success}b3` : `${colors.error}b3`,
+          backgroundColor: colors.white,
+          pointStyle: "rectDot",
+          pointRadius: 0,
+          pointHoverRadius: 4,
         },
-        // {
-        //   type: "bar",
-        //   label: "Dataset 2",
-        //   data: [400, 300, 200, 800, 500, 300, 200],
-        //   borderColor: "rgb(53, 162, 235, 0.5)",
-        //   backgroundColor: "rgba(53, 162, 235, 0.3)",
-        // },
       ],
     };
   },
@@ -67,7 +70,7 @@ export const sparklineChartConfig = {
       legend: {
         display: false,
       },
-    }
+    },
   },
   createChartData: (currency) => {
     const labels = ["24h ago", "Now"];

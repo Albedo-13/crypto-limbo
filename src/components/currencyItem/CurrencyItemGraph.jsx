@@ -5,10 +5,7 @@ import { useParams } from "react-router-dom";
 import useCoingeckoService from "../../services/coingecko.api";
 
 // TODO: convert unix timestamp to valid time (https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript)
-// TODO: understand what bar chart shows (its volume) (https://www.chartjs.org/docs/latest/charts/bar.html)
-// TODO: custom index interaction window (https://www.chartjs.org/docs/latest/samples/tooltip/content.html)
-// TODO: remove dots from graph
-// TODO: graph color (compare first and last value 24h ago?);
+// TODO: Custom Tooltip Content (https://www.chartjs.org/docs/latest/samples/tooltip/content.html)
 // TODO?: vertical color line on contant (line in coingecko graph)
 // TODO?: shadow drop
 // TODO: chart toolbar
