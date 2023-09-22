@@ -13,14 +13,14 @@ import {
   filteredCurrenciesChanged,
   fetchDefi,
   fetchMetaverse,
-} from "../../slices/marketTrendsFiltersSlice";
+} from "../../slices/filtersSlice";
 
 import Spinner from "../spinner/Spinner";
 import { MarketTrendsItem } from "./MarketTrendsItem";
 
 export const MarketTrends = () => {
   const currencies = useSelector((state) => state.currencies);
-  const filters = useSelector((state) => state.marketTrendsFilters);
+  const filters = useSelector((state) => state.filters);
   const dispatch = useDispatch();
 
   useEffect(() => {

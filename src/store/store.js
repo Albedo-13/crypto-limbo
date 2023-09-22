@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import currenciesSlice from "../slices/currenciesSlice";
-import marketTrendsFiltersSlice from "../slices/marketTrendsFiltersSlice";
+import filtersSlice from "../slices/filtersSlice";
 import bookmarksSlice from "../slices/bookmarksSlice";
 
 export const store = configureStore({
@@ -8,7 +8,7 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
   reducer: {
     currencies: currenciesSlice,
-    marketTrendsFilters: marketTrendsFiltersSlice,
+    filters: filtersSlice,
     bookmarks: bookmarksSlice,
   }
 });

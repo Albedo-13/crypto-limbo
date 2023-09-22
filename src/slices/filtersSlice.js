@@ -18,18 +18,18 @@ const initialState = {
   loadingStatus: "idle",
 };
 
-export const fetchDefi = createAsyncThunk("marketTrendsFilters/fetchDeFi", () => {
+export const fetchDefi = createAsyncThunk("filters/fetchDeFi", () => {
   const { getCurrenciesByCategory } = useCoingeckoService();
   return getCurrenciesByCategory("decentralized-finance-defi");
 });
 
-export const fetchMetaverse = createAsyncThunk("marketTrendsFilters/fetchMetaverse", () => {
+export const fetchMetaverse = createAsyncThunk("filters/fetchMetaverse", () => {
   const { getCurrenciesByCategory } = useCoingeckoService();
   return getCurrenciesByCategory("metaverse");
 });
 
-export const marketTrendsFiltersSlice = createSlice({
-  name: "marketTrendsFilters",
+export const filtersSlice = createSlice({
+  name: "filters",
   initialState,
   reducers: {
     activeFilterChanged: (state, action) => {
@@ -94,5 +94,5 @@ export const marketTrendsFiltersSlice = createSlice({
   },
 });
 
-export default marketTrendsFiltersSlice.reducer;
-export const { activeFilterChanged, filteredCurrenciesChanged } = marketTrendsFiltersSlice.actions;
+export default filtersSlice.reducer;
+export const { activeFilterChanged, filteredCurrenciesChanged } = filtersSlice.actions;
