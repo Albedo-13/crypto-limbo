@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useDebouncedCallback } from "use-debounce";
 import { useSearchParams, Link } from "react-router-dom";
 
@@ -15,10 +15,13 @@ import Checkbox from "@mui/material/Checkbox";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
+import { addBookmark, removeBookmark } from "../../slices/bookmarksSlice";
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
 import { EnhancedTableToolbar, EnhancedTableHead } from "./TableEnhancers";
+
 import "./marketTable.scss";
+
 
 // TODO: save bookmarks (redux? firebase? db is the best solution imo, temporarily into state)
 
@@ -72,14 +75,14 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
 
 export const MarketTable = () => {
   const data = useSelector((state) => state.currencies.data);
+  const bookmarks = useSelector((state) => state.bookmarks.data);
+  const dispatch = useDispatch();
 
   const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState("market_cap");
 
   const [displayedRowsNumber, setDisplayedRowsNumber] = useState(16);
   const incDisplayedRowsBy = 16;
-
-  const [selected, setSelected] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("q") ?? "";
@@ -115,10 +118,9 @@ export const MarketTable = () => {
         name: row.name,
       };
 
-      setSelected([...selected, newSelectedCurrency]);
+      dispatch(addBookmark(newSelectedCurrency));
     } else {
-      const filterSelected = selected.filter((currency) => currency.id !== row.id);
-      setSelected(filterSelected);
+      dispatch(removeBookmark(row.id));
     }
   };
 
@@ -137,7 +139,7 @@ export const MarketTable = () => {
   };
 
   const isBookmarkChecked = (id) => {
-    return selected.some((currency) => currency.id === id);
+    return bookmarks.some((currency) => currency.id === id);
   };
 
   const rows = transformData(data.slice(0, displayedRowsNumber));
@@ -164,7 +166,7 @@ export const MarketTable = () => {
   return (
     <section className="market-table">
       <div className="container">
-        <EnhancedTableToolbar selectedList={selected} searchParam={search} onSearch={handleSearchDebounced} />
+        <EnhancedTableToolbar bookmarksList={bookmarks} searchParam={search} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper} className="mui-table">
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />

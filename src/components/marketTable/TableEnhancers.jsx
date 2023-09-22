@@ -54,17 +54,17 @@ const headCells = [
   },
 ];
 
-export const EnhancedTableToolbar = ({ selectedList, searchParam, onSearch }) => {
-  const renderSelectedList = selectedList.map((selectedCurrency) => (
-    <Button key={selectedCurrency.id} variant="text" component={Link} to={`/market/${selectedCurrency.id}`}>
-      {selectedCurrency.symbol}
+export const EnhancedTableToolbar = ({ bookmarksList, searchParam, onSearch }) => {
+  const renderBookmarksList = bookmarksList.map((bookmarkedCurrency) => (
+    <Button key={bookmarkedCurrency.id} variant="text" component={Link} to={`/market/${bookmarkedCurrency.id}`}>
+      {bookmarkedCurrency.symbol}
     </Button>
   ));
 
   return (
     <Toolbar className="mui-toolbar-market">
       <div className="bg-section-spray-small spray_dark" />
-      <div className="market-table-watchlist">{renderSelectedList}</div>
+      <div className="market-table-watchlist">{renderBookmarksList}</div>
       <TextField
         className="mui-searchbar"
         placeholder="Search Here"
