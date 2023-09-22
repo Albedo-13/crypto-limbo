@@ -38,7 +38,7 @@ const transformData = (data) => {
 };
 
 const MarketTableRow = ({ row, onCheck, isChecked }) => {
-  const { priceChangeStyles, TrendingIcon } = trendingPriceChange(row.price_change_percentage_24h, "market-table__change");
+  const { priceChangeStyle, TrendingIcon } = trendingPriceChange(row.price_change_percentage_24h);
 
   return (
     <TableRow>
@@ -55,7 +55,7 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
       </TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
       <TableCell>
-        <div className={`${priceChangeStyles} market-table__percent-postfix`}>
+        <div className={`${priceChangeStyle} market-table__change market-table__percent-postfix`}>
           {TrendingIcon}
           {formatPercentage(row.price_change_percentage_24h)}
         </div>

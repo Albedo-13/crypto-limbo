@@ -18,10 +18,7 @@ export const Welcome = () => {
 
   const renderMarket = (currencies) => {
     return currencies.map((currency) => {
-      const { priceChangeStyles, TrendingIcon } = trendingPriceChange(
-        currency.price_change_percentage_24h,
-        "welcome-market-item__price-change"
-      );
+      const { priceChangeStyle, TrendingIcon } = trendingPriceChange(currency.price_change_percentage_24h);
 
       return (
         <React.Fragment key={currency.id}>
@@ -29,7 +26,9 @@ export const Welcome = () => {
             <div className="welcome-market-item__wrapper">
               <div className="welcome-market-item__name">{currency.symbol}</div>
               {TrendingIcon}
-              <div className={priceChangeStyles}>{formatPercentage(currency.price_change_percentage_24h)}</div>
+              <div className={`${priceChangeStyle} welcome-market-item__price-change`}>
+                {formatPercentage(currency.price_change_percentage_24h)}
+              </div>
             </div>
             <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
           </div>
