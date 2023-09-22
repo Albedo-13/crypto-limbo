@@ -21,7 +21,7 @@ export const CurrencyItem = ({ coin }) => {
               <CurrencyItemSelect coin={coin} />
               <CurrencyItemSummary coin={coin} />
             </div>
-            <CurrencyItemGraph />
+            <CurrencyItemGraph coin={coin} />
             <div className="currency-item-trade">buy / sell + tabs</div>
           </div>
           <div className="currency-item-order">

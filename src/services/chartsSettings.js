@@ -1,6 +1,5 @@
 import variables from "../styles/_variables.scss?inline";
-import { convertScssToObject } from "../utils/utils";
-import { unixTimestampToDate } from "../utils/utils";
+import { convertScssToObject,unixTimestampToDate } from "../utils/utils";
 
 import {
   Chart as ChartJS,
@@ -35,8 +34,9 @@ export const detailedChartConfig = {
       },
     },
   },
-  createChartData: (prices) => {
+  createChartData: (currency, prices) => {
     const labels = prices.map((price) => unixTimestampToDate(price[0]));
+    const isPriceRaising24h = currency?.market_data.price_change_24h >= 0;
 
     return {
       labels,
@@ -45,8 +45,8 @@ export const detailedChartConfig = {
           type: "line",
           label: "Dataset 1",
           data: prices.map((price) => price[1]),
-          borderColor: "rgb(255, 99, 132)",
-          backgroundColor: "rgba(255, 99, 132, 0.5)",
+          borderColor: isPriceRaising24h ? `${colors.success}80` : `${colors.error}80`,
+          backgroundColor: isPriceRaising24h ? `${colors.success}b3` : `${colors.error}b3`,
         },
         // {
         //   type: "bar",
@@ -69,7 +69,7 @@ export const sparklineChartConfig = {
       },
     }
   },
-  createChartData: (currencyData) => {
+  createChartData: (currency) => {
     const labels = ["24h ago", "Now"];
 
     return {
@@ -77,9 +77,9 @@ export const sparklineChartConfig = {
       datasets: [
         {
           label: "Cost in $",
-          data: [currencyData.current_price - currencyData.price_change_24h, currencyData.current_price],
-          borderColor: currencyData.price_change_24h >= 0 ? `${colors.success}80` : `${colors.error}80`,
-          backgroundColor: currencyData.price_change_24h >= 0 ? `${colors.success}b3` : `${colors.error}b3`,
+          data: [currency.current_price - currency.price_change_24h, currency.current_price],
+          borderColor: currency.price_change_24h >= 0 ? `${colors.success}80` : `${colors.error}80`,
+          backgroundColor: currency.price_change_24h >= 0 ? `${colors.success}b3` : `${colors.error}b3`,
           pointRadius: 8,
           pointHoverRadius: 10,
         },

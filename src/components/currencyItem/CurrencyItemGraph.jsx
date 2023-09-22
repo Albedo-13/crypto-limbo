@@ -13,13 +13,13 @@ import useCoingeckoService from "../../services/coingecko.api";
 // TODO?: shadow drop
 // TODO: chart toolbar
 
-export const CurrencyItemGraph = () => {
+export const CurrencyItemGraph = ({ coin }) => {
   const { id } = useParams();
   const [prices, setPrices] = useState([]);
   const { getMarketDataById } = useCoingeckoService();
 
   const { createChartData, options } = detailedChartConfig;
-  const chartData = createChartData(prices);
+  const chartData = createChartData(coin, prices);
 
   useEffect(() => {
     getMarketDataById(id, 1)
