@@ -19,7 +19,7 @@ const useCoingeckoService = () => {
     return await request(`${url}/coins/${id}`);
   };
 
-  const getMarketDataById = async (id, days) => {
+  const getMarketDataById = async (id, days = 1) => {
     return await request(`${url}/coins/${id}/market_chart?vs_currency=${vsCurrency}&days=${days}`)
   }
 

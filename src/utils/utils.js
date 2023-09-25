@@ -43,16 +43,20 @@ export const unixTimestampToDate = (timestamp = 1695367775, dataFormat="date") =
   switch (dataFormat) {
     case "time":
       options = {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
-        weekday: "short",
-        day: "numeric",
+        second: "2-digit",
       };
       break;
     case "date":
       options = {
-        weekday: "short",
+        // weekday: "short",
         day: "numeric",
+        month: "short",
+        year: "2-digit",
       };
       break;
     default:
@@ -60,6 +64,6 @@ export const unixTimestampToDate = (timestamp = 1695367775, dataFormat="date") =
       };
       break;
   }
-  return new Date(timestamp).toLocaleString("en-US", options);
+  return new Date(timestamp).toLocaleString("en-GB", options);
 }
 // console.log(unixTimestampToDate());

@@ -76,9 +76,35 @@
   }
 
   &-graph {
-    border-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
     background-color: $bg-card;
     height: 550px;
+
+    &-toolbar {
+      display: flex;
+      justify-content: center;
+      background-color: $bg-card-3;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 4px 0;
+
+      .MuiButtonBase-root.MuiButton-root {
+        padding: 5px 15px;
+        &.active {
+          background-color: "#334252";
+        }
+
+        &:not(:last-of-type),
+        &:not(:last-of-type):disabled {
+          border: none;
+        }
+
+        &:disabled {
+          color: $primary-blue-dark;
+        }
+      }
+    }
 
     //!!! change
     canvas {
