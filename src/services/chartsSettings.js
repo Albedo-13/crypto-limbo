@@ -26,11 +26,10 @@ export const detailedChartConfig = {
     },
     plugins: {
       legend: {
-        position: "top",
+        display: false,
       },
       title: {
-        display: true,
-        text: "Chart.js Line Chart",
+        display: false,
       },
       tooltip: {
         callbacks: {
@@ -42,7 +41,7 @@ export const detailedChartConfig = {
     },
   },
   createChartData: (currency, prices) => {
-    const labels = prices.map((price) => unixTimestampToDate(price[0], "time"));
+    const labels = prices.map((price) => unixTimestampToDate(price[0]));
     const isPriceRaising24h = currency?.market_data.price_change_24h >= 0;
 
     return {

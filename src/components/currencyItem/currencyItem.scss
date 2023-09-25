@@ -80,6 +80,7 @@
     border-bottom-right-radius: 4px;
     background-color: $bg-card;
     height: 550px;
+    padding: 20px 0;
 
     &-toolbar {
       display: flex;
@@ -91,6 +92,8 @@
 
       .MuiButtonBase-root.MuiButton-root {
         padding: 5px 15px;
+        color: $grey-6;
+
         &.active {
           background-color: "#334252";
         }

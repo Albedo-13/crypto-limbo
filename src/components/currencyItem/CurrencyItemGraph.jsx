@@ -10,9 +10,6 @@ import useCoingeckoService from "../../services/coingecko.api";
 
 // TODO: convert unix timestamp to valid time (https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript)
 // TODO: Custom Tooltip Content (https://www.chartjs.org/docs/latest/samples/tooltip/content.html)
-// TODO?: vertical color line on contant (line in coingecko graph)
-// TODO?: shadow drop
-// TODO: chart toolbar
 
 const toolbarData = [
   {
@@ -26,6 +23,22 @@ const toolbarData = [
   {
     value: "7",
     label: "7D",
+  },
+  {
+    value: "30",
+    label: "1M",
+  },
+  {
+    value: "60",
+    label: "2M",
+  },
+  {
+    value: "180",
+    label: "6M",
+  },
+  {
+    value: "max",
+    label: "All",
   },
 ];
 
