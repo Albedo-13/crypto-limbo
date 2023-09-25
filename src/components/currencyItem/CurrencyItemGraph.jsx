@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import IconButton from "@mui/material/IconButton";
+import CachedIcon from "@mui/icons-material/Cached";
 
 import { detailedChartConfig } from "../../services/chartsSettings";
 import useCoingeckoService from "../../services/coingecko.api";
@@ -45,21 +47,31 @@ const toolbarData = [
 const GraphToolbar = ({ handleFetch }) => {
   const [activeButtonValue, setActiveButtonValue] = useState("1");
   const buttonGroupRef = useRef(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
     handleFetch(activeButtonValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeButtonValue]);
 
-  const handleClick = (e) => {
+  const handleFilter = (e) => {
     console.log("click", e.target.value);
     setActiveButtonValue(e.target.value);
+  };
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    handleFetch(activeButtonValue);
+
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 5000);
   };
 
   const renderDateButtons = (toolbarData) => {
     return toolbarData.map((item) => {
       return (
-        <Button key={item.value} value={item.value} disabled={activeButtonValue === item.value} onClick={handleClick}>
+        <Button key={item.value} value={item.value} disabled={activeButtonValue === item.value} onClick={handleFilter}>
           {item.label}
         </Button>
       );
@@ -69,10 +81,14 @@ const GraphToolbar = ({ handleFetch }) => {
   const dateButtons = renderDateButtons(toolbarData);
   return (
     <div className="currency-item-graph-toolbar">
-      <div className="currency-item-graph-toolbar__buttons">
-        <ButtonGroup ref={buttonGroupRef} variant="text" aria-label="text button group">
-          {dateButtons}
-        </ButtonGroup>
+      <div>plchldr</div>
+      <ButtonGroup ref={buttonGroupRef} variant="text" aria-label="text button group">
+        {dateButtons}
+      </ButtonGroup>
+      <div>
+        <IconButton onClick={handleRefresh} disabled={isRefreshing} aria-label="refresh graph">
+          <CachedIcon />
+        </IconButton>
       </div>
     </div>
   );

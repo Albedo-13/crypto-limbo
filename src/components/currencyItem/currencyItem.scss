@@ -84,11 +84,12 @@
 
     &-toolbar {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       background-color: $bg-card-3;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
-      padding: 4px 0;
+      padding: 4px 25px;
 
       .MuiButtonBase-root.MuiButton-root {
         padding: 5px 15px;
@@ -106,10 +107,13 @@
         &:disabled {
           color: $primary-blue-dark;
         }
+
+        .MuiSvgIcon-root {
+          font-size: 25px;
+          color: $grey-6;
+        }
       }
     }
-
-    //!!! change
     canvas {
       margin: 0 auto;
       width: 100%;
