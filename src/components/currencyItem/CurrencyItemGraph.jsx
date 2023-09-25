@@ -10,8 +10,7 @@ import CachedIcon from "@mui/icons-material/Cached";
 import { detailedChartConfig } from "../../services/chartsSettings";
 import useCoingeckoService from "../../services/coingecko.api";
 
-// TODO: convert unix timestamp to valid time (https://coderrocketfuel.com/article/convert-a-unix-timestamp-to-a-date-in-vanilla-javascript)
-// TODO: Custom Tooltip Content (https://www.chartjs.org/docs/latest/samples/tooltip/content.html)
+// TODO: refresh button refreshes all page data (coin and graph, 2 fetches on 1 btn? promise.all?)
 
 const toolbarData = [
   {
@@ -55,14 +54,16 @@ const GraphToolbar = ({ handleFetch }) => {
   }, [activeButtonValue]);
 
   const handleFilter = (e) => {
-    console.log("click", e.target.value);
     setActiveButtonValue(e.target.value);
   };
 
   const handleRefresh = () => {
-    setIsRefreshing(true);
     handleFetch(activeButtonValue);
+    temporarilyDisableButton();
+  };
 
+  const temporarilyDisableButton = () => {
+    setIsRefreshing(true);
     setTimeout(() => {
       setIsRefreshing(false);
     }, 5000);
@@ -81,15 +82,12 @@ const GraphToolbar = ({ handleFetch }) => {
   const dateButtons = renderDateButtons(toolbarData);
   return (
     <div className="currency-item-graph-toolbar">
-      <div>plchldr</div>
       <ButtonGroup ref={buttonGroupRef} variant="text" aria-label="text button group">
         {dateButtons}
       </ButtonGroup>
-      <div>
-        <IconButton onClick={handleRefresh} disabled={isRefreshing} aria-label="refresh graph">
-          <CachedIcon />
-        </IconButton>
-      </div>
+      <IconButton onClick={handleRefresh} disabled={isRefreshing} aria-label="refresh graph">
+        <CachedIcon />
+      </IconButton>
     </div>
   );
 };
