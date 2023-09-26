@@ -16,7 +16,7 @@ export const CurrencyItemPage = () => {
   useEffect(() => {
     getCurrencyById(id)
       .then((coin) => setCoin(coin))
-      .catch(() => navigate("/market")); // TODO: handle error
+      .catch(() => navigate("/market", { replace: true }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 

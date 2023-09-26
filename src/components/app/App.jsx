@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
+import { createBrowserRouter, Route, RouterProvider, Routes, Navigate } from "react-router-dom";
 
 import "./App.scss";
 
@@ -31,12 +31,12 @@ function Root() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/market" element={<MarketPage />} />
-        <Route path="/market/:id" element={<CurrencyItemPage />} />
+        <Route path="/market/:id" element={<CurrencyItemPage />} errorElement={<LandingPage />} />
         <Route path="/login" element={<EntryPage component={Login} />} />
         <Route path="/signup" element={<EntryPage component={SignUp} />} />
         <Route path="/forgot-password" element={<EntryPage component={ForgotPassword} />} />
         <Route path="/new-password" element={<EntryPage component={NewPassword} />} />
-        <Route path="*" element={<LandingPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
