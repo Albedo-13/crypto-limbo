@@ -1,5 +1,5 @@
 import { Line } from "react-chartjs-2";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
 
@@ -10,8 +10,6 @@ import CachedIcon from "@mui/icons-material/Cached";
 
 import { detailedChartConfig } from "../../services/chartsSettings";
 import useCoingeckoService from "../../services/coingecko.api";
-
-// TODO?: refresh button refreshes all page data (coin and graph, 2 fetches on 1 btn? promise.all?)
 
 const toolbarData = [
   {
@@ -46,7 +44,6 @@ const toolbarData = [
 
 const GraphToolbar = ({ handleFetch }) => {
   const [activeButtonValue, setActiveButtonValue] = useState("1");
-  const buttonGroupRef = useRef(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
@@ -92,7 +89,7 @@ const GraphToolbar = ({ handleFetch }) => {
   const dateButtons = renderDateButtons(toolbarData);
   return (
     <div className="currency-item-graph-toolbar">
-      <ButtonGroup ref={buttonGroupRef} variant="text" aria-label="text button group">
+      <ButtonGroup variant="text" aria-label="market chart buttons group">
         {dateButtons}
       </ButtonGroup>
       <IconButton onClick={handleRefresh} disabled={isRefreshing} aria-label="refresh graph">
