@@ -1,6 +1,7 @@
 import { Line } from "react-chartjs-2";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import classNames from "classnames";
 
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -10,7 +11,7 @@ import CachedIcon from "@mui/icons-material/Cached";
 import { detailedChartConfig } from "../../services/chartsSettings";
 import useCoingeckoService from "../../services/coingecko.api";
 
-// TODO: refresh button refreshes all page data (coin and graph, 2 fetches on 1 btn? promise.all?)
+// TODO?: refresh button refreshes all page data (coin and graph, 2 fetches on 1 btn? promise.all?)
 
 const toolbarData = [
   {
@@ -55,14 +56,15 @@ const GraphToolbar = ({ handleFetch }) => {
 
   const handleFilter = (e) => {
     setActiveButtonValue(e.target.value);
+    temporarilyDisableToolbar();
   };
 
   const handleRefresh = () => {
     handleFetch(activeButtonValue);
-    temporarilyDisableButton();
+    temporarilyDisableToolbar();
   };
 
-  const temporarilyDisableButton = () => {
+  const temporarilyDisableToolbar = () => {
     setIsRefreshing(true);
     setTimeout(() => {
       setIsRefreshing(false);
@@ -71,8 +73,16 @@ const GraphToolbar = ({ handleFetch }) => {
 
   const renderDateButtons = (toolbarData) => {
     return toolbarData.map((item) => {
+      const isActive = classNames({ active: activeButtonValue === item.value });
+
       return (
-        <Button key={item.value} value={item.value} disabled={activeButtonValue === item.value} onClick={handleFilter}>
+        <Button
+          key={item.value}
+          value={item.value}
+          onClick={handleFilter}
+          className={isActive}
+          disabled={activeButtonValue === item.value || isRefreshing}
+        >
           {item.label}
         </Button>
       );
