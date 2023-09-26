@@ -6,9 +6,7 @@ import { CurrencyItemGraph } from "./CurrencyItemGraph";
 
 import "./currencyItem.scss";
 
-// TODO: 404 route to landing
 // TODO?: Spinner? skeleton?
-// TODO: on bookmark change drop fallback while fetching
 // TODO: tabs somewhere here (https://stackoverflow.com/questions/56972436/material-ui-button-active-style)
 
 export const CurrencyItem = ({ coin }) => {
