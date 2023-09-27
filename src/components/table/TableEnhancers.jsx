@@ -17,9 +17,9 @@ export const EnhancedTableToolbar = ({ bookmarksList, searchParam, onSearch }) =
   ));
 
   return (
-    <Toolbar className="mui-toolbar-market">
+    <Toolbar className="mui-toolbar">
       <div className="bg-section-spray-small spray_dark" />
-      <div className="market-table-watchlist">{renderBookmarksList}</div>
+      <div className="table-watchlist">{renderBookmarksList}</div>
       <TextField
         className="mui-searchbar"
         placeholder="Search Here"
