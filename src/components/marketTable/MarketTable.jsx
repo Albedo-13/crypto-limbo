@@ -17,25 +17,10 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 import { addBookmark, removeBookmark } from "../../slices/bookmarksSlice";
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
-import { formatDigit, formatPercentage, comparator } from "../../utils/utils";
+import { formatDigit, formatPercentage } from "../../utils/utils";
 import { EnhancedTableToolbar, EnhancedTableHead } from "./TableEnhancers";
 
 import "./marketTable.scss";
-
-const transformData = (data) => {
-  return data.map(
-    ({ id, name, symbol, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
-      id,
-      name,
-      symbol,
-      current_price,
-      price_change_percentage_24h,
-      total_volume,
-      high_24h,
-      market_cap,
-    })
-  );
-};
 
 const MarketTableRow = ({ row, onCheck, isChecked }) => {
   const { priceChangeStyle, TrendingIcon } = trendingPriceChange(row.price_change_percentage_24h);
@@ -64,101 +49,27 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
       <TableCell className="market-table__dollar-prefix">{formatDigit(row.market_cap)}</TableCell>
       <TableCell>
-        <Link className="market-table__currency-link" to={`/market/${row.id}`}>Trade</Link>
+        <Link className="market-table__currency-link" to={`/market/${row.id}`}>
+          Trade
+        </Link>
       </TableCell>
     </TableRow>
   );
 };
 
-export const MarketTable = () => {
-  const data = useSelector((state) => state.currencies.data);
-  const bookmarks = useSelector((state) => state.bookmarks.data);
-  const dispatch = useDispatch();
-
-  const [order, setOrder] = useState("desc");
-  const [orderBy, setOrderBy] = useState("market_cap");
-
-  const [displayedRowsNumber, setDisplayedRowsNumber] = useState(16);
-  const incDisplayedRowsBy = 16;
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("q") ?? "";
-
-  const handleSearch = (e) => {
-    setSearchParams((params) => {
-      params.set("q", e.target.value);
-      return params;
-    });
-    if (!searchParams.get("q")) {
-      searchParams.delete("q");
-      setSearchParams(searchParams);
-    }
-  };
-  const handleSearchDebounced = useDebouncedCallback(handleSearch, 350);
-
-  const handleOrderBy = (headerId) => {
-    const isAsc = orderBy === headerId && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(headerId);
-  };
-  const handleOrderDebounced = useDebouncedCallback(handleOrderBy, 250);
-
-  const handleLoadMore = () => {
-    setDisplayedRowsNumber(() => displayedRowsNumber + incDisplayedRowsBy);
-  };
-
-  const handleCheck = (e, row) => {
-    if (e.target.checked) {
-      const newSelectedCurrency = {
-        id: row.id,
-        symbol: row.symbol.toUpperCase(),
-        name: row.name,
-      };
-
-      dispatch(addBookmark(newSelectedCurrency));
-    } else {
-      dispatch(removeBookmark(row.id));
-    }
-  };
-
-  const sortByColumn = (rows) => {
-    const modifier = order === "desc" ? -1 : 1;
-    return rows.sort((a, b) => comparator(a, b, orderBy, modifier));
-  };
-
-  const sortBySearchbar = (rows) => {
-    if (!search) {
-      searchParams.delete("q");
-    }
-
-    const searchTransform = search.toLowerCase();
-    return rows.filter((row) => row.id.includes(searchTransform));
-  };
-
-  const isBookmarkChecked = (id) => {
-    return bookmarks.some((currency) => currency.id === id);
-  };
-
-  const rows = transformData(data.slice(0, displayedRowsNumber));
-  const sortedRows = sortBySearchbar(sortByColumn(rows));
-
-  const loadMoreBtn =
-    displayedRowsNumber >= data.length ? (
-      ""
-    ) : (
-      <Button
-        sx={{
-          width: 240,
-          display: "block",
-          margin: "60px auto 0",
-        }}
-        variant="contained"
-        onClick={handleLoadMore}
-        disabled={!!search}
-      >
-        Load More
-      </Button>
-    );
+export const MarketTable = (props) => {
+  const {
+    bookmarks,
+    search,
+    handleSearchDebounced,
+    order,
+    orderBy,
+    handleOrderDebounced,
+    sortedRows,
+    isBookmarkChecked,
+    handleCheck,
+    loadMoreBtn
+  } = props;
 
   return (
     <section className="market-table">

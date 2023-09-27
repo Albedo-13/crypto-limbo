@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import { BuySell } from "./BuySell";
+// import { BuySell } from "./BuySell";
+import { Watchlist } from "./Watchlist";
 
 import "./currencyItemTabs.scss";
 
@@ -30,7 +31,7 @@ const TabPanel = (props) => {
 };
 
 export const CurrencyItemTabs = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
@@ -45,18 +46,19 @@ export const CurrencyItemTabs = () => {
 
   return (
     <Box className={"mui-tabs"} sx={{ width: "100%" }}>
-      <Box className={"mui-tabs-header"} sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box className={"mui-tabs-header"}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
           <Tab tabIndex={0} label="Watchlist" {...a11yProps(1)} />
-          <Tab tabIndex={0} label="Portfolio" {...a11yProps(2)} />
+          <Tab tabIndex={0} label="Market" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
-        <BuySell />
+        {/* <BuySell /> */}
+        Buysell
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
-        Item Two
+        <Watchlist />
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
         Item Three
