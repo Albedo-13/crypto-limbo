@@ -3,6 +3,7 @@ import React from "react";
 import { CurrencyItemSelect } from "./CurrencyItemSelect";
 import { CurrencyItemSummary } from "./CurrencyItemSummary";
 import { CurrencyItemGraph } from "./CurrencyItemGraph";
+import { CurrencyItemTabs } from "./currencyItemTabs/CurrencyItemTabs";
 
 import "./currencyItem.scss";
 
@@ -21,7 +22,7 @@ export const CurrencyItem = ({ coin }) => {
               <CurrencyItemSummary coin={coin} />
             </div>
             <CurrencyItemGraph coin={coin} />
-            <div className="currency-item-trade">buy / sell + tabs</div>
+            <div className="currency-item-trade"><CurrencyItemTabs /></div>
           </div>
           <div className="currency-item-order">
             <p>Order Book</p>

@@ -130,7 +130,15 @@
   }
 
   &-trade {
-    background-color: darkgreen; //-
+    .mui-tabs {
+      &-header {
+        background-color: $bg-card-3;
+      }
+
+      &-panel {
+        background-color: $bg-card;
+      }
+    }
   }
 }
 
