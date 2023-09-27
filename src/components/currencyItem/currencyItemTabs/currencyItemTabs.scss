@@ -1,0 +1,46 @@
+@import "../../../styles/_variables.scss";
+
+.currency-item-tabs {
+  .mui-tabs {
+    &-header {
+      background-color: $bg-card-3;
+      border: none;
+    }
+
+    &-panel {
+      background-color: $bg-card;
+    }
+
+    .MuiTabs-flexContainer {
+      padding: 10px;
+
+      .MuiButtonBase-root.MuiTab-root {
+        font-size: 20px;
+        color: $grey-6;
+        text-transform: none;
+
+        &.Mui-selected {
+          color: $primary-blue;
+        }
+      }
+    }
+
+    .MuiTabs-indicator {
+      background-color: $primary-blue;
+      bottom: 10px;
+    }
+  }
+}
+
+.BuySell {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &-form {
+    background-color: red;
+    width: 50%;
+  }
+}

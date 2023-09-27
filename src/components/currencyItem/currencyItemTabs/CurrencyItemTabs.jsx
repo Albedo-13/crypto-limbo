@@ -6,9 +6,10 @@ import Tab from "@mui/material/Tab";
 
 import { BuySell } from "./BuySell";
 
+import "./currencyItemTabs.scss";
+
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
-  console.log("CustomTabPanel:", value, index);
 
   return (
     <div
@@ -21,7 +22,7 @@ const TabPanel = (props) => {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <p>{children}</p>
+          {children}
         </Box>
       )}
     </div>
@@ -42,7 +43,6 @@ export const CurrencyItemTabs = () => {
     };
   };
 
-  console.log("CurrencyItemTabs:", value);
   return (
     <Box className={"mui-tabs"} sx={{ width: "100%" }}>
       <Box className={"mui-tabs-header"} sx={{ borderBottom: 1, borderColor: "divider" }}>
