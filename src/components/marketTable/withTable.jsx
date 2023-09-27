@@ -10,7 +10,7 @@ import { comparator } from "../../utils/utils";
 
 const transformData = (data) => {
   return data.map(
-    ({ id, name, symbol, current_price, price_change_percentage_24h, total_volume, high_24h, market_cap }) => ({
+    ({ id, name, symbol, current_price, price_change_percentage_24h, total_volume, high_24h, low_24h, market_cap, image }) => ({
       id,
       name,
       symbol,
@@ -18,7 +18,9 @@ const transformData = (data) => {
       price_change_percentage_24h,
       total_volume,
       high_24h,
+      low_24h,
       market_cap,
+      image,
     })
   );
 };

@@ -9,51 +9,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 
-const headCells = [
-  {
-    id: "name",
-    alignRight: false,
-    disablePadding: true,
-    label: "Coin Name",
-  },
-  {
-    id: "current_price",
-    alignRight: true,
-    disablePadding: false,
-    label: "Price",
-  },
-  {
-    id: "price_change_percentage_24h",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h Change",
-  },
-  {
-    id: "total_volume",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h Volume",
-  },
-  {
-    id: "high_24h",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h High",
-  },
-  {
-    id: "market_cap",
-    alignRight: true,
-    disablePadding: false,
-    label: "Market Cap",
-  },
-  {
-    id: "action",
-    alignRight: true,
-    disablePadding: false,
-    label: "Action",
-  },
-];
-
 export const EnhancedTableToolbar = ({ bookmarksList, searchParam, onSearch }) => {
   const renderBookmarksList = bookmarksList.map((bookmarkedCurrency) => (
     <Button key={bookmarkedCurrency.id} variant="text" component={Link} to={`/market/${bookmarkedCurrency.id}`}>
@@ -80,7 +35,7 @@ export const EnhancedTableToolbar = ({ bookmarksList, searchParam, onSearch }) =
   );
 };
 
-export const EnhancedTableHead = ({ order, orderBy, onOrder }) => {
+export const EnhancedTableHead = ({ headCells, order, orderBy, onOrder }) => {
   return (
     <TableHead>
       <TableRow>

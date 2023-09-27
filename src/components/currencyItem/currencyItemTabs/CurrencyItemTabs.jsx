@@ -5,7 +5,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
 // import { BuySell } from "./BuySell";
-import { Watchlist } from "./Watchlist";
+import { Table } from "../../marketTable/Table";
+import { WatchlistTable } from "./WatchlistTable";
 
 import "./currencyItemTabs.scss";
 
@@ -58,7 +59,7 @@ export const CurrencyItemTabs = () => {
         Buysell
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
-        <Watchlist />
+        <Table component={WatchlistTable} />
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
         Item Three
