@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
-import { forgotPasswordSchema } from "./validationSchemas";
+import { forgotPasswordSchema } from "../../utils/validationSchemas";
 
 export const ForgotPassword = () => {
   const oneTimeCodeRef = useRef(null);
