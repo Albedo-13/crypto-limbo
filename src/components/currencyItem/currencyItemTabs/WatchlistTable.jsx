@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import { trendingPriceChange } from "../../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../../utils/utils";
 import { EnhancedTableHead } from "../../table/TableEnhancers";
+import { useTable } from "../../../hooks/table.hook";
 
 const headCells = [
   {
@@ -79,8 +80,8 @@ const WatchlistTableRow = ({ row }) => {
   );
 };
 
-export const WatchlistTable = (props) => {
-  const { order, orderBy, handleOrderDebounced, sortedRows, isBookmarkChecked } = props;
+export const WatchlistTable = () => {
+  const { order, orderBy, handleOrderDebounced, sortedRows, isBookmarkChecked } = useTable();
 
   return (
     <TableContainer component={Paper} className="mui-table">

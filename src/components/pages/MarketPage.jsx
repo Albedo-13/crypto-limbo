@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 import { FeaturedCoins } from "../marketTrends/FeaturedCoins";
-import { Table } from "../table/Table";
 import { MarketTable } from "../marketTable/MarketTable";
 
 export const MarketPage = () => {
@@ -16,7 +15,7 @@ export const MarketPage = () => {
       <Header />
       <main>
         <FeaturedCoins />
-        <Table component={MarketTable} />
+        <MarketTable />
       </main>
       <Footer />
       {/* //! remove bottom block on production */}

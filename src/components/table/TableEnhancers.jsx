@@ -9,6 +9,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 
+import "./table.scss";
+
 export const EnhancedTableToolbar = ({ bookmarksList, searchParam, onSearch }) => {
   const renderBookmarksList = bookmarksList.map((bookmarkedCurrency) => (
     <Button key={bookmarkedCurrency.id} variant="text" component={Link} to={`/market/${bookmarkedCurrency.id}`}>

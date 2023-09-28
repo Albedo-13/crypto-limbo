@@ -16,6 +16,7 @@ import { formatDigit, formatPercentage } from "../../utils/utils";
 import { EnhancedTableToolbar, EnhancedTableHead } from "../table/TableEnhancers";
 
 import "./marketTable.scss";
+import { useTable } from "../../hooks/table.hook";
 
 const headCells = [
   {
@@ -97,7 +98,7 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
   );
 };
 
-export const MarketTable = (props) => {
+export const MarketTable = () => {
   const {
     bookmarks,
     search,
@@ -109,7 +110,7 @@ export const MarketTable = (props) => {
     isBookmarkChecked,
     handleCheck,
     loadMoreBtn,
-  } = props;
+  } = useTable();
 
   return (
     <section className="market-table">
