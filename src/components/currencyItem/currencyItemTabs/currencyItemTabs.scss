@@ -32,15 +32,19 @@
   }
 }
 
-.BuySell {
+.buy-sell {
   &__wrapper {
     display: flex;
     justify-content: space-between;
     gap: 24px;
   }
 
+  &-block {
+    padding: 24px;
+  }
+
   &-form {
-    background-color: red;
+    background-color: $bg-card-3;
     width: 50%;
   }
 }

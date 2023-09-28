@@ -31,7 +31,7 @@ const TabPanel = (props) => {
 };
 
 export const CurrencyItemTabs = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
