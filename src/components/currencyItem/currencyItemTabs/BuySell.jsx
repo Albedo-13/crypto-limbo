@@ -1,45 +1,66 @@
-import InputLabel from "@mui/material/InputLabel";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 
-const BuySellForm = ({ symbol }) => {
+// TODO: drill coin to form (or just symbol?), check fetch readiness (loader?)
+
+const BuySellForm = () => {
   return (
-    <Box className="buy-sell-block">
-      <form onSubmit={() => console.log("submitting")}>
-        <div>
-          <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group">
-            <FormControlLabel value="market" control={<Radio />} label="Market" />
-            <FormControlLabel value="limit" control={<Radio />} label="Limit" />
-          </RadioGroup>
-          <p>
-            Available Balance- <span>$ 2,247,35.05</span>
-          </p>
+    <form onSubmit={() => console.log("submitting")}>
+      <div className="buy-sell-form__wrapper">
+        <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group">
+          <FormControlLabel required value="market" control={<Radio />} label="Market" />
+          <FormControlLabel required value="limit" control={<Radio />} label="Limit" />
+        </RadioGroup>
+        <p>
+          Available Balance- <span>$ 2,247,35.05</span>
+        </p>
+      </div>
+      <div className="buy-sell-form__wrapper">
+        <TextField
+          variant="outlined"
+          classes={{ root: "input-text" }}
+          name="__TEST__"
+          type="text"
+          id="coin-buy-price"
+          autoComplete="current-password"
+          placeholder="Price (USD)"
+        />
+        <TextField
+          variant="outlined"
+          classes={{ root: "input-text" }}
+          name="__TEST__"
+          type="text"
+          id="coin-buy-price"
+          autoComplete="current-password"
+          placeholder={`Quantity`}
+        />
+      </div>
+      <div>
+        <p>Order Value Min. ₹ 100 To Max. ₹ 50,000,00.00</p>
+        <div aria-label="outlined button group">
+          <Button variant="outlined">25%</Button>
+          <Button variant="outlined">50%</Button>
+          <Button variant="outlined">75%</Button>
+          <Button variant="outlined">100%</Button>
         </div>
-        <div>
-          <TextField
-            variant="outlined"
-            classes={{ root: "input-text" }}
-            name="__TEST__"
-            type="text"
-            id="coin-buy-price"
-            autoComplete="current-password"
-            placeholder="Price (USD)"
-          />
-          <TextField
-            variant="outlined"
-            classes={{ root: "input-text" }}
-            name="__TEST__"
-            type="text"
-            id="coin-buy-price"
-            autoComplete="current-password"
-            placeholder={`Quantity`}
-          />
-        </div>
-      </form>
-    </Box>
+      </div>
+      <Button
+        sx={{
+          width: "100%",
+          marginTop: "28px",
+        }}
+        variant="contained"
+        type="submit"
+      >
+        Buy [CURRENCY]
+      </Button>
+      <p>Fees Includes- (0.1 %)</p>
+    </form>
   );
 };
 

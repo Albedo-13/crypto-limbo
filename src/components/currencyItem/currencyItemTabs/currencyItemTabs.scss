@@ -39,12 +39,24 @@
     gap: 24px;
   }
 
-  &-block {
-    padding: 24px;
-  }
-
   &-form {
     background-color: $bg-card-3;
+    padding: 24px;
     width: 50%;
+    
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .MuiFormGroup-root {
+      flex-direction: row;
+
+      .MuiFormControlLabel-root {
+        // width: 20%;
+      }
+    }
   }
 }
