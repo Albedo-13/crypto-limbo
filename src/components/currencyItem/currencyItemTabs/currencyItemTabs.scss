@@ -49,6 +49,39 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+
+      &:nth-child(2) {
+        margin-top: 30px;
+      }
+    }
+
+    &__text {
+      margin-top: 30px;
+      color: $grey-6;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    &__fees {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    &__btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+
+      .MuiButtonBase-root.MuiButton-root {
+        padding: 13px 26px;
+        width: 72px;
+        height: 30px;
+      }
+
+      .MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+        font-size: 16px;
+      }
     }
 
     .MuiFormGroup-root {

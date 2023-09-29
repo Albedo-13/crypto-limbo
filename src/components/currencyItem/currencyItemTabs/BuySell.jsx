@@ -41,8 +41,8 @@ const BuySellForm = () => {
         />
       </div>
       <div>
-        <p>Order Value Min. ₹ 100 To Max. ₹ 50,000,00.00</p>
-        <div aria-label="outlined button group">
+        <p className="buy-sell-form__text">Order Value Min. ₹ 100 To Max. ₹ 50,000,00.00</p>
+        <div className="buy-sell-form__btn-group" aria-label="outlined button group">
           <Button variant="outlined">25%</Button>
           <Button variant="outlined">50%</Button>
           <Button variant="outlined">75%</Button>
@@ -59,7 +59,7 @@ const BuySellForm = () => {
       >
         Buy [CURRENCY]
       </Button>
-      <p>Fees Includes- (0.1 %)</p>
+      <p className="buy-sell-form__text buy-sell-form__fees">Fees Includes- (0.1 %)</p>
     </form>
   );
 };
