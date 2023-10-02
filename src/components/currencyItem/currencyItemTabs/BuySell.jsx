@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
+import classNames from "classnames";
 
 const FORM_ACTION_TYPES = [
   {
@@ -16,27 +17,53 @@ const FORM_ACTION_TYPES = [
   {
     action: "sell",
     color: "red",
-  }
+  },
 ];
+
+const percentButtonsData = ["25", "50", "75", "100"];
 
 const BuySellForm = ({ variant, coin }) => {
   const [coinPrice, setCoinPrice] = useState("");
   const [coinQuantity, setCoinQuantity] = useState("");
+  const [activeButtonValue, setActiveButtonValue] = useState("25");
 
   const handlePriceChange = (e) => {
     setCoinPrice(e.target.value);
     const inputValue = e.target.value === "" ? 0 : e.target.value;
     const newQuantity = inputValue / coin.market_data.current_price["usd"];
     setCoinQuantity(newQuantity === 0 ? "" : newQuantity);
-  }
+  };
 
   const handleQuantityChange = (e) => {
     setCoinQuantity(e.target.value);
     const inputValue = e.target.value === "" ? 0 : e.target.value;
     const newPrice = inputValue * coin.market_data.current_price["usd"];
     setCoinPrice(newPrice === 0 ? "" : newPrice);
-  }
+  };
 
+  const handleActiveButtonChange = (e) => {
+    setActiveButtonValue(e.target.value);
+  };
+
+  const renderPercentButtons = (percentButtonsData) => {
+    return percentButtonsData.map((value) => {
+      const isActive = classNames({ active: activeButtonValue === value });
+      return (
+        <Button
+          key={value}
+          variant="outlined"
+          value={value}
+          onClick={handleActiveButtonChange}
+          className={isActive}
+          disabled={activeButtonValue === value}
+        >
+          {value}%
+        </Button>
+      );
+    });
+  };
+
+  const percentButtons = renderPercentButtons(percentButtonsData);
   return (
     <form onSubmit={() => console.log("submitting")}>
       <div className="buy-sell-form__wrapper">
@@ -45,7 +72,7 @@ const BuySellForm = ({ variant, coin }) => {
           <FormControlLabel required value="limit" control={<Radio />} label="Limit" />
         </RadioGroup>
         <p>
-          Available Balance- <span>$ 2,247,35.05</span>
+          Available Balance- <span>$ X,XXX,XX.XX</span>
         </p>
       </div>
       <div className="buy-sell-form__wrapper">
@@ -57,7 +84,7 @@ const BuySellForm = ({ variant, coin }) => {
           value={coinPrice}
           onChange={handlePriceChange}
           inputProps={{
-            min: "1"
+            min: "1",
           }}
           required
           id="trade-price"
@@ -73,7 +100,7 @@ const BuySellForm = ({ variant, coin }) => {
           onChange={handleQuantityChange}
           inputProps={{
             step: "0.1",
-            min: "0"
+            min: "0",
           }}
           required
           id="trade-qty"
@@ -84,10 +111,7 @@ const BuySellForm = ({ variant, coin }) => {
       <div>
         <p className="buy-sell-form__text">Order Value Min. $ 1 To Max. $ 100,000</p>
         <div className="buy-sell-form__btn-group" aria-label="outlined button group">
-          <Button variant="outlined">25%</Button>
-          <Button variant="outlined">50%</Button>
-          <Button variant="outlined">75%</Button>
-          <Button variant="outlined">100%</Button>
+          {percentButtons}
         </div>
       </div>
       <Button

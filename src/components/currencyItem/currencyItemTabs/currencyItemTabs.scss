@@ -37,17 +37,24 @@
     display: flex;
     justify-content: space-between;
     gap: 24px;
-
-    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-outer-spin-button,
-    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-inner-spin-button {
-      appearance: none;
-    }
   }
 
   &-form {
     background-color: $bg-card-3;
     padding: 24px;
     width: 50%;
+
+    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-outer-spin-button,
+    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-inner-spin-button {
+      appearance: none;
+    }
+
+    .MuiButtonBase-root.MuiButton-root {
+      &.active {
+        color: $primary-blue;
+        border-color: $primary-blue;
+      }
+    }
 
     &__wrapper {
       display: flex;
@@ -70,6 +77,7 @@
     &__fees {
       margin-top: 10px;
       font-size: 12px;
+      user-select: none;
     }
 
     &__btn-group {
@@ -91,10 +99,6 @@
 
     .MuiFormGroup-root {
       flex-direction: row;
-
-      .MuiFormControlLabel-root {
-        // width: 20%;
-      }
     }
   }
 }
