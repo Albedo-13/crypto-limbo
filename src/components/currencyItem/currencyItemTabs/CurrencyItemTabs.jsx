@@ -6,6 +6,7 @@ import Tab from "@mui/material/Tab";
 
 import { BuySell } from "./BuySell";
 import { WatchlistTable } from "./WatchlistTable";
+import Spinner from "../../spinner/Spinner";
 
 import "./currencyItemTabs.scss";
 
@@ -30,7 +31,7 @@ const TabPanel = (props) => {
   );
 };
 
-export const CurrencyItemTabs = () => {
+export const CurrencyItemTabs = ({ coin }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (_, newValue) => {
@@ -44,8 +45,9 @@ export const CurrencyItemTabs = () => {
     };
   };
 
-  return (
-    <Box className={"mui-tabs"} sx={{ width: "100%" }}>
+  const renderItemTabs = (coin) =>{
+    return (
+      <Box className={"mui-tabs"} sx={{ width: "100%" }}>
       <Box className={"mui-tabs-header"}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
@@ -54,14 +56,17 @@ export const CurrencyItemTabs = () => {
         </Tabs>
       </Box>
       <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
-        <BuySell />
+        <BuySell coin={coin} />
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
-        <WatchlistTable />
+        <WatchlistTable coin={coin} />
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
         Item Three
       </TabPanel>
     </Box>
-  );
+    );
+  }
+
+  return coin ? renderItemTabs(coin): <Spinner />;
 };

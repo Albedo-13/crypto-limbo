@@ -37,13 +37,18 @@
     display: flex;
     justify-content: space-between;
     gap: 24px;
+
+    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-outer-spin-button,
+    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-inner-spin-button {
+      appearance: none;
+    }
   }
 
   &-form {
     background-color: $bg-card-3;
     padding: 24px;
     width: 50%;
-    
+
     &__wrapper {
       display: flex;
       justify-content: space-between;
