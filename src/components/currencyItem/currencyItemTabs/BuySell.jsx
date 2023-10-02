@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
@@ -67,13 +65,13 @@ const BuySellForm = ({ variant, coin }) => {
   return (
     <form onSubmit={() => console.log("submitting")}>
       <div className="buy-sell-form__wrapper">
-        <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group">
+        <RadioGroup aria-labelledby="radio buttons group" defaultValue="market" name="radio-buttons-group">
           <FormControlLabel required value="market" control={<Radio />} label="Market" />
           <FormControlLabel required value="limit" control={<Radio />} label="Limit" />
         </RadioGroup>
-        <p>
-          Available Balance- <span>$ X,XXX,XX.XX</span>
-        </p>
+        <div className="buy-sell-form__balance">
+          $ X,XXX,XXX.XX
+        </div>
       </div>
       <div className="buy-sell-form__wrapper">
         <TextField
