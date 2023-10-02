@@ -18,12 +18,13 @@ const FORM_ACTION_TYPES = [
   },
 ];
 
-const percentButtonsData = ["25", "50", "75", "100"];
+const percentButtonsData = [25, 50, 75, 100];
 
 const BuySellForm = ({ variant, coin }) => {
   const [coinPrice, setCoinPrice] = useState("");
   const [coinQuantity, setCoinQuantity] = useState("");
-  const [activeButtonValue, setActiveButtonValue] = useState("25");
+  const [activeButtonValue, setActiveButtonValue] = useState(25);
+  const formVariant = FORM_ACTION_TYPES.find((item) => variant === item.action);
 
   const handlePriceChange = (e) => {
     setCoinPrice(e.target.value);
@@ -40,7 +41,7 @@ const BuySellForm = ({ variant, coin }) => {
   };
 
   const handleActiveButtonChange = (e) => {
-    setActiveButtonValue(e.target.value);
+    setActiveButtonValue(+e.target.value);
   };
 
   const renderPercentButtons = (percentButtonsData) => {
@@ -69,9 +70,7 @@ const BuySellForm = ({ variant, coin }) => {
           <FormControlLabel required value="market" control={<Radio />} label="Market" />
           <FormControlLabel required value="limit" control={<Radio />} label="Limit" />
         </RadioGroup>
-        <div className="buy-sell-form__balance">
-          $ X,XXX,XXX.XX
-        </div>
+        <div className="buy-sell-form__balance">$ X,XXX,XXX.XX</div>
       </div>
       <div className="buy-sell-form__wrapper">
         <TextField
@@ -119,8 +118,9 @@ const BuySellForm = ({ variant, coin }) => {
         }}
         variant="contained"
         type="submit"
+        className={`buy-sell-submit__${formVariant.action}`}
       >
-        Buy {coin.symbol.toUpperCase()}
+        {formVariant.action[0].toUpperCase() + formVariant.action.slice(1)} {coin.symbol.toUpperCase()}
       </Button>
       <p className="buy-sell-form__text buy-sell-form__fees">Fees Includes- (0.1 %)</p>
     </form>

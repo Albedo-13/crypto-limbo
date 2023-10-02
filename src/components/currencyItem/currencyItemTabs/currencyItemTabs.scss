@@ -54,6 +54,23 @@
         color: $primary-blue;
         border-color: $primary-blue;
       }
+
+      &.buy-sell-submit__buy {
+        background-color: $success;
+        transition: 0.15s all;
+        &:hover {
+          background-color: rgba($success, 0.8);
+          transition: 0.15s all;
+        }
+      }
+      &.buy-sell-submit__sell {
+        background-color: $error;
+        transition: 0.15s all;
+        &:hover {
+          background-color: rgba($error, 0.8);
+          transition: 0.15s all;
+        }
+      }
     }
 
     .MuiFormGroup-root {
