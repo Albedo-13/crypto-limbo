@@ -1,28 +1,25 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import classNames from "classnames";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { v4 as uuidv4 } from "uuid";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
-import classNames from "classnames";
-import { buySellSchema } from "../../../utils/validationSchemas";
-import { yupResolver } from "@hookform/resolvers/yup";
 
-const FORM_ACTION_TYPES = [
-  {
-    action: "buy",
-    color: "green",
-  },
-  {
-    action: "sell",
-    color: "red",
-  },
-];
+
+import { buySellSchema } from "../../../utils/validationSchemas";
+import { useDispatch } from "react-redux";
+import { test } from "../../../slices/portfolioSlice";
+
+const FORM_ACTION_TYPES = ["buy", "sell"];
 
 // TODO: controlled form (https://www.react-hook-form.com/api/usecontroller/controller/)
 // TODO: new porfolio slice
+// TODO: extend validation schema
 
 const percentButtonsData = [25, 50, 75, 100];
 
@@ -30,18 +27,35 @@ const BuySellForm = ({ variant, coin }) => {
   const [coinPrice, setCoinPrice] = useState("");
   const [coinQuantity, setCoinQuantity] = useState("");
   const [activeButtonValue, setActiveButtonValue] = useState(25);
-  const formVariant = FORM_ACTION_TYPES.find((item) => variant === item.action);
+  const formVariant = FORM_ACTION_TYPES.find((action) => variant === action);
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(buySellSchema) });
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setValue("percent", activeButtonValue);
+    transformSubmittedFormData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    updateActiveButtonValue();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeButtonValue]);
+
+  const updateActiveButtonValue = () => {
+    setValue("percent", activeButtonValue);
+  };
+
+  const transformSubmittedFormData = () => {
+    setValue("id", uuidv4());
+    setValue("coinId", coin.id);
+    setValue("symbol", coin.symbol);
+    setValue("action", variant);
+  };
 
   const handlePriceChange = (e) => {
     setCoinPrice(e.target.value);
@@ -65,6 +79,7 @@ const BuySellForm = ({ variant, coin }) => {
 
   const onSubmit = (data) => {
     console.log("submitting", data);
+    dispatch(test(data));
     // reset();
   };
 
@@ -135,9 +150,9 @@ const BuySellForm = ({ variant, coin }) => {
         }}
         variant="contained"
         type="submit"
-        className={`buy-sell-submit__${formVariant.action}`}
+        className={`buy-sell-submit__${formVariant}`}
       >
-        {formVariant.action[0].toUpperCase() + formVariant.action.slice(1)} {coin.symbol.toUpperCase()}
+        {formVariant[0].toUpperCase() + formVariant.slice(1)} {coin.symbol.toUpperCase()}
       </Button>
       <p className="buy-sell-form__text buy-sell-form__fees">Fees Includes- (0.1 %)</p>
     </form>
