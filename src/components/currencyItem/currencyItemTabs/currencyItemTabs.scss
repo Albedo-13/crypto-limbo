@@ -76,6 +76,7 @@
     .MuiFormGroup-root {
       color: $grey-4;
       gap: 10px;
+      flex-direction: row;
 
       .MuiButtonBase-root.MuiRadio-root {
         &.Mui-checked {
@@ -98,6 +99,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+      position: relative;
 
       &:nth-child(2) {
         margin-top: 30px;
@@ -144,8 +146,19 @@
       }
     }
 
-    .MuiFormGroup-root {
-      flex-direction: row;
+    &__helper {
+      position: absolute;
+      color: $error;
+
+      &_left {
+        left: 0;
+        bottom: -25px;
+      }
+
+      &_right {
+        right: 0;
+        bottom: -25px;
+      }
     }
   }
 }

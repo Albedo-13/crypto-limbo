@@ -76,7 +76,6 @@ export const newPasswordSchema = yup
       .test("isContainDigitValidation", "Requires at least 1 digit", (value) => {
         return validatePasswordDigits(value);
       }),
-
     confirmPassword: yup
       .string()
       .required("Field is required")
@@ -85,6 +84,17 @@ export const newPasswordSchema = yup
       }),
   })
   .required();
+
+export const buySellSchema = yup.object({
+  price: yup
+    .string()
+    .required("Field is required"),
+    // .min(0, "0 min"),
+  quantity: yup
+    .string()
+    .required("Field is required")
+    // .min(0, "must be greater than 0!"),
+});
 
 const validateEmail = (email) => {
   return yup.string().email().isValidSync(email);

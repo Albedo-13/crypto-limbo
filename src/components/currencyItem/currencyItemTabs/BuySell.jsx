@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -6,6 +7,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import classNames from "classnames";
+import { buySellSchema } from "../../../utils/validationSchemas";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const FORM_ACTION_TYPES = [
   {
@@ -18,6 +21,9 @@ const FORM_ACTION_TYPES = [
   },
 ];
 
+// TODO: controlled form (https://www.react-hook-form.com/api/usecontroller/controller/)
+// TODO: new porfolio slice
+
 const percentButtonsData = [25, 50, 75, 100];
 
 const BuySellForm = ({ variant, coin }) => {
@@ -25,12 +31,24 @@ const BuySellForm = ({ variant, coin }) => {
   const [coinQuantity, setCoinQuantity] = useState("");
   const [activeButtonValue, setActiveButtonValue] = useState(25);
   const formVariant = FORM_ACTION_TYPES.find((item) => variant === item.action);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(buySellSchema) });
+
+  useEffect(() => {
+    setValue("percent", activeButtonValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeButtonValue]);
 
   const handlePriceChange = (e) => {
     setCoinPrice(e.target.value);
     const inputValue = e.target.value === "" ? 0 : e.target.value;
     const newQuantity = inputValue / coin.market_data.current_price["usd"];
     setCoinQuantity(newQuantity === 0 ? "" : newQuantity);
+    setValue("quantity", newQuantity === 0 ? "" : newQuantity);
   };
 
   const handleQuantityChange = (e) => {
@@ -38,10 +56,16 @@ const BuySellForm = ({ variant, coin }) => {
     const inputValue = e.target.value === "" ? 0 : e.target.value;
     const newPrice = inputValue * coin.market_data.current_price["usd"];
     setCoinPrice(newPrice === 0 ? "" : newPrice);
+    setValue("price", newPrice === 0 ? "" : newPrice);
   };
 
   const handleActiveButtonChange = (e) => {
     setActiveButtonValue(+e.target.value);
+  };
+
+  const onSubmit = (data) => {
+    console.log("submitting", data);
+    // reset();
   };
 
   const renderPercentButtons = (percentButtonsData) => {
@@ -62,13 +86,14 @@ const BuySellForm = ({ variant, coin }) => {
     });
   };
 
+  console.log(errors);
   const percentButtons = renderPercentButtons(percentButtonsData);
   return (
-    <form onSubmit={() => console.log("submitting")}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="buy-sell-form__wrapper">
         <RadioGroup aria-labelledby="radio buttons group" defaultValue="market" name="radio-buttons-group">
-          <FormControlLabel required value="market" control={<Radio />} label="Market" />
-          <FormControlLabel required value="limit" control={<Radio />} label="Limit" />
+          <FormControlLabel {...register("tradeType")} value="market" control={<Radio />} label="Market" />
+          <FormControlLabel {...register("tradeType")} value="limit" control={<Radio />} label="Limit" />
         </RadioGroup>
         <div className="buy-sell-form__balance">$ X,XXX,XXX.XX</div>
       </div>
@@ -76,34 +101,26 @@ const BuySellForm = ({ variant, coin }) => {
         <TextField
           variant="outlined"
           classes={{ root: "input-text" }}
-          name="price"
+          {...register("price")}
           type="number"
           value={coinPrice}
           onChange={handlePriceChange}
-          inputProps={{
-            min: "1",
-          }}
-          required
-          id="trade-price"
-          autoComplete="current-password"
+          error={!!errors.price?.message}
+          autoComplete="transaction-amount"
           placeholder="Price (USD)"
         />
+        <div className="buy-sell-form__helper buy-sell-form__helper_left">{errors.price?.message}</div>
         <TextField
           variant="outlined"
           classes={{ root: "input-text" }}
-          name="quantity"
+          {...register("quantity")}
           type="number"
           value={coinQuantity}
           onChange={handleQuantityChange}
-          inputProps={{
-            step: "0.1",
-            min: "0",
-          }}
-          required
-          id="trade-qty"
-          autoComplete="current-password"
+          error={!!errors.quantity?.message}
           placeholder={`Quantity (${coin.symbol.toUpperCase()})`}
         />
+        <div className="buy-sell-form__helper buy-sell-form__helper_right">{errors.quantity?.message}</div>
       </div>
       <div>
         <p className="buy-sell-form__text">Order Value Min. $ 1 To Max. $ 100,000</p>
