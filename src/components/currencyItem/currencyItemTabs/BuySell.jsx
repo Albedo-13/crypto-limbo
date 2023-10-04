@@ -52,9 +52,13 @@ const BuySellForm = ({ variant, coin }) => {
 
   const transformSubmittedFormData = () => {
     setValue("id", uuidv4());
-    setValue("coinId", coin.id);
-    setValue("symbol", coin.symbol);
-    setValue("action", variant);
+    const coinData = {
+      coinId: coin.id,
+      symbol: coin.symbol,
+      action: variant,
+      price: coin.market_data.current_price["usd"],
+    }
+    setValue("data", coinData);
   };
 
   const handlePriceChange = (e) => {
