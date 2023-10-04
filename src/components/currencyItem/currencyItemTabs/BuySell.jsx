@@ -22,7 +22,7 @@ const FORM_ACTION_TYPES = ["buy", "sell"];
 
 const percentButtonsData = [25, 50, 75, 100];
 
-const BuySellForm = ({ variant, coin }) => {
+const BuySellForm = ({ variant, coin, dispatchFunc }) => {
   const [coinPrice, setCoinPrice] = useState("");
   const [coinQuantity, setCoinQuantity] = useState("");
   const [percentButtonValue, setPercentButtonValue] = useState(25);
@@ -64,17 +64,15 @@ const BuySellForm = ({ variant, coin }) => {
 
   const handlePriceChange = (e) => {
     setCoinPrice(e.target.value);
-    const inputValue = e.target.value === "" ? 0 : e.target.value;
-    const newQuantity = inputValue / coin.market_data.current_price["usd"];
+    const newQuantity = +e.target.value / coin.market_data.current_price["usd"];
     setCoinQuantity(newQuantity === 0 ? "" : newQuantity);
     setValue("quantity", newQuantity);
   };
 
   const handleQuantityChange = (e) => {
     setCoinQuantity(e.target.value);
-    const inputValue = e.target.value === "" ? 0 : e.target.value;
-    const newPrice = inputValue * coin.market_data.current_price["usd"];
-    setCoinPrice(newPrice);
+    const newPrice = +e.target.value * coin.market_data.current_price["usd"];
+    setCoinPrice(newPrice === 0 ? "" : newPrice);
     setValue("price", newPrice);
   };
 
@@ -84,16 +82,11 @@ const BuySellForm = ({ variant, coin }) => {
 
   const onSubmit = (data) => {
     console.log("submitting", data);
-    switch (formVariant) {
-      case "buy":
-        dispatch(buyCurrency(data));
-        break;
-      case "sell":
-        dispatch(sellCurrency(data));
-        break;
-      default:
-        throw new Error("Unknown form variant");
+    if (!dispatchFunc) {
+      throw new Error("Unknown dispatch function");
     }
+
+    dispatch(dispatchFunc(data));
     // reset();
   };
 
@@ -178,10 +171,10 @@ export const BuySell = ({ coin }) => {
     <div className="buy-sell">
       <div className="buy-sell__wrapper">
         <div className="buy-sell-form">
-          <BuySellForm variant="buy" coin={coin} />
+          <BuySellForm variant="buy" coin={coin} dispatchFunc={buyCurrency} />
         </div>
         <div className="buy-sell-form">
-          <BuySellForm variant="sell" coin={coin} />
+          <BuySellForm variant="sell" coin={coin} dispatchFunc={sellCurrency} />
         </div>
       </div>
     </div>
