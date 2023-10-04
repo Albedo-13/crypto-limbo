@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import classNames from "classnames";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -11,11 +12,9 @@ import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 
 import { buySellSchema } from "../../../utils/validationSchemas";
-import { useDispatch } from "react-redux";
 import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
 
-// TODO: controlled form (https://www.react-hook-form.com/api/usecontroller/controller/)
-// TODO: new porfolio slice
+// TODO: toFixed(2/6) input values
 // TODO: extend validation schema
 // TODO: rename all out-of-component variables TO_UPPER_CASE
 
@@ -23,20 +22,21 @@ const FORM_ACTION_TYPES = ["buy", "sell"];
 const PERCENT_BUTTON_VALUES = [25, 50, 75, 100];
 
 const BuySellForm = ({ variant, coin, dispatchFunc }) => {
-  const [coinPrice, setCoinPrice] = useState("");
-  const [coinQuantity, setCoinQuantity] = useState("");
   const [percentButtonValue, setPercentButtonValue] = useState(25);
   const formVariant = FORM_ACTION_TYPES.find((action) => variant === action);
   const {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(buySellSchema) });
+    control,
+    reset,
+    trigger,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({ mode: "onChange", resolver: yupResolver(buySellSchema) });
   const dispatch = useDispatch();
 
   useEffect(() => {
-    transformSubmittedFormData();
+    transformAdditionalFormData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -45,11 +45,19 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [percentButtonValue]);
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+      transformAdditionalFormData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSubmitSuccessful]);
+
   const updatePercentButtonValue = () => {
     setValue("percent", percentButtonValue);
   };
 
-  const transformSubmittedFormData = () => {
+  const transformAdditionalFormData = () => {
     setValue("id", uuidv4());
     const coinData = {
       coinId: coin.id,
@@ -63,17 +71,21 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
   };
 
   const handlePriceChange = (e) => {
-    setCoinPrice(e.target.value);
     const newQuantity = +e.target.value / coin.market_data.current_price["usd"];
-    setCoinQuantity(newQuantity === 0 ? "" : newQuantity);
     setValue("quantity", newQuantity);
+    if (!newQuantity) {
+      setValue("quantity", "");
+    }
+    trigger();
   };
 
   const handleQuantityChange = (e) => {
-    setCoinQuantity(e.target.value);
     const newPrice = +e.target.value * coin.market_data.current_price["usd"];
-    setCoinPrice(newPrice === 0 ? "" : newPrice);
     setValue("price", newPrice);
+    if (!newPrice) {
+      setValue("quantity", "");
+    }
+    trigger();
   };
 
   const handleActiveButtonChange = (e) => {
@@ -87,7 +99,6 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
     }
 
     dispatch(dispatchFunc(data));
-    // reset();
   };
 
   const renderPercentButtons = (percentButtonsData) => {
@@ -120,35 +131,52 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
         <div className="buy-sell-form__balance">$ X,XXX,XXX.XX</div>
       </div>
       <div className="buy-sell-form__wrapper">
-        <TextField
-          variant="outlined"
-          classes={{ root: "input-text" }}
-          {...register("price")}
-          type="number"
-          value={coinPrice}
-          onChange={handlePriceChange}
-          error={!!errors.price?.message}
-          autoComplete="transaction-amount"
-          placeholder="Price (USD)"
+        <Controller
+          control={control}
+          name="price"
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              type="number"
+              value={value}
+              onChange={(e) => {
+                onChange(e);
+                handlePriceChange(e);
+              }}
+              error={!!error}
+              autoComplete="transaction-amount"
+              placeholder="Price (USD)"
+              variant="outlined"
+              classes={{ root: "input-text" }}
+            />
+          )}
         />
         <div className="buy-sell-form__helper buy-sell-form__helper_left">{errors.price?.message}</div>
-        <TextField
-          variant="outlined"
-          classes={{ root: "input-text" }}
-          {...register("quantity")}
-          type="number"
-          value={coinQuantity}
-          onChange={handleQuantityChange}
-          error={!!errors.quantity?.message}
-          placeholder={`Quantity (${coin.symbol.toUpperCase()})`}
+        <Controller
+          control={control}
+          name="quantity"
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <TextField
+              type="number"
+              value={value}
+              onChange={(e) => {
+                onChange(e);
+                handleQuantityChange(e);
+              }}
+              error={!!error}
+              autoComplete="transaction-amount"
+              placeholder={`Quantity (${coin.symbol.toUpperCase()})`}
+              variant="outlined"
+              classes={{ root: "input-text" }}
+            />
+          )}
         />
         <div className="buy-sell-form__helper buy-sell-form__helper_right">{errors.quantity?.message}</div>
       </div>
-      <div>
-        <p className="buy-sell-form__text">Order Value Min. $ 1 To Max. $ 100,000</p>
-        <div className="buy-sell-form__btn-group" aria-label="outlined button group">
-          {percentButtons}
-        </div>
+      <p className="buy-sell-form__text">Order Value Min. $ 1 To Max. $ 100,000</p>
+      <div className="buy-sell-form__btn-group" aria-label="outlined button group">
+        {percentButtons}
       </div>
       <Button
         sx={{

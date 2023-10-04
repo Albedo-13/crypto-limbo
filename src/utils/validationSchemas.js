@@ -87,14 +87,16 @@ export const newPasswordSchema = yup
 
 export const buySellSchema = yup.object({
   price: yup
-    .string()
-    .required("Field is required"),
-    // .min(1, "1$ min"),
-    // max size
-  quantity: yup
-    .string()
+    .number()
+    .typeError("Amount must be a number")
     .required("Field is required")
-    // .min(0, "must be greater than 0!"),
+    .min(1, "1$ min")
+    .max(100000, "100,000$ max"), //change validation to test
+  quantity: yup
+    .number()
+    .typeError("Amount must be a number")
+    .required("Field is required")
+  // .min(0, "must be greater than 0!"),
 });
 
 const validateEmail = (email) => {
