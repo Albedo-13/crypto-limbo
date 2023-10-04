@@ -10,10 +10,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 
-
 import { buySellSchema } from "../../../utils/validationSchemas";
 import { useDispatch } from "react-redux";
-import { test } from "../../../slices/portfolioSlice";
+import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
 
 const FORM_ACTION_TYPES = ["buy", "sell"];
 
@@ -26,7 +25,7 @@ const percentButtonsData = [25, 50, 75, 100];
 const BuySellForm = ({ variant, coin }) => {
   const [coinPrice, setCoinPrice] = useState("");
   const [coinQuantity, setCoinQuantity] = useState("");
-  const [activeButtonValue, setActiveButtonValue] = useState(25);
+  const [percentButtonValue, setPercentButtonValue] = useState(25);
   const formVariant = FORM_ACTION_TYPES.find((action) => variant === action);
   const {
     register,
@@ -42,12 +41,12 @@ const BuySellForm = ({ variant, coin }) => {
   }, []);
 
   useEffect(() => {
-    updateActiveButtonValue();
+    updatePercentButtonValue();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeButtonValue]);
+  }, [percentButtonValue]);
 
-  const updateActiveButtonValue = () => {
-    setValue("percent", activeButtonValue);
+  const updatePercentButtonValue = () => {
+    setValue("percent", percentButtonValue);
   };
 
   const transformSubmittedFormData = () => {
@@ -57,7 +56,9 @@ const BuySellForm = ({ variant, coin }) => {
       symbol: coin.symbol,
       action: variant,
       price: coin.market_data.current_price["usd"],
-    }
+      // timestamp: new Date().getTime(),
+      // timestamp: Date.now(),
+    };
     setValue("data", coinData);
   };
 
@@ -66,30 +67,39 @@ const BuySellForm = ({ variant, coin }) => {
     const inputValue = e.target.value === "" ? 0 : e.target.value;
     const newQuantity = inputValue / coin.market_data.current_price["usd"];
     setCoinQuantity(newQuantity === 0 ? "" : newQuantity);
-    setValue("quantity", newQuantity === 0 ? "" : newQuantity);
+    setValue("quantity", newQuantity);
   };
 
   const handleQuantityChange = (e) => {
     setCoinQuantity(e.target.value);
     const inputValue = e.target.value === "" ? 0 : e.target.value;
     const newPrice = inputValue * coin.market_data.current_price["usd"];
-    setCoinPrice(newPrice === 0 ? "" : newPrice);
-    setValue("price", newPrice === 0 ? "" : newPrice);
+    setCoinPrice(newPrice);
+    setValue("price", newPrice);
   };
 
   const handleActiveButtonChange = (e) => {
-    setActiveButtonValue(+e.target.value);
+    setPercentButtonValue(+e.target.value);
   };
 
   const onSubmit = (data) => {
     console.log("submitting", data);
-    dispatch(test(data));
+    switch (formVariant) {
+      case "buy":
+        dispatch(buyCurrency(data));
+        break;
+      case "sell":
+        dispatch(sellCurrency(data));
+        break;
+      default:
+        throw new Error("Unknown form variant");
+    }
     // reset();
   };
 
   const renderPercentButtons = (percentButtonsData) => {
     return percentButtonsData.map((value) => {
-      const isActive = classNames({ active: activeButtonValue === value });
+      const isActive = classNames({ active: percentButtonValue === value });
       return (
         <Button
           key={value}
@@ -97,7 +107,7 @@ const BuySellForm = ({ variant, coin }) => {
           value={value}
           onClick={handleActiveButtonChange}
           className={isActive}
-          disabled={activeButtonValue === value}
+          disabled={percentButtonValue === value}
         >
           {value}%
         </Button>
