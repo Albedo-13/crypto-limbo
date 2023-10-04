@@ -89,7 +89,7 @@ export const buySellSchema = yup.object({
   price: yup
     .string()
     .required("Field is required"),
-    // .min(0, "0 min"),
+    // .min(1, "1$ min"),
     // max size
   quantity: yup
     .string()

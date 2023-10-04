@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data: [],
-}
+  data: [
+    { id: "bitcoin", symbol: "BTC", name: "Bitcoin" },
+    { id: "ethereum", symbol: "ETH", name: "Ethereum" },
+    { id: "solana", symbol: "SOL", name: "Solana" },
+  ],
+};
 
 export const bookmarksSlice = createSlice({
   name: "bookmarks",

@@ -14,13 +14,13 @@ import { buySellSchema } from "../../../utils/validationSchemas";
 import { useDispatch } from "react-redux";
 import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
 
-const FORM_ACTION_TYPES = ["buy", "sell"];
-
 // TODO: controlled form (https://www.react-hook-form.com/api/usecontroller/controller/)
 // TODO: new porfolio slice
 // TODO: extend validation schema
+// TODO: rename all out-of-component variables TO_UPPER_CASE
 
-const percentButtonsData = [25, 50, 75, 100];
+const FORM_ACTION_TYPES = ["buy", "sell"];
+const PERCENT_BUTTON_VALUES = [25, 50, 75, 100];
 
 const BuySellForm = ({ variant, coin, dispatchFunc }) => {
   const [coinPrice, setCoinPrice] = useState("");
@@ -109,7 +109,7 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
   };
 
   console.log(errors);
-  const percentButtons = renderPercentButtons(percentButtonsData);
+  const percentButtons = renderPercentButtons(PERCENT_BUTTON_VALUES);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="buy-sell-form__wrapper">
