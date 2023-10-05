@@ -72,19 +72,13 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
 
   const handlePriceChange = (e) => {
     const newQuantity = +e.target.value / coin.market_data.current_price["usd"];
-    setValue("quantity", newQuantity);
-    if (!newQuantity) {
-      setValue("quantity", "");
-    }
+    newQuantity ? setValue("quantity", newQuantity) : setValue("quantity", "");
     trigger();
   };
 
   const handleQuantityChange = (e) => {
     const newPrice = +e.target.value * coin.market_data.current_price["usd"];
-    setValue("price", newPrice);
-    if (!newPrice) {
-      setValue("quantity", "");
-    }
+    newPrice ? setValue("price", newPrice) : setValue("price", "");
     trigger();
   };
 
@@ -131,46 +125,18 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
         <div className="buy-sell-form__balance">$ X,XXX,XXX.XX</div>
       </div>
       <div className="buy-sell-form__wrapper">
-        <Controller
-          control={control}
+        <ControlledTextField
           name="price"
-          defaultValue=""
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <TextField
-              type="number"
-              value={value}
-              onChange={(e) => {
-                onChange(e);
-                handlePriceChange(e);
-              }}
-              error={!!error}
-              autoComplete="transaction-amount"
-              placeholder="Price (USD)"
-              variant="outlined"
-              classes={{ root: "input-text" }}
-            />
-          )}
+          handleChange={handlePriceChange}
+          control={control}
+          placeholder={`Price (USD)`}
         />
         <div className="buy-sell-form__helper buy-sell-form__helper_left">{errors.price?.message}</div>
-        <Controller
-          control={control}
+        <ControlledTextField
           name="quantity"
-          defaultValue=""
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <TextField
-              type="number"
-              value={value}
-              onChange={(e) => {
-                onChange(e);
-                handleQuantityChange(e);
-              }}
-              error={!!error}
-              autoComplete="transaction-amount"
-              placeholder={`Quantity (${coin.symbol.toUpperCase()})`}
-              variant="outlined"
-              classes={{ root: "input-text" }}
-            />
-          )}
+          handleChange={handleQuantityChange}
+          control={control}
+          placeholder={`Quantity ${coin.symbol.toUpperCase()}`}
         />
         <div className="buy-sell-form__helper buy-sell-form__helper_right">{errors.quantity?.message}</div>
       </div>
@@ -191,6 +157,31 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
       </Button>
       <p className="buy-sell-form__text buy-sell-form__fees">Fees Includes- (0.1 %)</p>
     </form>
+  );
+};
+
+const ControlledTextField = ({ name, handleChange, control, placeholder }) => {
+  return (
+    <Controller
+      control={control}
+      name={name}
+      defaultValue=""
+      render={({ field: { onChange, value }, fieldState: { error } }) => (
+        <TextField
+          type="number"
+          value={value}
+          onChange={(e) => {
+            onChange(e);
+            handleChange(e);
+          }}
+          error={!!error}
+          autoComplete="transaction-amount"
+          placeholder={placeholder}
+          variant="outlined"
+          classes={{ root: "input-text" }}
+        />
+      )}
+    />
   );
 };
 
