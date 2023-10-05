@@ -12,7 +12,7 @@ import { formatDigit, formatPercentage } from "../../../utils/utils";
 import { EnhancedTableHead } from "../../table/TableEnhancers";
 import { useTable } from "../../../hooks/table.hook";
 
-const headCells = [
+const HEAD_CELLS = [
   {
     id: "name",
     alignRight: false,
@@ -86,7 +86,7 @@ export const WatchlistTable = () => {
   return (
     <TableContainer component={Paper} className="mui-table">
       <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
-        <EnhancedTableHead headCells={headCells} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
+        <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
         <TableBody>
           {sortedRows.map((row) => (isBookmarkChecked(row.id) ? <WatchlistTableRow key={row.id} row={row} /> : null))}
         </TableBody>

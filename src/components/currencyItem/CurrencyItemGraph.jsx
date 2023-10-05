@@ -11,7 +11,7 @@ import CachedIcon from "@mui/icons-material/Cached";
 import { detailedChartConfig } from "../../services/chartsSettings";
 import useCoingeckoService from "../../services/coingecko.api";
 
-const toolbarData = [
+const TOOLBAR_DATA = [
   {
     value: "1",
     label: "1D",
@@ -86,7 +86,7 @@ const GraphToolbar = ({ handleFetch }) => {
     });
   };
 
-  const dateButtons = renderDateButtons(toolbarData);
+  const dateButtons = renderDateButtons(TOOLBAR_DATA);
   return (
     <div className="currency-item-graph-toolbar">
       <ButtonGroup variant="text" aria-label="market chart buttons group">

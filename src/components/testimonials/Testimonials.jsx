@@ -7,7 +7,7 @@ import { convertScssToObject } from "../../utils/utils";
 import "./testimonials.scss";
 import commas from "../../assets/icons/commas.webp";
 
-const itemsSettings = [
+const ITEMS_SETTINGS = [
   {
     id: 1,
     name: "John Doe",
@@ -109,7 +109,7 @@ export const Testimonials = () => {
     });
   };
 
-  const carouselItems = renderCarouselItems(itemsSettings);
+  const carouselItems = renderCarouselItems(ITEMS_SETTINGS);
   return (
     <section className="testimonials">
       <div className="bg-section-spray-big" />

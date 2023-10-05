@@ -37,3 +37,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: explore a11y, adapt for screen readers
 // TODO: check custom hooks, write some for project
 // TODO: add currency type toggler on footer (usd, rub, etc)
+// TODO: reduce bundle size with CurrencyItem lazy loading (https://legacy.reactjs.org/docs/code-splitting.html#avoiding-fallbacks)

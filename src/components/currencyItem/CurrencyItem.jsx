@@ -8,8 +8,6 @@ import { CurrencyItemTabs } from "./currencyItemTabs/CurrencyItemTabs";
 import "./currencyItem.scss";
 
 // TODO?: Spinner? skeleton?
-// TODO: tabs somewhere here (https://stackoverflow.com/questions/56972436/material-ui-button-active-style)
-// TODO: reduce bundle size with CurrencyItem lazy loading (https://legacy.reactjs.org/docs/code-splitting.html#avoiding-fallbacks)
 
 export const CurrencyItem = ({ coin }) => {
   console.log("currencyItem render", coin);

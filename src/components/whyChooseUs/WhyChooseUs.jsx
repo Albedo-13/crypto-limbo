@@ -9,7 +9,7 @@ import { addZeroToNumber } from "../../utils/utils";
 import "./whyChooseUs.scss";
 import graphIncome from "../../assets/images/GraphIncome.webp";
 
-const itemsSettings = [
+const ITEMS_SETTINGS = [
   {
     id: 1,
     title: "Easy Trading",
@@ -62,7 +62,7 @@ export const WhyChooseUs = () => {
     });
   };
 
-  const items = renderItems(itemsSettings);
+  const items = renderItems(ITEMS_SETTINGS);
   return (
     <section className="why-choose-us">
       <div className="bg-section-spray-small" />

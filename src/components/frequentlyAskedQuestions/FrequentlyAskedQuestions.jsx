@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./frequentlyAskedQuestions.scss";
 import { AccordionFaq } from "./AccordionFaq";
 
-const accordionItemsSettings = {
+const ACCORDION_ITEMS_SETTINGS = {
   left: [
     {
       id: 1,
@@ -82,7 +82,7 @@ export const FrequentlyAskedQuestions = () => {
     );
   };
 
-  const accordions = renderAccordionItems(accordionItemsSettings);
+  const accordions = renderAccordionItems(ACCORDION_ITEMS_SETTINGS);
   return (
     <section className="faq" id="FrequentlyAskedQuestions">
       <div className="bg-section-spray-small" />

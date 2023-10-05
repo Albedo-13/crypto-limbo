@@ -10,7 +10,6 @@ import IconButton from "@mui/material/IconButton";
 
 import { newPasswordSchema } from "../../utils/validationSchemas";
 
-// TODO: replace invisible email field with valid data (https://www.chromium.org/developers/design-documents/form-styles-that-chromium-understands/#email-first-sign-in-flow)
 // TODO: block ability to go to new password creation using address field
 // (redirect on 1st if trying to go to 2nd. save email in Redux store?)
 

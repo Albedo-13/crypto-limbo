@@ -18,7 +18,7 @@ import { EnhancedTableToolbar, EnhancedTableHead } from "../table/TableEnhancers
 import "./marketTable.scss";
 import { useTable } from "../../hooks/table.hook";
 
-const headCells = [
+const HEAD_CELLS = [
   {
     id: "name",
     alignRight: false,
@@ -118,7 +118,7 @@ export const MarketTable = () => {
         <EnhancedTableToolbar bookmarksList={bookmarks} searchParam={search} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper} className="mui-table">
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
-            <EnhancedTableHead headCells={headCells} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
+            <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
               {sortedRows.map((row) => (
                 <MarketTableRow

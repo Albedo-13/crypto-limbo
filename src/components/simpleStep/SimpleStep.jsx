@@ -6,7 +6,7 @@ import AutoGraphOutlinedIcon from "@mui/icons-material/AutoGraphOutlined";
 import "./simpleStep.scss";
 import { SimpleStepItem } from "./SimpleStepItem";
 
-const itemsSettings = [
+const ITEMS_SETTINGS = [
   {
     id: 1,
     color: "#f8931a",
@@ -52,7 +52,7 @@ export const SimpleStep = () => {
     });
   };
 
-  const items = renderItems(itemsSettings);
+  const items = renderItems(ITEMS_SETTINGS);
   return (
     <section className="simple-step" id="simpleStep">
       <div className="bg-section-spray-big" />
