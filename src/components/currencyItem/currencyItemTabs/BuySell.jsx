@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useParams } from "react-router-dom";
 import classNames from "classnames";
 
 import Button from "@mui/material/Button";
@@ -13,15 +14,16 @@ import Radio from "@mui/material/Radio";
 
 import { buySellSchema } from "../../../utils/validationSchemas";
 import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
-
-// TODO: rename all out-of-component variables TO_UPPER_CASE
+import { SnackbarTest } from "../../snackbars/snackbars";
+import { useSnackbar } from "../../../hooks/snackbar.hook";
 
 const FORM_ACTION_TYPES = ["buy", "sell"];
 const PERCENT_BUTTON_VALUES = [25, 50, 75, 100];
 
-const BuySellForm = ({ variant, coin, dispatchFunc }) => {
+// TODO: snackbar sell error (https://mui.com/material-ui/react-snackbar/)
+
+const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
   const [percentButtonValue, setPercentButtonValue] = useState(25);
-  const formVariant = FORM_ACTION_TYPES.find((action) => variant === action);
   const {
     register,
     handleSubmit,
@@ -32,9 +34,13 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
     formState: { errors, isSubmitSuccessful },
   } = useForm({ mode: "onChange", resolver: yupResolver(buySellSchema) });
   const dispatch = useDispatch();
+  const portfolio = useSelector((state) => state.portfolio.portfolio);
+  const { id } = useParams();
+  const formVariant = FORM_ACTION_TYPES.find((action) => variant === action);
 
   useEffect(() => {
-    transformAdditionalFormData();
+    transformAdditionalFormData(); //- ???
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,12 +50,10 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
   }, [percentButtonValue]);
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-      transformAdditionalFormData();
-    }
+    reset();
+    transformAdditionalFormData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSubmitSuccessful]);
+  }, [isSubmitSuccessful, id]);
 
   const updatePercentButtonValue = () => {
     setValue("percent", percentButtonValue);
@@ -86,11 +90,24 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
 
   const onSubmit = (data) => {
     console.log("submitting", data);
-    if (!dispatchFunc) {
+    if (!dispatchAction) {
       throw new Error("Unknown dispatch function");
     }
 
-    dispatch(dispatchFunc(data));
+    if (isEnoughMoney(portfolio)) {
+      console.log("enough money, selling: ", data.data.coinId, portfolio);
+      dispatch(dispatchAction(data));
+      handleSnackOpen();
+    } else {
+      console.log("no money");
+      handleSnackOpen();
+    }
+
+    function isEnoughMoney(portfolio) {
+      return portfolio.some(
+        (currency) => currency.data.coinId === data.data.coinId && currency.quantity >= data.quantity
+      );
+    }
   };
 
   const renderPercentButtons = (percentButtonsData) => {
@@ -111,7 +128,7 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
     });
   };
 
-  console.log(errors);
+  console.log("render form");
   const percentButtons = renderPercentButtons(PERCENT_BUTTON_VALUES);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -184,16 +201,21 @@ const ControlledTextField = ({ name, handleChange, control, placeholder }) => {
 };
 
 export const BuySell = ({ coin }) => {
+  const { open, handleOpen, handleClose } = useSnackbar();
+
   return (
     <div className="buy-sell">
       <div className="buy-sell__wrapper">
         <div className="buy-sell-form">
-          <BuySellForm variant="buy" coin={coin} dispatchFunc={buyCurrency} />
+          <BuySellForm variant="buy" coin={coin} dispatchAction={buyCurrency} handleSnackOpen={handleOpen} />
         </div>
         <div className="buy-sell-form">
-          <BuySellForm variant="sell" coin={coin} dispatchFunc={sellCurrency} />
+          <BuySellForm variant="sell" coin={coin} dispatchAction={sellCurrency} handleSnackOpen={handleOpen} />
         </div>
       </div>
+      {/* <button onClick={handleOpen}>snack</button> */}
+      <SnackbarTest open={open} handleClose={handleClose} />
+      {/* <SnackbarTest {...useSnackbar()} /> */}
     </div>
   );
 };

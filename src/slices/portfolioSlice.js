@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   portfolio: [
     {
-      quantity: '0.00404',
-      price: '111',
+      quantity: 0.04004,
+      price: 1000,
       tradeType: 'market',
       id: '4b683e8a-fad6-443f-a55e-d11293534f8e',
       data: {
@@ -19,16 +19,15 @@ const initialState = {
 };
 
 const addToPortfolio = (state, action) => {
+  state.purchases = [...state.purchases, action.payload];
   if (isPortfolioIncludesCoin(state, action)) {
     const index = state.portfolio.findIndex((currency => currency.data.coinId == action.payload.data.coinId));
-    console.log(index);
     state.portfolio[index].price = +state.portfolio[index].price + +action.payload.price;
     state.portfolio[index].quantity = +state.portfolio[index].quantity + +action.payload.quantity;
   } else {
     state.portfolio = [...state.portfolio, action.payload];
   }
 }
-
 
 const removeFromPortfolio = (state, action) => {
   state.sales = [...state.sales, action.payload];
@@ -41,14 +40,6 @@ const removeFromPortfolio = (state, action) => {
   }
 }
 
-// const isAbleToSell = (state, action) => {
-//   return isPortfolioIncludesCoin(state, action) && isEnoughMoney(state, action);
-// }
-
-const isEnoughMoney = (state, action) => {
-  return state.portfolio.some((currency) => isPortfolioIncludesCoin(state, action) && currency.quantity >= action.payload.quantity);
-}
-
 const isPortfolioIncludesCoin = (state, action) => {
   return state.portfolio.some((currency) => currency.data.coinId === action.payload.data.coinId);
 }
@@ -58,21 +49,13 @@ const portfolioSlice = createSlice({
   initialState,
   reducers: {
     buyCurrency(state, action) {
-      state.purchases = [...state.purchases, action.payload];
       addToPortfolio(state, action);
     },
     sellCurrency(state, action) {
-      if (isEnoughMoney(state, action)) {
-        removeFromPortfolio(state, action);
-      }
-    },
-
-
-    test(state, action) {
-      state.purchases = [...state.purchases, action.payload];
+      removeFromPortfolio(state, action);
     },
   },
 });
 
-export const { buyCurrency, sellCurrency, test } = portfolioSlice.actions;
+export const { buyCurrency, sellCurrency } = portfolioSlice.actions;
 export default portfolioSlice.reducer;
