@@ -32,17 +32,11 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     reset,
     trigger,
     formState: { errors, isSubmitSuccessful },
-  } = useForm({ mode: "onChange", resolver: yupResolver(buySellSchema) });
+  } = useForm({ resolver: yupResolver(buySellSchema) });
   const dispatch = useDispatch();
   const portfolio = useSelector((state) => state.portfolio.portfolio);
   const { id } = useParams();
   const formVariant = FORM_ACTION_TYPES.find((action) => variant === action);
-
-  useEffect(() => {
-    transformAdditionalFormData(); //- ???
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     updatePercentButtonValue();
@@ -66,8 +60,6 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
       symbol: coin.symbol,
       action: variant,
       price: coin.market_data.current_price["usd"],
-      // timestamp: new Date().getTime(),
-      // timestamp: Date.now(),
     };
     setValue("data", coinData);
   };
@@ -94,6 +86,7 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
       throw new Error("Unknown dispatch function");
     }
 
+    // TODO: different submit logics for buy and sell actions
     if (isEnoughMoney(portfolio)) {
       console.log("enough money, selling: ", data.data.coinId, portfolio);
       dispatch(dispatchAction(data));
@@ -128,7 +121,6 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     });
   };
 
-  console.log("render form");
   const percentButtons = renderPercentButtons(PERCENT_BUTTON_VALUES);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

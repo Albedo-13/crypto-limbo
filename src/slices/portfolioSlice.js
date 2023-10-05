@@ -22,8 +22,8 @@ const addToPortfolio = (state, action) => {
   state.purchases = [...state.purchases, action.payload];
   if (isPortfolioIncludesCoin(state, action)) {
     const index = state.portfolio.findIndex((currency => currency.data.coinId == action.payload.data.coinId));
-    state.portfolio[index].price = +state.portfolio[index].price + +action.payload.price;
-    state.portfolio[index].quantity = +state.portfolio[index].quantity + +action.payload.quantity;
+    state.portfolio[index].price = (+state.portfolio[index].price + +action.payload.price).toFixed(2);
+    state.portfolio[index].quantity = (+state.portfolio[index].quantity + +action.payload.quantity).toFixed(6);
   } else {
     state.portfolio = [...state.portfolio, action.payload];
   }
@@ -35,8 +35,8 @@ const removeFromPortfolio = (state, action) => {
   if (state.portfolio[index].quantity - action.payload.quantity === 0) {
     state.portfolio = state.portfolio.filter((currency) => currency.data.coinId !== action.payload.data.coinId);
   } else {
-    state.portfolio[index].price = +state.portfolio[index].price - +action.payload.price;
-    state.portfolio[index].quantity = +state.portfolio[index].quantity - +action.payload.quantity;
+    state.portfolio[index].price = (+state.portfolio[index].price - +action.payload.price).toFixed(2);
+    state.portfolio[index].quantity = (+state.portfolio[index].quantity - +action.payload.quantity).toFixed(6);
   }
 }
 
