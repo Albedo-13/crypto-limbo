@@ -91,12 +91,19 @@ export const buySellSchema = yup.object({
     .typeError("Amount must be a number")
     .required("Field is required")
     .min(1, "1$ min")
-    .max(100000, "100,000$ max"), //change validation to test
+    .max(100000, "100,000$ max")
+    .test("floatPriceValidation", "Max 2 symbols of decimal (.xx)", (value) => {
+      return validateFloatPrice(value);
+    }),
+
   quantity: yup
     .number()
     .typeError("Amount must be a number")
     .required("Field is required")
-  // .min(0, "must be greater than 0!"),
+    .min(0.01, "0.01$ min")
+    .test("floatCoinQuantityValidation", "Max 6 symbols of decimal (.xxxxxx)", (value) => {
+      return validateFloatCoinQuantity(value);
+    }),
 });
 
 const validateEmail = (email) => {
@@ -123,4 +130,18 @@ const validatePasswordDigits = (password) => {
     .string()
     .matches(/[0-9]+/)
     .isValidSync(password);
+}
+
+const validateFloatPrice = (number) => {
+  return yup
+    .string()
+    .matches(/^[+]?[0-9]*([.,][0-9]{1,2})?$/)
+    .isValidSync(number);
+}
+
+const validateFloatCoinQuantity = (number) => {
+  return yup
+    .string()
+    .matches(/^[+]?[0-9]*([.,][0-9]{1,6})?$/)
+    .isValidSync(number);
 }

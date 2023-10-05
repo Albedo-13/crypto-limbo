@@ -14,7 +14,6 @@ import Radio from "@mui/material/Radio";
 import { buySellSchema } from "../../../utils/validationSchemas";
 import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
 
-// TODO: extend validation schema (add test method to validate after-comma digits)
 // TODO: rename all out-of-component variables TO_UPPER_CASE
 
 const FORM_ACTION_TYPES = ["buy", "sell"];
