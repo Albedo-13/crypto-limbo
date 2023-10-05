@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import classNames from "classnames";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import { yupResolver } from "@hookform/resolvers/yup";
+import classNames from "classnames";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -14,8 +14,7 @@ import Radio from "@mui/material/Radio";
 import { buySellSchema } from "../../../utils/validationSchemas";
 import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
 
-// TODO: toFixed(2/6) input values
-// TODO: extend validation schema
+// TODO: extend validation schema (add test method to validate after-comma digits)
 // TODO: rename all out-of-component variables TO_UPPER_CASE
 
 const FORM_ACTION_TYPES = ["buy", "sell"];
@@ -72,13 +71,13 @@ const BuySellForm = ({ variant, coin, dispatchFunc }) => {
 
   const handlePriceChange = (e) => {
     const newQuantity = +e.target.value / coin.market_data.current_price["usd"];
-    newQuantity ? setValue("quantity", newQuantity) : setValue("quantity", "");
+    newQuantity ? setValue("quantity", newQuantity.toFixed(6)) : setValue("quantity", "");
     trigger();
   };
 
   const handleQuantityChange = (e) => {
     const newPrice = +e.target.value * coin.market_data.current_price["usd"];
-    newPrice ? setValue("price", newPrice) : setValue("price", "");
+    newPrice ? setValue("price", newPrice.toFixed(2)) : setValue("price", "");
     trigger();
   };
 
