@@ -3,7 +3,6 @@ import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useParams } from "react-router-dom";
 import classNames from "classnames";
 
 import Button from "@mui/material/Button";
@@ -36,7 +35,6 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
   } = useForm({ resolver: yupResolver(buySellSchema) });
   const dispatch = useDispatch();
   const portfolio = useSelector((state) => state.portfolio.portfolio);
-  const { id } = useParams();
   const formVariant = FORM_ACTION_TYPES.find((action) => variant === action);
 
   useEffect(() => {
@@ -48,7 +46,7 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     reset();
     transformAdditionalFormData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSubmitSuccessful, id]);
+  }, [isSubmitSuccessful, coin]);
 
   const updatePercentButtonValue = () => {
     setValue("percent", percentButtonValue);
@@ -82,26 +80,39 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
   };
 
   const onSubmit = (data) => {
-    console.log("submitting", data);
     if (!dispatchAction) {
       throw new Error("Unknown dispatch function");
     }
 
-    // TODO: different submit logics for buy and sell actions
-    if (isEnoughMoney(portfolio)) {
-      console.log("enough money, selling: ", data.data.coinId, portfolio);
-      dispatch(dispatchAction(data));
-      handleSnackOpen("success", "Successful transaction. Accepted");
-    } else {
-      console.log("no money");
-      // TODO: change decline text on purchase
-      handleSnackOpen("error", "Not enough cryptocurrency in the wallet. Declined");
+    switch (variant) {
+      case "buy":
+        onBuySubmit();
+        break;
+      case "sell":
+        onSellSubmit();
+        break;
+      default:
+        throw new Error("Unknown form action variant");
     }
 
     function isEnoughMoney(portfolio) {
       return portfolio.some(
         (currency) => currency.data.coinId === data.data.coinId && currency.quantity >= data.quantity
       );
+    }
+
+    function onBuySubmit() {
+      dispatch(dispatchAction(data));
+      handleSnackOpen("success", "Successful transaction. Accepted");
+    }
+
+    function onSellSubmit() {
+      if (isEnoughMoney(portfolio)) {
+        dispatch(dispatchAction(data));
+        handleSnackOpen("success", "Successful transaction. Accepted");
+      } else {
+        handleSnackOpen("error", "Not enough cryptocurrency in the wallet. Declined");
+      }
     }
   };
 
