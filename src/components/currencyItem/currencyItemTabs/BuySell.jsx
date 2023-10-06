@@ -14,13 +14,14 @@ import Radio from "@mui/material/Radio";
 
 import { buySellSchema } from "../../../utils/validationSchemas";
 import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
-import { SnackbarTest } from "../../snackbars/snackbars";
+import { CustomSnackbar } from "../../snackbars/snackbars";
 import { useSnackbar } from "../../../hooks/snackbar.hook";
 
 const FORM_ACTION_TYPES = ["buy", "sell"];
 const PERCENT_BUTTON_VALUES = [25, 50, 75, 100];
 
 // TODO: snackbar sell error (https://mui.com/material-ui/react-snackbar/)
+// TODO?: currencyItemForms? currencyItemWatchlist?
 
 const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
   const [percentButtonValue, setPercentButtonValue] = useState(25);
@@ -90,10 +91,11 @@ const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     if (isEnoughMoney(portfolio)) {
       console.log("enough money, selling: ", data.data.coinId, portfolio);
       dispatch(dispatchAction(data));
-      handleSnackOpen();
+      handleSnackOpen("success", "Successful transaction. Accepted");
     } else {
       console.log("no money");
-      handleSnackOpen();
+      // TODO: change decline text on purchase
+      handleSnackOpen("error", "Not enough cryptocurrency in the wallet. Declined");
     }
 
     function isEnoughMoney(portfolio) {
@@ -193,7 +195,7 @@ const ControlledTextField = ({ name, handleChange, control, placeholder }) => {
 };
 
 export const BuySell = ({ coin }) => {
-  const { open, handleOpen, handleClose } = useSnackbar();
+  const { open, severity, message, handleOpen, handleClose } = useSnackbar();
 
   return (
     <div className="buy-sell">
@@ -205,9 +207,7 @@ export const BuySell = ({ coin }) => {
           <BuySellForm variant="sell" coin={coin} dispatchAction={sellCurrency} handleSnackOpen={handleOpen} />
         </div>
       </div>
-      {/* <button onClick={handleOpen}>snack</button> */}
-      <SnackbarTest open={open} handleClose={handleClose} />
-      {/* <SnackbarTest {...useSnackbar()} /> */}
+      <CustomSnackbar open={open} handleClose={handleClose} severity={severity} message={message} />
     </div>
   );
 };

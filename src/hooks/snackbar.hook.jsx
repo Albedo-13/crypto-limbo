@@ -2,9 +2,13 @@ import { useState } from "react";
 
 export const useSnackbar = () => {
   const [open, setOpen] = useState(false);
+  const [severity, setSeverity] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleOpen = () => {
+  const handleOpen = (severity = "", message = "") => {
     setOpen(true);
+    setSeverity(severity);
+    setMessage(message);
   };
 
   const handleClose = (event, reason) => {
@@ -17,7 +21,8 @@ export const useSnackbar = () => {
 
   return {
     open,
-    setOpen,
+    severity,
+    message,
     handleOpen,
     handleClose,
   };
