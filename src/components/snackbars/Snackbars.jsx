@@ -1,3 +1,4 @@
+
 import { forwardRef } from "react";
 
 import Snackbar from "@mui/material/Snackbar";
@@ -11,7 +12,7 @@ export const CustomSnackbar = ({ open, handleClose, severity, message }) => {
         autoHideDuration={5000}
         onClose={handleClose}
       >
-        <Alert severity={severity}>{message}</Alert>
+        <Alert onClose={handleClose} severity={severity}>{message}</Alert>
       </Snackbar>
     </>
   );
