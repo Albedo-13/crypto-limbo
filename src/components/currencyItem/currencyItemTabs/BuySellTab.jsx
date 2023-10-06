@@ -19,10 +19,7 @@ import { useSnackbar } from "../../../hooks/snackbar.hook";
 const FORM_ACTION_TYPES = ["buy", "sell"];
 const PERCENT_BUTTON_VALUES = [25, 50, 75, 100];
 
-// TODO: snackbar sell error (https://mui.com/material-ui/react-snackbar/)
-// TODO?: currencyItemForms? currencyItemWatchlist?
-
-const BuySellForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
+const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
   const [percentButtonValue, setPercentButtonValue] = useState(25);
   const {
     register,
@@ -205,17 +202,17 @@ const ControlledTextField = ({ name, handleChange, control, placeholder }) => {
   );
 };
 
-export const BuySell = ({ coin }) => {
+export const BuySellTab = ({ coin }) => {
   const { open, severity, message, handleOpen, handleClose } = useSnackbar();
 
   return (
     <div className="buy-sell">
       <div className="buy-sell__wrapper">
         <div className="buy-sell-form">
-          <BuySellForm variant="buy" coin={coin} dispatchAction={buyCurrency} handleSnackOpen={handleOpen} />
+          <BuySellTabForm variant="buy" coin={coin} dispatchAction={buyCurrency} handleSnackOpen={handleOpen} />
         </div>
         <div className="buy-sell-form">
-          <BuySellForm variant="sell" coin={coin} dispatchAction={sellCurrency} handleSnackOpen={handleOpen} />
+          <BuySellTabForm variant="sell" coin={coin} dispatchAction={sellCurrency} handleSnackOpen={handleOpen} />
         </div>
       </div>
       <CustomSnackbar open={open} handleClose={handleClose} severity={severity} message={message} />

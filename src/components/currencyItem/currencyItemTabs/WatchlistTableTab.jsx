@@ -51,7 +51,7 @@ const HEAD_CELLS = [
   },
 ];
 
-const WatchlistTableRow = ({ row }) => {
+const WatchlistTableTabRow = ({ row }) => {
   const { priceChangeStyle, TrendingIcon } = trendingPriceChange(row.price_change_percentage_24h);
 
   return (
@@ -80,7 +80,7 @@ const WatchlistTableRow = ({ row }) => {
   );
 };
 
-export const WatchlistTable = () => {
+export const WatchlistTableTab = () => {
   const { order, orderBy, handleOrderDebounced, sortedRows, isBookmarkChecked } = useTable();
 
   return (
@@ -88,7 +88,7 @@ export const WatchlistTable = () => {
       <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
         <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
         <TableBody>
-          {sortedRows.map((row) => (isBookmarkChecked(row.id) ? <WatchlistTableRow key={row.id} row={row} /> : null))}
+          {sortedRows.map((row) => (isBookmarkChecked(row.id) ? <WatchlistTableTabRow key={row.id} row={row} /> : null))}
         </TableBody>
       </Table>
     </TableContainer>

@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import { BuySell } from "./BuySell";
-import { WatchlistTable } from "./WatchlistTable";
+import { BuySellTab } from "./BuySellTab";
+import { WatchlistTableTab } from "./WatchlistTableTab";
 import Spinner from "../../spinner/Spinner";
 
 import "./currencyItemTabs.scss";
@@ -56,10 +56,10 @@ export const CurrencyItemTabs = ({ coin }) => {
         </Tabs>
       </Box>
       <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
-        <BuySell coin={coin} />
+        <BuySellTab coin={coin} />
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
-        <WatchlistTable coin={coin} />
+        <WatchlistTableTab coin={coin} />
       </TabPanel>
       <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
         Item Three
