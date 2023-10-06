@@ -11,11 +11,7 @@ export const useSnackbar = () => {
     setMessage(message);
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
+  const handleClose = () => {
     setOpen(false);
   };
 

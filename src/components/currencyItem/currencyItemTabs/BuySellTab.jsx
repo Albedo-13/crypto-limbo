@@ -13,7 +13,7 @@ import Radio from "@mui/material/Radio";
 
 import { buySellSchema } from "../../../utils/validationSchemas";
 import { buyCurrency, sellCurrency } from "../../../slices/portfolioSlice";
-import { CustomSnackbar } from "../../snackbars/snackbars";
+import { CustomSnackbar } from "../../snackbars/Snackbars";
 import { useSnackbar } from "../../../hooks/snackbar.hook";
 
 const FORM_ACTION_TYPES = ["buy", "sell"];

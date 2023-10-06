@@ -8,7 +8,7 @@ export const CustomSnackbar = ({ open, handleClose, severity, message }) => {
     <>
       <Snackbar
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={handleClose}
       >
         <Alert severity={severity}>{message}</Alert>
