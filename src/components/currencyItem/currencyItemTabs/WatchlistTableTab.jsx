@@ -88,7 +88,9 @@ export const WatchlistTableTab = () => {
       <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
         <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
         <TableBody>
-          {sortedRows.map((row) => (isBookmarkChecked(row.id) ? <WatchlistTableTabRow key={row.id} row={row} /> : null))}
+          {sortedRows.map((row) =>
+            isBookmarkChecked(row.id) ? <WatchlistTableTabRow key={row.id} row={row} /> : null
+          )}
         </TableBody>
       </Table>
     </TableContainer>

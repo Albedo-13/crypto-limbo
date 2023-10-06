@@ -22,11 +22,7 @@ const TabPanel = (props) => {
       {...other}
       key={index}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 };
@@ -45,28 +41,28 @@ export const CurrencyItemTabs = ({ coin }) => {
     };
   };
 
-  const renderItemTabs = (coin) =>{
+  const renderItemTabs = (coin) => {
     return (
       <Box className={"mui-tabs"} sx={{ width: "100%" }}>
-      <Box className={"mui-tabs-header"}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
-          <Tab tabIndex={0} label="Watchlist" {...a11yProps(1)} />
-          <Tab tabIndex={0} label="Portfolio" {...a11yProps(2)} />
-        </Tabs>
+        <Box className={"mui-tabs-header"}>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
+            <Tab tabIndex={0} label="Watchlist" {...a11yProps(1)} />
+            <Tab tabIndex={0} label="Portfolio" {...a11yProps(2)} />
+          </Tabs>
+        </Box>
+        <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
+          <BuySellTab coin={coin} />
+        </TabPanel>
+        <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
+          <WatchlistTableTab coin={coin} />
+        </TabPanel>
+        <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
+          Item Three
+        </TabPanel>
       </Box>
-      <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
-        <BuySellTab coin={coin} />
-      </TabPanel>
-      <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
-        <WatchlistTableTab coin={coin} />
-      </TabPanel>
-      <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
-        Item Three
-      </TabPanel>
-    </Box>
     );
-  }
+  };
 
-  return coin ? renderItemTabs(coin): <Spinner />;
+  return coin ? renderItemTabs(coin) : <Spinner />;
 };
