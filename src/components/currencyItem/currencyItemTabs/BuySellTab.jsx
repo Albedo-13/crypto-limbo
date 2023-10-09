@@ -43,7 +43,7 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
 
   useEffect(() => {
     reset();
-    transformAdditionalFormData();
+    setAdditionalFormData(coin);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSubmitSuccessful, coin]);
 
@@ -51,17 +51,24 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     setValue("percent", percentButtonValue);
   };
 
-  const transformAdditionalFormData = () => {
+  const setAdditionalFormData = (coin) => {
+    // const coinData = {
+    //   coinId: coin.id,
+    //   symbol: coin.symbol,
+    //   name: coin.name,
+    //   action: variant,
+    //   price: coin.market_data.current_price["usd"],
+    //   image: coin.image.small,
+    // };
+
     setValue("id", uuidv4());
-    const coinData = {
-      coinId: coin.id,
-      symbol: coin.symbol,
-      name: coin.name,
-      action: variant,
-      price: coin.market_data.current_price["usd"],
-      image: coin.image.small,
-    };
-    setValue("data", coinData);
+    setValue("coinId", coin.id);
+    setValue("symbol", coin.symbol);
+    setValue("name", coin.name);
+    setValue("action", variant);
+    setValue("transaction_price", coin.market_data.current_price["usd"]);
+    setValue("image", coin.image.small);
+    // setValue("data", coinData);
   };
 
   const handlePriceChange = (e) => {

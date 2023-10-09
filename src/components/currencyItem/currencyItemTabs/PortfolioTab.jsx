@@ -13,13 +13,13 @@ import { useSelector } from "react-redux";
 
 const HEAD_CELLS = [
   {
-    id: "name",
+    id: "coinId",
     alignRight: false,
     disablePadding: true,
     label: "Coin Name",
   },
   {
-    id: "current_price",
+    id: "price",
     alignRight: true,
     disablePadding: false,
     label: "Invested",
@@ -31,7 +31,7 @@ const HEAD_CELLS = [
     label: "Avg. Return 24h (USD)",
   },
   {
-    id: "high_24h",
+    id: "quantity",
     alignRight: true,
     disablePadding: false,
     label: "Quantity",
@@ -57,9 +57,9 @@ const PortfolioTabRow = ({ row }) => {
     <TableRow>
       <TableCell component="th" scope="row" className="table-cell">
         <div className="table__image">
-          <img className="undraggable" src={row.data.image} alt={row.data.name} />
+          <img className="undraggable" src={row.image} alt={row.name} />
         </div>
-        {row.data.name} / {row.data.symbol.toUpperCase()}
+        {row.name} / {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="table__dollar-prefix">{row.price}</TableCell>
       <TableCell>
@@ -69,7 +69,7 @@ const PortfolioTabRow = ({ row }) => {
         </div>
       </TableCell>
       <TableCell>
-        {row.quantity} {row.data.symbol.toUpperCase()}
+        {row.quantity} {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="table__dollar-prefix">test</TableCell>
       <TableCell>test</TableCell>
