@@ -110,7 +110,7 @@ export const MarketTable = () => {
     isBookmarkChecked,
     handleCheck,
     loadMoreBtn,
-  } = useTable();
+  } = useTable("currencies");
 
   return (
     <section className="market-table">

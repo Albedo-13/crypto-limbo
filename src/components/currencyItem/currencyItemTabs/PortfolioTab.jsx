@@ -79,21 +79,19 @@ const PortfolioTabRow = ({ row }) => {
 
 export const PortfolioTab = () => {
   const { portfolio, purchases, sales } = useSelector((state) => state.portfolio);
-  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable();
+  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable("portfolio");
   // const { portfolio, purchases, sales }  = useSelector((state) => state.portfolio);
 
   return (
-    // <div className="portfolio">
     <TableContainer component={Paper} className="mui-table">
       <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
         <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
         <TableBody>
-          {portfolio.map((row) => (
+          {sortedDataRows.map((row) => (
             <PortfolioTabRow key={row.id} row={row} />
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-    // </div>
   );
 };

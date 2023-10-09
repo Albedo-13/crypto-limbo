@@ -3,48 +3,92 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   portfolio: [
     {
-      quantity: 0.04004,
-      price: 1000,
-      tradeType: 'market',
-      id: '4b683e8a-fad6-443f-a55e-d11293534f8e',
+      quantity: 0.04,
+      price: 1111.36,
+      id: "f53eb767-59cb-4dd5-bd3e-39f83ce14e8a",
+      tradeType: "market",
       data: {
-        coinId: 'bitcoin',
-        symbol: 'btc',
-        action: 'buy',
-        price: 27444,
-        image: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
+        coinId: "bitcoin",
+        symbol: "btc",
         name: "Bitcoin",
+        action: "buy",
+        price: 27784,
+        image: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
       },
-      percent: 25,
     },
-  ], purchases: [], sales: []
+    {
+      quantity: 0.5,
+      price: 808.63,
+      id: "c63d4d9d-58be-4d9c-9486-28bd1c84f8ae",
+      tradeType: "market",
+      data: {
+        coinId: "ethereum",
+        symbol: "eth",
+        name: "Ethereum",
+        action: "buy",
+        price: 1617.27,
+        image: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1696501628",
+      },
+    },
+  ],
+  purchases: [
+    {
+      quantity: 0.04,
+      price: 1111.36,
+      id: "f53eb767-59cb-4dd5-bd3e-39f83ce14e8a",
+      tradeType: "market",
+      data: {
+        coinId: "bitcoin",
+        symbol: "btc",
+        name: "Bitcoin",
+        action: "buy",
+        price: 27784,
+        image: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
+      },
+    },
+    {
+      quantity: 0.5,
+      price: 808.63,
+      id: "c63d4d9d-58be-4d9c-9486-28bd1c84f8ae",
+      tradeType: "market",
+      data: {
+        coinId: "ethereum",
+        symbol: "eth",
+        name: "Ethereum",
+        action: "buy",
+        price: 1617.27,
+        image: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1696501628",
+      },
+    },
+  ],
+  sales: [],
 };
 
 const addToPortfolio = (state, action) => {
   state.purchases = [...state.purchases, action.payload];
   if (isPortfolioIncludesCoin(state, action)) {
-    const index = state.portfolio.findIndex((currency => currency.data.coinId == action.payload.data.coinId));
+    const index = state.portfolio.findIndex((currency) => currency.data.coinId == action.payload.data.coinId);
     state.portfolio[index].price = (+state.portfolio[index].price + +action.payload.price).toFixed(2);
     state.portfolio[index].quantity = (+state.portfolio[index].quantity + +action.payload.quantity).toFixed(6);
   } else {
     state.portfolio = [...state.portfolio, action.payload];
   }
-}
+};
 
 const removeFromPortfolio = (state, action) => {
   state.sales = [...state.sales, action.payload];
-  const index = state.portfolio.findIndex((currency => currency.data.coinId == action.payload.data.coinId));
+  const index = state.portfolio.findIndex((currency) => currency.data.coinId == action.payload.data.coinId);
   if (state.portfolio[index].quantity - action.payload.quantity === 0) {
     state.portfolio = state.portfolio.filter((currency) => currency.data.coinId !== action.payload.data.coinId);
   } else {
     state.portfolio[index].price = (+state.portfolio[index].price - +action.payload.price).toFixed(2);
     state.portfolio[index].quantity = (+state.portfolio[index].quantity - +action.payload.quantity).toFixed(6);
   }
-}
+};
 
 const isPortfolioIncludesCoin = (state, action) => {
   return state.portfolio.some((currency) => currency.data.coinId === action.payload.data.coinId);
-}
+};
 
 const portfolioSlice = createSlice({
   name: "portfolio",

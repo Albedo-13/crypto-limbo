@@ -81,7 +81,7 @@ const WatchlistTableTabRow = ({ row }) => {
 };
 
 export const WatchlistTableTab = () => {
-  const { order, orderBy, handleOrderDebounced, sortedDataRows, isBookmarkChecked } = useTable();
+  const { order, orderBy, handleOrderDebounced, sortedDataRows, isBookmarkChecked } = useTable("currencies");
 
   return (
     <TableContainer component={Paper} className="mui-table">

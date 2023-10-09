@@ -8,39 +8,19 @@ import Button from "@mui/material/Button";
 import { addBookmark, removeBookmark } from "../slices/bookmarksSlice";
 import { comparator } from "../utils/utils";
 
-const transformData = (data) => {
-  return data.map(
-    ({
-      id,
-      name,
-      symbol,
-      current_price,
-      price_change_percentage_24h,
-      total_volume,
-      high_24h,
-      low_24h,
-      market_cap,
-      image,
-    }) => ({
-      id,
-      name,
-      symbol,
-      current_price,
-      price_change_percentage_24h,
-      total_volume,
-      high_24h,
-      low_24h,
-      market_cap,
-      image,
-    })
-  );
-};
-
-export const useTable = () => {
-  const data = useSelector((state) => state.currencies.data);
-  console.log("hook:", data);
+export const useTable = (dataSourceName) => {
+  const data = useSelector((state) => {
+    switch (dataSourceName) {
+      case "currencies":
+        return state.currencies.data;
+      case "portfolio":
+        return state.portfolio.portfolio;
+    }
+  });
   const bookmarks = useSelector((state) => state.bookmarks.data);
   const dispatch = useDispatch();
+  
+  console.log("hook:", dataSourceName, data, bookmarks);
 
   const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState("market_cap");
@@ -106,7 +86,7 @@ export const useTable = () => {
     return bookmarks.some((currency) => currency.id === id);
   };
 
-  const rows = transformData(data.slice(0, displayedRowsNumber));
+  const rows = data.slice(0, displayedRowsNumber);
   const sortedDataRows = sortBySearchbar(sortByColumn(rows));
 
   const loadMoreBtn =
