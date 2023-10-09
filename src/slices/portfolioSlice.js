@@ -59,7 +59,7 @@ const initialState = {
 const addToPortfolio = (state, action) => {
   state.purchases = [...state.purchases, action.payload];
   if (isPortfolioIncludesCoin(state, action)) {
-    const index = state.portfolio.findIndex((currency) => currency.data.coinId == action.payload.data.coinId);
+    const index = state.portfolio.findIndex((currency) => currency.coinId == action.payload.coinId);
     state.portfolio[index].price = (+state.portfolio[index].price + +action.payload.price).toFixed(2);
     state.portfolio[index].quantity = (+state.portfolio[index].quantity + +action.payload.quantity).toFixed(6);
   } else {
@@ -69,9 +69,9 @@ const addToPortfolio = (state, action) => {
 
 const removeFromPortfolio = (state, action) => {
   state.sales = [...state.sales, action.payload];
-  const index = state.portfolio.findIndex((currency) => currency.data.coinId == action.payload.data.coinId);
+  const index = state.portfolio.findIndex((currency) => currency.coinId == action.payload.coinId);
   if (state.portfolio[index].quantity - action.payload.quantity === 0) {
-    state.portfolio = state.portfolio.filter((currency) => currency.data.coinId !== action.payload.data.coinId);
+    state.portfolio = state.portfolio.filter((currency) => currency.coinId !== action.payload.coinId);
   } else {
     state.portfolio[index].price = (+state.portfolio[index].price - +action.payload.price).toFixed(2);
     state.portfolio[index].quantity = (+state.portfolio[index].quantity - +action.payload.quantity).toFixed(6);
@@ -79,7 +79,7 @@ const removeFromPortfolio = (state, action) => {
 };
 
 const isPortfolioIncludesCoin = (state, action) => {
-  return state.portfolio.some((currency) => currency.data.coinId === action.payload.data.coinId);
+  return state.portfolio.some((currency) => currency.coinId === action.payload.coinId);
 };
 
 const portfolioSlice = createSlice({

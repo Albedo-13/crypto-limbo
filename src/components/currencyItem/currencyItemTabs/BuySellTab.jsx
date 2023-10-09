@@ -105,7 +105,7 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
 
     function isEnoughMoney(portfolio) {
       return portfolio.some(
-        (currency) => currency.data.coinId === data.data.coinId && currency.quantity >= data.quantity
+        (currency) => currency.coinId === data.coinId && currency.quantity >= data.quantity
       );
     }
 

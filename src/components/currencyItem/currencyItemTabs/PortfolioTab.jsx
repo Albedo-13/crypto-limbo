@@ -28,7 +28,7 @@ const HEAD_CELLS = [
     id: "price_change_percentage_24h",
     alignRight: true,
     disablePadding: false,
-    label: "Avg. Return 24h (USD)",
+    label: "Return (USD)",
   },
   {
     id: "quantity",
@@ -51,7 +51,10 @@ const HEAD_CELLS = [
 ];
 
 const PortfolioTabRow = ({ row }) => {
-  const { priceChangeStyle, TrendingIcon } = trendingPriceChange(row.price_change_percentage_24h);
+  const data = useSelector((state) => state.currencies.data.find((currency) => currency.id === row.coinId));
+  const returnProfit = formatDigit(data.current_price - row.transaction_price);
+  const { priceChangeStyle } = trendingPriceChange(returnProfit);
+
   console.log("row", row);
   return (
     <TableRow>
@@ -63,10 +66,7 @@ const PortfolioTabRow = ({ row }) => {
       </TableCell>
       <TableCell className="table__dollar-prefix">{row.price}</TableCell>
       <TableCell>
-        <div className={`${priceChangeStyle} table__change table__percent-postfix`}>
-          {TrendingIcon}
-          test
-        </div>
+        <div className={`${priceChangeStyle} table__dollar-prefix`}>{returnProfit}</div>
       </TableCell>
       <TableCell>
         {row.quantity} {row.symbol.toUpperCase()}
@@ -78,9 +78,8 @@ const PortfolioTabRow = ({ row }) => {
 };
 
 export const PortfolioTab = () => {
-  const { portfolio, purchases, sales } = useSelector((state) => state.portfolio);
+  // const { portfolio, purchases, sales } = useSelector((state) => state.portfolio);
   const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable("portfolio");
-  // const { portfolio, purchases, sales }  = useSelector((state) => state.portfolio);
 
   return (
     <TableContainer component={Paper} className="mui-table">
