@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import "./header.scss";
 import logo from "../../assets/logo.webp";
+import classNames from "classnames";
 
 export const Header = () => {
   return (
@@ -20,7 +21,7 @@ export const Header = () => {
                 <NavLink
                   to="/market"
                   end
-                  className={({ isActive }) => (isActive ? "header__link_active" : "header__link")}
+                  className={({ isActive }) => (classNames("header__link", {"active": isActive}))}
                 >
                   Market
                 </NavLink>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,6 +11,7 @@ import { trendingPriceChange } from "../../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../../utils/utils";
 import { EnhancedTableHead } from "../../table/TableEnhancers";
 import { useTable } from "../../../hooks/table.hook";
+import classNames from "classnames";
 
 const HEAD_CELLS = [
   {
@@ -72,9 +73,13 @@ const WatchlistTableTabRow = ({ row }) => {
       <TableCell className="table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
       <TableCell className="table__dollar-prefix">{formatDigit(row.low_24h)}</TableCell>
       <TableCell>
-        <Link className="table__currency-link" to={`/market/${row.id}`}>
+        {/* "table__currency-link" */}
+        <NavLink
+          className={({ isActive }) => classNames("table__currency-link", { "active": isActive })}
+          to={`/market/${row.id}`}
+        >
           Trade
-        </Link>
+        </NavLink>
       </TableCell>
     </TableRow>
   );
