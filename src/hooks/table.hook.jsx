@@ -20,8 +20,6 @@ export const useTable = (dataSourceName) => {
   const bookmarks = useSelector((state) => state.bookmarks.data);
   const dispatch = useDispatch();
   
-  console.log("hook:", dataSourceName, data, bookmarks);
-
   const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState("market_cap");
 

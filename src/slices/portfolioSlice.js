@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   portfolio: [
     {
-      quantity: 0.04,
+      quantity: 0.420000,
       price: 1111.36,
       id: "f53eb767-59cb-4dd5-bd3e-39f83ce14e8a",
       tradeType: "market",
@@ -15,7 +15,7 @@ const initialState = {
       image: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
     },
     {
-      quantity: 0.5,
+      quantity: 0.500000,
       price: 808.63,
       id: "c63d4d9d-58be-4d9c-9486-28bd1c84f8ae",
       tradeType: "market",
@@ -29,7 +29,7 @@ const initialState = {
   ],
   purchases: [
     {
-      quantity: 0.04,
+      quantity: 0.420000,
       price: 1111.36,
       id: "f53eb767-59cb-4dd5-bd3e-39f83ce14e8a",
       tradeType: "market",
@@ -41,7 +41,7 @@ const initialState = {
       image: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
     },
     {
-      quantity: 0.5,
+      quantity: 0.500000,
       price: 808.63,
       id: "c63d4d9d-58be-4d9c-9486-28bd1c84f8ae",
       tradeType: "market",

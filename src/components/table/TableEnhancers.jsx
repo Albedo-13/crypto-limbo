@@ -61,3 +61,21 @@ export const EnhancedTableHead = ({ headCells, order, orderBy, onOrder }) => {
     </TableHead>
   );
 };
+
+export const DefaultTableHead = ({ headCells }) => {
+  return (
+    <TableHead>
+      <TableRow>
+        {headCells.map((headCell) => (
+          <TableCell
+            key={headCell.id}
+            align={headCell.alignRight ? "right" : "left"}
+            padding={headCell.disablePadding ? "none" : "normal"}
+          >
+            {headCell.label}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+  );
+};

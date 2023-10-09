@@ -1,15 +1,16 @@
-import { useTable } from "../../../hooks/table.hook";
+import { useSelector } from "react-redux";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { EnhancedTableHead } from "../../table/TableEnhancers";
+
+import { DefaultTableHead } from "../../table/TableEnhancers";
 import { trendingPriceChange } from "../../../utils/TrendingPriceChange";
-import { formatPercentage, formatDigit } from "../../../utils/utils";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { formatDigit } from "../../../utils/utils";
+import { useTable } from "../../../hooks/table.hook";
 
 const HEAD_CELLS = [
   {
@@ -25,7 +26,7 @@ const HEAD_CELLS = [
     label: "Invested",
   },
   {
-    id: "price_change_percentage_24h",
+    id: "price_change_24h",
     alignRight: true,
     disablePadding: false,
     label: "Return (USD)",
@@ -37,13 +38,13 @@ const HEAD_CELLS = [
     label: "Quantity",
   },
   {
-    id: "high_24h",
+    id: "avg_price_24h",
     alignRight: true,
     disablePadding: false,
     label: "Avg. Price 24h",
   },
   {
-    id: "action",
+    id: "current_price",
     alignRight: true,
     disablePadding: false,
     label: "Current Price",
@@ -56,7 +57,6 @@ const PortfolioTabRow = ({ row }) => {
   const avgPrice24h = formatDigit((data.high_24h + data.low_24h) / 2);
   const { priceChangeStyle } = trendingPriceChange(returnProfit);
 
-  console.log("row", row);
   return (
     <TableRow>
       <TableCell component="th" scope="row" className="table-cell">
@@ -70,7 +70,7 @@ const PortfolioTabRow = ({ row }) => {
         <div className={`${priceChangeStyle} table__dollar-prefix`}>{returnProfit}</div>
       </TableCell>
       <TableCell>
-        {row.quantity} {row.symbol.toUpperCase()}
+        {row.quantity.toFixed(6)} {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="table__dollar-prefix">{avgPrice24h}</TableCell>
       <TableCell className="table__dollar-prefix">{formatDigit(data.current_price)}</TableCell>
@@ -79,13 +79,12 @@ const PortfolioTabRow = ({ row }) => {
 };
 
 export const PortfolioTab = () => {
-  // const { portfolio, purchases, sales } = useSelector((state) => state.portfolio);
-  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable("portfolio");
+  const { sortedDataRows } = useTable("portfolio");
 
   return (
     <TableContainer component={Paper} className="mui-table">
       <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
-        <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
+        <DefaultTableHead headCells={HEAD_CELLS} />
         <TableBody>
           {sortedDataRows.map((row) => (
             <PortfolioTabRow key={row.id} row={row} />
