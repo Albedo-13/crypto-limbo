@@ -37,22 +37,23 @@ const HEAD_CELLS = [
     label: "Quantity",
   },
   {
-    id: "low_24h",
+    id: "high_24h",
     alignRight: true,
     disablePadding: false,
-    label: "Avg. Buying Price",
+    label: "Avg. Price 24h",
   },
   {
     id: "action",
     alignRight: true,
     disablePadding: false,
-    label: "Current Buying Price",
+    label: "Current Price",
   },
 ];
 
 const PortfolioTabRow = ({ row }) => {
   const data = useSelector((state) => state.currencies.data.find((currency) => currency.id === row.coinId));
-  const returnProfit = formatDigit((data.current_price - row.transaction_price) * row.quantity);
+  const returnProfit = ((data.current_price - row.transaction_price) * row.quantity).toFixed(2);
+  const avgPrice24h = formatDigit((data.high_24h + data.low_24h) / 2);
   const { priceChangeStyle } = trendingPriceChange(returnProfit);
 
   console.log("row", row);
@@ -71,8 +72,8 @@ const PortfolioTabRow = ({ row }) => {
       <TableCell>
         {row.quantity} {row.symbol.toUpperCase()}
       </TableCell>
-      <TableCell className="table__dollar-prefix">test</TableCell>
-      <TableCell>test</TableCell>
+      <TableCell className="table__dollar-prefix">{avgPrice24h}</TableCell>
+      <TableCell className="table__dollar-prefix">{formatDigit(data.current_price)}</TableCell>
     </TableRow>
   );
 };
