@@ -19,6 +19,8 @@ import { useSnackbar } from "../../../hooks/snackbar.hook";
 const FORM_ACTION_TYPES = ["buy", "sell"];
 const PERCENT_BUTTON_VALUES = [25, 50, 75, 100];
 
+// TODO!: fix 2+2 BuySellTab component's renders
+
 const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
   const [percentButtonValue, setPercentButtonValue] = useState(25);
   const {
@@ -54,8 +56,10 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     const coinData = {
       coinId: coin.id,
       symbol: coin.symbol,
+      name: coin.name,
       action: variant,
       price: coin.market_data.current_price["usd"],
+      image: coin.image.small,
     };
     setValue("data", coinData);
   };
@@ -131,6 +135,7 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     });
   };
 
+  console.log("buysell render");
   const percentButtons = renderPercentButtons(PERCENT_BUTTON_VALUES);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -106,7 +106,7 @@ export const MarketTable = () => {
     order,
     orderBy,
     handleOrderDebounced,
-    sortedRows,
+    sortedDataRows,
     isBookmarkChecked,
     handleCheck,
     loadMoreBtn,
@@ -120,7 +120,7 @@ export const MarketTable = () => {
           <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
             <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
-              {sortedRows.map((row) => (
+              {sortedDataRows.map((row) => (
                 <MarketTableRow
                   key={row.id}
                   row={row}

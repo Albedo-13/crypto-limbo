@@ -38,6 +38,7 @@ const transformData = (data) => {
 
 export const useTable = () => {
   const data = useSelector((state) => state.currencies.data);
+  console.log("hook:", data);
   const bookmarks = useSelector((state) => state.bookmarks.data);
   const dispatch = useDispatch();
 
@@ -106,7 +107,7 @@ export const useTable = () => {
   };
 
   const rows = transformData(data.slice(0, displayedRowsNumber));
-  const sortedRows = sortBySearchbar(sortByColumn(rows));
+  const sortedDataRows = sortBySearchbar(sortByColumn(rows));
 
   const loadMoreBtn =
     displayedRowsNumber >= data.length ? (
@@ -135,7 +136,7 @@ export const useTable = () => {
     handleOrderDebounced,
     handleCheck,
     isBookmarkChecked,
-    sortedRows,
+    sortedDataRows,
     loadMoreBtn,
   };
 };

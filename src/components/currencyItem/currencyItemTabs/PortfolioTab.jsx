@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
-
+import { useTable } from "../../../hooks/table.hook";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
-import { trendingPriceChange } from "../../../utils/TrendingPriceChange";
-import { formatDigit, formatPercentage } from "../../../utils/utils";
 import { EnhancedTableHead } from "../../table/TableEnhancers";
-import { useTable } from "../../../hooks/table.hook";
+import { trendingPriceChange } from "../../../utils/TrendingPriceChange";
+import { formatPercentage, formatDigit } from "../../../utils/utils";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HEAD_CELLS = [
   {
@@ -23,76 +22,78 @@ const HEAD_CELLS = [
     id: "current_price",
     alignRight: true,
     disablePadding: false,
-    label: "Price",
+    label: "Invested",
   },
   {
     id: "price_change_percentage_24h",
     alignRight: true,
     disablePadding: false,
-    label: "24h Change",
+    label: "Avg. Return 24h (USD)",
   },
   {
     id: "high_24h",
     alignRight: true,
     disablePadding: false,
-    label: "24h High",
+    label: "Quantity",
   },
   {
     id: "low_24h",
     alignRight: true,
     disablePadding: false,
-    label: "24h Low",
+    label: "Avg. Buying Price",
   },
   {
     id: "action",
     alignRight: true,
     disablePadding: false,
-    label: "Action",
+    label: "Current Buying Price",
   },
 ];
 
-const WatchlistTableTabRow = ({ row }) => {
+const PortfolioTabRow = ({ row }) => {
   const { priceChangeStyle, TrendingIcon } = trendingPriceChange(row.price_change_percentage_24h);
-
+  console.log("row", row);
   return (
     <TableRow>
       <TableCell component="th" scope="row" className="table-cell">
         <div className="table__image">
-          <img className="undraggable" src={row.image} alt={row.name} />
+          <img className="undraggable" src={row.data.image} alt={row.data.name} />
         </div>
-        {row.name} / {row.symbol.toUpperCase()}
+        {row.data.name} / {row.data.symbol.toUpperCase()}
       </TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
+      <TableCell className="table__dollar-prefix">{row.price}</TableCell>
       <TableCell>
         <div className={`${priceChangeStyle} table__change table__percent-postfix`}>
           {TrendingIcon}
-          {formatPercentage(row.price_change_percentage_24h)}
+          test
         </div>
       </TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.low_24h)}</TableCell>
       <TableCell>
-        <Link className="table__currency-link" to={`/market/${row.id}`}>
-          Trade
-        </Link>
+        {row.quantity} {row.data.symbol.toUpperCase()}
       </TableCell>
+      <TableCell className="table__dollar-prefix">test</TableCell>
+      <TableCell>test</TableCell>
     </TableRow>
   );
 };
 
-export const WatchlistTableTab = () => {
-  const { order, orderBy, handleOrderDebounced, sortedDataRows, isBookmarkChecked } = useTable();
+export const PortfolioTab = () => {
+  const { portfolio, purchases, sales } = useSelector((state) => state.portfolio);
+  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable();
+  // const { portfolio, purchases, sales }  = useSelector((state) => state.portfolio);
 
   return (
+    // <div className="portfolio">
     <TableContainer component={Paper} className="mui-table">
       <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
         <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
         <TableBody>
-          {sortedDataRows.map((row) =>
-            isBookmarkChecked(row.id) ? <WatchlistTableTabRow key={row.id} row={row} /> : null
-          )}
+          {portfolio.map((row) => (
+            <PortfolioTabRow key={row.id} row={row} />
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
+    // </div>
   );
 };

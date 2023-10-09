@@ -6,6 +6,7 @@ import Tab from "@mui/material/Tab";
 
 import { BuySellTab } from "./BuySellTab";
 import { WatchlistTableTab } from "./WatchlistTableTab";
+import { PortfolioTab } from "./PortfolioTab";
 import Spinner from "../../spinner/Spinner";
 
 import "./currencyItemTabs.scss";
@@ -41,6 +42,7 @@ export const CurrencyItemTabs = ({ coin }) => {
     };
   };
 
+  console.log("tabrender");
   const renderItemTabs = (coin) => {
     return (
       <Box className={"mui-tabs"} sx={{ width: "100%" }}>
@@ -55,10 +57,10 @@ export const CurrencyItemTabs = ({ coin }) => {
           <BuySellTab coin={coin} />
         </TabPanel>
         <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
-          <WatchlistTableTab coin={coin} />
+          <WatchlistTableTab />
         </TabPanel>
         <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
-          Item Three
+          <PortfolioTab />
         </TabPanel>
       </Box>
     );

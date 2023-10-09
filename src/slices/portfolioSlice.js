@@ -11,7 +11,9 @@ const initialState = {
         coinId: 'bitcoin',
         symbol: 'btc',
         action: 'buy',
-        price: 27444
+        price: 27444,
+        image: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1696501400",
+        name: "Bitcoin",
       },
       percent: 25,
     },
