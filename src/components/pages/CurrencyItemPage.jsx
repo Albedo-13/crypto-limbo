@@ -14,11 +14,15 @@ export const CurrencyItemPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    handleCurrencyFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  const handleCurrencyFetch = () => {
     getCurrencyById(id)
       .then((coin) => setCoin(coin))
       .catch(() => navigate("/market", { replace: true }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  };
 
   return (
     <>
@@ -28,7 +32,7 @@ export const CurrencyItemPage = () => {
 
       <Header />
       <main>
-        <CurrencyItem coin={coin} />
+        <CurrencyItem coin={coin} handleCurrencyFetch={handleCurrencyFetch} />
       </main>
     </>
   );

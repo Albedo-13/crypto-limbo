@@ -99,7 +99,7 @@ const GraphToolbar = ({ handleFetch }) => {
   );
 };
 
-export const CurrencyItemGraph = ({ coin }) => {
+export const CurrencyItemGraph = ({ coin, handleCurrencyFetch }) => {
   const { id } = useParams();
   const [prices, setPrices] = useState([]);
   const { getMarketDataById } = useCoingeckoService();
@@ -108,6 +108,7 @@ export const CurrencyItemGraph = ({ coin }) => {
   const chartData = createChartData(coin, prices);
 
   const handleFetch = (days) => {
+    handleCurrencyFetch();
     return getMarketDataById(id, days).then((data) => setPrices(data.prices));
   };
 

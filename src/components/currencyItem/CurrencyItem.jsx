@@ -9,7 +9,7 @@ import "./currencyItem.scss";
 
 // TODO?: Spinner? skeleton?
 
-export const CurrencyItem = ({ coin }) => {
+export const CurrencyItem = ({ coin, handleCurrencyFetch }) => {
   console.log("currencyItem render", coin);
   return (
     <section className="currency-item">
@@ -20,7 +20,7 @@ export const CurrencyItem = ({ coin }) => {
               <CurrencyItemSelect coin={coin} />
               <CurrencyItemSummary coin={coin} />
             </div>
-            <CurrencyItemGraph coin={coin} />
+            <CurrencyItemGraph coin={coin} handleCurrencyFetch={handleCurrencyFetch} />
             <div className="currency-item-tabs">
               <CurrencyItemTabs coin={coin} />
             </div>

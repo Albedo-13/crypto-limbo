@@ -52,15 +52,6 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
   };
 
   const setAdditionalFormData = (coin) => {
-    // const coinData = {
-    //   coinId: coin.id,
-    //   symbol: coin.symbol,
-    //   name: coin.name,
-    //   action: variant,
-    //   price: coin.market_data.current_price["usd"],
-    //   image: coin.image.small,
-    // };
-
     setValue("id", uuidv4());
     setValue("coinId", coin.id);
     setValue("symbol", coin.symbol);
@@ -68,7 +59,6 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     setValue("action", variant);
     setValue("transaction_price", coin.market_data.current_price["usd"]);
     setValue("image", coin.image.small);
-    // setValue("data", coinData);
   };
 
   const handlePriceChange = (e) => {

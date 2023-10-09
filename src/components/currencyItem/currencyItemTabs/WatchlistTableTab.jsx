@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -73,7 +73,6 @@ const WatchlistTableTabRow = ({ row }) => {
       <TableCell className="table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
       <TableCell className="table__dollar-prefix">{formatDigit(row.low_24h)}</TableCell>
       <TableCell>
-        {/* "table__currency-link" */}
         <NavLink
           className={({ isActive }) => classNames("table__currency-link", { "active": isActive })}
           to={`/market/${row.id}`}
