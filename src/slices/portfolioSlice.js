@@ -62,6 +62,7 @@ const addToPortfolio = (state, action) => {
     const index = state.portfolio.findIndex((currency) => currency.coinId == action.payload.coinId);
     state.portfolio[index].price = (+state.portfolio[index].price + +action.payload.price).toFixed(2);
     state.portfolio[index].quantity = (+state.portfolio[index].quantity + +action.payload.quantity).toFixed(6);
+    state.portfolio[index].transaction_price = (+action.payload.transaction_price).toFixed(2);
   } else {
     state.portfolio = [...state.portfolio, action.payload];
   }

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
@@ -30,6 +31,12 @@ const TabPanel = (props) => {
 
 export const CurrencyItemTabs = ({ coin }) => {
   const [value, setValue] = useState(0);
+  const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    setValue(0);
+  }, [id]);
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
@@ -42,7 +49,6 @@ export const CurrencyItemTabs = ({ coin }) => {
     };
   };
 
-  console.log("tabrender");
   const renderItemTabs = (coin) => {
     return (
       <Box className={"mui-tabs"} sx={{ width: "100%" }}>

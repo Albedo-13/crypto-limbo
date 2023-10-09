@@ -52,7 +52,7 @@ const HEAD_CELLS = [
 
 const PortfolioTabRow = ({ row }) => {
   const data = useSelector((state) => state.currencies.data.find((currency) => currency.id === row.coinId));
-  const returnProfit = formatDigit(data.current_price - row.transaction_price);
+  const returnProfit = formatDigit((data.current_price - row.transaction_price) * row.quantity);
   const { priceChangeStyle } = trendingPriceChange(returnProfit);
 
   console.log("row", row);
