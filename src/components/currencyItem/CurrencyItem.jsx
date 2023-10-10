@@ -4,6 +4,7 @@ import { CurrencyItemSelect } from "./CurrencyItemSelect";
 import { CurrencyItemSummary } from "./CurrencyItemSummary";
 import { CurrencyItemGraph } from "./CurrencyItemGraph";
 import { CurrencyItemTabs } from "./currencyItemTabs/CurrencyItemTabs";
+import { CurrencyItemOrders } from "./CurrencyItemOrders";
 
 import "./currencyItem.scss";
 
@@ -26,7 +27,7 @@ export const CurrencyItem = ({ coin, handleCurrencyFetch }) => {
             </div>
           </div>
           <div className="currency-item-order">
-            <p>Order Book</p>
+            <CurrencyItemOrders />
           </div>
         </div>
       </div>
