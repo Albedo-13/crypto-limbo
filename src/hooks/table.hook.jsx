@@ -15,11 +15,15 @@ export const useTable = (dataSourceName) => {
         return state.currencies.data;
       case "portfolio":
         return state.portfolio.portfolio;
+      case "purchases":
+        return state.portfolio.purchases;
+      case "sales":
+        return state.portfolio.sales;
     }
   });
   const bookmarks = useSelector((state) => state.bookmarks.data);
   const dispatch = useDispatch();
-  
+
   const [order, setOrder] = useState("desc");
   const [orderBy, setOrderBy] = useState("market_cap");
 

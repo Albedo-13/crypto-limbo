@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -38,12 +38,13 @@ const HEAD_CELLS = [
   },
 ];
 
-const CurrencyItemOrdersRow = ({ row }) => {
-  const data = useSelector((state) => state.currencies.data);
-  const filteredData = data.find((currency) => currency.id === row.coinId);
+// TODO: дисплей только текущих позиций. у битка отображать историю только битков
+// TODO: избавиться от бесконечных ререндеров
 
-  console.log("CurrencyItemOrdersRow:");
-  const { priceChangeStyle } = trendingPriceChange(228);
+const CurrencyItemOrdersRow = ({ row }) => {
+  // const data = useSelector((state) => state.currencies.data);
+  // const filteredData = data.find((currency) => currency.id === row.coinId);
+  // const { priceChangeStyle } = trendingPriceChange(228);
 
   return (
     <TableRow>
@@ -57,8 +58,8 @@ const CurrencyItemOrdersRow = ({ row }) => {
 };
 
 export const CurrencyItemOrders = () => {
-  const loadingStatus = useSelector((state) => state.currencies.loadingStatus);
-  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable("portfolio");
+  // const loadingStatus = useSelector((state) => state.currencies.loadingStatus);
+  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable("purchases");
 
   const renderCurrencyItemOrdersTable = (type) => {
     return (
@@ -92,5 +93,6 @@ export const CurrencyItemOrders = () => {
     );
   };
 
-  return loadingStatus === "idle" ? renderCurrencyItemOrders() : <Spinner />;
+  console.log("CurrencyItemOrders:");
+  return renderCurrencyItemOrders();
 };

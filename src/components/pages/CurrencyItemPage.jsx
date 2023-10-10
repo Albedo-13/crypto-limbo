@@ -6,23 +6,23 @@ import { Header } from "../header/Header";
 import { CurrencyItem } from "../currencyItem/CurrencyItem";
 
 import useCoingeckoService from "../../services/coingecko.api";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrency } from "../../slices/currenciesSlice";
 
 export const CurrencyItemPage = () => {
   const { id } = useParams();
-  const [coin, setCoin] = useState(null);
-  const { getCurrencyById } = useCoingeckoService();
+  // const [coin, setCoin] = useState(null);
+  // const { getCurrencyById } = useCoingeckoService();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const coin = useSelector((state) => state.currencies.singleCurrency);
 
   useEffect(() => {
-    handleCurrencyFetch();
+    dispatch(fetchCurrency(id))
+      .unwrap()
+      .catch(() => navigate("/market", { replace: true }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  const handleCurrencyFetch = () => {
-    getCurrencyById(id)
-      .then((coin) => setCoin(coin))
-      .catch(() => navigate("/market", { replace: true }));
-  };
 
   return (
     <>
@@ -32,7 +32,7 @@ export const CurrencyItemPage = () => {
 
       <Header />
       <main>
-        <CurrencyItem coin={coin} handleCurrencyFetch={handleCurrencyFetch} />
+        <CurrencyItem coin={coin} />
       </main>
     </>
   );

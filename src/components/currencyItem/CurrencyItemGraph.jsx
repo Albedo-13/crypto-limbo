@@ -10,6 +10,7 @@ import CachedIcon from "@mui/icons-material/Cached";
 
 import { detailedChartConfig } from "../../services/chartsSettings";
 import useCoingeckoService from "../../services/coingecko.api";
+import { useDidUpdateEffect } from "../../hooks/didUpdate.hook";
 
 const TOOLBAR_DATA = [
   {
@@ -42,9 +43,13 @@ const TOOLBAR_DATA = [
   },
 ];
 
-const GraphToolbar = ({ handleFetch }) => {
+const GraphToolbar = ({ handleFetch, id }) => {
   const [activeButtonValue, setActiveButtonValue] = useState("1");
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  useEffect(() => {
+    setActiveButtonValue("1");
+  }, [id]); 
 
   useEffect(() => {
     handleFetch(activeButtonValue);
@@ -99,7 +104,7 @@ const GraphToolbar = ({ handleFetch }) => {
   );
 };
 
-export const CurrencyItemGraph = ({ coin, handleCurrencyFetch }) => {
+export const CurrencyItemGraph = ({ coin }) => {
   const { id } = useParams();
   const [prices, setPrices] = useState([]);
   const { getMarketDataById } = useCoingeckoService();
@@ -108,18 +113,17 @@ export const CurrencyItemGraph = ({ coin, handleCurrencyFetch }) => {
   const chartData = createChartData(coin, prices);
 
   const handleFetch = (days) => {
-    handleCurrencyFetch();
-    return getMarketDataById(id, days).then((data) => setPrices(data.prices));
+    getMarketDataById(id, days).then((data) => setPrices(data.prices));
   };
 
-  useEffect(() => {
+  useDidUpdateEffect(() => {
     handleFetch(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (
     <div>
-      <GraphToolbar handleFetch={handleFetch} />
+      <GraphToolbar id={id} handleFetch={handleFetch} />
       <div className="currency-item-graph">
         <Line data={chartData} options={options} />
       </div>
