@@ -178,5 +178,16 @@
 }
 
 .orders {
+  position: sticky;
+  top: 24px;
   background-color: $bg-card;
+  padding: 10px;
+  max-height: calc(100vh - 75px); 
+
+  &-tables {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // gap: 50px;
+  }
 }

@@ -26,9 +26,7 @@ export const CurrencyItem = ({ coin, handleCurrencyFetch }) => {
               <CurrencyItemTabs coin={coin} />
             </div>
           </div>
-          <div className="currency-item-order">
-            <CurrencyItemOrders />
-          </div>
+          <CurrencyItemOrders />
         </div>
       </div>
     </section>

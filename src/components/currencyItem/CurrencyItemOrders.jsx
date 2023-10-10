@@ -19,22 +19,22 @@ import Spinner from "../spinner/Spinner";
 
 const HEAD_CELLS = [
   {
-    id: "name",
-    alignRight: false,
+    id: "transaction_price",
+    alignRight: true,
     disablePadding: true,
-    label: "Price (XXX)",
+    label: "Price",
   },
   {
-    id: "current_price",
+    id: "quantity",
     alignRight: true,
-    disablePadding: false,
-    label: "Qty. (XXX)",
+    disablePadding: true,
+    label: "Qty.",
   },
   {
-    id: "price_change_percentage_24h",
+    id: "price",
     alignRight: true,
-    disablePadding: false,
-    label: "Total (XXX)",
+    disablePadding: true,
+    label: "Total",
   },
 ];
 
@@ -42,17 +42,12 @@ const CurrencyItemOrdersRow = ({ row }) => {
   const data = useSelector((state) => state.currencies.data);
   const filteredData = data.find((currency) => currency.id === row.coinId);
 
-  console.log("data:", filteredData?.id, row.coinId);
-
-  // const returnProfit = ((filteredData?.current_price - row.transaction_price) * row.quantity).toFixed(2);
-  // const avgPrice24h = formatDigit((data.high_24h + data.low_24h) / 2);
+  console.log("CurrencyItemOrdersRow:");
   const { priceChangeStyle } = trendingPriceChange(228);
 
   return (
     <TableRow>
-      <TableCell scope="row" className="table__dollar-prefix">
-        {row.transaction_price}
-      </TableCell>
+      <TableCell className="table__dollar-prefix">{row.transaction_price}</TableCell>
       <TableCell className="">{row.quantity.toFixed(6)}</TableCell>
       <TableCell>
         <div className="table__dollar-prefix">{row.price}</div>
@@ -65,6 +60,21 @@ export const CurrencyItemOrders = () => {
   const loadingStatus = useSelector((state) => state.currencies.loadingStatus);
   const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable("portfolio");
 
+  const renderCurrencyItemOrdersTable = (type) => {
+    return (
+      <TableContainer component={Paper} className="mui-table mui-table-small">
+        <Table sx={{ minWidth: 1 }} aria-label="enhanced table">
+          <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
+          <TableBody>
+            {sortedDataRows.map((row) => (
+              <CurrencyItemOrdersRow key={row.id} row={row} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
+  };
+
   const renderCurrencyItemOrders = () => {
     return (
       <aside className="orders">
@@ -74,16 +84,10 @@ export const CurrencyItemOrders = () => {
           <Button>2</Button>
           <Button>3</Button>
         </div>
-        <TableContainer component={Paper} className="mui-table">
-          <Table sx={{ minWidth: 1 }} aria-label="enhanced table">
-            <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
-            <TableBody>
-              {sortedDataRows.map((row) => (
-                <CurrencyItemOrdersRow key={row.id} row={row} />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <div className="orders-tables">
+          {renderCurrencyItemOrdersTable()}
+          {renderCurrencyItemOrdersTable()}
+        </div>
       </aside>
     );
   };
