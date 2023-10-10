@@ -39,7 +39,6 @@ const HEAD_CELLS = [
 ];
 
 // TODO: дисплей только текущих позиций. у битка отображать историю только битков
-// TODO: избавиться от бесконечных ререндеров
 
 const CurrencyItemOrdersRow = ({ row }) => {
   // const data = useSelector((state) => state.currencies.data);
@@ -93,6 +92,6 @@ export const CurrencyItemOrders = () => {
     );
   };
 
-  console.log("CurrencyItemOrders:");
+  console.log("render CurrencyItemOrders");
   return renderCurrencyItemOrders();
 };

@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Header } from "../header/Header";
 import { CurrencyItem } from "../currencyItem/CurrencyItem";
-
-import useCoingeckoService from "../../services/coingecko.api";
-import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrency } from "../../slices/currenciesSlice";
 
 export const CurrencyItemPage = () => {
   const { id } = useParams();
-  // const [coin, setCoin] = useState(null);
-  // const { getCurrencyById } = useCoingeckoService();
+  const coin = useSelector((state) => state.currencies.singleCurrency);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const coin = useSelector((state) => state.currencies.singleCurrency);
 
   useEffect(() => {
     dispatch(fetchCurrency(id))

@@ -9,6 +9,7 @@ import { CurrencyItemOrders } from "./CurrencyItemOrders";
 import "./currencyItem.scss";
 
 // TODO?: Spinner? skeleton?
+// TODO?: remove property drill?
 
 export const CurrencyItem = ({ coin }) => {
   console.log("currencyItem render", coin);
@@ -26,7 +27,7 @@ export const CurrencyItem = ({ coin }) => {
               <CurrencyItemTabs coin={coin} />
             </div>
           </div>
-          {/* <CurrencyItemOrders /> */}
+          <CurrencyItemOrders />
         </div>
       </div>
     </section>
