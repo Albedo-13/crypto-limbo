@@ -70,7 +70,7 @@ const PortfolioTabRow = ({ row }) => {
         <div className={`${priceChangeStyle} table__dollar-prefix`}>{returnProfit}</div>
       </TableCell>
       <TableCell>
-        {row.quantity.toFixed(6)} {row.symbol.toUpperCase()}
+        {(+row.quantity).toFixed(6)} {row.symbol.toUpperCase()}
       </TableCell>
       <TableCell className="table__dollar-prefix">{avgPrice24h}</TableCell>
       <TableCell className="table__dollar-prefix">{formatDigit(data.current_price)}</TableCell>
