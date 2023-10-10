@@ -41,10 +41,6 @@ const HEAD_CELLS = [
 // TODO: дисплей только текущих позиций. у битка отображать историю только битков
 
 const CurrencyItemOrdersRow = ({ row }) => {
-  // const data = useSelector((state) => state.currencies.data);
-  // const filteredData = data.find((currency) => currency.id === row.coinId);
-  // const { priceChangeStyle } = trendingPriceChange(228);
-
   return (
     <TableRow>
       <TableCell className="table__dollar-prefix">{row.transaction_price}</TableCell>
@@ -56,42 +52,63 @@ const CurrencyItemOrdersRow = ({ row }) => {
   );
 };
 
+const CurrencyItemOrdersTable = (dataSourceName) => {
+  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable(dataSourceName);
+
+  return (
+    <TableContainer component={Paper} className="mui-table mui-table-small">
+      <Table sx={{ minWidth: 1 }} aria-label="enhanced table">
+        <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
+        <TableBody>
+          {sortedDataRows.map((row) => (
+            <CurrencyItemOrdersRow key={row.id} row={row} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
+
 export const CurrencyItemOrders = () => {
   // const loadingStatus = useSelector((state) => state.currencies.loadingStatus);
-  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable("purchases");
+  // const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable(dataSourceName);
+  // console.log(sortedDataRows.filter((currency) => currency.coinId ===));
 
-  const renderCurrencyItemOrdersTable = (type) => {
-    return (
-      <TableContainer component={Paper} className="mui-table mui-table-small">
-        <Table sx={{ minWidth: 1 }} aria-label="enhanced table">
-          <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
-          <TableBody>
-            {sortedDataRows.map((row) => (
-              <CurrencyItemOrdersRow key={row.id} row={row} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    );
-  };
+  // const data = useSelector((state) => state.currencies.data);
+  // const filteredData = data.find((currency) => currency.id === row.coinId);
+  // const { priceChangeStyle } = trendingPriceChange(228);
 
-  const renderCurrencyItemOrders = () => {
-    return (
-      <aside className="orders">
-        <div className="orders-filters">
-          <p>order book</p>
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
-        </div>
-        <div className="orders-tables">
-          {renderCurrencyItemOrdersTable()}
-          {renderCurrencyItemOrdersTable()}
-        </div>
-      </aside>
-    );
-  };
+  // const renderCurrencyItemOrders = () => {
+  //   return (
+  //     <aside className="orders">
+  //       <div className="orders-filters">
+  //         <p>order book</p>
+  //         <Button>1</Button>
+  //         <Button>2</Button>
+  //         <Button>3</Button>
+  //       </div>
+  //       <div className="orders-tables">
+  //         {renderCurrencyItemOrdersTable("purchases")}
+  //         {/* {renderCurrencyItemOrdersTable("sales")} */}
+  //       </div>
+  //     </aside>
+  //   );
+  // };
 
   console.log("render CurrencyItemOrders");
-  return renderCurrencyItemOrders();
+  // return renderCurrencyItemOrders();
+  return (
+    <aside className="orders">
+      <div className="orders-filters">
+        <p>order book</p>
+        <Button>1</Button>
+        <Button>2</Button>
+        <Button>3</Button>
+      </div>
+      <div className="orders-tables">
+        {CurrencyItemOrdersTable("purchases")}
+        {CurrencyItemOrdersTable("sales")}
+      </div>
+    </aside>
+  );
 };

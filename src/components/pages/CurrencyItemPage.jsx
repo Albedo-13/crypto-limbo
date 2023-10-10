@@ -7,6 +7,8 @@ import { Header } from "../header/Header";
 import { CurrencyItem } from "../currencyItem/CurrencyItem";
 import { fetchCurrency } from "../../slices/currenciesSlice";
 
+// TODO: remove coin prop drill, replace with selector & check rerenders
+
 export const CurrencyItemPage = () => {
   const { id } = useParams();
   const coin = useSelector((state) => state.currencies.singleCurrency);
