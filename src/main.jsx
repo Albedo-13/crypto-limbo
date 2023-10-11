@@ -17,9 +17,7 @@ console.log(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      {/* <React.StrictMode> */}
       <App />
-      {/* </React.StrictMode> */}
     </Provider>
   </ThemeProvider>
 );
@@ -31,10 +29,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: react-helmet (try to preload images only on landing page)
 // TODO: transitions (react transition group)
 // TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
-// TODO: update footer & header links (all links i mean)
+// TODO: update footer & header links (check all links, no # routes)
 // TODO: mobile adaptation
 // TODO: sprays change width & height %'s on adapt screen sizes
 // TODO: explore a11y, adapt for screen readers
-// TODO: check custom hooks, write some for project
-// TODO: add currency type toggler on footer (usd, rub, etc)
 // TODO: reduce bundle size with CurrencyItem lazy loading (https://legacy.reactjs.org/docs/code-splitting.html#avoiding-fallbacks)

@@ -243,10 +243,3 @@
     }
   }
 }
-
-.mui-table-small {
-  &.MuiPaper-root.MuiTableContainer-root {
-    max-height: calc(50vh - 75px);
-    overflow: auto;
-  }
-}
