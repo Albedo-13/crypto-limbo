@@ -12,8 +12,6 @@ import { NewPassword } from "../entry/NewPassword";
 
 import "./App.scss";
 
-// TODO!: WebSocket постоянное обновление https://learn.javascript.ru/websocket
-
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
 
 export default function App() {

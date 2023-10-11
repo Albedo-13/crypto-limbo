@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 import { Button } from "@mui/material";
 import Table from "@mui/material/Table";
@@ -13,7 +13,7 @@ import Paper from "@mui/material/Paper";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import { EnhancedTableHead } from "../table/TableEnhancers";
+import { DefaultTableHead, EnhancedTableHead } from "../table/TableEnhancers";
 import { useTable } from "../../hooks/table.hook";
 import Spinner from "../spinner/Spinner";
 
@@ -39,7 +39,6 @@ const HEAD_CELLS = [
 ];
 
 // TODO: дисплей только текущих позиций. у битка отображать историю только битков
-// TODO: разобраться с инвестед полем, перерасчитать?
 
 const CurrencyItemOrdersRow = ({ row }) => {
   return (
@@ -53,15 +52,16 @@ const CurrencyItemOrdersRow = ({ row }) => {
   );
 };
 
-const CurrencyItemOrdersTable = (dataSourceName) => {
-  const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable(dataSourceName);
+const CurrencyItemOrdersTable = (dataSourceName, currentId) => {
+  const { sortedDataRows } = useTable(dataSourceName);
+  const filteredDataRows = sortedDataRows.filter((currency) => currency.coinId === currentId);
 
   return (
     <TableContainer component={Paper} className="mui-table mui-table-small">
       <Table sx={{ minWidth: 1 }} aria-label="enhanced table">
-        <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
+        <DefaultTableHead headCells={HEAD_CELLS} />
         <TableBody>
-          {sortedDataRows.map((row) => (
+          {filteredDataRows.map((row) => (
             <CurrencyItemOrdersRow key={row.id} row={row} />
           ))}
         </TableBody>
@@ -71,6 +71,8 @@ const CurrencyItemOrdersTable = (dataSourceName) => {
 };
 
 export const CurrencyItemOrders = () => {
+  const { id } = useParams();
+  // console.log("id", id);
   // const loadingStatus = useSelector((state) => state.currencies.loadingStatus);
   // const { order, orderBy, handleOrderDebounced, sortedDataRows } = useTable(dataSourceName);
   // console.log(sortedDataRows.filter((currency) => currency.coinId ===));
@@ -107,8 +109,8 @@ export const CurrencyItemOrders = () => {
         <Button>3</Button>
       </div>
       <div className="orders-tables">
-        {CurrencyItemOrdersTable("purchases")}
-        {CurrencyItemOrdersTable("sales")}
+        {CurrencyItemOrdersTable("purchases", id)}
+        {CurrencyItemOrdersTable("sales", id)}
       </div>
     </aside>
   );
