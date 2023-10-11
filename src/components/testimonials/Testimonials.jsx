@@ -49,9 +49,6 @@ register();
 export const Testimonials = () => {
   const swiperRef = useRef(null);
 
-  {
-    /* loop: true, scrollbar: true, mousewheelControl: true, */
-  }
   useEffect(() => {
     const colors = convertScssToObject(variables);
     const swiperContainer = swiperRef.current;
@@ -115,7 +112,8 @@ export const Testimonials = () => {
         <div className="testimonials__wrapper">
           <h2 className="testimonials__title">What Traders Saying About Us!</h2>
           <p className="testimonials__text">
-            Non-fictional positive reviews from real people (or from a chatbot, I don't know) about us. Yes, you can trust us with your finances, cryptocurrencies and credit cards without any doubt.
+            Non-fictional positive reviews from real people (or from a chatbot, I don't know) about us. Yes, you can
+            trust us with your finances, cryptocurrencies and credit cards without any doubt.
           </p>
         </div>
         <hr className="h-line" />

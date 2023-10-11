@@ -182,7 +182,7 @@
   top: 24px;
   background-color: $bg-card;
   padding: 20px 10px 25px 10px;
-  max-height: calc(100vh - 75px);
+  max-height: calc(100vh - 90px);
   overflow: hidden;
 
   &__header {
@@ -205,7 +205,7 @@
 
   &-table {
     &.MuiPaper-root.MuiTableContainer-root {
-      max-height: calc(50vh - 75px);
+      max-height: calc(50vh - 90px);
       overflow: auto;
       background-color: transparent;
 
@@ -255,6 +255,5 @@
     &::-webkit-scrollbar-thumb {
       background: #777;
     }
-
   }
 }
