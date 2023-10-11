@@ -181,13 +181,14 @@
   position: sticky;
   top: 24px;
   background-color: $bg-card;
-  padding: 10px;
-  max-height: calc(100vh - 75px); 
+  padding: 10px 10px 25px 10px;
+  max-height: calc(100vh - 75px);
+  overflow: hidden;
 
   &-tables {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // gap: 50px;
+    gap: 15px;
   }
 }

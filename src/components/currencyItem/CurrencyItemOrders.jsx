@@ -58,7 +58,7 @@ const CurrencyItemOrdersTable = (dataSourceName, currentId) => {
 
   return (
     <TableContainer component={Paper} className="mui-table mui-table-small">
-      <Table sx={{ minWidth: 1 }} aria-label="enhanced table">
+      <Table stickyHeader sx={{ minWidth: 1 }} aria-label="enhanced table">
         <DefaultTableHead headCells={HEAD_CELLS} />
         <TableBody>
           {filteredDataRows.map((row) => (
