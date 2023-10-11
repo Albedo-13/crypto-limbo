@@ -45,8 +45,6 @@ const ITEMS_SETTINGS = [
   },
 ];
 
-// TODO: add mouse wheel carousel scrolling
-
 register();
 export const Testimonials = () => {
   const swiperRef = useRef(null);

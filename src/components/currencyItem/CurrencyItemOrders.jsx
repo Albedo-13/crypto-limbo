@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
-import classNames from "classnames";
-import { useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import IconButton from "@mui/material/IconButton";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
 
-import { trendingPriceChange } from "../../utils/TrendingPriceChange";
-import { formatDigit, formatPercentage } from "../../utils/utils";
-import { DefaultTableHead, EnhancedTableHead } from "../table/TableEnhancers";
+import { formatDigit } from "../../utils/utils";
+import { DefaultTableHead } from "../table/TableEnhancers";
 import { useTable } from "../../hooks/table.hook";
-import Spinner from "../spinner/Spinner";
-import green from "../../assets/icons/order-filters/green.svg";
-import red from "../../assets/icons/order-filters/red.svg";
-import greenRed from "../../assets/icons/order-filters/green-red.svg";
 
 const HEAD_CELLS = [
   {
@@ -47,7 +36,7 @@ const CurrencyItemOrdersRow = ({ row }) => {
   return (
     <TableRow>
       <TableCell className="table__dollar-prefix">{formatDigit(row.transaction_price)}</TableCell>
-      <TableCell className="">{row.quantity.toFixed(5)}</TableCell>
+      <TableCell className="">{row.quantity.toFixed(6)}</TableCell>
       <TableCell>
         <div className="table__dollar-prefix">{formatDigit(row.price)}</div>
       </TableCell>
@@ -79,20 +68,7 @@ export const CurrencyItemOrders = () => {
   console.log("render CurrencyItemOrders");
   return (
     <aside className="orders">
-      <div className="orders-filters">
-        <p className="orders__header">Order book</p>
-        <Stack direction="row" variant="contained" aria-label="order filters button group">
-          <IconButton aria-label="purchases filter">
-            <img src={green} alt="purchases" />
-          </IconButton>
-          <IconButton aria-label="sales filter">
-            <img src={red} alt="sales" />
-          </IconButton>
-          <IconButton aria-label="all filter">
-            <img src={greenRed} alt="both" />
-          </IconButton>
-        </Stack>
-      </div>
+        <h2 className="orders__header">Order book</h2>
       <hr className="h-line" />
       <div className="orders-tables">
         {CurrencyItemOrdersTable("purchases", id)}

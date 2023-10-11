@@ -185,15 +185,10 @@
   max-height: calc(100vh - 75px);
   overflow: hidden;
 
-  &-filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   &__header {
     font-size: 20px;
     font-weight: 600;
+    text-align: center;
   }
 
   .h-line {
@@ -217,37 +212,49 @@
       .MuiTableHead-root .MuiTableCell-root {
         padding: 0px;
         background-color: $bg-card;
+        color: $grey-8;
+        border: none;
       }
 
       .MuiTableBody-root .MuiTableCell-root {
         padding: 0px;
+        border-bottom: 3px solid $bg-card;
       }
     }
 
     &-purchases {
-      &.MuiPaper-root.MuiTableContainer-root {
-        .MuiTableBody-root .MuiTableCell-root {
-          background-color: rgba($color: $success, $alpha: 0.2);
+      .MuiTableBody-root .MuiTableCell-root {
+        background-color: rgba($color: $success, $alpha: 0.2);
 
-          &:first-of-type {
-            color: $success;
-            background-color: transparent;
-          }
+        &:first-of-type {
+          color: $success;
+          background-color: transparent;
         }
       }
     }
 
     &-sales {
-      &.MuiPaper-root.MuiTableContainer-root {
-        .MuiTableBody-root .MuiTableCell-root {
-          background-color: rgba($color: $error, $alpha: 0.2);
+      .MuiTableBody-root .MuiTableCell-root {
+        background-color: rgba($color: $error, $alpha: 0.2);
 
-          &:first-of-type {
-            color: $error;
-            background-color: transparent;
-          }
+        &:first-of-type {
+          color: $error;
+          background-color: transparent;
         }
       }
     }
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $bg-card-3;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #777;
+    }
+
   }
 }

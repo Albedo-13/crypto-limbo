@@ -61,7 +61,7 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
 
   const handlePriceChange = (e) => {
     const newQuantity = +e.target.value / coin.market_data.current_price["usd"];
-    newQuantity ? setValue("quantity", newQuantity.toFixed(5)) : setValue("quantity", "");
+    newQuantity ? setValue("quantity", newQuantity.toFixed(6)) : setValue("quantity", "");
     trigger();
   };
 
