@@ -245,17 +245,8 @@
 }
 
 .mui-table-small {
-  // height: 40%;
-  // background-color: pink !important;
-
   &.MuiPaper-root.MuiTableContainer-root {
     max-height: calc(50vh - 75px);
     overflow: auto;
-
-    .MuiTableRow-root td {
-      padding: 0px;
-      // margin-bottom: 5px;
-      background-color: rgba($color: #8f0000, $alpha: 1);
-    }
   }
 }

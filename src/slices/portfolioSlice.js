@@ -57,26 +57,26 @@ const initialState = {
 };
 
 const addToPortfolio = (state, action) => {
-  state.purchases = [...state.purchases, action.payload];
+  state.purchases = [action.payload, ...state.purchases].slice(0, 50);
   if (isPortfolioIncludesCoin(state, action)) {
     const index = state.portfolio.findIndex((currency) => currency.coinId == action.payload.coinId);
     state.portfolio[index].price = (+state.portfolio[index].price + +action.payload.price).toFixed(2);
-    state.portfolio[index].quantity = (+state.portfolio[index].quantity + +action.payload.quantity).toFixed(6);
+    state.portfolio[index].quantity = (+state.portfolio[index].quantity + +action.payload.quantity).toFixed(5);
     state.portfolio[index].transaction_price = (+action.payload.transaction_price).toFixed(2);
   } else {
-    state.portfolio = [...state.portfolio, action.payload];
+    state.portfolio = [action.payload, ...state.portfolio];
   }
 };
 
 const removeFromPortfolio = (state, action) => {
-  state.sales = [...state.sales, action.payload];
+  state.sales = [action.payload, ...state.sales].slice(0, 50);
   const index = state.portfolio.findIndex((currency) => currency.coinId == action.payload.coinId);
   if (state.portfolio[index].quantity - action.payload.quantity === 0) {
     state.portfolio = state.portfolio.filter((currency) => currency.coinId !== action.payload.coinId);
   } else {
     const newPrice = +state.portfolio[index].price - +action.payload.price;
     state.portfolio[index].price = newPrice < 0 ? 0 : newPrice.toFixed(2);
-    state.portfolio[index].quantity = (+state.portfolio[index].quantity - +action.payload.quantity).toFixed(6);
+    state.portfolio[index].quantity = (+state.portfolio[index].quantity - +action.payload.quantity).toFixed(5);
   }
 };
 
