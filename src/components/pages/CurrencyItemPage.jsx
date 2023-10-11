@@ -8,6 +8,7 @@ import { CurrencyItem } from "../currencyItem/CurrencyItem";
 import { fetchCurrency } from "../../slices/currenciesSlice";
 
 // TODO: remove coin prop drill, replace with selector & check rerenders
+// TODO: clear console.logs
 // TODO: merge to development
 // TODO?: Spinner? skeleton?
 // TODO: road map page, referral page.
