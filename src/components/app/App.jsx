@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createBrowserRouter, Route, RouterProvider, Routes, Navigate } from "react-router-dom";
 
-import "./App.scss";
-
 import { ScrollToTop } from "../../utils/ScrollToTop";
 import { fetchCurrencies } from "../../slices/currenciesSlice";
 import { LandingPage, MarketPage, EntryPage, CurrencyItemPage } from "../pages";
@@ -11,6 +9,10 @@ import { SignUp } from "../entry/SignUp";
 import { Login } from "../entry/Login";
 import { ForgotPassword } from "../entry/ForgotPassword";
 import { NewPassword } from "../entry/NewPassword";
+
+import "./App.scss";
+
+// TODO!: WebSocket постоянное обновление https://learn.javascript.ru/websocket
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
 
