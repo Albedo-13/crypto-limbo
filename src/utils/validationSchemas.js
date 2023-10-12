@@ -76,7 +76,6 @@ export const newPasswordSchema = yup
       .test("isContainDigitValidation", "Requires at least 1 digit", (value) => {
         return validatePasswordDigits(value);
       }),
-
     confirmPassword: yup
       .string()
       .required("Field is required")
@@ -85,6 +84,27 @@ export const newPasswordSchema = yup
       }),
   })
   .required();
+
+export const buySellSchema = yup.object({
+  price: yup
+    .number()
+    .typeError("Amount must be a number")
+    .required("Field is required")
+    .min(1, "1$ min")
+    .max(100000, "100,000$ max")
+    .test("floatPriceValidation", "Max 2 symbols of decimal (.xx)", (value) => {
+      return validateFloatPrice(value);
+    }),
+
+  quantity: yup
+    .number()
+    .typeError("Amount must be a number")
+    .required("Field is required")
+    .min(0.01, "0.01$ min")
+    .test("floatCoinQuantityValidation", "Max 6 symbols of decimal (.xxxxxx)", (value) => {
+      return validateFloatCoinQuantity(value);
+    }),
+});
 
 const validateEmail = (email) => {
   return yup.string().email().isValidSync(email);
@@ -110,4 +130,18 @@ const validatePasswordDigits = (password) => {
     .string()
     .matches(/[0-9]+/)
     .isValidSync(password);
+}
+
+const validateFloatPrice = (number) => {
+  return yup
+    .string()
+    .matches(/^[+]?[0-9]*([.,][0-9]{1,2})?$/)
+    .isValidSync(number);
+}
+
+const validateFloatCoinQuantity = (number) => {
+  return yup
+    .string()
+    .matches(/^[+]?[0-9]*([.,][0-9]{1,6})?$/)
+    .isValidSync(number);
 }

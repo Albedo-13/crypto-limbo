@@ -15,7 +15,7 @@ export const LandingPage = () => {
     <>
       <Helmet>
         <title>Crypto Limbo</title>
-        <link rel="preload" as="image" href="/assets/images/notebook.webp" />
+        <link rel="preload" as="image" href="./src/assets/images/notebook.webp" />
       </Helmet>
 
       <Header />

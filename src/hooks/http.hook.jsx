@@ -3,11 +3,9 @@ export const useHttp = () => {
     url,
     method = "GET",
     body = null,
-    // mode = "cors",
     headers = {
       "Content-Type": "application/json",
       "Accept-Encoding": "gzip",
-      // "Access-Control-Allow-Origin": "*",
     }
   ) => {
     const response = await fetch(url, { method, body, headers });

@@ -1,0 +1,168 @@
+@import "../../../styles/_variables.scss";
+
+.currency-item-tabs {
+  .mui-tabs {
+    &-header {
+      background-color: $bg-card-3;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    &-panel {
+      background-color: $bg-card;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    .MuiTabs-flexContainer {
+      padding: 15px;
+
+      .MuiButtonBase-root.MuiTab-root {
+        font-size: 20px;
+        color: $grey-6;
+        text-transform: none;
+
+        &.Mui-selected {
+          color: $primary-blue;
+        }
+      }
+    }
+
+    .MuiTabs-indicator {
+      background-color: $primary-blue;
+      bottom: 10px;
+    }
+  }
+}
+
+.buy-sell {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &-form {
+    background-color: $bg-card-3;
+    padding: 24px;
+    width: 50%;
+    border-radius: 4px;
+
+    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-outer-spin-button,
+    .MuiInputBase-input.MuiOutlinedInput-input::-webkit-inner-spin-button {
+      appearance: none;
+    }
+
+    .MuiButtonBase-root.MuiButton-root {
+      &.active {
+        color: $primary-blue;
+        border-color: $primary-blue;
+      }
+
+      &.buy-sell-submit__buy {
+        background-color: $success;
+        transition: 0.15s all;
+        &:hover {
+          background-color: rgba($success, 0.8);
+          transition: 0.15s all;
+        }
+      }
+      &.buy-sell-submit__sell {
+        background-color: $error;
+        transition: 0.15s all;
+        &:hover {
+          background-color: rgba($error, 0.8);
+          transition: 0.15s all;
+        }
+      }
+    }
+
+    .MuiFormGroup-root {
+      color: $grey-4;
+      gap: 10px;
+      flex-direction: row;
+
+      .MuiButtonBase-root.MuiRadio-root {
+        &.Mui-checked {
+          color: $primary-blue;
+        }
+
+        .MuiSvgIcon-root {
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+      .MuiFormControlLabel-asterisk {
+        display: none;
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+
+      &:nth-child(2) {
+        margin-top: 30px;
+      }
+    }
+
+    &__balance {
+      color: $grey-6;
+      font-size: 16px;
+
+      &::before {
+        content: "Available Balance- ";
+        color: $grey-8;
+      }
+    }
+
+    &__text {
+      margin-top: 30px;
+      color: $grey-6;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    &__fees {
+      margin-top: 10px;
+      font-size: 12px;
+      user-select: none;
+    }
+
+    &__btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+
+      .MuiButtonBase-root.MuiButton-root {
+        padding: 13px 26px;
+        width: 72px;
+        height: 30px;
+      }
+
+      .MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+        font-size: 16px;
+      }
+    }
+
+    &__helper {
+      position: absolute;
+      color: $error;
+
+      &_left {
+        left: 0;
+        bottom: -25px;
+      }
+
+      &_right {
+        right: 0;
+        bottom: -25px;
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -10,24 +11,29 @@ import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
 
 import "./welcome.scss";
+import notebook from "../../assets/images/notebook.webp";
 
 export const Welcome = () => {
   const currencies = useSelector((state) => state.currencies);
 
   const renderMarket = (currencies) => {
     return currencies.map((currency) => {
-      const { priceChangeStyles, TrendingIcon } = trendingPriceChange(currency, "welcome-market-item__price-change");
+      const { priceChangeStyle, TrendingIcon } = trendingPriceChange(currency.price_change_percentage_24h);
 
       return (
-        <div key={currency.id} className="welcome-market-item">
-          <div className="welcome-market-item__wrapper">
-            <div className="welcome-market-item__name">{currency.symbol}</div>
-            {TrendingIcon}
-            <div className={priceChangeStyles}>{formatPercentage(currency.price_change_percentage_24h)}</div>
+        <React.Fragment key={currency.id}>
+          <div className="welcome-market-item">
+            <div className="welcome-market-item__wrapper">
+              <div className="welcome-market-item__name">{currency.symbol}</div>
+              {TrendingIcon}
+              <div className={`${priceChangeStyle} welcome-market-item__price-change`}>
+                {formatPercentage(currency.price_change_percentage_24h)}
+              </div>
+            </div>
+            <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
           </div>
-          <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
-          <div className="vertical-separator__market" />
-        </div>
+          <div className="v-line_grey" />
+        </React.Fragment>
       );
     });
   };
@@ -39,9 +45,9 @@ export const Welcome = () => {
       <div className="container">
         <div className="welcome__wrapper">
           <div className="welcome__wrapper-left">
-            <h1 className="welcome__name horizontal-separator__small-blue">Crypto Brains</h1>
+            <h1 className="welcome__name h-line_small-blue">Crypto Brains</h1>
             <h2 className="welcome__title">Buy & Sell Crypto Easy With Crypto Limbo</h2>
-            <hr className="horizontal-separator__dotted" />
+            <hr className="h-line_dotted" />
             <p className="welcome__subtitle">
               Go through a couple of simple steps and start earning today with Crypto Limbo - one of the largest
               cryptocurrency exchanges in the world
@@ -72,11 +78,7 @@ export const Welcome = () => {
             </div>
           </div>
           <div className="welcome__wrapper-right">
-            <img
-              className="welcome__img undraggable"
-              src="/assets/images/notebook.webp"
-              alt="notebook with statistics"
-            />
+            <img className="welcome__img undraggable" src={notebook} alt="notebook with statistics" />
             <div className="bg-img-spray_round" />
           </div>
         </div>

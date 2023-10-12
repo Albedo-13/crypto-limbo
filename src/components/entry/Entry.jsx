@@ -1,6 +1,7 @@
 import { withEntry } from "./withEntry";
 
 import "./entry.scss";
+import entryGuy from "../../assets/images/CurlyManWithLaptop.webp";
 
 export const Entry = ({ component }) => {
   const FormEntry = withEntry(component);
@@ -15,7 +16,7 @@ export const Entry = ({ component }) => {
           <div className="entry__wrapper-right">
             <img
               className="entry__image undraggable"
-              src="/assets/images/CurlyManWithLaptop.webp"
+              src={entryGuy}
               alt="guy with notebook"
             />
           </div>

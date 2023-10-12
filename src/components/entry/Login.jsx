@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
-import { loginSchema } from "./validationSchemas";
+import { loginSchema } from "../../utils/validationSchemas";
 
 import { Helmet } from "react-helmet";
 

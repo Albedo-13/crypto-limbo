@@ -3,8 +3,6 @@ import { useRef, useState } from "react";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOn from "@mui/icons-material/VisibilityOutlined";
 
-// TODO: getData to withEntry second argument (form action?)
-
 export const withEntry = (BaseComponent) => {
   return (props) => {
     const [isVisible, setIsVisible] = useState(false);

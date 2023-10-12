@@ -5,8 +5,9 @@ import variables from "../../styles/_variables.scss?inline";
 import { convertScssToObject } from "../../utils/utils";
 
 import "./testimonials.scss";
+import commas from "../../assets/icons/commas.webp";
 
-const itemsSettings = [
+const ITEMS_SETTINGS = [
   {
     id: 1,
     name: "John Doe",
@@ -44,15 +45,10 @@ const itemsSettings = [
   },
 ];
 
-// TODO: add mouse wheel carousel scrolling
-
 register();
 export const Testimonials = () => {
   const swiperRef = useRef(null);
 
-  {
-    /* loop: true, scrollbar: true, mousewheelControl: true, */
-  }
   useEffect(() => {
     const colors = convertScssToObject(variables);
     const swiperContainer = swiperRef.current;
@@ -98,7 +94,7 @@ export const Testimonials = () => {
                 </div>
               </div>
               <div className="testimonials-item__wrapper-right">
-                <img src="/assets/icons/commas.webp" alt="quote symbol" />
+                <img src={commas} alt="quote symbol" />
               </div>
             </div>
             <p className="testimonials-item__review">{item.review}</p>
@@ -108,7 +104,7 @@ export const Testimonials = () => {
     });
   };
 
-  const carouselItems = renderCarouselItems(itemsSettings);
+  const carouselItems = renderCarouselItems(ITEMS_SETTINGS);
   return (
     <section className="testimonials">
       <div className="bg-section-spray-big" />
@@ -116,10 +112,11 @@ export const Testimonials = () => {
         <div className="testimonials__wrapper">
           <h2 className="testimonials__title">What Traders Saying About Us!</h2>
           <p className="testimonials__text">
-            Non-fictional positive reviews from real people (or from a chatbot, I don't know) about us. Yes, you can trust us with your finances, cryptocurrencies and credit cards without any doubt.
+            Non-fictional positive reviews from real people (or from a chatbot, I don't know) about us. Yes, you can
+            trust us with your finances, cryptocurrencies and credit cards without any doubt.
           </p>
         </div>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
 
         <swiper-container ref={swiperRef} init="false">
           {carouselItems}

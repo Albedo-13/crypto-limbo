@@ -10,7 +10,7 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
-import { signupSchema } from "./validationSchemas";
+import { signupSchema } from "../../utils/validationSchemas";
 
 export const SignUp = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;

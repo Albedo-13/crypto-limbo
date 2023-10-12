@@ -1,16 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useHttp } from "../hooks/http.hook";
-import defaultApiSettings from "../store/apiSettings";
+import useCoingeckoService from "../services/coingecko.api";
 
 const initialState = {
   data: [],
   loadingStatus: "idle",
+  singleCurrency: null,
 };
 
-export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", async () => {
-  const { request } = useHttp();
-  const { url, vsCurrency, order, page, locale } = defaultApiSettings;
-  return await request(`${url}/coins/markets?vs_currency=${vsCurrency}&order=${order}&page=${page}&locale=${locale}`);
+export const fetchCurrencies = createAsyncThunk("currencies/fetchCurrencies", () => {
+  const { getCurrencies } = useCoingeckoService();
+  return getCurrencies();
+});
+
+export const fetchCurrency = createAsyncThunk("currency/fetchCurrency", (id) => {
+  const { getCurrencyById } = useCoingeckoService();
+  return getCurrencyById(id);
 });
 
 export const currenciesSlice = createSlice({
@@ -27,6 +31,17 @@ export const currenciesSlice = createSlice({
         console.log(state.data);
       })
       .addCase(fetchCurrencies.rejected, (state) => {
+        state.loadingStatus = "error";
+      })
+
+      .addCase(fetchCurrency.pending, (state) => {
+        state.loadingStatus = "loading";
+      })
+      .addCase(fetchCurrency.fulfilled, (state, action) => {
+        state.singleCurrency = action.payload;
+        state.loadingStatus = "idle";
+      })
+      .addCase(fetchCurrency.rejected, (state) => {
         state.loadingStatus = "error";
       })
       .addDefaultCase(() => {});

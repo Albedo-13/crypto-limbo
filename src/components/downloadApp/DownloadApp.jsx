@@ -2,7 +2,11 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import "./downloadApp.scss";
-// _blank!!!!!!!!!!!!!!
+import appStore from "../../assets/icons/mobile-stores/app-store.svg";
+import playMarket from "../../assets/icons/mobile-stores/play-market.svg";
+import qrCode from "../../assets/icons/mobile-stores/qr-code.svg";
+import downloadApp from "../../assets/images/downloadApp.webp";
+
 export const DownloadApp = () => {
   return (
     <section className="download-app">
@@ -23,7 +27,7 @@ export const DownloadApp = () => {
                   fontSize: "18px",
                 }}
                 variant="outlined"
-                startIcon={<img src="/assets/icons/mobile-stores/app-store.svg" alt="app store" />}
+                startIcon={<img src={appStore} alt="app store" />}
                 component={Link}
                 to="https://www.apple.com/"
                 target="_blank"
@@ -37,7 +41,7 @@ export const DownloadApp = () => {
                   fontSize: "18px",
                 }}
                 variant="outlined"
-                startIcon={<img src="/assets/icons/mobile-stores/play-market.svg" alt="play market" />}
+                startIcon={<img src={playMarket} alt="play market" />}
                 component={Link}
                 to="https://play.google.com/"
                 target="_blank"
@@ -53,7 +57,7 @@ export const DownloadApp = () => {
                   },
                 }}
                 variant="outlined"
-                startIcon={<img src="/assets/icons/mobile-stores/qr-code.svg" alt="qr code" />}
+                startIcon={<img src={qrCode} alt="qr code" />}
                 component={Link}
                 to="https://play.google.com/store/apps/details/Free_QR_Scanner_Bar_Code_Scanner_QR_Code_Reader?id=app.qrcode&hl=en_GB"
                 target="_blank"
@@ -63,7 +67,7 @@ export const DownloadApp = () => {
           <div className="download-app__wrapper-right">
             <img
               className="download-app__img undraggable"
-              src="/assets/images/downloadApp.webp"
+              src={downloadApp}
               alt="notebook and phone versions"
             />
             <div className="bg-img-spray_wide" />

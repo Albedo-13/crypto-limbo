@@ -73,12 +73,17 @@
 
 // ACCORDION
 .MuiPaper-root.MuiAccordion-root {
+  background-image: none;
   position: relative;
   min-height: 78px;
   color: $white;
   background-color: transparent;
   border-radius: 4px;
   border: 1px solid rgba($white, 0.1);
+
+  &:before {
+    display: none;
+  }
 
   &.Mui-expanded {
     margin: 0;
@@ -167,7 +172,7 @@
 .mui-table {
   &.MuiPaper-root.MuiTableContainer-root {
     background-color: transparent;
-    margin-top: 60px;
+    background-image: none;
     overflow: visible;
 
     .MuiTableHead-root {
@@ -175,6 +180,7 @@
       .MuiTableRow-root td {
         padding-top: 0px;
         padding-bottom: 0px;
+        color: $grey-8;
       }
 
       .MuiTableCell-root {

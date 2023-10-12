@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 
-import "./whyChooseUs.scss";
-
 import { addZeroToNumber } from "../../utils/utils";
 
-const itemsSettings = [
+import "./whyChooseUs.scss";
+import graphIncome from "../../assets/images/GraphIncome.webp";
+
+const ITEMS_SETTINGS = [
   {
     id: 1,
     title: "Easy Trading",
@@ -35,7 +36,7 @@ export const WhyChooseUs = () => {
   const renderItems = (items) => {
     return items.map((item, i) => {
       const isLastItem = i + 1 < items.length;
-      const lineStyle = classNames({ "horizontal-separator__halfed": isLastItem, hidden: !isLastItem });
+      const lineStyle = classNames({ "h-line_halfed": isLastItem, hidden: !isLastItem });
       return (
         <div key={item.id}>
           <div className="why-choose-us-item">
@@ -61,7 +62,7 @@ export const WhyChooseUs = () => {
     });
   };
 
-  const items = renderItems(itemsSettings);
+  const items = renderItems(ITEMS_SETTINGS);
   return (
     <section className="why-choose-us">
       <div className="bg-section-spray-small" />
@@ -71,16 +72,11 @@ export const WhyChooseUs = () => {
           The speed and simplicity of the interface, regular 24/7 support, adapted to mobile devices. All this makes
           Crypto Limbo stand out among its analogues!
         </p>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
         <div className="why-choose-us__wrapper">
           <div className="why-choose-us__wrapper-left">{items}</div>
           <div className="why-choose-us__wrapper-right">
-            <img
-              className="why-choose-us__img undraggable"
-              loading="lazy"
-              src="/assets/images/GraphIncome.webp"
-              alt="graph money income"
-            />
+            <img className="why-choose-us__img undraggable" loading="lazy" src={graphIncome} alt="graph money income" />
           </div>
         </div>
       </div>

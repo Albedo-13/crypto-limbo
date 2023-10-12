@@ -58,6 +58,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
 
     &-item {
       padding: 10px 40px 10px 20px;
@@ -66,6 +67,7 @@
       &__wrapper {
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
 
       &__name {

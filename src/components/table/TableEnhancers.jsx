@@ -9,62 +9,19 @@ import SearchIcon from "@mui/icons-material/Search";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 
-const headCells = [
-  {
-    id: "name",
-    alignRight: false,
-    disablePadding: true,
-    label: "Coin Name",
-  },
-  {
-    id: "current_price",
-    alignRight: true,
-    disablePadding: false,
-    label: "Price",
-  },
-  {
-    id: "price_change_percentage_24h",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h Change",
-  },
-  {
-    id: "total_volume",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h Volume",
-  },
-  {
-    id: "high_24h",
-    alignRight: true,
-    disablePadding: false,
-    label: "24h High",
-  },
-  {
-    id: "market_cap",
-    alignRight: true,
-    disablePadding: false,
-    label: "Market Cap",
-  },
-  {
-    id: "action",
-    alignRight: true,
-    disablePadding: false,
-    label: "Action",
-  },
-];
+import "./table.scss";
 
-export const EnhancedTableToolbar = ({ selectedList, searchParam, onSearch }) => {
-  const renderSelectedList = selectedList.map((selectedCurrency) => (
-    <Button key={selectedCurrency.id} variant="text" component={Link} to={`/market/${selectedCurrency.id}`}>
-      {selectedCurrency.symbol}
+export const EnhancedTableToolbar = ({ bookmarksList, searchParam, onSearch }) => {
+  const renderBookmarksList = bookmarksList.map((bookmarkedCurrency) => (
+    <Button key={bookmarkedCurrency.id} variant="text" component={Link} to={`/market/${bookmarkedCurrency.id}`}>
+      {bookmarkedCurrency.symbol}
     </Button>
   ));
 
   return (
-    <Toolbar className="mui-toolbar-market">
+    <Toolbar className="mui-toolbar">
       <div className="bg-section-spray-small spray_dark" />
-      <div className="market-table-watchlist">{renderSelectedList}</div>
+      <div className="table-watchlist">{renderBookmarksList}</div>
       <TextField
         className="mui-searchbar"
         placeholder="Search Here"
@@ -80,7 +37,7 @@ export const EnhancedTableToolbar = ({ selectedList, searchParam, onSearch }) =>
   );
 };
 
-export const EnhancedTableHead = ({ order, orderBy, onOrder }) => {
+export const EnhancedTableHead = ({ headCells, order, orderBy, onOrder }) => {
   return (
     <TableHead>
       <TableRow>
@@ -98,6 +55,24 @@ export const EnhancedTableHead = ({ order, orderBy, onOrder }) => {
             >
               {headCell.label}
             </TableSortLabel>
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+  );
+};
+
+export const DefaultTableHead = ({ headCells }) => {
+  return (
+    <TableHead>
+      <TableRow>
+        {headCells.map((headCell) => (
+          <TableCell
+            key={headCell.id}
+            align={headCell.alignRight ? "right" : "left"}
+            padding={headCell.disablePadding ? "none" : "normal"}
+          >
+            {headCell.label}
           </TableCell>
         ))}
       </TableRow>

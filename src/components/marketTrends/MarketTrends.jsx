@@ -13,14 +13,14 @@ import {
   filteredCurrenciesChanged,
   fetchDefi,
   fetchMetaverse,
-} from "../../slices/marketTrendsFiltersSlice";
+} from "../../slices/filtersSlice";
 
 import Spinner from "../spinner/Spinner";
 import { MarketTrendsItem } from "./MarketTrendsItem";
 
 export const MarketTrends = () => {
   const currencies = useSelector((state) => state.currencies);
-  const filters = useSelector((state) => state.marketTrendsFilters);
+  const filters = useSelector((state) => state.filters);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export const MarketTrends = () => {
           <h2 className="market-trends__title">Market Trends</h2>
           <div className="market-trends__filters">{marketFiltersList}</div>
         </div>
-        <hr className="horizontal-separator" />
+        <hr className="h-line" />
         <div className="market-trends-items">{marketItemsList}</div>
         <div className="market-trends__link">
           <Button

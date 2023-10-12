@@ -62,3 +62,8 @@ p {
 .hidden {
   display: none;
 }
+
+.active {
+  color: $primary-blue-dark;
+  pointer-events: none;
+}
