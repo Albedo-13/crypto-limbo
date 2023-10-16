@@ -42,7 +42,7 @@ export const ForgotPassword = () => {
         <title>Password recovery | Crypto Limbo</title>
       </Helmet>
 
-      <h2 className="entry__title">Forgot Password</h2>
+      <h1 className="entry__title">Forgot Password</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <InputLabel classes={{ root: "label-text" }} htmlFor="forgot-pwd-username">
           Email or Phone

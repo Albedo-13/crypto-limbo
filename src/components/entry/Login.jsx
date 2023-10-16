@@ -32,7 +32,7 @@ export const Login = (props) => {
         <title>Log In | Crypto Limbo</title>
       </Helmet>
 
-      <h2 className="entry__title">Login</h2>
+      <h1 className="entry__title">Login</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <InputLabel classes={{ root: "label-text" }} htmlFor="login-username">
           Email or Phone

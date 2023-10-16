@@ -33,7 +33,7 @@ export const SignUp = (props) => {
         <title>Sign Up | Crypto Limbo</title>
       </Helmet>
 
-      <h2 className="entry__title">Sign Up</h2>
+      <h1 className="entry__title">Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <div className="entry-form__wrapper">
           <div className="entry-form__wrapper-left">

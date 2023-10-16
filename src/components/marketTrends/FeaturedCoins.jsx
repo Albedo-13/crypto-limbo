@@ -21,7 +21,7 @@ export const FeaturedCoins = () => {
     <section className="market-trends">
       <div className="container">
         <div className="featured-coins__header-wrapper">
-          <h2 className="featured-coins__title">Featured Coins</h2>
+          <h1 className="featured-coins__title">Featured Coins</h1>
         </div>
         <div className="market-trends-items">{marketItemsList}</div>
         <hr className="h-line" />

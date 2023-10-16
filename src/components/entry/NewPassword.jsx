@@ -34,7 +34,7 @@ export const NewPassword = (props) => {
         <title>Create new password | Crypto Limbo</title>
       </Helmet>
 
-      <h2 className="entry__title">Forgot Password</h2>
+      <h1 className="entry__title">Forgot Password</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <input className="hidden" name="username" autoComplete="username" type="text" defaultValue="user@example.com" />
         <InputLabel classes={{ root: "label-text" }} htmlFor="create-new-pwd">

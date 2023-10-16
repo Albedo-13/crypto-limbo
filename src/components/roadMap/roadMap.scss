@@ -1,5 +1,47 @@
 @import "../../styles/_variables.scss";
 
 .roadmap {
-  
+  &-items {
+    padding: 0 40px 0 20px;
+  }
+
+  &-item {
+    background-color: gray;
+    margin-bottom: 25px; //-
+    margin-top: 25px; //-
+    display: flex;
+
+    &-aside {
+      background-color: $grey-8;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+    }
+
+    &-main {
+      background-color: $bg-card;
+      padding: 40px;
+      // display: flex;
+      // flex-direction: column;
+      // gap: 30px;
+
+      &-title {
+        color: $grey-2;
+        font-size: 32px;
+        font-weight: 600;
+      }
+
+      &-descriptions {
+        margin-top: 30px;
+        color: $grey-6;
+        font-weight: 400;
+        line-height: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      &-description {
+      }
+    }
+  }
 }
