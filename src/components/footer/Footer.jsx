@@ -49,7 +49,7 @@ export const Footer = () => {
               <Link to="#">Our Team</Link>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Road Map</Link>
+              <Link to="/road-map">Road Map</Link>
             </div>
             <div className="footer-links__link">
               <Link to="#">Risk Disclosure</Link>

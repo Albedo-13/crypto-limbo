@@ -7,11 +7,6 @@ import { Header } from "../header/Header";
 import { CurrencyItem } from "../currencyItem/CurrencyItem";
 import { fetchCurrency } from "../../slices/currenciesSlice";
 
-// TODO: merge to development
-// TODO?: Spinner? skeleton?
-// TODO: road map page, referral page.
-// TODO: road map page as lazy load. Backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
-
 export const CurrencyItemPage = () => {
   const { id } = useParams();
   const coin = useSelector((state) => state.currencies.singleCurrency);

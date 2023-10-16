@@ -21,15 +21,19 @@ export const Header = () => {
                 <NavLink
                   to="/market"
                   end
-                  className={({ isActive }) => (classNames("header__link", {"active": isActive}))}
+                  className={({ isActive }) => classNames("header__link", { active: isActive })}
                 >
                   Market
                 </NavLink>
               </li>
               <li>
-                <Link to="#" className="header__link">
+                <NavLink
+                  to="/road-map"
+                  end
+                  className={({ isActive }) => classNames("header__link", { active: isActive })}
+                >
                   Road Map
-                </Link>
+                </NavLink>
               </li>
               <li>
                 <Link to="#" className="header__link">
