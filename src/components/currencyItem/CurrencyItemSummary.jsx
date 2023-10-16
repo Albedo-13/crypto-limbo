@@ -1,8 +1,10 @@
+import { useSelector } from "react-redux";
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
 import Spinner from "../spinner/Spinner";
 
-export const CurrencyItemSummary = ({ coin }) => {
+export const CurrencyItemSummary = () => {
+  const coin = useSelector((state) => state.currencies.singleCurrency);
   const { priceChangeStyle, TrendingIcon } = trendingPriceChange(coin?.market_data.price_change_percentage_24h);
 
   const renderSummary = (coin) => {

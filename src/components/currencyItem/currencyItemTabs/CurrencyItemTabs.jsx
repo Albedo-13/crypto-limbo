@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
@@ -28,8 +29,9 @@ const TabPanel = (props) => {
   );
 };
 
-export const CurrencyItemTabs = ({ coin }) => {
+export const CurrencyItemTabs = () => {
   const [value, setValue] = useState(0);
+  const coin = useSelector((state) => state.currencies.singleCurrency);
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
@@ -42,7 +44,7 @@ export const CurrencyItemTabs = ({ coin }) => {
     };
   };
 
-  const renderItemTabs = (coin) => {
+  const renderItemTabs = () => {
     return (
       <Box className={"mui-tabs"} sx={{ width: "100%" }}>
         <Box className={"mui-tabs-header"}>
@@ -53,7 +55,7 @@ export const CurrencyItemTabs = ({ coin }) => {
           </Tabs>
         </Box>
         <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
-          <BuySellTab coin={coin} />
+          <BuySellTab />
         </TabPanel>
         <TabPanel className={"mui-tabs-panel"} value={value} index={1}>
           <WatchlistTableTab />

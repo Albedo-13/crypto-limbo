@@ -65,10 +65,9 @@ const CurrencyItemOrdersTable = (dataSourceName, currentId) => {
 export const CurrencyItemOrders = () => {
   const { id } = useParams();
 
-  console.log("render CurrencyItemOrders");
   return (
     <aside className="orders">
-        <h2 className="orders__header">Order book</h2>
+      <h2 className="orders__header">Order book</h2>
       <hr className="h-line" />
       <div className="orders-tables">
         {CurrencyItemOrdersTable("purchases", id)}
