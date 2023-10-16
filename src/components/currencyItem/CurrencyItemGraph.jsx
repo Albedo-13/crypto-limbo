@@ -2,6 +2,7 @@ import { Line } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
 
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -49,7 +50,7 @@ const GraphToolbar = ({ handleFetch, id }) => {
 
   useEffect(() => {
     setActiveButtonValue("1");
-  }, [id]); 
+  }, [id]);
 
   useEffect(() => {
     handleFetch(activeButtonValue);
@@ -104,10 +105,11 @@ const GraphToolbar = ({ handleFetch, id }) => {
   );
 };
 
-export const CurrencyItemGraph = ({ coin }) => {
+export const CurrencyItemGraph = () => {
   const { id } = useParams();
   const [prices, setPrices] = useState([]);
   const { getMarketDataById } = useCoingeckoService();
+  const coin = useSelector((state) => state.currencies.singleCurrency);
 
   const { createChartData, options } = detailedChartConfig;
   const chartData = createChartData(coin, prices);

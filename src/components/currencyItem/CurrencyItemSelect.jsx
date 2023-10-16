@@ -9,7 +9,8 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import Spinner from "../spinner/Spinner";
 import { useSelector } from "react-redux";
 
-export const CurrencyItemSelect = ({ coin }) => {
+export const CurrencyItemSelect = () => {
+  const coin = useSelector((state) => state.currencies.singleCurrency);
   const bookmarks = useSelector((state) => state.bookmarks.data);
   const navigate = useNavigate();
 

@@ -92,9 +92,7 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
     }
 
     function isEnoughMoney(portfolio) {
-      return portfolio.some(
-        (currency) => currency.coinId === data.coinId && currency.quantity >= data.quantity
-      );
+      return portfolio.some((currency) => currency.coinId === data.coinId && currency.quantity >= data.quantity);
     }
 
     function onBuySubmit() {
@@ -201,9 +199,10 @@ const ControlledTextField = ({ name, handleChange, control, placeholder }) => {
   );
 };
 
-export const BuySellTab = ({ coin }) => {
+export const BuySellTab = () => {
+  const coin = useSelector((state) => state.currencies.singleCurrency);
   const { open, severity, message, handleOpen, handleClose } = useSnackbar();
-  
+
   return (
     <div className="buy-sell">
       <div className="buy-sell__wrapper">

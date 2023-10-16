@@ -8,20 +8,19 @@ import { CurrencyItemOrders } from "./CurrencyItemOrders";
 
 import "./currencyItem.scss";
 
-export const CurrencyItem = ({ coin }) => {
-  console.log("currencyItem render", coin);
+export const CurrencyItem = () => {
   return (
     <section className="currency-item">
       <div className="container">
         <div className="currency-item-wrapper">
           <div className="currency-item-wrapper__main">
             <div className="currency-item-wrapper__header">
-              <CurrencyItemSelect coin={coin} />
-              <CurrencyItemSummary coin={coin} />
+              <CurrencyItemSelect />
+              <CurrencyItemSummary />
             </div>
-            <CurrencyItemGraph coin={coin} />
+            <CurrencyItemGraph />
             <div className="currency-item-tabs">
-              <CurrencyItemTabs coin={coin} />
+              <CurrencyItemTabs />
             </div>
           </div>
           <CurrencyItemOrders />

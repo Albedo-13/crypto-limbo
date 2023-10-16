@@ -35,7 +35,7 @@ export const CurrencyItemPage = () => {
 
       <Header />
       <main>
-        <CurrencyItem coin={coin} />
+        <CurrencyItem />
       </main>
     </>
   );
