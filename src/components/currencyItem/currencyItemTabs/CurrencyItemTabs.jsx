@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import Skeleton from "@mui/material/Skeleton";
 
 import { BuySellTab } from "./BuySellTab";
 import { WatchlistTableTab } from "./WatchlistTableTab";
 import { PortfolioTab } from "./PortfolioTab";
-import Spinner from "../../spinner/Spinner";
 
 import "./currencyItemTabs.scss";
 
@@ -67,5 +67,5 @@ export const CurrencyItemTabs = () => {
     );
   };
 
-  return coin ? renderItemTabs(coin) : <Spinner />;
+  return coin ? renderItemTabs(coin) : <Skeleton variant="rounded" animation="wave" width={"100%"} height={79} />;
 };

@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // TODO: road map page as lazy load. Backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
 // TODO: Link to NavLink in Header and Footer to color and disable active pages
 // TODO: error boundaries. replace unloaded block with image / errored skeleton
-// TODO?: skeleton on loading?
+// TODO: test skeletons on mobile adaptation
 // TODO: react-helmet (try to preload images only on landing page)
 // TODO: transitions (react transition group)
 // TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)

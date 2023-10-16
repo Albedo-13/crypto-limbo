@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import NorthEastIcon from "@mui/icons-material/NorthEast";
+import Skeleton from "@mui/material/Skeleton";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import Spinner from "../spinner/Spinner";
 
 import "./welcome.scss";
 import notebook from "../../assets/images/notebook.webp";
@@ -39,7 +39,11 @@ export const Welcome = () => {
   };
 
   const marketItemsList =
-    currencies.loadingStatus === "loading" ? <Spinner /> : renderMarket(currencies.data.slice(0, 7));
+    currencies.loadingStatus === "loading" ? (
+      <Skeleton variant="rounded" animation="wave" width={"100%"} height={80} />
+    ) : (
+      renderMarket(currencies.data.slice(0, 7))
+    );
   return (
     <section className="welcome">
       <div className="container">
