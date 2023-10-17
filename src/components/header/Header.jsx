@@ -36,9 +36,9 @@ export const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <Link to="#" className="header__link">
+                <NavLink to="/referral" className="header__link">
                   Referral
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </nav>
