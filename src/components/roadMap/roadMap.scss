@@ -1,28 +1,98 @@
 @import "../../styles/_variables.scss";
 
 .roadmap {
+  padding-top: 120px;
+
+  &-title {
+    text-align: center;
+    color: $white;
+    font-size: 58px;
+    font-weight: 600;
+  }
+
+  .h-line {
+    margin-bottom: 60px;
+  }
+
+  &-subtitle {
+    margin-top: 30px;
+    text-align: center;
+    color: $grey-6;
+  }
+
   &-items {
     padding: 0 40px 0 20px;
   }
 
   &-item {
-    background-color: gray;
-    margin-bottom: 25px; //-
-    margin-top: 25px; //-
     display: flex;
+    gap: 55px;
+
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
 
     &-aside {
-      background-color: $grey-8;
       writing-mode: vertical-lr;
       transform: rotate(180deg);
+      color: $primary-blue;
+
+      &-line {
+        width: 2px;
+        height: 100%;
+
+        span.line {
+          display: flex;
+          gap: 30px;
+          width: 2px;
+          height: 100%;
+          position: relative;
+
+          .circle {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            border-radius: 100%;
+            top: 50%;
+            transform: translate(-45%, -60%);
+            background-color: $primary-blue;
+
+            &::after {
+              content: "";
+              position: absolute;
+              border: 4px solid $bg-page;
+              border-radius: 100%;
+              width: 16px;
+              height: 16px;
+              top: 3px;
+              left: 3px;
+            }
+          }
+
+          &::before,
+          &::after {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 50%;
+            background-image: linear-gradient(180deg, $primary-blue 0%, rgba(27, 112, 241, 0.02) 100%);
+          }
+        }
+      }
+
+      &-year {
+        margin-left: 55px;
+        text-align: center;
+        font-size: 46px;
+        font-weight: 600;
+      }
     }
 
     &-main {
+      width: 100%;
       background-color: $bg-card;
       padding: 40px;
-      // display: flex;
-      // flex-direction: column;
-      // gap: 30px;
+      border-radius: 4px;
 
       &-title {
         color: $grey-2;
@@ -38,9 +108,6 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-      }
-
-      &-description {
       }
     }
   }

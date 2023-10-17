@@ -2,6 +2,8 @@ import { Helmet } from "react-helmet";
 
 import { Header } from "../header/Header";
 import { RoadMap } from "../roadMap/RoadMap";
+import { FrequentlyAskedQuestions } from "../frequentlyAskedQuestions/FrequentlyAskedQuestions";
+import { Footer } from "../footer/Footer";
 
 export const RoadMapPage = () => {
   return (
@@ -12,6 +14,8 @@ export const RoadMapPage = () => {
 
       <Header />
       <RoadMap />
+      <FrequentlyAskedQuestions />
+      <Footer />
     </>
   );
 };
