@@ -49,7 +49,7 @@ export const Welcome = () => {
       <div className="container">
         <div className="welcome__wrapper">
           <div className="welcome__wrapper-left">
-            <h1 className="welcome__name h-line_small-blue">Crypto Brains</h1>
+            <h1 className="welcome__name h-line_small-blue">Crypto Limbo</h1>
             <h2 className="welcome__title">Buy & Sell Crypto Easy With Crypto Limbo</h2>
             <hr className="h-line_dotted" />
             <p className="welcome__subtitle">
