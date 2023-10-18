@@ -1,5 +1,4 @@
 import React from "react";
-import classnames from "classnames";
 
 import "./referStats.scss";
 import characterWorkingFront from "../assets/images/characterWorkingFront.webp";
@@ -58,7 +57,6 @@ export const ReferStats = () => {
           <img src={characterWorkingFront} alt="working character like it" />
         </div>
         <div className="refer-stats-info">
-          {/* <ReferStatsItem item={REFER_STATS[0]} isLastInArray={false} /> */}
           {referStatsItems}
         </div>
       </div>
