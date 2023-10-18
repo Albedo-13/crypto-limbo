@@ -1,5 +1,5 @@
-import { register } from "swiper/element/bundle";
 import { useEffect, useRef } from "react";
+import { register } from "swiper/element/bundle";
 
 import variables from "../../styles/_variables.scss?inline";
 import { convertScssToObject } from "../../utils/utils";

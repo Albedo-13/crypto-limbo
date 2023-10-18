@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 
 import { Header } from "../header/Header";
 import { ReferStats } from "../referStats/ReferStats";
+import { ReferWhyUsCarousel } from "../referWhyUsCarousel/ReferWhyUsCarousel";
 import { Footer } from "../footer/Footer";
 
 export const ReferralPage = () => {
@@ -13,6 +14,7 @@ export const ReferralPage = () => {
 
       <Header />
       <ReferStats />
+      <ReferWhyUsCarousel />
       <Footer />
     </>
   );
