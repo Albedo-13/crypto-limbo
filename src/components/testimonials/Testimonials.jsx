@@ -50,8 +50,12 @@ export const Testimonials = () => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
+    initCarousel(swiperRef);
+  }, []);
+
+  const initCarousel = (ref) => {
     const colors = convertScssToObject(variables);
-    const swiperContainer = swiperRef.current;
+    const swiperContainer = ref.current;
     const params = {
       pagination: { clickable: true },
       slidesPerView: "2.4",
@@ -76,7 +80,7 @@ export const Testimonials = () => {
 
     Object.assign(swiperContainer, params);
     swiperContainer.initialize();
-  }, []);
+  };
 
   const renderCarouselItems = (items) => {
     return items.map((item) => {

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./referStats.scss";
-import characterWorkingFront from "../assets/images/characterWorkingFront.webp";
+import characterWorkingFront from "../../assets/images/characterWorkingFront.webp";
 
 const REFER_STATS = [
   {
