@@ -84,7 +84,7 @@ export const ReferWhyUsCarousel = () => {
       return (
         <swiper-slide key={item.id}>
           <div className="refer-why-us-item">
-            <div className="refer-why-us-item__number">{addZeroToNumber(item.id)}.</div>
+            <h2 className="refer-why-us-item__number">{addZeroToNumber(item.id)}.</h2>
             <div className="refer-why-us-item__title">{item.title}</div>
             <div>
               {item.descriptions.map((descr) => {

@@ -4,6 +4,7 @@ import { Header } from "../header/Header";
 import { ReferStats } from "../referStats/ReferStats";
 import { ReferWhyUsCarousel } from "../referWhyUsCarousel/ReferWhyUsCarousel";
 import { Testimonials } from "../testimonials/Testimonials";
+import { ReferralLink } from "../referralLink/ReferralLink";
 import { Footer } from "../footer/Footer";
 
 export const ReferralPage = () => {
@@ -17,6 +18,7 @@ export const ReferralPage = () => {
       <ReferStats />
       <ReferWhyUsCarousel />
       <Testimonials />
+      <ReferralLink />
       <Footer />
     </>
   );
