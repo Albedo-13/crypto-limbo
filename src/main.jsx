@@ -23,8 +23,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 //! Landing Page (and general)
-// TODO: Link to NavLink in Header and Footer to color and disable active pages
-// TODO: update footer & header links (check all links, no # routes)
 
 // TODO: error boundaries. replace unloaded block with image / errored skeleton
 // TODO: test skeletons on mobile adaptation
