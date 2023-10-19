@@ -1,6 +1,16 @@
 import { Button } from "@mui/material";
 
+import { CustomSnackbar } from "../snackbars/Snackbars";
+import { useSnackbar } from "../../hooks/snackbar.hook";
+import "./referralLink.scss";
+
 export const ReferralLink = () => {
+  const { open, severity, message, handleOpen, handleClose } = useSnackbar();
+
+  const handleClick = () => {
+    navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}`);
+  };
+
   return (
     <section className="referral-link">
       <div className="container">
@@ -11,8 +21,21 @@ export const ReferralLink = () => {
           inventore!
         </p>
 
-        <Button></Button>
+        <Button
+          sx={{
+            width: "240px",
+            marginTop: "80px",
+          }}
+          variant="contained"
+          onClick={() => {
+            handleClick();
+            handleOpen("info", "Link copied to clipboard.");
+          }}
+        >
+          Refer Now
+        </Button>
       </div>
+      <CustomSnackbar open={open} handleClose={handleClose} severity={severity} message={message} />
     </section>
   );
 };

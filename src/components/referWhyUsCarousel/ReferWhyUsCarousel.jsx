@@ -87,9 +87,9 @@ export const ReferWhyUsCarousel = () => {
             <h2 className="refer-why-us-item__number">{addZeroToNumber(item.id)}.</h2>
             <div className="refer-why-us-item__title">{item.title}</div>
             <div>
-              {item.descriptions.map((descr) => {
+              {item.descriptions.map((descr, i) => {
                 return (
-                  <p className="refer-why-us-item__description" key={item.id}>
+                  <p className="refer-why-us-item__description" key={`descr-${i}-${item.id}`}>
                     {descr}
                   </p>
                 );

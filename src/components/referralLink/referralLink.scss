@@ -1,12 +1,19 @@
+@import "../../styles/_variables.scss";
+
 .referral-link {
-  padding: 60px 0;
+  padding: 120px 0;
+  text-align: center;
 
   &__title {
     color: $white;
-    text-align: center;
     font-size: 58px;
+  }
+
+  &__subtitle {
+    color: $grey-6;
     font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+    line-height: 28px;
+    width: 75%;
+    margin: 30px auto 0 auto;
   }
 }
