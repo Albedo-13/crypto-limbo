@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material/styles";
 
 import App from "./components/app/App.jsx";
 import { store } from "./store/store.js";
 
 import "./styles/index.scss";
 
-import { ThemeProvider } from "@mui/material/styles";
 import theme from "./styles/muiTheme.js";
 
 console.log(
@@ -26,7 +26,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 // TODO: error boundaries. replace unloaded block with image / errored skeleton
 // TODO: test skeletons on mobile adaptation
-// TODO: transitions (react transition group)
 // TODO: mobile adaptation, sprays change width & height %'s on adapt screen sizes
 // TODO: explore a11y, adapt for screen readers
 // TODO: reduce bundle size (vite console advices)
