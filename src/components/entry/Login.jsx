@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
@@ -21,9 +21,8 @@ export const Login = (props) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) });
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     navigate("/");
-    console.log("Login submitting", data);
   };
 
   return (

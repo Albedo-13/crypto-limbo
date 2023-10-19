@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
@@ -24,16 +24,14 @@ export const NewPassword = (props) => {
   } = useForm({ resolver: yupResolver(newPasswordSchema) });
 
   useEffect(() => {
-    console.log(username);
     if (!username) {
       navigate("/forgot-password");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     navigate("/");
-    console.log("NewPassword submitting", data);
   };
 
   return (
