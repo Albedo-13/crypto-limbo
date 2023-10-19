@@ -113,7 +113,7 @@ export const ReferWhyUsCarousel = () => {
           </div>
           <div className="refer-why-us__img">
             <div className="bg-img-spray_round"></div>
-            <img src={characterWorkingAngled} alt="working character" />
+            <img src={characterWorkingAngled} className="undraggable" alt="working character" />
           </div>
         </div>
       </div>
