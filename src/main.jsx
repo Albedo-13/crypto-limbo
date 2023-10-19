@@ -23,16 +23,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 //! Landing Page (and general)
-// TODO: road map page, referral page.
-// TODO: road map page as lazy load. Backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
 // TODO: Link to NavLink in Header and Footer to color and disable active pages
+// TODO: update footer & header links (check all links, no # routes)
+
 // TODO: error boundaries. replace unloaded block with image / errored skeleton
 // TODO: test skeletons on mobile adaptation
-// TODO: react-helmet (try to preload images only on landing page)
 // TODO: transitions (react transition group)
-// TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
-// TODO: update footer & header links (check all links, no # routes)
-// TODO: mobile adaptation
-// TODO: sprays change width & height %'s on adapt screen sizes
+// TODO: mobile adaptation, sprays change width & height %'s on adapt screen sizes
 // TODO: explore a11y, adapt for screen readers
-// TODO: reduce bundle size with CurrencyItem lazy loading (https://legacy.reactjs.org/docs/code-splitting.html#avoiding-fallbacks)
+// TODO: reduce bundle size (vite console advices)
