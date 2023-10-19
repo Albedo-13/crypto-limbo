@@ -18,8 +18,6 @@ export const MarketPage = () => {
         <MarketTable />
       </main>
       <Footer />
-      {/* //! remove bottom block on production */}
-      <div style={{ minHeight: 250, backgroundColor: "gray" }} />
     </>
   );
 };

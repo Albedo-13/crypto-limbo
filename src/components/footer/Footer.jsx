@@ -75,7 +75,7 @@ export const Footer = () => {
           <div className="footer-links__block">
             <div className="footer-links__label">Services</div>
             <div className="footer-links__link">
-              <Link disabled="true" to="#">API Service</Link>
+              <Link to="#">API Service</Link>
             </div>
             <div className="footer-links__link">
               <Link to="#">Token Listing</Link>
@@ -118,15 +118,15 @@ export const Footer = () => {
             </div>
           </div>
           <div className="footer-links__block">
-            <div className="footer-links__label">Press</div>
+            <div className="footer-links__label">Entry</div>
             <div className="footer-links__link">
-              <Link to="#">Blog</Link>
+              <Link to="/login">Log In</Link>
             </div>
             <div className="footer-links__link">
-              <Link to="#">News</Link>
+              <Link to="/signup">Sign Up</Link>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Events</Link>
+              <Link to="/forgot-password">Forgot Password</Link>
             </div>
           </div>
         </div>
