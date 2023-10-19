@@ -54,7 +54,7 @@ export const SimpleStep = () => {
 
   const items = renderItems(ITEMS_SETTINGS);
   return (
-    <section className="simple-step" id="simpleStep">
+    <section className="simple-step" id="start-trading">
       <div className="bg-section-spray-big" />
       <div className="container">
         <div className="w65pr">

@@ -38,44 +38,44 @@ export const Footer = () => {
             </Link>
           </div>
         </div>
-        <hr className="h-line mt-51px" style={{ marginTop: "51px" }} />
+        <hr className="h-line" />
         <div className="footer-links">
           <div className="footer-links__block">
             <div className="footer-links__label">Crypto Brains</div>
             <div className="footer-links__link">
-              <Link to="#">About us</Link>
+              <Link to="/">Home</Link>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Our Team</Link>
+              <Link to="/referral">Referral</Link>
             </div>
             <div className="footer-links__link">
               <Link to="/road-map">Road Map</Link>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Risk Disclosure</Link>
+              <Link to="/market">Market</Link>
             </div>
           </div>
           <div className="footer-links__block">
-            <div className="footer-links__label">Knowledge</div>
+            <div className="footer-links__label">Sections</div>
             <div className="footer-links__link">
-              <HashLink to="/#FrequentlyAskedQuestions" className="footer-links__link">
+              <HashLink to="/#frequently-asked-questions" className="footer-links__link">
                 F.A.Q.
               </HashLink>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Articals</Link>
+              <HashLink to="/#download-app">Download App</HashLink>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Video Tutorial</Link>
+              <HashLink to="/#feedback">Feedback</HashLink>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Beginner's Guide</Link>
+              <HashLink to="/#start-trading">Start Trading</HashLink>
             </div>
           </div>
           <div className="footer-links__block">
             <div className="footer-links__label">Services</div>
             <div className="footer-links__link">
-              <Link to="#">API Service</Link>
+              <Link disabled="true" to="#">API Service</Link>
             </div>
             <div className="footer-links__link">
               <Link to="#">Token Listing</Link>
@@ -93,13 +93,13 @@ export const Footer = () => {
               <Link to="#">P2P</Link>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Referral</Link>
+              <Link to="/referral">Referral</Link>
             </div>
             <div className="footer-links__link">
               <NavLink to="/market">Market</NavLink>
             </div>
             <div className="footer-links__link">
-              <Link to="#">Affiliate Program</Link>
+              <Link to="/road-map">Road map</Link>
             </div>
           </div>
           <div className="footer-links__block">

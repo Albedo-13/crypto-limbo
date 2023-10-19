@@ -110,7 +110,7 @@ export const Testimonials = () => {
 
   const carouselItems = renderCarouselItems(ITEMS_SETTINGS);
   return (
-    <section className="testimonials">
+    <section className="testimonials" id="feedback">
       <div className="bg-section-spray-big" />
       <div className="container">
         <div className="testimonials__wrapper">
