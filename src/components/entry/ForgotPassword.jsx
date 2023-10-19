@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Helmet } from "react-helmet";
+import { useDispatch } from "react-redux";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -10,10 +11,12 @@ import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
 import { forgotPasswordSchema } from "../../utils/validationSchemas";
+import { usernameChanged } from "../../slices/entrySlice";
 
 export const ForgotPassword = () => {
   const oneTimeCodeRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -32,8 +35,8 @@ export const ForgotPassword = () => {
   };
 
   const onSubmit = (data) => {
+    dispatch(usernameChanged(data.username));
     navigate("/new-password");
-    console.log("ForgotPassword submitting", data);
   };
 
   return (

@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -10,18 +12,24 @@ import IconButton from "@mui/material/IconButton";
 
 import { newPasswordSchema } from "../../utils/validationSchemas";
 
-// TODO: block ability to go to new password creation using address field
-// (redirect on 1st if trying to go to 2nd. save email in Redux store?)
-
 export const NewPassword = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
+  const username = useSelector((state) => state.entry.username);
 
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm({ resolver: yupResolver(newPasswordSchema) });
+
+  useEffect(() => {
+    console.log(username);
+    if (!username) {
+      navigate("/forgot-password");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSubmit = (data) => {
     navigate("/");
