@@ -16,9 +16,9 @@ export const ReferralLink = () => {
       <div className="container">
         <h2 className="referral-link__title">Hurry Up! Start Earning Now</h2>
         <p className="referral-link__subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, reprehenderit vel eveniet aut ipsum sit nam
-          quae magni blanditiis aliquid nihil. Quas quod aliquid, ducimus laudantium consectetur impedit blanditiis
-          inventore!
+          Invite your friend to join our community and get the benefits. Sharing the link with them is simple - just
+          send it over and let them experience all the perks firsthand. So don't wait, start spreading the word and
+          bring your friends along for an incredible journey.
         </p>
 
         <Button
