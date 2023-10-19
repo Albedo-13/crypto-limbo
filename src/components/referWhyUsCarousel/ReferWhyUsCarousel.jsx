@@ -112,6 +112,7 @@ export const ReferWhyUsCarousel = () => {
             </swiper-container>
           </div>
           <div className="refer-why-us__img">
+            <div className="bg-img-spray_round"></div>
             <img src={characterWorkingAngled} alt="working character" />
           </div>
         </div>
