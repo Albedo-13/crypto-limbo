@@ -121,10 +121,11 @@ export const Testimonials = () => {
           </p>
         </div>
         <hr className="h-line" />
-
-        <swiper-container ref={swiperRef} init="false">
-          {carouselItems}
-        </swiper-container>
+        <div className="testimonials-swiper-wrapper">
+          <swiper-container ref={swiperRef} init="false">
+            {carouselItems}
+          </swiper-container>
+        </div>
       </div>
     </section>
   );
