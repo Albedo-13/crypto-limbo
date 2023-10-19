@@ -1,5 +1,5 @@
-import { register } from "swiper/element/bundle";
 import { useEffect, useRef } from "react";
+import { register } from "swiper/element/bundle";
 
 import variables from "../../styles/_variables.scss?inline";
 import { convertScssToObject } from "../../utils/utils";
@@ -50,8 +50,12 @@ export const Testimonials = () => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
+    initCarousel(swiperRef);
+  }, []);
+
+  const initCarousel = (ref) => {
     const colors = convertScssToObject(variables);
-    const swiperContainer = swiperRef.current;
+    const swiperContainer = ref.current;
     const params = {
       pagination: { clickable: true },
       slidesPerView: "2.4",
@@ -76,7 +80,7 @@ export const Testimonials = () => {
 
     Object.assign(swiperContainer, params);
     swiperContainer.initialize();
-  }, []);
+  };
 
   const renderCarouselItems = (items) => {
     return items.map((item) => {
@@ -106,7 +110,7 @@ export const Testimonials = () => {
 
   const carouselItems = renderCarouselItems(ITEMS_SETTINGS);
   return (
-    <section className="testimonials">
+    <section className="testimonials" id="feedback">
       <div className="bg-section-spray-big" />
       <div className="container">
         <div className="testimonials__wrapper">
@@ -117,10 +121,11 @@ export const Testimonials = () => {
           </p>
         </div>
         <hr className="h-line" />
-
-        <swiper-container ref={swiperRef} init="false">
-          {carouselItems}
-        </swiper-container>
+        <div className="testimonials-swiper-wrapper">
+          <swiper-container ref={swiperRef} init="false">
+            {carouselItems}
+          </swiper-container>
+        </div>
       </div>
     </section>
   );

@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import Skeleton from "@mui/material/Skeleton";
 
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-
-import Spinner from "../spinner/Spinner";
-import { useSelector } from "react-redux";
 
 export const CurrencyItemSelect = () => {
   const coin = useSelector((state) => state.currencies.singleCurrency);
@@ -69,5 +68,5 @@ export const CurrencyItemSelect = () => {
     );
   };
 
-  return coin ? renderSelect(coin) : <Spinner />;
+  return coin ? renderSelect(coin) : <Skeleton variant="rounded" animation="wave" width={"100%"} height={61} />;
 };

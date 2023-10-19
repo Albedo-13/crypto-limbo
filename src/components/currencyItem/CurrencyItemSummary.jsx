@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
+
+import Skeleton from "@mui/material/Skeleton";
+
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import Spinner from "../spinner/Spinner";
 
 export const CurrencyItemSummary = () => {
   const coin = useSelector((state) => state.currencies.singleCurrency);
@@ -53,5 +55,5 @@ export const CurrencyItemSummary = () => {
     );
   };
 
-  return coin ? renderSummary(coin) : <Spinner />;
+  return coin ? renderSummary(coin) : <Skeleton variant="rounded" animation="wave" width={"100%"} height={61} />;
 };

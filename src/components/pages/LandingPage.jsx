@@ -6,7 +6,7 @@ import { MarketTrends } from "../marketTrends/MarketTrends";
 import { SimpleStep } from "../simpleStep/SimpleStep";
 import { WhyChooseUs } from "../whyChooseUs/WhyChooseUs";
 import { Testimonials } from "../testimonials/Testimonials";
-import { FrequentlyAskedQuestions } from "../FrequentlyAskedQuestions/FrequentlyAskedQuestions";
+import { FrequentlyAskedQuestions } from "../frequentlyAskedQuestions/FrequentlyAskedQuestions";
 import { DownloadApp } from "../downloadApp/DownloadApp";
 import { Footer } from "../footer/Footer";
 
@@ -15,7 +15,6 @@ export const LandingPage = () => {
     <>
       <Helmet>
         <title>Crypto Limbo</title>
-        <link rel="preload" as="image" href="./src/assets/images/notebook.webp" />
       </Helmet>
 
       <Header />
@@ -29,8 +28,6 @@ export const LandingPage = () => {
         <FrequentlyAskedQuestions />
       </main>
       <Footer />
-      {/* //! remove bottom block on production */}
-      <div style={{ minHeight: 250, backgroundColor: "gray" }} />
     </>
   );
 };

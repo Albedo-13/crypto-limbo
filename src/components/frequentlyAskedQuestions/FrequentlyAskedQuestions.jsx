@@ -84,7 +84,7 @@ export const FrequentlyAskedQuestions = () => {
 
   const accordions = renderAccordionItems(ACCORDION_ITEMS_SETTINGS);
   return (
-    <section className="faq" id="FrequentlyAskedQuestions">
+    <section className="faq" id="frequently-asked-questions">
       <div className="bg-section-spray-small" />
       <div className="container">
         <h2 className="faq__title">Frequently Asked Questions</h2>

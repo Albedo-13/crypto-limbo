@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Helmet } from "react-helmet";
 
+import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
@@ -22,9 +22,8 @@ export const SignUp = (props) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(signupSchema) });
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     navigate("/");
-    console.log("SignUp submitting", data);
   };
 
   return (
@@ -33,7 +32,7 @@ export const SignUp = (props) => {
         <title>Sign Up | Crypto Limbo</title>
       </Helmet>
 
-      <h2 className="entry__title">Sign Up</h2>
+      <h1 className="entry__title">Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <div className="entry-form__wrapper">
           <div className="entry-form__wrapper-left">

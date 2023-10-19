@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 import NorthEastIcon from "@mui/icons-material/NorthEast";
+import Skeleton from "@mui/material/Skeleton";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
-import Spinner from "../spinner/Spinner";
 
 import "./welcome.scss";
 import notebook from "../../assets/images/notebook.webp";
@@ -39,13 +39,17 @@ export const Welcome = () => {
   };
 
   const marketItemsList =
-    currencies.loadingStatus === "loading" ? <Spinner /> : renderMarket(currencies.data.slice(0, 7));
+    currencies.loadingStatus === "loading" ? (
+      <Skeleton variant="rounded" animation="wave" width={"100%"} height={80} />
+    ) : (
+      renderMarket(currencies.data.slice(0, 7))
+    );
   return (
     <section className="welcome">
       <div className="container">
         <div className="welcome__wrapper">
           <div className="welcome__wrapper-left">
-            <h1 className="welcome__name h-line_small-blue">Crypto Brains</h1>
+            <h1 className="welcome__name h-line_small-blue">Crypto Limbo</h1>
             <h2 className="welcome__title">Buy & Sell Crypto Easy With Crypto Limbo</h2>
             <hr className="h-line_dotted" />
             <p className="welcome__subtitle">

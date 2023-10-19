@@ -35,6 +35,7 @@ export const currenciesSlice = createSlice({
       })
 
       .addCase(fetchCurrency.pending, (state) => {
+        state.singleCurrency = null;
         state.loadingStatus = "loading";
       })
       .addCase(fetchCurrency.fulfilled, (state, action) => {

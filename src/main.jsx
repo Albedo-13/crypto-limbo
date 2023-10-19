@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material/styles";
 
 import App from "./components/app/App.jsx";
 import { store } from "./store/store.js";
 
 import "./styles/index.scss";
 
-import { ThemeProvider } from "@mui/material/styles";
 import theme from "./styles/muiTheme.js";
 
 console.log(
@@ -23,14 +23,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 //! Landing Page (and general)
-// TODO: Link to NavLink in Header and Footer to color and disable active pages
+
 // TODO: error boundaries. replace unloaded block with image / errored skeleton
-// TODO?: skeleton on loading?
-// TODO: react-helmet (try to preload images only on landing page)
-// TODO: transitions (react transition group)
-// TODO: backdrop on React.lazy -> Suspense loading (https://mui.com/material-ui/react-backdrop/)
-// TODO: update footer & header links (check all links, no # routes)
-// TODO: mobile adaptation
-// TODO: sprays change width & height %'s on adapt screen sizes
+// TODO: test skeletons on mobile adaptation
+// TODO: mobile adaptation, sprays change width & height %'s on adapt screen sizes
 // TODO: explore a11y, adapt for screen readers
-// TODO: reduce bundle size with CurrencyItem lazy loading (https://legacy.reactjs.org/docs/code-splitting.html#avoiding-fallbacks)
+// TODO: reduce bundle size (vite console advices)

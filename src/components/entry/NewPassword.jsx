@@ -2,20 +2,20 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
 import { newPasswordSchema } from "../../utils/validationSchemas";
 
-// TODO: block ability to go to new password creation using address field
-// (redirect on 1st if trying to go to 2nd. save email in Redux store?)
-
 export const NewPassword = (props) => {
   const { passwordIcon, passwordRef, togglePasswordVisibility } = props;
   const navigate = useNavigate();
+  const username = useSelector((state) => state.entry.username);
 
   const {
     handleSubmit,
@@ -23,9 +23,15 @@ export const NewPassword = (props) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(newPasswordSchema) });
 
-  const onSubmit = (data) => {
+  useEffect(() => {
+    if (!username) {
+      navigate("/forgot-password");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onSubmit = () => {
     navigate("/");
-    console.log("NewPassword submitting", data);
   };
 
   return (
@@ -34,7 +40,7 @@ export const NewPassword = (props) => {
         <title>Create new password | Crypto Limbo</title>
       </Helmet>
 
-      <h2 className="entry__title">Forgot Password</h2>
+      <h1 className="entry__title">Forgot Password</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
         <input className="hidden" name="username" autoComplete="username" type="text" defaultValue="user@example.com" />
         <InputLabel classes={{ root: "label-text" }} htmlFor="create-new-pwd">

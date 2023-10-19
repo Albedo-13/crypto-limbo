@@ -4,7 +4,7 @@ import { createBrowserRouter, Route, RouterProvider, Routes, Navigate } from "re
 
 import { ScrollToTop } from "../../utils/ScrollToTop";
 import { fetchCurrencies } from "../../slices/currenciesSlice";
-import { LandingPage, MarketPage, EntryPage, CurrencyItemPage } from "../pages";
+import { LandingPage, MarketPage, EntryPage, CurrencyItemPage, RoadMapPage, ReferralPage } from "../pages";
 import { SignUp } from "../entry/SignUp";
 import { Login } from "../entry/Login";
 import { ForgotPassword } from "../entry/ForgotPassword";
@@ -31,7 +31,9 @@ function Root() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/market" element={<MarketPage />} />
-        <Route path="/market/:id" element={<CurrencyItemPage />} errorElement={<LandingPage />} />
+        <Route path="/market/:id" element={<CurrencyItemPage />} />
+        <Route path="/road-map" element={<RoadMapPage />} />
+        <Route path="/referral" element={<ReferralPage />} />
         <Route path="/login" element={<EntryPage component={Login} />} />
         <Route path="/signup" element={<EntryPage component={SignUp} />} />
         <Route path="/forgot-password" element={<EntryPage component={ForgotPassword} />} />

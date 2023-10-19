@@ -1,0 +1,75 @@
+@import "../../styles/_variables.scss";
+
+.refer-stats {
+  padding: 136px 0 60px 0;
+
+  &_centered {
+    text-align: center;
+  }
+
+  &__title {
+    position: relative;
+    color: $primary-blue;
+    font-size: 24px;
+    font-weight: 600;
+    display: inline-block;
+  }
+
+  &__subtitle {
+    margin-top: 10px;
+    font-size: 84px;
+    font-weight: 600;
+    line-height: 1.36;
+    letter-spacing: -1px;
+  }
+
+  &__text {
+    color: $grey-6;
+    line-height: 28px;
+    width: 75%;
+    margin: 20px auto 0px auto;
+  }
+
+  &__img {
+    max-width: 843px;
+    height: 100%;
+    margin: 80px auto 0 auto;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  }
+
+  &-info {
+    background-color: $bg-card;
+    padding: 40px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-item {
+    &__value {
+      color: $white;
+      font-size: 58px;
+      font-weight: 700;
+
+      &::after {
+        content: " +";
+      }
+    }
+
+    &__label {
+      color: $grey-4;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 36px;
+      margin-top: 13px;
+    }
+  }
+}
