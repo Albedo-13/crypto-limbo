@@ -24,7 +24,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 //! Landing Page (and general)
 
-// TODO: error boundaries. replace unloaded block with image / errored skeleton
 // TODO: test skeletons on mobile adaptation
 // TODO: mobile adaptation, sprays change width & height %'s on adapt screen sizes
 // TODO: explore a11y, adapt for screen readers
