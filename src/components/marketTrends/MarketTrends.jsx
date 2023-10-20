@@ -3,18 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
-import { Button } from "@mui/material";
+import { Button, Skeleton } from "@mui/material";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 
 import "./marketTrends.scss";
 
-import {
-  activeFilterChanged,
-  filteredCurrenciesChanged,
-  fetchDefi,
-  fetchMetaverse,
-} from "../../slices/filtersSlice";
-
+import { activeFilterChanged, filteredCurrenciesChanged, fetchDefi, fetchMetaverse } from "../../slices/filtersSlice";
 import Spinner from "../spinner/Spinner";
 import { MarketTrendsItem } from "./MarketTrendsItem";
 
@@ -70,14 +64,21 @@ export const MarketTrends = () => {
     });
   };
 
-  const marketFiltersList = renderFilters(filters);
-  const marketItemsList =
-    currencies.loadingStatus === "loading" || filters.loadingStatus === "loading" ? (
-      <Spinner size={280} />
-    ) : (
-      renderMarketCards(filters)
-    );
+  const renderDecider = (loadingStatus) => {
+    switch (loadingStatus) {
+      case "idle":
+        return renderMarketCards(filters);
+      case "loading":
+        return <Spinner size={280} />;
+      case "error":
+        return <Skeleton variant="rounded" animation={false} width={"100%"} height={390} />;
+      default:
+        throw new Error("Wrong loading status");
+    }
+  };
 
+  const marketFiltersList = renderFilters(filters);
+  const marketItemsList = renderDecider(currencies.loadingStatus);
   return (
     <section className="market-trends">
       <div className="container">

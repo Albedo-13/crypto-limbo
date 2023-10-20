@@ -38,12 +38,19 @@ export const Welcome = () => {
     });
   };
 
-  const marketItemsList =
-    currencies.loadingStatus === "loading" ? (
-      <Skeleton variant="rounded" animation="wave" width={"100%"} height={80} />
-    ) : (
-      renderMarket(currencies.data.slice(0, 7))
-    );
+  const renderDecider = (loadingStatus) => {
+    switch (loadingStatus) {
+      case "idle":
+        return renderMarket(currencies.data.slice(0, 7));
+      case "loading":
+      case "error":
+        return <Skeleton variant="rounded" animation={false} width={"100%"} height={80} />;
+      default:
+        throw new Error("Wrong loading status");
+    }
+  };
+
+  const marketItemsList = renderDecider(currencies.loadingStatus);
   return (
     <section className="welcome">
       <div className="container">
@@ -75,7 +82,7 @@ export const Welcome = () => {
                 }}
                 variant="outlined"
                 component={HashLink}
-                to="/#simpleStep"
+                to="/#start-trading"
               >
                 Beginner's Guide
               </Button>

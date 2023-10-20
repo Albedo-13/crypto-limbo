@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 
+import Skeleton from "@mui/material/Skeleton";
+
 import "./marketTrends.scss";
 import Spinner from "../spinner/Spinner";
 import { MarketTrendsItem } from "./MarketTrendsItem";
@@ -14,9 +16,20 @@ export const FeaturedCoins = () => {
     });
   };
 
-  const marketItemsList =
-    currencies.loadingStatus === "loading" ? <Spinner size={280} /> : renderMarketCards(currencies);
+  const renderDecider = (loadingStatus) => {
+    switch (loadingStatus) {
+      case "idle":
+        return renderMarketCards(currencies);
+      case "loading":
+        return <Spinner size={280} />;
+      case "error":
+        return <Skeleton variant="rounded" animation={false} width={"100%"} height={390} />;
+      default:
+        throw new Error("Wrong loading status");
+    }
+  };
 
+  const marketItemsList = renderDecider(currencies.loadingStatus);
   return (
     <section className="market-trends">
       <div className="container">
