@@ -10,7 +10,7 @@ import downloadApp from "../../assets/images/downloadApp.webp";
 export const DownloadApp = () => {
   return (
     <section className="download-app" id="download-app">
-      <div className="container_overflow-hidden">
+      <div className="container container_overflow-hidden">
         <div className="download-app__wrapper">
           <div className="download-app__wrapper-left">
             <h2 className="download-app__title">Never Miss Trading, Download Our Application</h2>

@@ -27,9 +27,6 @@
 }
 
 .container_overflow-hidden {
-  max-width: 1590px;
-  margin: 0 auto;
-  position: relative;
   overflow: hidden;
 }
 
@@ -66,4 +63,10 @@ p {
 .active {
   color: $primary-blue-dark;
   pointer-events: none;
+}
+
+@media (max-width: 1622px) {
+  .container {
+    padding: 0 16px;
+  }
 }

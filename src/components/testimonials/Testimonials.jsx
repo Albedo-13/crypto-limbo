@@ -58,8 +58,19 @@ export const Testimonials = () => {
     const swiperContainer = ref.current;
     const params = {
       pagination: { clickable: true },
-      slidesPerView: "2.4",
+      slidesPerView: 2.4,
       spaceBetween: 30,
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        1350: {
+          slidesPerView: 2,
+        },
+        1590: {
+          slidesPerView: 2.4,
+        },
+      },
       injectStyles: [
         `
         .swiper {
