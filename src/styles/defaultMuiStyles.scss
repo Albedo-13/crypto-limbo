@@ -63,11 +63,14 @@
   &.button-header-login {
     width: 140px;
     padding: 13px 26px;
-    margin-right: 10px;
   }
   &.button-header-signup {
     width: 140px;
     padding: 13px 26px;
+  }
+
+  &.mui-button-text_grey4 {
+    color: $grey-4;
   }
 }
 

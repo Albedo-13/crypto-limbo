@@ -5,6 +5,11 @@
   background-color: $bg-card;
   padding: 32px 0;
 
+  &__buttons {
+    display: flex;
+    gap: 10px;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: space-between;
@@ -42,4 +47,22 @@
       text-decoration: underline;
     }
   }
+
+  &-burger {
+    display: none;
+  }
 }
+
+@media (max-width: 1023px) {
+  .header {
+    border-radius: 0 0 10px 10px;
+    border-bottom: 1px solid rgba($color: $white, $alpha: .1);
+
+    &-burger {
+      display: flex;
+      gap: 15px;
+    }
+  }
+}
+
+// burger appears with rotation (https://stackoverflow.com/questions/6652476/how-can-i-set-a-rotation-point-for-an-element-in-css)

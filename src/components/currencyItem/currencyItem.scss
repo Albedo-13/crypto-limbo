@@ -258,11 +258,7 @@
 @media (max-width: 1350px) {
   .currency-item {
     &-wrapper {
-      // background-color: red;
-      // grid-auto-flow: column;
-      // grid-auto-flow: revert;
-    grid-template-columns: 100%;
-      
+      grid-template-columns: 100%;
     }
   }
 
