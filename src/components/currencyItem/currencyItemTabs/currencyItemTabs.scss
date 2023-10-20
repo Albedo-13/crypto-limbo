@@ -136,6 +136,7 @@
     &__btn-group {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 24px;
       margin-top: 20px;
 
@@ -162,6 +163,20 @@
       &_right {
         right: 0;
         bottom: -25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1350px) {
+  .buy-sell {
+    &-form {
+      &__wrapper {
+        flex-direction: column;
+      }
+
+      &__btn-group {
+        gap: 10px;
       }
     }
   }
