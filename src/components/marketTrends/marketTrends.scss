@@ -4,7 +4,7 @@
   padding: 129px 0 120px 0;
 
   &__title {
-    font-size: 58px;
+    font-size: clamp(42px, 5vw, 58px);
     font-weight: 700;
   }
 
@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    row-gap: 15px;
   }
 
   &__filters {

@@ -7,7 +7,7 @@
   min-height: 796px;
 
   &__title {
-    font-size: 58px;
+    font-size: clamp(42px, 5vw, 58px);
     font-weight: 700;
     text-align: center;
     line-height: normal;
@@ -34,3 +34,13 @@
   }
 }
 
+@media (max-width: 1023px) {
+  .faq {
+    padding: 60px 0;
+
+    &-accordions {
+      margin-top: 40px;
+      flex-direction: column;
+    }
+  }
+}
