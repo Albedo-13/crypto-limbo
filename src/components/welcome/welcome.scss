@@ -19,6 +19,7 @@
 
   &__name {
     position: relative;
+    display: inline-block;
     color: $primary-blue;
     font-size: 24px;
     font-weight: 600;
@@ -29,7 +30,7 @@
 
   &__title {
     color: $primary-white;
-    font-size: 92px;
+    font-size: clamp(38px, 10vw, 92px);
     font-weight: 700;
     line-height: 1.39;
     letter-spacing: 0.25px;
@@ -51,6 +52,10 @@
 
   &__buttons {
     margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
   }
 
   &-market {
@@ -97,6 +102,69 @@
         &::before {
           content: "$ ";
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .welcome {
+    padding-top: 70px;
+
+    &__wrapper {
+      flex-direction: column-reverse;
+
+      &-left,
+      &-right {
+        width: auto;
+      }
+
+      &-left {
+        text-align: center;
+      }
+    }
+
+    &__name {
+      margin-top: 40px;
+    }
+
+    &__title {
+      margin-bottom: 16px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+    }
+
+    &__buttons {
+      flex-direction: column;
+
+      .MuiButtonBase-root.MuiButton-root {
+        width: 350px;
+      }
+    }
+
+    &-market {
+      display: none;
+    }
+
+    .MuiButtonBase-root.MuiButton-root {
+      &.MuiButton-outlined {
+        background-color: $white;
+        color: $primary-blue;
+        &:hover {
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .welcome {
+    &__buttons {
+      .MuiButtonBase-root.MuiButton-root {
+        width: 100%;
       }
     }
   }

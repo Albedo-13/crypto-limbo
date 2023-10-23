@@ -43,3 +43,9 @@
 .spray_dark {
   box-shadow: 0px 0px 15em 15em $bg-card;
 }
+
+@media (max-width: 1023px) {
+  .bg-img-spray_round {
+    box-shadow: 0px 0px 7em 7em $bg-blur-1;
+  }
+}

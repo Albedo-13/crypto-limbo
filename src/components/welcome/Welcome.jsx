@@ -17,7 +17,7 @@ export const Welcome = () => {
   const currencies = useSelector((state) => state.currencies);
 
   const renderMarket = (currencies) => {
-    return currencies.map((currency) => {
+    return currencies.map((currency, i) => {
       const { priceChangeStyle, TrendingIcon } = trendingPriceChange(currency.price_change_percentage_24h);
 
       return (
@@ -32,7 +32,7 @@ export const Welcome = () => {
             </div>
             <div className="welcome-market-item__current-price">{formatDigit(currency.current_price)}</div>
           </div>
-          <div className="v-line_grey" />
+          {i + 1 < currencies.length ? <div className="v-line_grey" /> : null}
         </React.Fragment>
       );
     });
@@ -67,7 +67,6 @@ export const Welcome = () => {
               <Button
                 sx={{
                   width: 200,
-                  marginRight: "30px",
                 }}
                 variant="contained"
                 endIcon={<NorthEastIcon size="small" />}

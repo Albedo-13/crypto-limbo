@@ -20,11 +20,13 @@
 
   &-items {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 5px;
     margin-top: 60px;
     min-height: 394px;
+
+    flex: 0 1 auto;
   }
 
   &-item {
@@ -111,5 +113,25 @@
 
   &__header-wrapper {
     text-align: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .market-trends {
+    &__header-wrapper {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .market-trends {
+    &__header-wrapper {
+      text-align: center;
+    }
+
+    &__filters {
+      margin-top: 20px;
+    }
   }
 }
