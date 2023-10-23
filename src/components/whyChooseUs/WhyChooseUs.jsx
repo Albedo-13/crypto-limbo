@@ -67,7 +67,7 @@ export const WhyChooseUs = () => {
     <section className="why-choose-us">
       <div className="bg-section-spray-small" />
       <div className="container">
-        <h2 className="why-choose-us__title">Why Choose Crypto Brains ?</h2>
+        <h2 className="why-choose-us__title">Why Choose Crypto Limbo ?</h2>
         <p className="why-choose-us__subtitle">
           The speed and simplicity of the interface, regular 24/7 support, adapted to mobile devices. All this makes
           Crypto Limbo stand out among its analogues!

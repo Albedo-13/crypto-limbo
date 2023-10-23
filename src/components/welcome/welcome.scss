@@ -53,7 +53,6 @@
   &__buttons {
     margin-top: 80px;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 30px;
   }
@@ -138,10 +137,7 @@
 
     &__buttons {
       flex-direction: column;
-
-      .MuiButtonBase-root.MuiButton-root {
-        width: 350px;
-      }
+      justify-content: center;
     }
 
     &-market {
@@ -160,12 +156,3 @@
   }
 }
 
-@media (max-width: 767px) {
-  .welcome {
-    &__buttons {
-      .MuiButtonBase-root.MuiButton-root {
-        width: 100%;
-      }
-    }
-  }
-}

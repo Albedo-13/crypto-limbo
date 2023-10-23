@@ -20,18 +20,16 @@
 
   &-items {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 15px;
     margin-top: 60px;
     min-height: 394px;
-
-    flex: 0 1 auto;
   }
 
   &-item {
     width: 180px;
-    height: 310px;
+    min-height: 310px;
     padding: 40px 30px;
 
     color: $white;
@@ -41,6 +39,7 @@
     text-align: center;
     text-decoration: none;
     transition: 0.35s all;
+
 
     &:hover {
       box-shadow: 0px 0px 20px 10px $bg-card;
@@ -116,10 +115,27 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1589px) {
   .market-trends {
+    &-item {
+      flex: 1 0 21%;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .market-trends {
+    padding: 60px 0;
     &__header-wrapper {
       flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .market-trends {
+    &-items {
+      margin-top: 40px;
     }
   }
 }

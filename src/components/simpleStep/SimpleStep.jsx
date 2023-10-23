@@ -60,7 +60,8 @@ export const SimpleStep = () => {
         <div className="w65pr">
           <h2 className="simple-step__title">Start Trading In Simple Process</h2>
           <p className="simple-step__subtitle">
-          Go through a couple of simple steps: Sign up, Verifying, Adding wallet. It takes just a few minutes and then you can start trading with Crypto Limbo - one of the largest cryptocurrency exchanges in the world
+            Go through a couple of simple steps: Sign up, Verifying, Adding wallet. It takes just a few minutes and then
+            you can start trading with Crypto Limbo - one of the largest cryptocurrency exchanges in the world
           </p>
         </div>
         <hr className="h-line" />

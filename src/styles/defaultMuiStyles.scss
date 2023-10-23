@@ -74,6 +74,18 @@
   }
 }
 
+@media (max-width: 1023px) {
+  .MuiButtonBase-root.MuiButton-root {
+    width: 350px;
+  }
+}
+
+@media (max-width: 767px) {
+  .MuiButtonBase-root.MuiButton-root {
+    width: 100%;
+  }
+}
+
 // ACCORDION
 .MuiPaper-root.MuiAccordion-root {
   background-image: none;
@@ -103,7 +115,7 @@
 }
 
 .MuiButtonBase-root.MuiAccordionSummary-root {
-  height: 78px;
+  min-height: 78px;
   .MuiTypography-root {
     font-size: 24px;
   }

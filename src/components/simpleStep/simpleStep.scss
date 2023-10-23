@@ -7,7 +7,7 @@
 
   &__title {
     text-align: center;
-    font-size: 58px;
+    font-size: clamp(42px, 10vw, 58px);
     margin-top: 6px;
   }
 
@@ -32,7 +32,7 @@
     padding: 60px 30px;
     border-radius: 10px;
     text-align: center;
-    max-width: 315px;
+    width: 315px;
 
     &__icon {
       display: flex;
@@ -62,4 +62,38 @@
 .w65pr {
   max-width: 65%;
   margin: 0 auto;
+}
+
+@media (max-width: 1589px) {
+  .simple-step {
+    &-item {
+      flex: 1 0 42%;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .simple-step {
+    padding: 60px 0;
+
+    &__subtitle {
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    &-items {
+      margin-top: 40px;
+    }
+
+    &-item {
+      .MuiButtonBase-root.MuiButton-root {
+        background-color: $primary-blue;
+      }
+    }
+  }
+
+  .w65pr {
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }
