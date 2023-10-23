@@ -19,7 +19,7 @@
 
   &-logo {
     position: relative;
-    
+
     &__link {
       display: block;
       height: 46px;
@@ -53,16 +53,86 @@
   }
 }
 
+.mobile-nav {
+  display: none;
+}
+
 @media (max-width: 1023px) {
   .header {
+    position: relative;
     border-radius: 0 0 10px 10px;
-    border-bottom: 1px solid rgba($color: $white, $alpha: .1);
+    border-bottom: 1px solid rgba($color: $white, $alpha: 0.1);
+
+    &-logo {
+      &::after {
+        display: none;
+      }
+
+      &__link {
+        height: 40px;
+      }
+    }
 
     &-burger {
       display: flex;
-      gap: 15px;
+      gap: 10px;
+    }
+
+    &-nav-mobile-hidden {
+      display: none;
+    }
+
+    &__list {
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        padding: 20px 5px;
+      }
+    }
+
+    &__buttons {
+      margin-top: 15px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mobile-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100vw;
+      height: 100vh;
+      border-radius: 10px;
+      z-index: 100;
+      transform-origin: top right;
+      transform: rotate(90deg);
+      transition: 0.5s ease-in-out;
+      background-color: rgba($color: $black, $alpha: 0.75);
+      opacity: 0;
+
+      &__wrapper {
+        position: relative;
+        background-color: $bg-card;
+        padding: 35px 0;
+        width: calc(100% - 50px);
+        border-radius: 4px;
+      }
+
+      &-active {
+        transform: rotate(0deg);
+        transition: 0.5s ease-out;
+        opacity: 1;
+      }
+
+      &__close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
     }
   }
 }
-
-// burger appears with rotation (https://stackoverflow.com/questions/6652476/how-can-i-set-a-rotation-point-for-an-element-in-css)
