@@ -10,7 +10,7 @@ import characterWorkingAngled from "../../assets/images/characterWorkingAngled.w
 const ITEMS_SETTINGS = [
   {
     id: 1,
-    title: "Easy And Secure Trading With CryptoBrains",
+    title: "Easy And Secure Trading With Crypto Limbo",
     descriptions: [
       "Start your trading journey now and learn more about the exciting world of cryptocurrencies.",
       'Once upon a time, in New York City in 1941... at this club open to all comers to play, night after night, at a club named "Minston\'s Play House" in Harlem, they play jazz sessions competing with each other. Young jazz men with a new sense are gathering. At last they created a new genre itself. They are sick and tired of the conventional fixed style jazz. They\'re eager to play jazz more freely as they wish then... in 2071 in the universe... The bounty hunters, who are gathering in the spaceship "BEBOP", will play freely without fear of risky things. They must create new dreams and films by breaking traditional styles. The work, which becomes a new genre itself, will be called...',

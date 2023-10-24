@@ -6,7 +6,8 @@
 
   &__title {
     color: $white;
-    font-size: 58px;
+    font-size: clamp(42px, 5vw, 58px);
+    font-weight: 600;
   }
 
   &__subtitle {
@@ -15,5 +16,11 @@
     line-height: 28px;
     width: 75%;
     margin: 30px auto 0 auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .referral-link {
+    padding: 60px 0;
   }
 }

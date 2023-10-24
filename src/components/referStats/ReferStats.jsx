@@ -43,22 +43,18 @@ export const ReferStats = () => {
       <div className="container">
         <div className="refer-stats_centered">
           <h1 className="refer-stats__title h-line_small-blue">Crypto Limbo</h1>
-          <h2 className="refer-stats__subtitle">
-            Poster Can Be One of The Effective Marketing and Advertising Materials.
-          </h2>
+          <h2 className="refer-stats__subtitle">Invite your friends and both will receive generous bonuses</h2>
           <p className="refer-stats__text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque repellendus odio libero dolore cupiditate
-            deserunt vero eos nam temporibus officiis quos eveniet maiores deleniti dolor praesentium, a iste accusamus
-            est!
+            Invite your friend to join the Crypto Limbo community and earn exciting bonuses together. By sharing your
+            knowledge and experiences, you can both navigate this dynamic industry and unlock new opportunities for
+            financial growth.
           </p>
         </div>
         <div className="refer-stats__img">
           <div className="bg-section-spray-small" />
           <img src={characterWorkingFront} alt="working character like it" />
         </div>
-        <div className="refer-stats-info">
-          {referStatsItems}
-        </div>
+        <div className="refer-stats-info">{referStatsItems}</div>
       </div>
     </section>
   );

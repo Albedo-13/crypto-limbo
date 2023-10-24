@@ -31,7 +31,7 @@
 
     &__title {
       color: $white;
-      font-size: 58px;
+      font-size: clamp(42px, 5vw, 58px);
       font-weight: 600;
       margin-top: 20px;
     }
@@ -46,4 +46,31 @@
 
 .refer-why-us-swiper-wrapper {
   width: 50%;
+}
+
+@media (max-width: 1023px) {
+  .refer-why-us {
+    padding: 60px 0;
+
+    &-wrapper {
+      flex-direction: column-reverse;
+      row-gap: 40px;
+      text-align: center;
+    }
+
+    &__img {
+      margin: 0;
+      width: 75%;
+      position: relative;
+      left: -10%;
+    }
+
+    .bg-img-spray_round {
+      left: 60%;
+    }
+  }
+
+  .refer-why-us-swiper-wrapper {
+    width: 85%;
+  }
 }

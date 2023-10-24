@@ -52,7 +52,7 @@ export const Footer = () => {
         <hr className="h-line" />
         <div className="footer-links">
           <div className="footer-links__block">
-            <div className="footer-links__label">Crypto Brains</div>
+            <div className="footer-links__label">Crypto Limbo</div>
             <div className="footer-links__link">
               <Link to="/">Home</Link>
             </div>

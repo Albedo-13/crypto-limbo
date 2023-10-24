@@ -17,7 +17,7 @@
 
   &__subtitle {
     margin-top: 10px;
-    font-size: 84px;
+    font-size: clamp(48px, 5vw, 84px);
     font-weight: 600;
     line-height: 1.36;
     letter-spacing: -1px;
@@ -55,7 +55,7 @@
   &-item {
     &__value {
       color: $white;
-      font-size: 58px;
+      font-size: clamp(32px, 5vw, 58px);
       font-weight: 700;
 
       &::after {
@@ -65,11 +65,28 @@
 
     &__label {
       color: $grey-4;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 400;
+      font-size: clamp(16px, 5vw, 24px);
       line-height: 36px;
       margin-top: 13px;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .refer-stats {
+    padding: 60px 0;
+
+    &__img {
+      margin-top: 40px;
+    }
+
+    &-info {
+      flex-direction: column;
+      text-align: center;
+
+      .v-line_grey {
+        transform: rotate(90deg);
+      }
     }
   }
 }
