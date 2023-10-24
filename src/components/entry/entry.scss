@@ -196,3 +196,87 @@
     font-size: 16px;
   }
 }
+
+@media (max-width: 1350px) {
+  .entry {
+    padding: 20px 0;
+
+    &__title {
+      margin-bottom: 25px;
+    }
+
+    &__wrapper {
+      margin-bottom: 20px;
+
+      &-right,
+      &-left {
+        width: 50%;
+      }
+    }
+
+    &-form {
+      &__terms {
+        margin-top: 35px;
+      }
+    }
+
+    &-change-entry {
+      margin-top: 20px;
+    }
+
+    &__copyright {
+      text-align: center;
+    }
+
+    &__password-recover {
+      margin-top: 25px;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .entry {
+    &__wrapper {
+      justify-content: center;
+
+      &-left {
+        width: auto;
+        min-width: 75%;
+      }
+
+      &-right {
+        display: none;
+      }
+    }
+
+    &-form {
+      &__terms {
+        margin-top: 50 px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .entry {
+    &-form {
+      &__wrapper {
+        flex-direction: column;
+        row-gap: 25px;
+
+        &-left,
+        &-right {
+          width: 100%;
+        }
+      }
+
+      &__terms {
+        margin-top: 45px;
+      }
+    }
+
+    .MuiButtonBase-root.MuiButton-root[type=submit] {
+      margin-top: 35px;
+    }
+  }
+}

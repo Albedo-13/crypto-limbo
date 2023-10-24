@@ -127,7 +127,7 @@ export const SignUp = (props) => {
         </div>
         <div className="entry-form__helper">
           {errors.password?.message ?? (
-            <div className="entry-form__password-hint">Password must be at least 8 characters</div>
+            <div className="entry-form__password-hint">At least 8 characters</div>
           )}
         </div>
         <div className="entry-form__terms mui-checkbox-terms">

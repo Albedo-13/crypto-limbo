@@ -72,7 +72,7 @@ export const NewPassword = (props) => {
         </div>
         <div className="entry-form__helper">
           {errors.newPassword?.message ?? (
-            <div className="entry-form__password-hint">Password must be at least 8 characters</div>
+            <div className="entry-form__password-hint">At least 8 characters</div>
           )}
         </div>
 
@@ -99,7 +99,7 @@ export const NewPassword = (props) => {
           variant="contained"
           type="submit"
         >
-          Submit Code
+          Create Password
         </Button>
       </form>
     </>

@@ -68,9 +68,9 @@ export const newPasswordSchema = yup
     newPassword: yup
       .string()
       .required("Field is required")
-      .min(8, "Password must be at least 8 characters")
+      .min(8, "At least 8 characters")
       .max(32, "Must be max 32 characters")
-      .test("isContainLettersValidation", "Requires both lower & upper case letter", (value) => {
+      .test("isContainLettersValidation", "Requires lower & upper case letters", (value) => {
         return validatePasswordLetters(value);
       })
       .test("isContainDigitValidation", "Requires at least 1 digit", (value) => {
