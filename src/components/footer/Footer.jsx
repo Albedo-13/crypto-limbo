@@ -10,6 +10,33 @@ import linkedin from "../../assets/icons/socials/linkedin.svg";
 import youtube from "../../assets/icons/socials/youtube.svg";
 
 export const Footer = () => {
+  const renderFooterSocials = (isHiddenOnMobile) => {
+    return (
+      <>
+        <div className="footer-socials">
+          <Link target="_blank" to="https://discord.com/" className="footer-social__link">
+            <img src={discord} alt="discord link" />
+          </Link>
+          <Link target="_blank" to="https://telegram.org/" className="footer-social__link">
+            <img src={telegram} alt="telegram link" />
+          </Link>
+          <Link target="_blank" to="https://www.instagram.com/" className="footer-social__link">
+            <img src={instagram} alt="instagram link" />
+          </Link>
+          <Link target="_blank" to="https://www.linkedin.com/" className="footer-social__link">
+            <img src={linkedin} alt="linkedin link" />
+          </Link>
+          <Link target="_blank" to="https://www.youtube.com/" className="footer-social__link">
+            <img src={youtube} alt="youtube link" />
+          </Link>
+        </div>
+        {isHiddenOnMobile ? <hr className="h-line" /> : null}
+      </>
+    );
+  };
+
+  const footerSocialsDesktop = renderFooterSocials(false);
+  const footerSocialsMobile = renderFooterSocials(true);
   return (
     <footer className="footer">
       <div className="bg-section-spray-big" />
@@ -20,23 +47,7 @@ export const Footer = () => {
               <img className="footer-logo__img undraggable" src={logo} alt="footer logo" />
             </Link>
           </div>
-          <div className="footer-socials">
-            <Link target="_blank" to="https://discord.com/" className="footer-social__link">
-              <img src={discord} alt="discord link" />
-            </Link>
-            <Link target="_blank" to="https://telegram.org/" className="footer-social__link">
-              <img src={telegram} alt="telegram link" />
-            </Link>
-            <Link target="_blank" to="https://www.instagram.com/" className="footer-social__link">
-              <img src={instagram} alt="instagram link" />
-            </Link>
-            <Link target="_blank" to="https://www.linkedin.com/" className="footer-social__link">
-              <img src={linkedin} alt="linkedin link" />
-            </Link>
-            <Link target="_blank" to="https://www.youtube.com/" className="footer-social__link">
-              <img src={youtube} alt="youtube link" />
-            </Link>
-          </div>
+          <div className="footer-desktop-socials">{footerSocialsDesktop}</div>
         </div>
         <hr className="h-line" />
         <div className="footer-links">
@@ -131,12 +142,13 @@ export const Footer = () => {
           </div>
         </div>
         <hr className="h-line" />
+        <div className="footer-mobile-socials">{footerSocialsMobile}</div>
         <div className="footer-other">
-          <div className="footer-other__text">©Copyright 2022 All Rights Are Reserved.</div>
+          <span className="footer-other__text footer-other__copyright">©Copyright 2023 All Rights Are Reserved.</span>
           <div className="footer-other__dot" />
-          <div className="footer-other__text">Privacy Policy</div>
+          <span className="footer-other__text">Privacy Policy</span>
           <div className="footer-other__dot" />
-          <div className="footer-other__text">Terms of Use</div>
+          <span className="footer-other__text">Terms of Use</span>
         </div>
       </div>
     </footer>

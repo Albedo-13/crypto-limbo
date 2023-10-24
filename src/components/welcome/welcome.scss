@@ -132,12 +132,14 @@
     }
 
     &__subtitle {
+      line-height: 28px;
       font-size: 18px;
     }
 
     &__buttons {
       flex-direction: column;
       justify-content: center;
+      margin-top: 20px;
     }
 
     &-market {

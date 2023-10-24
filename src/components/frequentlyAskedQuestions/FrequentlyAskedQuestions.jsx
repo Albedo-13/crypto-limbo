@@ -61,8 +61,8 @@ const ACCORDION_ITEMS_SETTINGS = {
 export const FrequentlyAskedQuestions = () => {
   const [expanded, setExpanded] = useState(null);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(() => (isExpanded ? panel : false));
+  const handleChange = (panel) => (_, isExpanded) => {
+    setExpanded(() => (isExpanded ? panel : null));
   };
 
   const renderAccordionItems = (items) => {

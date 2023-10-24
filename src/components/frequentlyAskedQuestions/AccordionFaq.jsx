@@ -6,7 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 
 export const AccordionFaq = ({ item, handleChange, expanded }) => {
   return (
-    <Accordion expanded={expanded === `accordion${item.id}`} onChange={handleChange(`accordion${item.id}`)}>
+    <Accordion expanded={expanded === `accordion-${item.id}`} onChange={handleChange(`accordion-${item.id}`)}>
       <AccordionSummary expandIcon={<AddIcon />}>
         <Typography>{item.summary}</Typography>
       </AccordionSummary>

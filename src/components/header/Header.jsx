@@ -65,7 +65,7 @@ export const Header = () => {
     setIsBurgerMenuOpen(false);
   };
 
-  const headerLinksMonitor = renderHeaderLinks(true);
+  const headerLinksDesktop = renderHeaderLinks(true);
   const headerLinksMobile = renderHeaderLinks(false);
   const mobileNavStyles = classNames("mobile-nav", { "mobile-nav-active": isBurgerMenuOpen });
 
@@ -78,7 +78,7 @@ export const Header = () => {
               <img className="header-logo__img undraggable" src={logo} alt="crypto limbo logo" />
             </Link>
           </div>
-          {headerLinksMonitor}
+          {headerLinksDesktop}
           <div className="header-burger">
             <Button className="mui-button-text_grey4" variant="text" component={Link} to="/signup">
               Sign Up

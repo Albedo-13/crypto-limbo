@@ -79,6 +79,12 @@
     &__wrapper {
       margin-top: 40px;
     }
+
+    &-item {
+      &__wrapper {
+        max-width: 85%;
+      }
+    }
   }
 }
 
