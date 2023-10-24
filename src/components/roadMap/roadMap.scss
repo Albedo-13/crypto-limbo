@@ -6,7 +6,7 @@
   &-title {
     text-align: center;
     color: $white;
-    font-size: 58px;
+    font-size: clamp(42px, 5vw, 58px);
     font-weight: 600;
   }
 
@@ -106,5 +106,17 @@
         gap: 20px;
       }
     }
+  }
+}
+
+@media (max-width: 1023px) {
+  .roadmap {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .roadmap {
+    // TODO: убрать точку и заменить датой
   }
 }
