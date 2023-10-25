@@ -62,6 +62,7 @@
     position: relative;
     border-radius: 0 0 10px 10px;
     border-bottom: 1px solid rgba($color: $white, $alpha: 0.1);
+    padding: 10px 0;
 
     &-logo {
       &::after {
