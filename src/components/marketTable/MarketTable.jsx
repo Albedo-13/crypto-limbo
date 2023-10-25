@@ -24,42 +24,49 @@ const HEAD_CELLS = [
     alignRight: false,
     disablePadding: true,
     label: "Coin Name",
+    hideOnMobile: false,
   },
   {
     id: "current_price",
     alignRight: true,
     disablePadding: false,
     label: "Price",
+    hideOnMobile: true,
   },
   {
     id: "price_change_percentage_24h",
     alignRight: true,
     disablePadding: false,
     label: "24h Change",
+    hideOnMobile: false,
   },
   {
     id: "total_volume",
     alignRight: true,
     disablePadding: false,
     label: "24h Volume",
+    hideOnMobile: false,
   },
   {
     id: "high_24h",
     alignRight: true,
     disablePadding: false,
     label: "24h High",
+    hideOnMobile: true,
   },
   {
     id: "market_cap",
     alignRight: true,
     disablePadding: false,
     label: "Market Cap",
+    hideOnMobile: true,
   },
   {
     id: "action",
     alignRight: true,
     disablePadding: false,
     label: "Action",
+    hideOnMobile: true,
   },
 ];
 
@@ -77,9 +84,14 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
           checkedIcon={<BookmarkIcon />}
           inputProps={{ "aria-label": "watchlist bookmark" }}
         />
-        {row.name} / {row.symbol.toUpperCase()}
+        <Link className="market-table__name-link" to={`/market/${row.id}`}>{row.name} / {row.symbol.toUpperCase()}</Link>
       </TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
+      <TableCell
+        sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}
+        className="table__dollar-prefix"
+      >
+        {formatDigit(row.current_price)}
+      </TableCell>
       <TableCell>
         <div className={`${priceChangeStyle} table__change table__percent-postfix`}>
           {TrendingIcon}
@@ -87,9 +99,19 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
         </div>
       </TableCell>
       <TableCell className="table__dollar-prefix">{formatDigit(row.total_volume)}</TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.market_cap)}</TableCell>
-      <TableCell>
+      <TableCell
+        sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}
+        className="table__dollar-prefix"
+      >
+        {formatDigit(row.high_24h)}
+      </TableCell>
+      <TableCell
+        sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}
+        className="table__dollar-prefix"
+      >
+        {formatDigit(row.market_cap)}
+      </TableCell>
+      <TableCell sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}>
         <Link className="table__currency-link" to={`/market/${row.id}`}>
           Trade
         </Link>
@@ -117,7 +139,7 @@ export const MarketTable = () => {
       <div className="container">
         <EnhancedTableToolbar bookmarksList={bookmarks} searchParam={search} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper} className="mui-table">
-          <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
+          <Table aria-label="enhanced table">
             <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
             <TableBody>
               {sortedDataRows.map((row) => (

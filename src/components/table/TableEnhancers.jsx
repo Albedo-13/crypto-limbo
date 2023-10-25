@@ -47,6 +47,7 @@ export const EnhancedTableHead = ({ headCells, order, orderBy, onOrder }) => {
             align={headCell.alignRight ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
+            sx={{ "display": headCell.hideOnMobile ? { mobile: "none", tablet: "none", laptop: "table-cell" } : "table-cell" }}
           >
             <TableSortLabel
               active={orderBy === headCell.id}

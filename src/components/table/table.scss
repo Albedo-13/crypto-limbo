@@ -24,12 +24,16 @@
   }
 
   &__dollar-prefix {
+    white-space: nowrap;
+
     &::before {
       content: "$ ";
     }
   }
 
   &__percent-postfix {
+    white-space: nowrap;
+
     &::after {
       content: " %";
     }
@@ -117,4 +121,12 @@
 
 .MuiPaper-root.MuiTableContainer-root {
   box-shadow: none;
+}
+
+@media (max-width: 767px) {
+  .mui-searchbar {
+    .MuiInputBase-root {
+      width: 100%;
+    }
+  }
 }
