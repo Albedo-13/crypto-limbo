@@ -7,6 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import IconButton from "@mui/material/IconButton";
 
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -84,7 +86,9 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
           checkedIcon={<BookmarkIcon />}
           inputProps={{ "aria-label": "watchlist bookmark" }}
         />
-        <Link className="market-table__name-link" to={`/market/${row.id}`}>{row.name} / {row.symbol.toUpperCase()}</Link>
+        <Link className="market-table__name-link" to={`/market/${row.id}`}>
+          {row.name} / {row.symbol.toUpperCase()}
+        </Link>
       </TableCell>
       <TableCell
         sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}
@@ -137,6 +141,12 @@ export const MarketTable = () => {
   return (
     <section className="market-table">
       <div className="container">
+        <div className="market-table-mobile">
+          <IconButton className="market-table-mobile__back" component={Link} to={`/`}>
+            <ArrowBackIcon />
+          </IconButton>
+          <h2 className="market-table-mobile__title">Market Overview</h2>
+        </div>
         <EnhancedTableToolbar bookmarksList={bookmarks} searchParam={search} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper} className="mui-table">
           <Table aria-label="enhanced table">

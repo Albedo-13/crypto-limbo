@@ -31,7 +31,7 @@ export const FeaturedCoins = () => {
 
   const marketItemsList = renderDecider(currencies.loadingStatus);
   return (
-    <section className="market-trends">
+    <section className="market-trends featured-coins">
       <div className="container">
         <div className="featured-coins__header-wrapper">
           <h1 className="featured-coins__title">Featured Coins</h1>

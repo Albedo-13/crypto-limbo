@@ -41,7 +41,6 @@
     text-decoration: none;
     transition: 0.35s all;
 
-
     &:hover {
       box-shadow: 0px 0px 20px 10px $bg-card;
       transition: 0.35s all;
@@ -138,6 +137,10 @@
     &-items {
       margin-top: 40px;
     }
+  }
+
+  .featured-coins {
+    display: none;
   }
 }
 
