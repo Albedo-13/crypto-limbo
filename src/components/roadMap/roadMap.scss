@@ -29,6 +29,7 @@
     }
 
     &-aside {
+      position: relative;
       writing-mode: vertical-lr;
       transform: rotate(180deg);
       color: $primary-blue;
@@ -37,7 +38,7 @@
         width: 2px;
         height: 100%;
 
-        span.line {
+        .line {
           display: flex;
           gap: 30px;
           width: 2px;
@@ -79,7 +80,7 @@
       &-year {
         margin-left: 55px;
         text-align: center;
-        font-size: 46px;
+        font-size: clamp(32px, 5vw, 46px);
         font-weight: 600;
       }
     }
@@ -117,6 +118,35 @@
 
 @media (max-width: 767px) {
   .roadmap {
-    // TODO: убрать точку и заменить датой
+    padding-left: 15px;
+    
+    &-item {
+      gap: 30px;
+
+      &-aside {
+        &-year {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        &-line {
+          .line {
+            justify-content: space-between;
+
+            &::before,
+            &::after {
+              height: calc(50% - 50px);
+            }
+          }
+
+          .circle {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }
