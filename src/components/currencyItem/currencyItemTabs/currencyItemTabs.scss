@@ -142,7 +142,7 @@
 
       .MuiButtonBase-root.MuiButton-root {
         padding: 13px 26px;
-        width: 72px;
+        width: 65px;
         height: 30px;
       }
 
@@ -171,13 +171,37 @@
 @media (max-width: 1350px) {
   .buy-sell {
     &-form {
-      &__wrapper {
+      text-align: center;
+
+      &__wrapper:first-of-type {
         flex-direction: column;
       }
 
       &__btn-group {
         gap: 10px;
       }
+    }
+
+    &-tabs {
+      .buy-sell {
+        &-form {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    &-summary {
+      // background-color: red;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .buy-sell {
+    &__wrapper {
+      flex-direction: column;
+      align-items: center;
     }
   }
 }
