@@ -4,25 +4,6 @@
   padding-bottom: 120px;
   position: relative;
 
-  &-mobile {
-    display: none;
-
-    &__title {
-      text-align: center;
-      font-size: 26px;
-      font-weight: 600;
-      padding-top: 20px;
-    }
-
-    &__back {
-      &.MuiButtonBase-root.MuiIconButton-root {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-      }
-    }
-  }
-
   .table-watchlist {
     justify-content: center;
 
@@ -44,10 +25,6 @@
 @media (max-width: 1023px) {
   .market-table {
     padding-bottom: 60px;
-
-    &-mobile {
-      display: block;
-    }
 
     .container {
       padding: 0 10px;
@@ -96,15 +73,6 @@
           &:first-child {
             text-align: center;
           }
-        }
-      }
-    }
-
-    &-mobile {
-      &__back {
-        &.MuiButtonBase-root.MuiIconButton-root {
-          top: 15px;
-          left: 5px;
         }
       }
     }

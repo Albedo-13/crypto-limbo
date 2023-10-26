@@ -2,7 +2,7 @@
 
 .currency-item {
   padding: 24px 0 30px 0;
-  
+
   &-wrapper {
     display: grid;
     grid-template-columns: 5fr 1fr;
@@ -260,6 +260,27 @@
   }
 }
 
+.market-overview {
+  &-mobile {
+    display: none;
+
+    &__title {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+      padding-top: 20px;
+    }
+
+    &__back {
+      &.MuiButtonBase-root.MuiIconButton-root {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+      }
+    }
+  }
+}
+
 @media (max-width: 1350px) {
   .currency-item {
     &-wrapper {
@@ -276,10 +297,53 @@
   .currency-item {
     &-mobile-summary {
       display: block;
+
+      &__img {
+        width: 48px;
+        height: auto;
+
+        img {
+          vertical-align: middle;
+        }
+      }
+
+      &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-inner {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+      }
+
+      &__label {
+        color: $grey-8;
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 8px;
+      }
+
+      &__stats {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      &__change {
+        display: flex;
+      }
     }
 
     &-graph {
+      background-color: transparent;
+
       &-toolbar {
+        background-color: $bg-card;
+        border-radius: 0px;
+
         .MuiButtonBase-root.MuiButton-root {
           width: auto;
         }
@@ -288,7 +352,6 @@
 
     &-wrapper__header {
       grid-template-columns: 100%;
-      background-color: red;
 
       .MuiInputBase-root.MuiOutlinedInput-root {
         display: none;
@@ -298,10 +361,24 @@
         display: none;
       }
     }
+  }
 
-    
+  .market-overview {
+    &-mobile {
+      display: block;
+    }
   }
 }
 
-// TODO: починить побочный эффект двойного скелетона (из-за grid-template-columns: 100%)
-// с фоном все нормально, работает как должен
+@media (max-width: 375px) {
+  .market-overview {
+    &-mobile {
+      &__back {
+        &.MuiButtonBase-root.MuiIconButton-root {
+          top: 15px;
+          left: 5px;
+        }
+      }
+    }
+  }
+}

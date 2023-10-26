@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { CurrencyItemSelect } from "./CurrencyItemSelect";
 import { CurrencyItemSummary } from "./CurrencyItemSummary";
-// import { CurrencyItemMobileSummary } from "./currencyItemTabs/CurrencyItemMobileSummary";
 import { CurrencyItemGraph } from "./CurrencyItemGraph";
 import { CurrencyItemTabs } from "./currencyItemTabs/CurrencyItemTabs";
 import { CurrencyItemOrders } from "./CurrencyItemOrders";
@@ -15,10 +18,15 @@ export const CurrencyItem = () => {
       <div className="container">
         <div className="currency-item-wrapper">
           <div className="currency-item-wrapper__main">
+          <div className="market-overview-mobile">
+          <IconButton className="market-overview-mobile__back" component={Link} to={`/market`}>
+            <ArrowBackIcon />
+          </IconButton>
+          <h2 className="market-overview-mobile__title">Market Overview</h2>
+        </div>
             <div className="currency-item-wrapper__header">
               <CurrencyItemSelect />
               <CurrencyItemSummary />
-              {/* <CurrencyItemMobileSummary /> */}
             </div>
             <CurrencyItemGraph />
             <div className="currency-item-tabs">

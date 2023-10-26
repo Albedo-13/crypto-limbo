@@ -141,11 +141,11 @@ export const MarketTable = () => {
   return (
     <section className="market-table">
       <div className="container">
-        <div className="market-table-mobile">
-          <IconButton className="market-table-mobile__back" component={Link} to={`/`}>
+        <div className="market-overview-mobile">
+          <IconButton className="market-overview-mobile__back" component={Link} to={`/`}>
             <ArrowBackIcon />
           </IconButton>
-          <h2 className="market-table-mobile__title">Market Overview</h2>
+          <h2 className="market-overview-mobile__title">Market Overview</h2>
         </div>
         <EnhancedTableToolbar bookmarksList={bookmarks} searchParam={search} onSearch={handleSearchDebounced} />
         <TableContainer component={Paper} className="mui-table">

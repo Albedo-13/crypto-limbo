@@ -67,5 +67,5 @@ export const CurrencyItemTabs = () => {
     );
   };
 
-  return coin ? renderItemTabs(coin) : <Skeleton variant="rounded" animation="wave" width={"100%"} height={79} />;
+  return coin ? renderItemTabs() : <Skeleton variant="rounded" animation="wave" width={"100%"} height={79} />;
 };

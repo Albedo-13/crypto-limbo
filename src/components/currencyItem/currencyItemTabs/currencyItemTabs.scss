@@ -190,10 +190,6 @@
         }
       }
     }
-
-    &-summary {
-      // background-color: red;
-    }
   }
 }
 
@@ -202,6 +198,26 @@
     &__wrapper {
       flex-direction: column;
       align-items: center;
+    }
+
+    &-form {
+      background-color: $bg-card;
+    }
+  }
+
+  .currency-item-tabs {
+    .mui-tabs {
+      &-header {
+        // background-color: transparent;
+        // border-top-left-radius: 4px;
+        // border-top-right-radius: 4px;
+        // position: absolute; //!
+        
+      }
+
+      &-panel {
+        background-color: transparent;
+      }
     }
   }
 }

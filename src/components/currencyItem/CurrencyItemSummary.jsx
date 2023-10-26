@@ -1,12 +1,18 @@
 import { useSelector } from "react-redux";
 
 import Skeleton from "@mui/material/Skeleton";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import Checkbox from "@mui/material/Checkbox";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 import { formatDigit, formatPercentage } from "../../utils/utils";
+import { useTable } from "../../hooks/table.hook";
 
 export const CurrencyItemSummary = () => {
   const coin = useSelector((state) => state.currencies.singleCurrency);
+  const { isBookmarkChecked, handleCheck } = useTable("currencies");
+  const bookmark = isBookmarkChecked(coin?.id);
   const { priceChangeStyle, TrendingIcon } = trendingPriceChange(coin?.market_data.price_change_percentage_24h);
 
   const renderSummary = (coin) => {
@@ -54,7 +60,33 @@ export const CurrencyItemSummary = () => {
           </div>
         </div>
         <div className="currency-item-mobile-summary">
-          test!
+          <div className="currency-item-mobile-summary__wrapper">
+            <div className="currency-item-mobile-summary__wrapper-inner">
+              <div className="currency-item-mobile-summary__img">
+                <img src={coin.image.small} alt={coin.id} />
+              </div>
+              <div>
+                <div className="currency-item-mobile-summary__label">Current Value of Coin</div>
+                <div className="currency-item-mobile-summary__stats">
+                  <div className="table__dollar-prefix">{formatDigit(volume24h)}</div>
+                  <div className={`${priceChangeStyle} currency-item-mobile-summary__change table__percent-postfix`}>
+                    {TrendingIcon}
+                    {formatPercentage(coin.market_data.price_change_percentage_24h)}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="currency-item-mobile-summary__bookmark">
+              <Checkbox
+                className="mui-checkbox-bookmark"
+                onChange={(e) => handleCheck(e, coin)}
+                checked={bookmark}
+                icon={<BookmarkBorderIcon />}
+                checkedIcon={<BookmarkIcon />}
+                inputProps={{ "aria-label": "watchlist bookmark" }}
+              />
+            </div>
+          </div>
         </div>
       </>
     );
