@@ -76,11 +76,15 @@ const WatchlistTableTabRow = ({ row }) => {
           {formatPercentage(row.price_change_percentage_24h)}
         </div>
       </TableCell>
-      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
-      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">{formatDigit(row.low_24h)}</TableCell>
+      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">
+        {formatDigit(row.high_24h)}
+      </TableCell>
+      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">
+        {formatDigit(row.low_24h)}
+      </TableCell>
       <TableCell sx={hideOnMobileStyle}>
         <NavLink
-          className={({ isActive }) => classNames("table__currency-link", { "active": isActive })}
+          className={({ isActive }) => classNames("table__currency-link", { active: isActive })}
           to={`/market/${row.id}`}
         >
           Trade

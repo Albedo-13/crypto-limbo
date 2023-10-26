@@ -72,6 +72,7 @@ export const DefaultTableHead = ({ headCells }) => {
             key={headCell.id}
             align={headCell.alignRight ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
+            sx={{ "display": headCell.hideOnMobile ? { mobile: "none", tablet: "none", laptop: "table-cell" } : "table-cell" }}
           >
             {headCell.label}
           </TableCell>
