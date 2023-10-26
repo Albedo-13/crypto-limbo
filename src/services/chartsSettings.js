@@ -64,26 +64,40 @@ export const detailedChartConfig = {
 
 export const sparklineChartConfig = {
   options: {
+    events: [],
     responsive: true,
     plugins: {
       legend: {
         display: false,
       },
     },
+    scales: {
+      x: {
+        ticks: {
+          display: false,
+        },
+      },
+      y: {
+        ticks: {
+          display: false,
+        },
+      },
+    },
   },
   createChartData: (currency) => {
-    const labels = ["24h ago", "Now"];
-
+    const sparklineArray = currency.sparkline_in_7d.price ?? [];
+    const labels = sparklineArray.map((_, i) => i);
+    
     return {
       labels,
       datasets: [
         {
           label: "Cost in $",
-          data: [currency.current_price - currency.price_change_24h, currency.current_price],
+          data: sparklineArray.map((price) => price),
           borderColor: currency.price_change_24h >= 0 ? `${colors.success}80` : `${colors.error}80`,
           backgroundColor: currency.price_change_24h >= 0 ? `${colors.success}b3` : `${colors.error}b3`,
-          pointRadius: 8,
-          pointHoverRadius: 10,
+          pointRadius: 0,
+          pointHoverRadius: 0,
         },
       ],
     };
