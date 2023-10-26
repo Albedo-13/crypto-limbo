@@ -51,7 +51,7 @@ const HEAD_CELLS = [
   },
 ];
 
-const PortfolioTabRow = ({ row }) => {
+const PortfolioTableTabRow = ({ row }) => {
   const data = useSelector((state) => state.currencies.data.find((currency) => currency.id === row.coinId));
   const returnProfit = ((data.current_price - row.transaction_price) * row.quantity).toFixed(2);
   const avgPrice24h = formatDigit((data.high_24h + data.low_24h) / 2);
@@ -78,7 +78,7 @@ const PortfolioTabRow = ({ row }) => {
   );
 };
 
-export const PortfolioTab = () => {
+export const PortfolioTableTab = () => {
   const { sortedDataRows } = useTable("portfolio");
 
   return (
@@ -87,7 +87,7 @@ export const PortfolioTab = () => {
         <DefaultTableHead headCells={HEAD_CELLS} />
         <TableBody>
           {sortedDataRows.map((row) => (
-            <PortfolioTabRow key={row.id} row={row} />
+            <PortfolioTableTabRow key={row.id} row={row} />
           ))}
         </TableBody>
       </Table>

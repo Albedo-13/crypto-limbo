@@ -8,7 +8,7 @@ import Skeleton from "@mui/material/Skeleton";
 
 import { BuySellTab } from "./BuySellTab";
 import { WatchlistTableTab } from "./WatchlistTableTab";
-import { PortfolioTab } from "./PortfolioTab";
+import { PortfolioTableTab } from "./PortfolioTableTab";
 
 import "./currencyItemTabs.scss";
 
@@ -61,7 +61,7 @@ export const CurrencyItemTabs = () => {
           <WatchlistTableTab />
         </TabPanel>
         <TabPanel className={"mui-tabs-panel"} value={value} index={2}>
-          <PortfolioTab />
+          <PortfolioTableTab />
         </TabPanel>
       </Box>
     );
