@@ -67,7 +67,12 @@ const WatchlistTableTabRow = ({ row }) => {
         <div className="table__image">
           <img className="undraggable" src={row.image} alt={row.name} />
         </div>
-        {row.name} / {row.symbol.toUpperCase()}
+        <NavLink
+          className={({ isActive }) => classNames("mui-table-link", { active: isActive })}
+          to={`/market/${row.id}`}
+        >
+          {row.name} / {row.symbol.toUpperCase()}
+        </NavLink>
       </TableCell>
       <TableCell className="table__dollar-prefix">{formatDigit(row.current_price)}</TableCell>
       <TableCell>

@@ -11,15 +11,6 @@
       width: auto;
     }
   }
-
-  &__name-link {
-    text-decoration: none;
-    color: $white;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 
 @media (max-width: 1023px) {

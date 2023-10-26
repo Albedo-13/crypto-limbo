@@ -1,4 +1,6 @@
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import classNames from "classnames";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -69,7 +71,12 @@ const PortfolioTableTabRow = ({ row }) => {
         <div className="table__image">
           <img className="undraggable" src={row.image} alt={row.name} />
         </div>
-        {row.name} / {row.symbol.toUpperCase()}
+        <NavLink
+          className={({ isActive }) => classNames("mui-table-link", { active: isActive })}
+          to={`/market/${row.coinId}`}
+        >
+          {row.name} / {row.symbol.toUpperCase()}
+        </NavLink>
       </TableCell>
       <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">
         {row.price}

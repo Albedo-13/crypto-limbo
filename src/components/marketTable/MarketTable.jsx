@@ -86,7 +86,7 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
           checkedIcon={<BookmarkIcon />}
           inputProps={{ "aria-label": "watchlist bookmark" }}
         />
-        <Link className="market-table__name-link" to={`/market/${row.id}`}>
+        <Link className="mui-table-link" to={`/market/${row.id}`}>
           {row.name} / {row.symbol.toUpperCase()}
         </Link>
       </TableCell>
