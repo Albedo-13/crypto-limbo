@@ -295,6 +295,7 @@
 
 @media (max-width: 1023px) {
   .currency-item {
+    padding-top: 0;
     &-mobile-summary {
       display: block;
 
@@ -370,7 +371,7 @@
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) {
   .market-overview {
     &-mobile {
       &__back {

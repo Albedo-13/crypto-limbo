@@ -14,7 +14,7 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 import { trendingPriceChange } from "../../utils/TrendingPriceChange";
-import { formatDigit, formatPercentage } from "../../utils/utils";
+import { formatDigit, formatPercentage, hideOnMobileStyle } from "../../utils/utils";
 import { EnhancedTableToolbar, EnhancedTableHead } from "../table/TableEnhancers";
 
 import "./marketTable.scss";
@@ -90,10 +90,7 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
           {row.name} / {row.symbol.toUpperCase()}
         </Link>
       </TableCell>
-      <TableCell
-        sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}
-        className="table__dollar-prefix"
-      >
+      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">
         {formatDigit(row.current_price)}
       </TableCell>
       <TableCell>
@@ -103,19 +100,13 @@ const MarketTableRow = ({ row, onCheck, isChecked }) => {
         </div>
       </TableCell>
       <TableCell className="table__dollar-prefix">{formatDigit(row.total_volume)}</TableCell>
-      <TableCell
-        sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}
-        className="table__dollar-prefix"
-      >
+      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">
         {formatDigit(row.high_24h)}
       </TableCell>
-      <TableCell
-        sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}
-        className="table__dollar-prefix"
-      >
+      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">
         {formatDigit(row.market_cap)}
       </TableCell>
-      <TableCell sx={{ display: { mobile: "none", tablet: "none", laptop: "table-cell" } }}>
+      <TableCell sx={hideOnMobileStyle}>
         <Link className="table__currency-link" to={`/market/${row.id}`}>
           Trade
         </Link>

@@ -43,3 +43,5 @@ export const unixTimestampToDate = (timestamp) => {
 
   return new Date(timestamp).toLocaleString("en-GB", options);
 }
+
+export const hideOnMobileStyle = { display: { mobile: "none", tablet: "none", laptop: "table-cell" } };

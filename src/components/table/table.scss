@@ -123,6 +123,29 @@
   box-shadow: none;
 }
 
+@media (max-width: 1023px) {
+  .mui-table {
+    .MuiTable-root {
+      border-collapse: separate;
+      border-spacing: 0px 10px;
+    }
+
+    &.MuiPaper-root.MuiTableContainer-root {
+      .MuiTableRow-root {
+        .MuiTableCell-root {
+          padding: 14px 10px;
+        }
+      }
+    }
+
+    .MuiTableBody-root {
+      .MuiTableRow-root {
+        background-color: $bg-card;
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .mui-searchbar {
     .MuiInputBase-root {
@@ -133,6 +156,26 @@
   .table {
     &-watchlist {
       max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .mui-table {
+    &.MuiPaper-root.MuiTableContainer-root {
+      .MuiTableRow-root {
+        .MuiTableCell-root {
+          padding: 14px 3px;
+
+          &:first-child {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .table-cell.MuiTableCell-root {
+      gap: 5px;
     }
   }
 }

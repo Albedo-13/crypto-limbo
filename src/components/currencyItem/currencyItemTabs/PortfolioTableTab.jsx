@@ -83,7 +83,7 @@ export const PortfolioTableTab = () => {
 
   return (
     <TableContainer component={Paper} className="mui-table">
-      <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
+      <Table aria-label="enhanced table">
         <DefaultTableHead headCells={HEAD_CELLS} />
         <TableBody>
           {sortedDataRows.map((row) => (

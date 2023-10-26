@@ -30,11 +30,6 @@
       padding: 0 10px;
     }
 
-    .MuiTable-root {
-      border-collapse: separate;
-      border-spacing: 0px 10px;
-    }
-
     .MuiToolbar-root {
       flex-direction: column-reverse;
       row-gap: 20px;
@@ -43,38 +38,8 @@
       margin: 20px 0;
     }
 
-    .MuiTableBody-root {
-      .MuiTableRow-root {
-        background-color: $bg-card;
-      }
-    }
-
-    .MuiPaper-root.MuiTableContainer-root {
-      .MuiTableRow-root {
-        .MuiTableCell-root {
-          padding: 14px 10px;
-        }
-      }
-    }
-
     .bg-section-spray-small {
       display: none;
-    }
-  }
-}
-
-@media (max-width: 375px) {
-  .market-table {
-    .MuiPaper-root.MuiTableContainer-root {
-      .MuiTableRow-root {
-        .MuiTableCell-root {
-          padding: 14px 3px;
-
-          &:first-child {
-            text-align: center;
-          }
-        }
-      }
     }
   }
 }

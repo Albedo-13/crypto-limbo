@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import classNames from "classnames";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,10 +9,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 import { trendingPriceChange } from "../../../utils/TrendingPriceChange";
-import { formatDigit, formatPercentage } from "../../../utils/utils";
+import { formatDigit, formatPercentage, hideOnMobileStyle } from "../../../utils/utils";
 import { EnhancedTableHead } from "../../table/TableEnhancers";
 import { useTable } from "../../../hooks/table.hook";
-import classNames from "classnames";
 
 const HEAD_CELLS = [
   {
@@ -19,36 +19,42 @@ const HEAD_CELLS = [
     alignRight: false,
     disablePadding: true,
     label: "Coin Name",
+    hideOnMobile: false,
   },
   {
     id: "current_price",
     alignRight: true,
     disablePadding: false,
     label: "Price",
+    hideOnMobile: false,
   },
   {
     id: "price_change_percentage_24h",
     alignRight: true,
     disablePadding: false,
     label: "24h Change",
+    hideOnMobile: false,
   },
   {
     id: "high_24h",
     alignRight: true,
     disablePadding: false,
     label: "24h High",
+    hideOnMobile: true,
   },
   {
     id: "low_24h",
     alignRight: true,
     disablePadding: false,
     label: "24h Low",
+    hideOnMobile: true,
   },
   {
     id: "action",
     alignRight: true,
     disablePadding: false,
     label: "Action",
+    hideOnMobile: true,
   },
 ];
 
@@ -70,9 +76,9 @@ const WatchlistTableTabRow = ({ row }) => {
           {formatPercentage(row.price_change_percentage_24h)}
         </div>
       </TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
-      <TableCell className="table__dollar-prefix">{formatDigit(row.low_24h)}</TableCell>
-      <TableCell>
+      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">{formatDigit(row.high_24h)}</TableCell>
+      <TableCell sx={hideOnMobileStyle} className="table__dollar-prefix">{formatDigit(row.low_24h)}</TableCell>
+      <TableCell sx={hideOnMobileStyle}>
         <NavLink
           className={({ isActive }) => classNames("table__currency-link", { "active": isActive })}
           to={`/market/${row.id}`}
@@ -89,7 +95,7 @@ export const WatchlistTableTab = () => {
 
   return (
     <TableContainer component={Paper} className="mui-table">
-      <Table sx={{ minWidth: 650 }} aria-label="enhanced table">
+      <Table aria-label="enhanced table">
         <EnhancedTableHead headCells={HEAD_CELLS} order={order} orderBy={orderBy} onOrder={handleOrderDebounced} />
         <TableBody>
           {sortedDataRows.map((row) =>

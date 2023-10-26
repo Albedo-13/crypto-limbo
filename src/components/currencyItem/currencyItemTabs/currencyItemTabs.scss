@@ -207,6 +207,7 @@
 
   .currency-item-tabs {
     .mui-tabs {
+
       &-header {
         // background-color: transparent;
         // border-top-left-radius: 4px;
@@ -217,6 +218,10 @@
 
       &-panel {
         background-color: transparent;
+
+        .MuiBox-root {
+          padding: 10px 0;
+        }
       }
     }
   }
