@@ -344,9 +344,14 @@
       &-toolbar {
         background-color: $bg-card;
         border-radius: 0px;
+        padding: 0;
 
         .MuiButtonBase-root.MuiButton-root {
           width: auto;
+        }
+
+        .MuiButtonBase-root.MuiIconButton-root {
+          display: none;
         }
       }
     }
@@ -383,3 +388,10 @@
     }
   }
 }
+
+// gap=0 на 787 и меньше мб 425 актуально
+// padding=5,8 кнопок фильтров
+// .currency-item-mobile-summary__wrapper-inner на 1023, изменить гап на 4px на 425 мб
+// ВСЕ ДОЛЖНО ЦИВИЛЬНО СМОТРЕТЬСЯ НА 320W
+// формы покупки и продажи, width 100% хз на каком разрешении
+// вырвать в абсолют табы, засунуть в три точки как в хедере
