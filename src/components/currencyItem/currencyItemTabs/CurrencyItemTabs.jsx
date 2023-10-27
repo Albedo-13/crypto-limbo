@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Skeleton from "@mui/material/Skeleton";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { BuySellTab } from "./BuySellTab";
 import { WatchlistTableTab } from "./WatchlistTableTab";
@@ -34,8 +36,6 @@ export const CurrencyItemTabs = ({ handleTabsMenuClickClose, isTabsMenuOpen }) =
   const [value, setValue] = useState(0);
   const coin = useSelector((state) => state.currencies.singleCurrency);
 
-
-
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
@@ -55,7 +55,16 @@ export const CurrencyItemTabs = ({ handleTabsMenuClickClose, isTabsMenuOpen }) =
             <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
             <Tab tabIndex={0} label="Watchlist" {...a11yProps(1)} />
             <Tab tabIndex={0} label="Portfolio" {...a11yProps(2)} />
+            <IconButton
+              className="mui-tabs-header-mobile-active__close"
+              onClick={handleTabsMenuClickClose}
+              aria-label="close"
+              size="large"
+            >
+              <CloseIcon />
+            </IconButton>
           </Tabs>
+
         </Box>
         <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
           <BuySellTab />

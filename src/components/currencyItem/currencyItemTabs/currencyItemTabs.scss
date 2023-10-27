@@ -33,6 +33,10 @@
       bottom: 10px;
     }
   }
+
+  .mui-tabs-header-mobile-active__close {
+    display: none;
+  }
 }
 
 .buy-sell {
@@ -230,9 +234,18 @@
           // opacity: 1;
           // transition: 0.5s ease-in-out;
 
+          &__close {
+            display: block;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+          }
+
           .MuiTabs-root {
             background-color: $bg-card;
+            border-radius: 4px;
             width: 75%;
+            position: relative;
           }
 
           .MuiTabs-flexContainer {
