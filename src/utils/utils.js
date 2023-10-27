@@ -35,10 +35,9 @@ export const unixTimestampToDate = (timestamp) => {
   const options = {
     day: "numeric",
     month: "short",
-    year: "numeric",
+    year: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
-    second: "2-digit",
   };
 
   return new Date(timestamp).toLocaleString("en-GB", options);

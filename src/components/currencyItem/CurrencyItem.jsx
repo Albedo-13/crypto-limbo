@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import { CurrencyItemSelect } from "./CurrencyItemSelect";
 import { CurrencyItemSummary } from "./CurrencyItemSummary";
@@ -23,6 +24,9 @@ export const CurrencyItem = () => {
             <ArrowBackIcon />
           </IconButton>
           <h2 className="market-overview-mobile__title">Market Overview</h2>
+          <IconButton className="market-overview-mobile__more">
+            <MoreVertIcon />
+          </IconButton>
         </div>
             <div className="currency-item-wrapper__header">
               <CurrencyItemSelect />

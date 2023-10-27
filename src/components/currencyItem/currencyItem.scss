@@ -278,6 +278,14 @@
         left: 15px;
       }
     }
+
+    &__more {
+      &.MuiButtonBase-root.MuiIconButton-root {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+    }
   }
 }
 
@@ -295,7 +303,8 @@
 
 @media (max-width: 1023px) {
   .currency-item {
-    padding-top: 0;
+    padding: 0 0 16px;
+
     &-mobile-summary {
       display: block;
 
@@ -304,6 +313,8 @@
         height: auto;
 
         img {
+          width: 100%;
+          height: auto;
           vertical-align: middle;
         }
       }
@@ -385,13 +396,52 @@
           left: 5px;
         }
       }
+
+      &__more {
+        &.MuiButtonBase-root.MuiIconButton-root {
+          top: 15px;
+          right: 5px;
+        }
+      }
+    }
+  }
+
+  .currency-item {
+    &-graph {
+      padding: 20px 0;
+
+      canvas {
+        width: calc(100% - 20px) !important;
+        height: auto !important;
+      }
+
+      &-toolbar {
+        .MuiButtonBase-root.MuiButton-root {
+          padding: 5px 8px;
+        }
+      }
+    }
+
+    &-mobile-summary {
+      display: block;
+
+      &__img {
+        width: 40px;
+      }
+
+      &__wrapper {
+        &-inner {
+          gap: 4px;
+        }
+      }
+
+      &__label {
+        margin-bottom: 2px;
+      }
+
+      &__stats {
+        gap: 5px;
+      }
     }
   }
 }
-
-// gap=0 на 787 и меньше мб 425 актуально
-// padding=5,8 кнопок фильтров
-// .currency-item-mobile-summary__wrapper-inner на 1023, изменить гап на 4px на 425 мб
-// ВСЕ ДОЛЖНО ЦИВИЛЬНО СМОТРЕТЬСЯ НА 320W
-// формы покупки и продажи, width 100% хз на каком разрешении
-// вырвать в абсолют табы, засунуть в три точки как в хедере

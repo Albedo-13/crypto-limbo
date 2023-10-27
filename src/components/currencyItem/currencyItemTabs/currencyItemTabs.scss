@@ -39,6 +39,7 @@
   &__wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 24px;
   }
 
@@ -173,10 +174,6 @@
     &-form {
       text-align: center;
 
-      &__wrapper:first-of-type {
-        flex-direction: column;
-      }
-
       &__btn-group {
         gap: 10px;
       }
@@ -197,31 +194,65 @@
   .buy-sell {
     &__wrapper {
       flex-direction: column;
-      align-items: center;
     }
 
     &-form {
       background-color: $bg-card;
+      width: 90%;
+      padding: 5vw;
+
+      .MuiButtonBase-root.MuiButton-root[type="submit"] {
+        width: 100%;
+      }
     }
   }
 
   .currency-item-tabs {
     .mui-tabs {
-
       &-header {
         // background-color: transparent;
         // border-top-left-radius: 4px;
         // border-top-right-radius: 4px;
-        // position: absolute; //!
-        
+        // z-index: 100;
+        // transform-origin: top right;
+        // transform: rotate(90deg);
+
+        &-mobile-active {
+          position: absolute; //!
+          width: 100vw;
+          height: 100vh;
+          background-color: red;
+          background-color: $bg-card;
+        }
       }
 
       &-panel {
         background-color: transparent;
 
         .MuiBox-root {
-          padding: 10px 0;
+          padding: 0;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 787px) {
+  .currency-item-tabs {
+    .buy-sell-form {
+      &__wrapper:first-of-type {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .currency-item-tabs {
+    .buy-sell-form {
+      &__wrapper:nth-of-type(2) {
+        flex-direction: column;
       }
     }
   }
