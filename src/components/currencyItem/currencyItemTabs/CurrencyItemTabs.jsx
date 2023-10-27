@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import classNames from "classnames";
 
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
@@ -29,9 +30,11 @@ const TabPanel = (props) => {
   );
 };
 
-export const CurrencyItemTabs = () => {
+export const CurrencyItemTabs = ({ handleTabsMenuClickClose, isTabsMenuOpen }) => {
   const [value, setValue] = useState(0);
   const coin = useSelector((state) => state.currencies.singleCurrency);
+
+
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
@@ -46,8 +49,8 @@ export const CurrencyItemTabs = () => {
 
   const renderItemTabs = () => {
     return (
-      <Box className={"mui-tabs"} sx={{ width: "100%" }}>
-        <Box className={"mui-tabs-header"}>
+      <Box className={"mui-tabs"} sx={{ width: "100%" }} onClick={handleTabsMenuClickClose}>
+        <Box className={classNames("mui-tabs-header", { "mui-tabs-header-mobile-active": isTabsMenuOpen })}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
             <Tab tabIndex={0} label="Watchlist" {...a11yProps(1)} />
