@@ -24,6 +24,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 //! Landing Page (and general)
 
-// TODO: merge to adaptation to development, continue in development branch
 // TODO: explore a11y, adapt for screen readers
 // TODO: reduce bundle size (vite console advices)

@@ -28,7 +28,6 @@ export const currenciesSlice = createSlice({
       .addCase(fetchCurrencies.fulfilled, (state, action) => {
         state.data = action.payload;
         state.loadingStatus = "idle";
-        console.log(state.data);
       })
       .addCase(fetchCurrencies.rejected, (state) => {
         state.loadingStatus = "error";
