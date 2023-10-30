@@ -30,6 +30,7 @@ export const SignUp = (props) => {
     <>
       <Helmet>
         <title>Sign Up | Crypto Limbo</title>
+        <meta name="description" content="Sign up with your Crypto Limbo account." />
       </Helmet>
 
       <h1 className="entry__title">Sign Up</h1>

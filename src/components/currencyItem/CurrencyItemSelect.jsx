@@ -61,7 +61,7 @@ export const CurrencyItemSelect = () => {
         }}
         value={coin.id}
         onChange={handleChange}
-        inputProps={{ "aria-label": "Without label" }}
+        inputProps={{ "aria-label": coin.name }}
       >
         {renderMenuItems()}
       </Select>

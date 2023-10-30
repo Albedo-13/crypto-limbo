@@ -27,7 +27,7 @@ export const DownloadApp = () => {
                   fontSize: "18px",
                 }}
                 variant="outlined"
-                startIcon={<img src={appStore} alt="app store" />}
+                startIcon={<img src={appStore} alt="appstore" />}
                 component={Link}
                 to="https://www.apple.com/"
                 target="_blank"

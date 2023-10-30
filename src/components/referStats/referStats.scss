@@ -24,6 +24,8 @@
   }
 
   &__text {
+    font-size: 18px;
+    font-weight: 400;
     color: $grey-6;
     line-height: 28px;
     width: 75%;
@@ -75,6 +77,10 @@
 @media (max-width: 1023px) {
   .refer-stats {
     padding: 60px 0;
+
+    &__subtitle {
+      line-height: 1.2;
+    }
 
     &__img {
       margin-top: 40px;

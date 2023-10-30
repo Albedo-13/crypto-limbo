@@ -12,6 +12,7 @@ export const ReferralPage = () => {
     <>
       <Helmet>
         <title>Referral | Crypto Limbo</title>
+        <meta name="description" content="Invite your friends with referral link and both of your receive generous bonuses with Crypto Limbo" />
       </Helmet>
 
       <Header />

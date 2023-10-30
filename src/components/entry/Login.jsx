@@ -29,6 +29,7 @@ export const Login = (props) => {
     <>
       <Helmet>
         <title>Log In | Crypto Limbo</title>
+        <meta name="description" content="Log in to your Crypto Limbo account." />
       </Helmet>
 
       <h1 className="entry__title">Login</h1>

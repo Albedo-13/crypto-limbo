@@ -24,6 +24,7 @@ export const CurrencyItemPage = () => {
     <>
       <Helmet>
         <title>{coin ? `${coin.name}: price & chart | Crypto Limbo` : `Crypto Limbo`}</title>
+        <meta name="description" content={coin ? `Track the latest ${coin.name} price, market cap, trading volume and more with Crypto Limbo ${coin.symbol} price chart and popular cryptocurrency price tracker` : `Crypto Limbo`} />
       </Helmet>
 
       <Header />

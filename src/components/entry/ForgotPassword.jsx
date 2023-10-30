@@ -43,6 +43,7 @@ export const ForgotPassword = () => {
     <>
       <Helmet>
         <title>Password recovery | Crypto Limbo</title>
+        <meta name="description" content="Forgot your Crypto Limbo account? Recover it now" />
       </Helmet>
 
       <h1 className="entry__title">Forgot Password</h1>

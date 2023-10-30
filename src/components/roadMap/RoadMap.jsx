@@ -100,7 +100,7 @@ export const RoadMap = () => {
     <section className="roadmap">
       <div className="container">
         <h1 className="roadmap-title">Roadmap Journey From 2018 To 2024</h1>
-        <p className="roadmap-subtitle">Step by step we are getting better... and you are with us!</p>
+        <h2 className="roadmap-subtitle">Step by step we are getting better... and you are with us!</h2>
         <hr className="h-line" />
         <div>{roadMapItems}</div>
       </div>

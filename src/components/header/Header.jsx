@@ -83,7 +83,7 @@ export const Header = () => {
             <Button className="mui-button-text_grey4" variant="text" component={Link} to="/signup">
               Sign Up
             </Button>
-            <IconButton onClick={handleBurgerMenuClickOpen} aria-label="expand" size="large">
+            <IconButton onClick={handleBurgerMenuClickOpen} aria-label="expand header modal window" size="large">
               <GridViewOutlinedIcon fontSize="inherit" />
             </IconButton>
           </div>

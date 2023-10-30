@@ -43,12 +43,12 @@ export const ReferStats = () => {
       <div className="container">
         <div className="refer-stats_centered">
           <h1 className="refer-stats__title h-line_small-blue">Crypto Limbo</h1>
-          <h2 className="refer-stats__subtitle">Invite your friends and both will receive generous bonuses</h2>
-          <p className="refer-stats__text">
+          <h2 className="refer-stats__subtitle">Invite your friends and receive generous bonuses</h2>
+          <h3 className="refer-stats__text">
             Invite your friend to join the Crypto Limbo community and earn exciting bonuses together. By sharing your
             knowledge and experiences, you can both navigate this dynamic industry and unlock new opportunities for
             financial growth.
-          </p>
+          </h3>
         </div>
         <div className="refer-stats__img">
           <div className="bg-section-spray-small" />

@@ -10,6 +10,7 @@ export const RoadMapPage = () => {
     <>
       <Helmet>
         <title>Road Map | Crypto Limbo</title>
+        <meta name="description" content="Check our Crypto Limbo development roadmap progress from 2018 to 2024" />
       </Helmet>
 
       <Header />

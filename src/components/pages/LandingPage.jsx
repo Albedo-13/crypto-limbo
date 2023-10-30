@@ -15,6 +15,7 @@ export const LandingPage = () => {
     <>
       <Helmet>
         <title>Crypto Limbo</title>
+        <meta name="description" content="Buy & Sell Crypto Easy With Crypto Limbo - one of the largest cryptocurrency exchanges in the world" />
       </Helmet>
 
       <Header />

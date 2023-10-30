@@ -38,6 +38,7 @@ export const NewPassword = (props) => {
     <>
       <Helmet>
         <title>Create new password | Crypto Limbo</title>
+        <meta name="description" content="Create new password to your new Crypto Limbo account." />
       </Helmet>
 
       <h1 className="entry__title">Forgot Password</h1>

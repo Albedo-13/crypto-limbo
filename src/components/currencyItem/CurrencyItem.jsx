@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import { CurrencyItemSelect } from "./CurrencyItemSelect";
 import { CurrencyItemSummary } from "./CurrencyItemSummary";
@@ -30,11 +30,20 @@ export const CurrencyItem = () => {
         <div className="currency-item-wrapper">
           <div className="currency-item-wrapper__main">
             <div className="market-overview-mobile">
-              <IconButton className="market-overview-mobile__back" component={Link} to={`/market`}>
+              <IconButton
+                className="market-overview-mobile__back"
+                component={Link}
+                to={`/market`}
+                aria-label="return to market page"
+              >
                 <ArrowBackIcon />
               </IconButton>
               <h2 className="market-overview-mobile__title">Market Overview</h2>
-              <IconButton className="market-overview-mobile__more" onClick={handleTabsMenuClickOpen}>
+              <IconButton
+                className="market-overview-mobile__more"
+                onClick={handleTabsMenuClickOpen}
+                aria-label="expand tabs modal window"
+              >
                 <MoreVertIcon />
               </IconButton>
             </div>

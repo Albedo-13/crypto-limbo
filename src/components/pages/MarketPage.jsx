@@ -10,6 +10,7 @@ export const MarketPage = () => {
     <>
       <Helmet>
         <title>Market | Crypto Limbo</title>
+        <meta name="description" content="View top cryptocurrency prices live, crypto charts, market cap, and trading volume. Discover today’s new and trending coins, top crypto gainers and losers in the market with crypto brains." />
       </Helmet>
 
       <Header />

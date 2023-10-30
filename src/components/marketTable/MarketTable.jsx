@@ -133,7 +133,12 @@ export const MarketTable = () => {
     <section className="market-table">
       <div className="container">
         <div className="market-overview-mobile">
-          <IconButton className="market-overview-mobile__back" component={Link} to={`/`}>
+          <IconButton
+            className="market-overview-mobile__back"
+            component={Link}
+            to={`/`}
+            aria-label="return to main page"
+          >
             <ArrowBackIcon />
           </IconButton>
           <h2 className="market-overview-mobile__title">Market Overview</h2>

@@ -22,8 +22,8 @@ const TabPanel = (props) => {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
       {...other}
       key={index}
     >
@@ -42,7 +42,7 @@ export const CurrencyItemTabs = ({ handleTabsMenuClickClose, isTabsMenuOpen }) =
 
   const a11yProps = (index) => {
     return {
-      id: `simple-tab-${index}`,
+      id: `tab-${index}`,
       "aria-controls": `tabpanel-${index}`,
     };
   };
@@ -51,7 +51,7 @@ export const CurrencyItemTabs = ({ handleTabsMenuClickClose, isTabsMenuOpen }) =
     return (
       <Box className={"mui-tabs"} sx={{ width: "100%" }} onClick={handleTabsMenuClickClose}>
         <Box className={classNames("mui-tabs-header", { "mui-tabs-header-mobile-active": isTabsMenuOpen })}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tabs value={value} onChange={handleChange} aria-label="Tabs">
             <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
             <Tab tabIndex={0} label="Watchlist" {...a11yProps(1)} />
             <Tab tabIndex={0} label="Portfolio" {...a11yProps(2)} />
