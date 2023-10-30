@@ -229,6 +229,7 @@
         align-items: center;
         transform: translateY(100%);
         transition: 0.5s ease-in-out;
+        opacity: 0;
 
         .MuiTabs-root {
           background-color: $bg-card;
@@ -250,8 +251,10 @@
         &-mobile-active {
           transform: translateY(0%);
           transition: 0.5s ease-out;
+          opacity: 1;
 
-          &__close {
+          &__close,
+          &__close:hover {
             display: flex;
             position: absolute;
             right: 10px;
