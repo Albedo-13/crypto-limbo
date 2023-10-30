@@ -235,8 +235,9 @@
           &__close {
             display: flex;
             position: absolute;
-            right: 5px;
-            top: 5px;
+            right: 10px;
+            top: 10px;
+            background-color: $bg-card-3;
           }
 
           .MuiTabs-root {

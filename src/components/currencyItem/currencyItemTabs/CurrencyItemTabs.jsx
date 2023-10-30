@@ -55,16 +55,15 @@ export const CurrencyItemTabs = ({ handleTabsMenuClickClose, isTabsMenuOpen }) =
             <Tab tabIndex={0} label="Buy / Sell" {...a11yProps(0)} />
             <Tab tabIndex={0} label="Watchlist" {...a11yProps(1)} />
             <Tab tabIndex={0} label="Portfolio" {...a11yProps(2)} />
-            <IconButton
-              className="mui-tabs-header-mobile-active__close"
-              onClick={handleTabsMenuClickClose}
-              aria-label="close"
-              size="large"
-            >
-              <CloseIcon />
-            </IconButton>
           </Tabs>
-
+          <IconButton
+            className="mui-tabs-header-mobile-active__close"
+            onClick={handleTabsMenuClickClose}
+            aria-label="close"
+            size="large"
+          >
+            <CloseIcon />
+          </IconButton>
         </Box>
         <TabPanel className={"mui-tabs-panel"} value={value} index={0}>
           <BuySellTab />
