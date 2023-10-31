@@ -13,6 +13,35 @@
   }
 }
 
+.market-overview {
+  &-mobile {
+    display: none;
+
+    &__title {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+      padding-top: 20px;
+    }
+
+    &__back {
+      &.MuiButtonBase-root.MuiIconButton-root {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+      }
+    }
+
+    &__more {
+      &.MuiButtonBase-root.MuiIconButton-root {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+    }
+  }
+}
+
 @media (max-width: 1023px) {
   .market-table {
     padding-bottom: 60px;
@@ -31,6 +60,32 @@
 
     .bg-section-spray-small {
       display: none;
+    }
+  }
+
+  .market-overview {
+    &-mobile {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .market-overview {
+    &-mobile {
+      &__back {
+        &.MuiButtonBase-root.MuiIconButton-root {
+          top: 15px;
+          left: 5px;
+        }
+      }
+
+      &__more {
+        &.MuiButtonBase-root.MuiIconButton-root {
+          top: 15px;
+          right: 5px;
+        }
+      }
     }
   }
 }

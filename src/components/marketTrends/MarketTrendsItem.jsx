@@ -7,7 +7,6 @@ import { trendingPriceChange } from "../../utils/TrendingPriceChange";
 
 export const MarketTrendsItem = ({ currency }) => {
   const { priceChangeStyle, TrendingIcon } = trendingPriceChange(currency.price_change_percentage_24h);
-
   const { createChartData, options } = sparklineChartConfig;
   const chartData = createChartData(currency);
 

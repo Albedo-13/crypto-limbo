@@ -13,7 +13,6 @@ export const trendingPriceChange = (currencyPriceChange) => {
     success: isPercentageIncreasing,
     error: !isPercentageIncreasing,
   });
-
   return {
     priceChangeStyle,
     TrendingIcon,

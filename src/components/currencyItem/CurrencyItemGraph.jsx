@@ -54,7 +54,6 @@ const GraphToolbar = ({ handleFetch, id }) => {
 
   useEffect(() => {
     handleFetch(activeButtonValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeButtonValue]);
 
   const handleFilter = (e) => {
@@ -120,7 +119,6 @@ export const CurrencyItemGraph = () => {
 
   useDidUpdateEffect(() => {
     handleFetch(1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (

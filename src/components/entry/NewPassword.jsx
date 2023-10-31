@@ -27,7 +27,6 @@ export const NewPassword = (props) => {
     if (!username) {
       navigate("/forgot-password");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = () => {

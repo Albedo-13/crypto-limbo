@@ -19,7 +19,6 @@ export const MarketTrends = () => {
 
   useEffect(() => {
     dispatch(filteredCurrenciesChanged(currencies.data));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currencies.data, filters.activeFilter]);
 
   const dispatchBasedOnFilter = (filter) => {

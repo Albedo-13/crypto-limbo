@@ -17,7 +17,6 @@ const CurrencyItemPage = () => {
     dispatch(fetchCurrency(id))
       .unwrap()
       .catch(() => navigate("/market", { replace: true }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (

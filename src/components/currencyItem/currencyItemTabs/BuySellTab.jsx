@@ -36,13 +36,11 @@ const BuySellTabForm = ({ variant, coin, dispatchAction, handleSnackOpen }) => {
 
   useEffect(() => {
     updatePercentButtonValue();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [percentButtonValue]);
 
   useEffect(() => {
     reset();
     setAdditionalFormData(coin);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSubmitSuccessful, coin]);
 
   const updatePercentButtonValue = () => {
