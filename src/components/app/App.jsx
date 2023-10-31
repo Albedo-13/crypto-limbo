@@ -42,11 +42,7 @@ function Root() {
       <ScrollToTop />
       <Suspense fallback={<Skeleton variant="rounded" animation="wave" width={"100vw"} height={"100vh"} />}>
         <Routes>
-          {/* <Route path="/" element={<LandingPage />} /> */}
-          {/* <Route path="/market" element={<MarketPage />} /> */}
-          {/* <Route path="/market/:id" element={<CurrencyItemPage />} /> */}
           <Route path="/road-map" element={<RoadMapPage />} />
-          {/* <Route path="/referral" element={<ReferralPage />} /> */}
           <Route path="/login" element={<EntryPage component={Login} />} />
           <Route path="/signup" element={<EntryPage component={SignUp} />} />
           <Route path="/forgot-password" element={<EntryPage component={ForgotPassword} />} />
