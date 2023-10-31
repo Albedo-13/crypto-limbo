@@ -7,7 +7,7 @@ import { Testimonials } from "../testimonials/Testimonials";
 import { ReferralLink } from "../referralLink/ReferralLink";
 import { Footer } from "../footer/Footer";
 
-export const ReferralPage = () => {
+const ReferralPage = () => {
   return (
     <>
       <Helmet>
@@ -24,3 +24,5 @@ export const ReferralPage = () => {
     </>
   );
 };
+
+export default ReferralPage;

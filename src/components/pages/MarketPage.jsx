@@ -5,7 +5,7 @@ import { Footer } from "../footer/Footer";
 import { FeaturedCoins } from "../marketTrends/FeaturedCoins";
 import { MarketTable } from "../marketTable/MarketTable";
 
-export const MarketPage = () => {
+const MarketPage = () => {
   return (
     <>
       <Helmet>
@@ -22,3 +22,5 @@ export const MarketPage = () => {
     </>
   );
 };
+
+export default MarketPage;

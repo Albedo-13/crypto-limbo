@@ -5,7 +5,7 @@ import { RoadMap } from "../roadMap/RoadMap";
 import { FrequentlyAskedQuestions } from "../frequentlyAskedQuestions/FrequentlyAskedQuestions";
 import { Footer } from "../footer/Footer";
 
-export const RoadMapPage = () => {
+const RoadMapPage = () => {
   return (
     <>
       <Helmet>
@@ -20,3 +20,5 @@ export const RoadMapPage = () => {
     </>
   );
 };
+
+export default RoadMapPage;

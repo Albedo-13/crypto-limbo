@@ -1,7 +1,7 @@
 import { Header } from "../header/Header";
 import { Entry } from "../entry/Entry";
 
-export const EntryPage = ({ component }) => {
+const EntryPage = ({ component }) => {
   return (
     <>
       <Header />
@@ -11,3 +11,5 @@ export const EntryPage = ({ component }) => {
     </>
   );
 };
+
+export default EntryPage;

@@ -7,7 +7,7 @@ import { Header } from "../header/Header";
 import { CurrencyItem } from "../currencyItem/CurrencyItem";
 import { fetchCurrency } from "../../slices/currenciesSlice";
 
-export const CurrencyItemPage = () => {
+const CurrencyItemPage = () => {
   const { id } = useParams();
   const coin = useSelector((state) => state.currencies.singleCurrency);
   const navigate = useNavigate();
@@ -34,3 +34,5 @@ export const CurrencyItemPage = () => {
     </>
   );
 };
+
+export default CurrencyItemPage;

@@ -10,7 +10,7 @@ import { FrequentlyAskedQuestions } from "../frequentlyAskedQuestions/Frequently
 import { DownloadApp } from "../downloadApp/DownloadApp";
 import { Footer } from "../footer/Footer";
 
-export const LandingPage = () => {
+const LandingPage = () => {
   return (
     <>
       <Helmet>
@@ -32,3 +32,5 @@ export const LandingPage = () => {
     </>
   );
 };
+
+export default LandingPage;
