@@ -13,7 +13,7 @@ Crypto Limbo is a crypto app that allows users to search, track, buy and sell va
 
 ## Build with ⚙️
 
-[![My Skills](https://skillicons.dev/icons?i=html,css,scss,js,react,redux)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=html,css,scss,js,react,redux,mui)](https://skillicons.dev)
 
 ## Screenshots of the Project 📸
 ![image](https://github.com/Albedo-13/crypto-limbo/assets/42911311/0f94127d-6545-471b-98f6-95bd6cee26df)
